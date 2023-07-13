@@ -26,7 +26,6 @@ function App() {
                         <LeftBarhs />
                         <Actions />
                         <Posts />
-                        {/* <Posts /> */}
                     </div>
                     <RightBar />
                 </div>
