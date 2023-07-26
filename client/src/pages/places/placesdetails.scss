@@ -1,0 +1,22 @@
+.outer-space{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+    .outer-left{
+        margin-bottom: 10px;
+    }
+    .mid{
+        .services{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+    }
+    .outer-right{
+
+    }
+}
