@@ -25,6 +25,27 @@ function Dashboard() {
             <div className="chart">
                 <div className="daily-chart">
                     <h3>Daily Interactions</h3>
+                    <div className="traffic">
+                        <div className="daily">
+                            <h4>Daily Traffic</h4>
+                            <div className="count">
+                                <span class="material-icons">
+                                    arrow_drop_up
+                                </span>
+                                <span className="count-value">
+                                    +2.45%
+                                </span>
+                            </div>
+                        </div>
+                        <div className="visitors">
+                            <span className='visit-count'>
+                                2.596
+                            </span>
+                            <span className='visit-text'>
+                                Visitors
+                            </span>
+                        </div>
+                    </div>
                 </div>
                 <div className="top-content-creators">
                     <h3>Top Content Creators</h3>

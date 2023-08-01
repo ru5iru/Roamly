@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 .dashboard-main{
     width: 70%;
     position: absolute;
@@ -47,6 +49,54 @@
             border-radius: 5px;
             margin: 0 10px 0 5px;
             padding: 10px;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            .traffic{
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                height: 100%;
+                align-items: center;
+                .daily{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin: 10px 10px 0 10px;
+                    font-family: 'DM Sans';
+                    h4{
+                        font-size: 15px;
+                        //font-family: 'DM Sans';
+                        color: #A3AED0;
+                    }
+                    .count{
+                        display: flex;
+                        color: #05CD99;
+                        //font-family: 'DM Sans';
+                    }
+                }
+                .visitors{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: left;
+                    margin: 0 10px;
+                    font-family: 'DM Sans';
+                    .visit-count{
+                        display: flex;
+                        color: #2B3674;
+                        font-size: 35px;
+                    }
+                    .visit-text{
+                        font-size: 15px;
+                        //font-family: 'DM Sans';
+                        color: #A3AED0;
+                        display: flex;
+                        align-items: baseline;
+                    }
+                }
+            }
         }
         .top-content-creators{
             width: 60%;
