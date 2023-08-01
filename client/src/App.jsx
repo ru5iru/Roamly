@@ -29,12 +29,6 @@ function App() {
     <div>
       <RouterProvider router={router} />
     </div>
-    /*<div>
-      <PlacesDetails />
-    </div>*/
-    /*<div>
-      <AdminPanel />
-    </div>*/
   );
 }
 
