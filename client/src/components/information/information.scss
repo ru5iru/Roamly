@@ -20,10 +20,11 @@
 }
 
 .about p{
-    font-size: 25px;
+    font-size: 24px;
     font-weight: 500;
     color: #898989;
     justify-content: center;
+    font-family: 'klavika-light';
 }
 
 .more{
@@ -43,6 +44,7 @@
     font-weight: bold;
     cursor: pointer;
     color: #164DE5;
+    font-family: 'klavika-light';
 }
 
 .fa-map-marker{
@@ -84,10 +86,11 @@
 .line p{
     font-size: 25px;
     color: #898989;
+    font-family: 'klavika-light';
 }
 
 .line span{
-    font-weight: bolder;
     color: #000;
     cursor: pointer;
+    font-family: 'klavika-bold';
 }

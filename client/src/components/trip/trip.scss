@@ -2,7 +2,7 @@
     display: flex;
 }
 
-.box{
+.boxes{
     width: 200px;
     height: 200px;
     position: relative;
@@ -10,14 +10,14 @@
     margin: 0 0 20px 20px;
 }
 
-.box img{
+.boxes img{
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 15px;
 }
 
-.box h3{
+.boxes h3{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -29,9 +29,10 @@
     border-radius: 0 0 15px 15px;
     padding: 10px 0 0 10px;
     transition: .5s eaes;
+    font-family: 'klavika-light';
 }
 
-.box:hover{
+.boxes:hover{
     transform: scale(1.05);
     cursor: pointer;
 }

@@ -1,36 +1,40 @@
 import React from 'react';
 import './App.scss';
-/*import {
+import {
   createBrowserRouter,
   RouterProvider,
-} from "react-router-dom";*/
+} from "react-router-dom";
 
-/*import TripType from './pages/tripType/tripType';
-import PlacesDetails from './pages/placesDetails/placesDetails';*/
+import TripType from './pages/tripType/tripType';
+import PlacesDetails from './pages/placesDetails/placesDetails';
 import AdminPanel from './pages/adminPanel/adminPanel';
 
 function App() {
-  /*const router = createBrowserRouter([
+  const router = createBrowserRouter([
     {
       path: "/",
-      element: <TripType />,
+      element: <AdminPanel />,
     },
     {
       path: "/placesdetails",
       element: <PlacesDetails />,
     },
-  ]);*/
+    {
+      path: "/triptype",
+      element: <TripType />,
+    },
+  ]);
 
   return(
-    /*<div>
+    <div>
       <RouterProvider router={router} />
-    </div>*/
+    </div>
     /*<div>
       <PlacesDetails />
     </div>*/
-    <div>
+    /*<div>
       <AdminPanel />
-    </div>
+    </div>*/
   );
 }
 

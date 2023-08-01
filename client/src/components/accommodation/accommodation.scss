@@ -1,6 +1,9 @@
 .title{
     margin: 20px;
     margin-left: 50px;
+    h1{
+        font-family: 'klavika-bold';
+    }
 }
 
 .accommodations{
@@ -36,6 +39,7 @@
     border-radius: 0 0 15px 15px;
     padding: 10px 0 0 10px;
     transition: .5s eaes;
+    font-family: 'klavika-light';
 }
 
 .type:hover{

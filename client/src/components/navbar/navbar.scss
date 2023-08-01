@@ -1,5 +1,3 @@
-// klavika
-
 .navbar{
     display: flex;
     flex-direction: row;
@@ -7,6 +5,7 @@
     align-items: center;
     padding: 10px 25px;
     background-color: black;
+    font-family: 'klavika-medium';
     .left{
         h1{
             color: hwb(0 100% 0%);
@@ -38,35 +37,3 @@
         }
     }
 }
-
-// .navbar{
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-between;
-//     padding: 10px 15px;
-//     // box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.3);
-//     .left{
-//         img{
-//             margin: 0 10px;
-//         }
-//     }
-//     .right{
-//         img{
-//             margin: 0 10px;
-//         }
-//     }
-//     @media screen and (max-width: 768px) {
-//         .navbar{
-//             .left{
-//                 img{
-//                     width: 45px;
-//                 }
-//             }
-//             .right{
-//                 img{
-//                     width: 45px;
-//                 }
-//             }
-//         }
-//       }
-// }  
