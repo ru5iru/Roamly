@@ -1,5 +1,6 @@
 import './dashboard.scss';
 //import { Link } from 'react-router-dom';
+import ContentCreators from '../../components/contentCreators/contentCreators';
 
 function Dashboard() {
     return(
@@ -49,6 +50,9 @@ function Dashboard() {
                 </div>
                 <div className="top-content-creators">
                     <h3>Top Content Creators</h3>
+                    <div className="creators">
+                        <ContentCreators />
+                    </div>
                 </div>
             </div>
             <div className="select">
