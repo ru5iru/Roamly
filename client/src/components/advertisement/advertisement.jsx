@@ -1,15 +1,39 @@
-import React from 'react'
+// Advertisement.js
+
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./advertisement.scss";
 
-export const Advertisement = () => {
+const Advertisement = () => {
+  const [advertisementData, setAdvertisements] = useState([]);
+
+  useEffect(() => {
+    // Fetch advertisements from the back-end
+    axios
+      .get("http://localhost:5000/advertisements")
+      .then((response) => {
+        setAdvertisements(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
-    <div className='advertisement'>
-        <div className='up'>
-            <img src="https://plus.unsplash.com/premium_photo-1684534125661-614f59f16f2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="advertisement" />
+    <div>
+      {advertisementData.map((ad) => (
+        <div className="advertisement">
+          <div className="up">
+            <img src={advertisementData.ad_media} alt="advertisement" />
+            <p>Start Date: {new Date(ad.start_date).toLocaleDateString()}</p>
+            <p>End Date: {new Date(ad.end_date).toLocaleDateString()}</p>
+          </div>
+          <div className="bottom">
+            <p>{ad.title}</p>
+            {/* <p>{ad.description}</p> */}
+          </div>
         </div>
-        <div className='bottom'>
-            <p>Takeaway Menu Available</p>
-        </div>
+      ))}
     </div>
   );
 };

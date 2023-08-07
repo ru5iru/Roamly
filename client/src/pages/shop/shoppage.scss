@@ -1,16 +1,21 @@
-.outer-space{
+.outer-space {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
     padding: 10px;
-    .outer-left{
+
+    .outer-left {
         margin-bottom: 10px;
     }
-    .mid{
 
-    }
-    .outer-right{
+    .mid {}
 
+    .outer-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
     }
 }

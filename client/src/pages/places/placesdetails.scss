@@ -4,10 +4,13 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 10px;
+    background-color: #2688ab;
     .outer-left{
+        background-color: white;
         margin-bottom: 10px;
     }
     .mid{
+        background-color: white;
         .services{
             display: flex;
             flex-direction: row;
@@ -17,6 +20,6 @@
 
     }
     .outer-right{
-
+        background-color: white;
     }
 }

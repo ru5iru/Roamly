@@ -9,7 +9,7 @@ import Advertisements from "../../components/advertisement/advertisement";
 export const Placesdetails = () => {
   return (
     <div className="outer-space">
-      <div className="left">
+      <div className="outer-left">
         sidebar
       </div>
       <div className="mid">
@@ -21,7 +21,7 @@ export const Placesdetails = () => {
           <Guideservice />
         </div>
       </div>
-      <div className="right">
+      <div className="outer-right">
         <Advertisements />
         <Advertisements />
       </div>

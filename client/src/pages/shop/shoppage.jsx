@@ -7,9 +7,7 @@ export const ShopPage = () => {
   return (
     <div className="outer-space">
       <div className="outer-left">
-        <Advertisements />
-        <Advertisements />
-        <Advertisements />
+        sidebar
       </div>
       <div className="mid">
         <h1>Hotels near Belihuloya</h1>
@@ -18,8 +16,6 @@ export const ShopPage = () => {
         <Shop />
       </div>
       <div className="outer-right">
-        <Advertisements />
-        <Advertisements />
         <Advertisements />
       </div>
     </div>

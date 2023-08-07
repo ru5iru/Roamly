@@ -4,13 +4,24 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 10px;
+    background-color: #2994ba;
     .outer-left{
+        background-color: white;
+        border-radius: 3px;
         margin-bottom: 10px;
+        width: 16%;
+        margin: 5px;
     }
     .mid{
-
+        background-color: white;
+        width: 68%;
+        margin: 5px;
+        border-radius: 3px;
     }
     .outer-right{
-
+        background-color: white;
+        width: 16%;
+        margin: 5px;
+        border-radius: 3px;
     }
 }
