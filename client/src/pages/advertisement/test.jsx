@@ -5,9 +5,11 @@ import "../../components/advertisement/advertisement.scss";
 import Addbutton from "./addbutton";
 import hotelimg from "../../assets/images/hotelimg.png";
 import hotelpro from "../../assets/images/hotelpro.jpg";
+// import ViewButton from "../../components/advertisement/viewbutton";
 
 export const Test = () => {
-  
+ 
+
   return (
     <div className="hotel-profile">
       <div className="left">sidebar</div>
@@ -17,11 +19,12 @@ export const Test = () => {
           <img className="hotel-profile" src={hotelpro} alt="hotel-profile" />
         </div>
         <div className="add-ad">
-            <Addbutton />
+          <div>Filter</div>
+          <Addbutton />
         </div>
-        <div className="content">
-          <Advertisement />
-        </div>
+          <div className="content">
+            <Advertisement />
+          </div>
       </div>
     </div>
   );

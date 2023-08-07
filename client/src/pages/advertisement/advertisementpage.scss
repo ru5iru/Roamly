@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
+    padding: 10px;
     .hotel-image {
         position: relative;
 
@@ -25,6 +25,9 @@
     }
 
     .add-ad {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         padding: 5px 0px;
 
         button {
@@ -46,10 +49,10 @@
 
     .content {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         justify-content: space-between;
-        margin: 20px;
-    }
+      }
+      
 }
 
 // Add button starts here
