@@ -1,3 +1,5 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./leftBar.scss";
 import Home from "../../assets/Home.png";
 import Plan from "../../assets/plan.png";
@@ -10,13 +12,23 @@ import { useContext } from "react";
 const LeftBar = () => {
 
     // const { currentUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleHomeClick = () => {
+        // Navigate to the home page when the Home menu item is clicked
+        navigate("/home");
+    };
+    const handleExporeClick = () => {
+        // Navigate to the home page when the Home menu item is clicked
+        navigate("/explore");
+    };
 
     return (
         <div className="leftBar">
 
             <div className="leftbar">
                 <div className="menu">
-                    <div className="menu_item">
+                    <div className="menu_item" onClick={handleHomeClick}>
                         <img src={Home} alt="" />
                         <p>Home</p>
                     </div>
@@ -24,7 +36,7 @@ const LeftBar = () => {
                         <img src={Profile} alt="" />
                         <p>Selena Kyle</p>
                     </div>
-                    <div className="menu_item">
+                    <div className="menu_item" onClick={handleExporeClick}>
                         <img src={Search} alt="" />
                         <p>Explore</p>
                     </div>

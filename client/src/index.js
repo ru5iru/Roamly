@@ -4,6 +4,7 @@ import App from "./App";
 import { AuthContextProvider } from "./context/authContext";
 import { DarkModeContextProvider } from "./context/darkModeContext";
 import "./fonts/Klavika/klavika-bold.otf"
+import "./fonts/Klavika/klavika-regular.otf"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -1,7 +1,6 @@
 @import "../../style.scss";
 
 .actions {
-    margin: 18px;
     border-radius: 10px;
     font-size: 16px;
     font-weight: bold;
@@ -49,8 +48,17 @@
                 margin-right: 10px
             }
 
+
+        }
+
+        .action_btn {
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            width: 20vw;
+
             button {
-                width: 20vh;
+                width: 23vh;
                 height: 45px;
                 background: #1877F2;
                 border: none;
@@ -71,6 +79,8 @@
 
         .action:hover {
             cursor: pointer;
+            transform: scale(1.05);
+
 
             img {
                 filter: brightness(40%)
@@ -88,11 +98,18 @@
 
         }
 
+        button:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+
     }
 }
 
 @media only screen and (min-width: 1300px) {
     .actions {
+        margin: 18px;
+
         width: 55vw;
         height: 150px;
 
@@ -120,7 +137,9 @@
 
 @media only screen and (max-width: 1300px) and (min-width: 1000px) {
     .actions {
-        width: 72vw;
+        margin: 18px;
+
+        width: 69vw;
         height: 150px;
 
         .upper {
@@ -145,7 +164,9 @@
 
 @media only screen and (max-width: 1000px) and (min-width: 500px) {
     .actions {
-        width: 96%;
+        margin: none;
+
+        width: 100%;
         height: 150px;
 
         .upper {
@@ -172,6 +193,8 @@
 
 @media only screen and (max-width: 500px) {
     .actions {
+        margin: none;
+
         width: 100%;
         width: 96vw;
         height: 60px;

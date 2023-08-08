@@ -1,5 +1,35 @@
-.posts{
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
+.posts {
+    // width: 100%;
+    display: flex;
+    flex-direction: column;
+    // gap: 50px;
+}
+
+@media only screen and (min-width: 1300px) {
+    .posts {
+        width: 55vw;
+        margin-left: 18px;
+    }
+}
+
+@media only screen and (max-width: 1300px) and (min-width: 1000px) {
+    .posts {
+        width: 70vw;
+        margin-left: 18px;
+
+    }
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 500px) {
+    .posts {
+        width: 99%;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .posts {
+        width: 97%;
+        align-items: center;
+    }
 }

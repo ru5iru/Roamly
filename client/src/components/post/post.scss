@@ -1,72 +1,180 @@
 @import "../../style.scss";
 
 .post {
-  @include themify($themes) {
-    -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-    -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-    border-radius: 20px;
-    background-color: themed("bg");
-    color: themed("textColor");
+    // height: 200px;
+    border-radius: 10px;
+    background: #FFFFFF;
+    // margin-left: 18px;
+    // margin-right: 18px;
+    margin-top: 18px;
 
-    .container {
-      padding: 20px;
+    .user {
+        height: 70px;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
 
-      .user {
+        // background-color: aquamarine;
+
+        .user_profile {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            // img {
+            //     width: 50px;
+            //     height: 50px;
+            //     border-radius: 50%;
+            // }
+        }
+
+        .user_info {
+            width: 85%;
+
+            .date_time {
+                font-size: 14px;
+                font-weight: bold;
+                color: gray
+            }
+        }
+
+        .user_options {
+            display: flex;
+            height: 100%;
+
+            .seemore {
+                width: 30px;
+                margin-top: 10px;
+                margin-left: 10px;
+                height: 20px;
+            }
+        }
+    }
+
+    .content {
+        font-family: "Klavika", sans-serif;
+        font-size: 23px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+
+        .content_text {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            p {
+                width: 95%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .content_image {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            img {
+                width: 95%;
+            }
+        }
+    }
+
+    .social {
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        .userInfo {
-          display: flex;
-          gap: 20px;
-
-          img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-          }
-
-          .details {
+        .social_wrapper {
+            width: 100%;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            // background-color: blueviolet;
 
-            .name {
-              font-weight: 500;
+            div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 28%;
+                height: 100%;
+
+                img:hover {
+                    cursor: pointer;
+                }
+
+                // background-color: aquamarine;
             }
-
-            .date {
-              font-size: 12px;
-            }
-          }
         }
-      }
 
-      .content {
-        margin: 20px 0px;
-
-        img {
-          width: 100%;
-          max-height: 500px;
-          object-fit: cover;
-          margin-top: 20px;
-        }
-      }
-
-      .info {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-
-        .item {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          cursor: pointer;
-          font-size: 14px;
-        }
-      }
     }
-  }
+
+    .comments_content {
+        width: 100%;
+        // display: flex;
+        // flex-direction: column;
+        // gap: 50px;
+
+        // .write {
+        //     width: 100%;
+
+        // }
+    }
+}
+
+
+@media only screen and (min-width: 1300px) {
+    .post {
+        width: 100%;
+
+        .user {
+            .user_profile {
+                width: 9%;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+        }
+
+    }
+}
+
+@media only screen and (max-width: 1300px) and (min-width: 1000px) {
+    .post {
+        width: 98%;
+
+        .user {
+            .user_profile {
+                width: 9%;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .post {
+        width: 94%;
+    }
+
+    .user {
+        .user_profile {
+            width: 13%;
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
 }

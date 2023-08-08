@@ -50,6 +50,7 @@ body {
             .menu_item:hover {
                 background-color: #E5F1F8;
                 cursor: pointer;
+                transform: scale(1.05);
             }
         }
     }
@@ -88,6 +89,7 @@ body {
         .menu_item_h:hover {
             background-color: #D8F6FE;
             cursor: pointer;
+            transform: scale(1.05);
         }
     }
 
@@ -114,6 +116,7 @@ body {
         .menu_item_h:hover {
             background-color: #D8F6FE;
             cursor: pointer;
+            transform: scale(1.05);
         }
     }
 }
