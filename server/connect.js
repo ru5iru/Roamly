@@ -1,29 +1,17 @@
-// import pkg from 'pg';
-// import { Pool } from "pg";
-
 import pkg from 'pg';
 const { Pool } = pkg;
-// const Pool = require("pg").Pool;
+import dotenv from 'dotenv';
 
-const pool = new Pool({
-    host: "localhost",
-    user: "postgres",
-    password: "Sneha123",
-    database: "test1",
-    port: 5432, // Default PostgreSQL port
-});
+dotenv.config(); // Load environment variables from .env file
 
-// const dbconfig = {
-//     host: "localhost",
-//     user: "postgres",
-//     password: "Sneha123",
-//     database: "test1",
-//     port: 5432, // Default PostgreSQL port
-// }
+const dbConfig = {
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: parseInt(process.env.DB_PORT, 10), // Convert port to an integer
+};
 
-// module.exports = pool;
-export default pool;
+const db = new Pool(dbConfig);
 
-// const db = new pool(dbconfig);
-
-// export { db };
+export { db };

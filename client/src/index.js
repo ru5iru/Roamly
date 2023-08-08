@@ -1,18 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import { AuthContextProvider } from "./context/authContext";
-import { DarkModeContextProvider } from "./context/darkModeContext";
-import "./fonts/Klavika/klavika-bold.otf"
-import "./fonts/Klavika/klavika-regular.otf"
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { AuthContextProvider } from './context/authContext';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-        <DarkModeContextProvider>
-            <AuthContextProvider>
-                <App />
-            </AuthContextProvider>
-        </DarkModeContextProvider>
-    </React.StrictMode>
+  <React.StrictMode>
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
+  </React.StrictMode>
 );
+
+
