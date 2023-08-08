@@ -4,7 +4,7 @@
     justify-content: space-between;
     gap: 10px;
     .advertisement {
-        height: 200px;
+        height: 250px;
         width: 200px;
         margin-bottom: 20px;
 
@@ -20,9 +20,13 @@
         }
 
         .bottom {
-            height: 15%;
+            height: 25%;
             width: 100%;
             background-color: rgba(128, 128, 128, 0.536);
+            h6{text-align: center;
+            }p{
+                text-align: center;
+            }
         }
     }
 }

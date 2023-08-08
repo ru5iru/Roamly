@@ -23,7 +23,6 @@ export const Placesdetails = () => {
       </div>
       <div className="outer-right">
         <Advertisements />
-        <Advertisements />
       </div>
     </div>
   );

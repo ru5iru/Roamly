@@ -1,0 +1,23 @@
+.view-ad{
+    h2{}
+    .ad-whole{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        .ad-left{
+            img{
+                    width: auto;
+                    height: 200px;
+                }
+            
+        }.ad-right{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+                padding: 0 10px;
+                h5{}
+                p{}
+            }
+    }
+}

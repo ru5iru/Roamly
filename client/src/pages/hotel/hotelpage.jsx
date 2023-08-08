@@ -17,8 +17,6 @@ export const HotelPage = () => {
       </div>
       <div className="outer-right">
         <Advertisements />
-        <Advertisements />
-        <Advertisements />
       </div>
     </div>
   );

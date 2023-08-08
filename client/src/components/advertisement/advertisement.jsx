@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ViewAdd from "./viewad"; // Import the correct path for ViewAdd
+import hotelAd3 from "../../assets/images/hotel-ad-3.jpeg";
 import "./advertisement.scss";
-// import AdvertisementForm from "./advertisementform"; // Import your AdvertisementForm component
-import EditAdd from "./editadd";
 
 const Advertisement = () => {
   const [advertisementData, setAdvertisements] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedAdvertisement, setSelectedAdvertisement] = useState(null); // New state variable
+  const [selectedAdvertisement, setSelectedAdvertisement] = useState(null);
 
   useEffect(() => {
-    // Fetch advertisements from the back-end
     axios
       .get("http://localhost:5000/advertisements")
       .then((response) => {
@@ -22,13 +21,13 @@ const Advertisement = () => {
   }, []);
 
   const handleAdvertisementClick = (ad) => {
-    setSelectedAdvertisement(ad); // Set the selectedAdvertisement to the clicked advertisement
-    setIsModalOpen(true); // Open the modal
+    setSelectedAdvertisement(ad);
+    setIsModalOpen(true);
   };
 
   const closeModal = (event) => {
     event.stopPropagation();
-    setSelectedAdvertisement(null); // Clear the selectedAdvertisement when the modal is closed
+    setSelectedAdvertisement(null);
     setIsModalOpen(false);
   };
 
@@ -40,7 +39,7 @@ const Advertisement = () => {
             <div className="close-button" onClick={closeModal}>
               <span>&times;</span>
             </div>
-            <EditAdd />            
+            <ViewAdd advertisement={selectedAdvertisement} />
           </div>
         </div>
       )}
@@ -51,13 +50,20 @@ const Advertisement = () => {
           onClick={() => handleAdvertisementClick(ad)}
         >
           <div className="up">
-            <img src={ad.ad_media} alt="advertisement" />
-            <p>Start Date: {new Date(ad.start_date).toLocaleDateString()}</p>
-            <p>End Date: {new Date(ad.end_date).toLocaleDateString()}</p>
+            <img src={hotelAd3} alt="advertisement" />
           </div>
           <div className="bottom">
-            <p>{ad.title}</p>
-            {/* <p>{ad.description}</p> */}
+            <h6>{ad.title}</h6>
+            <p>
+              {new Date(ad.start_date).toLocaleDateString("en-US", {
+                month: "numeric",
+                day: "numeric",
+              })}{"  --->  "}
+              {new Date(ad.end_date).toLocaleDateString("en-US", {
+                month: "numeric",
+                day: "numeric",
+              })}
+            </p>
           </div>
         </div>
       ))}
