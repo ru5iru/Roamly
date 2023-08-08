@@ -7,7 +7,7 @@ import hotelimg from "../../assets/images/hotelimg.png";
 import hotelpro from "../../assets/images/hotelpro.jpg";
 // import ViewButton from "../../components/advertisement/viewbutton";
 
-export const Test = () => {
+export const AdvertisementPage = () => {
  
 
   return (
@@ -30,4 +30,4 @@ export const Test = () => {
   );
 };
 
-export default Test;
+export default AdvertisementPage;

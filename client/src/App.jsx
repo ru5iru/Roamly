@@ -7,7 +7,7 @@ import Placesdetails from "./pages/places/placesdetails";
 // import CollapsibleExample from "./components/collapsible/collapsible";
 import HotelPage from './pages/hotel/hotelpage';
 import ShopPage from './pages/shop/shoppage';
-import Test from "./pages/advertisement/test";
+import AdvertisementPage from "./pages/advertisement/advertisementpage";
 // import AdvertisementItem from "./components/advertisement/advertisementitem";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<Placesdetails />} />
           <Route path="/hotel" element={<HotelPage />} />
           <Route path="/shop" element={<ShopPage />} />
-          <Route path="/advertisement" element={<Test />} />
+          <Route path="/advertisement" element={<AdvertisementPage />} />
 
         </Routes>
       </Router>
