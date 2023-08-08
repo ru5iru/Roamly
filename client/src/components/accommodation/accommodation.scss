@@ -1,0 +1,48 @@
+.title{
+    margin: 20px;
+    margin-left: 50px;
+    h1{
+        font-family: 'klavika-bold';
+    }
+}
+
+.accommodations{
+    display: flex;
+    margin: 10px;
+    padding: 0 50px;
+    justify-content: space-between;
+}
+
+.type{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    border-radius: 15px;
+}
+
+.type img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.type h3{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    color: white;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 15px 15px;
+    padding: 10px 0 0 10px;
+    transition: .5s eaes;
+    font-family: 'klavika-light';
+}
+
+.type:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}

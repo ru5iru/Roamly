@@ -1,61 +1,52 @@
-// import "./navbar.scss";
-// import "./font.scss";
-
-// import logo from "../../assets/images/Roamly.png";
-// import Search from "../../assets/images/search.png";
-// import Chat from "../../assets/images/Chat.png";
-// import Notification from "../../assets/images/Notification.png";
-// import Profile_pic from "../../assets/images/profile_pic.png";
-
-// const Navbar = () => {
-//   return (
-//     <div className="navbar">
-//       {/* <div className="left">
-//         <h1 className="klavika-h1">Roamly</h1>
-//       </div>
-//         <div className="right">
-//           <div className="toggle">
-//             <span></span>
-//             <span></span>
-//             <span></span>
-//           </div>
-//         </div> */}
-//       <div className="left">
-//         <img src={logo} alt="Roamly" />
-//         <img src={Search} alt="Search" />
-//       </div>
-//       <div className="right">
-//         <img src={Chat} alt="Chat" />
-//         <img src={Notification} alt="Notification" />
-//         <img src={Profile_pic} alt="Profile Pic" />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Navbar;
-
-import "./navbar.scss";
+import React, { useState, useEffect } from "react";
 import Chat from "../../assets/images/Chat.png";
 import Notification from "../../assets/images/Notification.png";
 import Search from "../../assets/images/search.png";
 import Profile_pic from "../../assets/images/profile_pic.png";
 import logo from "../../assets/images/Roamly.png";
+import TripType from "../../pages/triptype/triptype";
 
 const Navbar = () => {
-    return (
-        <div className="navbar">
-            <div className="left">
-                <img src={logo} alt="" className="logo" />
-                <img src={Search} alt="" />
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  useEffect(() => {
+    // Clean up popup state when component unmounts
+    return () => {
+        setIsModalOpen(false);
+    };
+  }, []);
+
+  return (
+    <div className="navbar">
+      <div className="left">
+        <img src={logo} alt="" className="logo" />
+        <img src={Search} alt="" onClick={handleButtonClick} /> {/* Add onClick event */}
+      </div>
+      <div className="right">
+        <img src={Chat} alt="" />
+        <img src={Notification} alt="" />
+        <img src={Profile_pic} alt="" />
+      </div>
+
+      {isModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="close-button" onClick={closeModal}>
+              <span>&times;</span>
             </div>
-            <div className="right">
-                <img src={Chat} alt="" />
-                <img src={Notification} alt="" />
-                <img src={Profile_pic} alt="" />
-            </div>
+            <TripType />
+          </div>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default Navbar;

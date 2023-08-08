@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./service.scss";
-import Taxis from "../../assets/images/taxis.png";
+import Taxis from "../../assets/images/taxi.jpg";
 
 const Taxiservice = () => {
   return (

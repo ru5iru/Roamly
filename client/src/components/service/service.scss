@@ -1,12 +1,12 @@
 a{
-    margin: 0 10px;
+    margin: 0;
     text-decoration: none;
     .service{
         height: 60px;
         width: 120px;
         img{
-            height: 120px;
             width: auto;
+            height: 150px;
             z-index: -1;
         }
         .blur-background{
@@ -26,9 +26,9 @@ a{
             }
         }
         &:hover{
+            transform: scale(1.05);
             cursor: pointer;
             .blur-background{
-                background-color: rgb(0, 0, 0, 0);
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); 
             }
         }

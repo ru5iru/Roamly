@@ -15,7 +15,7 @@ const Hotel = () => {
   return (
     <div className="hotel">
       {/* <h1>Hotels near Belihuloya</h1> */}
-      <div className="card">
+      <div className="cardd">
         <div className="left">
           <img src={treeHouse} alt="Tree" />
         </div>

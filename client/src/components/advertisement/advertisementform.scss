@@ -1,0 +1,23 @@
+.add-advertisement {
+
+    h2 {
+        color: black;
+    }
+
+    .adv-form {
+
+        .adv-field {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px;
+            lable {}
+
+            input {}
+        }
+
+        .btn-adv-submit {
+            width: 100%;
+        }
+    }
+}

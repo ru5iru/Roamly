@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import './advertisementform.scss';
+
 const AdvertisementForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -40,14 +42,14 @@ const AdvertisementForm = () => {
   };
 
   return (
-    <div>
+    <div className='add-advertisement'>
       <h2>Add Advertisement</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form className='adv-form' onSubmit={handleSubmit}>
+        <div className='adv-field'>
           <label htmlFor="title">Title:</label>
-          <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+          <input type="text" id="title" maxlength="25" value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
-        <div>
+        <div className='adv-field'>
           <label htmlFor="description">Description:</label>
           <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
         </div>
@@ -55,15 +57,15 @@ const AdvertisementForm = () => {
           <label htmlFor="ad_media">Ad Media File:</label>
           <input type="file" id="ad_media" onChange={handleAdMediaChange} />
         </div> */}
-        <div>
+        <div className='adv-field'>
           <label htmlFor="start_date">Start Date:</label>
           <input type="date" id="start_date" value={start_date} onChange={(e) => setStartDate(e.target.value)} />
         </div>
-        <div>
+        <div className='adv-field'>
           <label htmlFor="end_date">End Date:</label>
           <input type="date" id="end_date" value={end_date} onChange={(e) => setEndDate(e.target.value)} />
         </div>
-        <button type="submit">Add Advertisement</button>
+        <button className='btn-adv-submit' type="submit">Add Advertisement</button>
       </form>
     </div>
   );
