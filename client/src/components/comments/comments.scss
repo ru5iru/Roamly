@@ -7,27 +7,6 @@
     gap: 25px;
     align-items: center;
 
-    .write {
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-
-        input {
-            height: 45px;
-            width: 80%;
-            border-radius: 50px;
-            text-indent: 10px;
-            font-size: 20px;
-            border: solid 1px #d9d9d9;
-        }
-
-        .send {
-            height: 40px;
-        }
-
-    }
-
     .line {
         width: 95%;
         height: 1px;

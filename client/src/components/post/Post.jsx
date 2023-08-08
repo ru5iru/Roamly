@@ -6,6 +6,9 @@ import Liked from "../../assets/filled_heart.png";
 import Comment from "../../assets/comment.png";
 import Share from "../../assets/share.png";
 import Img from "../../assets/ad1.png";
+// import Profilepic from "../../assets/profile_pic.png";
+import Send from "../../assets/sent.png";
+import Line from "../../assets/Line1.png";
 import { Link } from "react-router-dom";
 import Comments from "../comments/Comments";
 import { useState, useEffect, Fragment } from "react";
@@ -97,19 +100,19 @@ const Post = () => {
     };
 
     const [isCommentVisible, setIsCommentVisible] = useState(false);
-    const toggleCommentVisibility = async (post_id) => {
-        const body = post_id;
-        try {
-            const res = await fetch("http://localhost:5000/comments", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(body)
-            });
-            console.log("Comments");
-        }
-        catch (err) {
-            console.error(err.message);
-        }
+    const toggleCommentVisibility = () => {
+        // const body = post_id;
+        // try {
+        //     const res = await fetch("http://localhost:5000/comments", {
+        //         method: "POST",
+        //         headers: { "Content-Type": "application/json" },
+        //         body: JSON.stringify(body)
+        //     });
+        //     console.log("Comments");
+        // }
+        // catch (err) {
+        //     console.error(err.message);
+        // }
         // fetch comments from database here
 
         setIsCommentVisible(!isCommentVisible);
@@ -160,7 +163,10 @@ const Post = () => {
                                     <p>Like</p>
                                 </div>
                                 <div className="comments_icon">
-                                    <img src={Comment} alt="" onClick={() => toggleCommentVisibility(post.post_id)} />
+                                    <img src={Comment} alt="" onClick={() => {
+                                        toggleCommentVisibility(post.post_id)
+                                    }
+                                    } />
                                     <p>Comment</p>
                                 </div>
                                 <div className="shares">
@@ -171,7 +177,15 @@ const Post = () => {
                         </div>
 
                         <div className="comments_content">
-                            {isCommentVisible && <Comments />}
+                            <div className="comments">
+                                {/* <div className="write">
+                                    <img src={Profile} alt="" />
+                                    <input type="text" placeholder="write a comment" />
+                                    <img src={Send} className="send" alt="" />
+                                </div>
+                                <img src={Line} className="line" alt="" /> */}
+                                {isCommentVisible && <Comments post_id={post.post_id} />}
+                            </div>
                         </div>
                     </div>
                 ))

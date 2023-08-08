@@ -160,6 +160,18 @@ app.delete("/unlike", async (req, res) => {
     }
 });
 
+// Get all comments of post
+app.get("/comments/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const allComments = await pool.query("SELECT * FROM comment WHERE post_id = $1", [id]);
+        res.json(allComments.rows);
+    }
+    catch (err) {
+        console.error(err.message)
+    }
+});
+
 
 
 
