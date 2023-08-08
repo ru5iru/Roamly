@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "sass": "^1.64.2",
+    "styled-components": "^6.0.6"
+  }
+}
