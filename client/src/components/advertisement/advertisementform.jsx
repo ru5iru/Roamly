@@ -42,16 +42,16 @@ const AdvertisementForm = () => {
   };
 
   return (
-    <div className='add-advertisement'>
+    <div className='modify-advertisement'>
       <h2>Add Advertisement</h2>
       <form className='adv-form' onSubmit={handleSubmit}>
         <div className='adv-field'>
           <label htmlFor="title">Title:</label>
-          <input type="text" id="title" maxlength="25" value={title} onChange={(e) => setTitle(e.target.value)} />
+          <input type="text" id="title" maxlength="35" value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
         <div className='adv-field'>
           <label htmlFor="description">Description:</label>
-          <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+          <textarea id="description" cols="10" value={description} onChange={(e) => setDescription(e.target.value)} />
         </div>
         {/* <div>
           <label htmlFor="ad_media">Ad Media File:</label>

@@ -49,11 +49,11 @@ app.post('/advertisements', async (req, res) => {
 // Update an advertisement
 app.put('/advertisements/:ad_id', async (req, res) => {
   const adId = req.params.ad_id;
-  const { title, description, ad_media, start_date, end_date, is_active } = req.body;
+  const { title, description, start_date, end_date, is_active } = req.body;
   try {
     const { rows } = await pool.query(
-      'UPDATE advertisements SET title=$1, description=$2, ad_media=$3, start_date=$4, end_date=$5, is_active=$6, updated_at=NOW() WHERE ad_id=$7 RETURNING *',
-      [title, description, ad_media, start_date, end_date, is_active, adId]
+      'UPDATE advertisements SET title=$1, description=$2, start_date=$4, end_date=$5, is_active=$6, updated_at=NOW() WHERE ad_id=$7 RETURNING *',
+      [title, description, start_date, end_date, is_active, adId]
     );
     res.json(rows[0]);
   } catch (err) {

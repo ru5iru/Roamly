@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import hotelAd3 from "../../assets/images/hotel-ad-3.jpeg";
 import "./viewad.scss";
+import { FaRegEdit } from "react-icons/fa";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import EditAdvertisement from "./editadvertisement";
 
 export const ViewAdd = ({ advertisement }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="view-ad">
-      <h2>{advertisement.title}</h2>
-      <div className="ad-whole">
+      <div className="ad-whole-up">
+        <h2>{advertisement.title}</h2>
+        <div className="edit-delete">
+          <FaRegEdit className="edit" title="Edit" onClick={handleButtonClick} />
+      {isModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="close-button" onClick={closeModal}>
+              <span>&times;</span>
+            </div>
+            <EditAdvertisement />
+          </div>
+        </div>
+      )}
+          <RiDeleteBin5Line className="dlt" title="Delete" />
+        </div>
+      </div>
+      <div className="ad-whole-bottom">
         <div className="ad-left">
           <img src={hotelAd3} alt="Advertisement" />
         </div>
