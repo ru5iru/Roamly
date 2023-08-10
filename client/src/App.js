@@ -13,7 +13,7 @@ import Explore from "./components/explore/Explore";
 import ExploreBar from "./components/exploreBar/ExploreBar";
 import ExploreTopBar from "./components/exploreTopBar/ExploreTopBar";
 import Home from "./pages/home/Home";
-import Login from "./pages/login/Login";
+// import Login from "./pages/login/Login";
 import Exp from "./components/explore/Explore";
 import CreatePost from "./components/createPost/createPost";
 import ClosePost from "./components//closePost/closePost";
@@ -81,7 +81,7 @@ function App() {
                     <div>
                         <LeftBarhs />
                         <ExploreTopBar />
-                        {/* <Explore /> */}
+                        <Explore />
                         <Posts />
 
                     </div>
@@ -107,10 +107,10 @@ function App() {
                 },
             ],
         },
-        {
-            path: "/login",
-            element: <Login />,
-        },
+        // {
+        //     path: "/login",
+        //     element: <Login />,
+        // },
         {
             path: "/explore",
             element: <Exp />,

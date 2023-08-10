@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 
+import exploreRoutes from './routers/explore.js';
+import adsRoutes from './routers/ads.js';
+
 const app = express();
 
 import pool from './connect.js';
@@ -164,7 +167,6 @@ app.delete("/unlike", async (req, res) => {
 app.get("/comments/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const allComments = await pool.query("SELECT * FROM comment WHERE post_id = $1", [id]);
         res.json(allComments.rows);
     }
     catch (err) {
@@ -172,6 +174,25 @@ app.get("/comments/:id", async (req, res) => {
     }
 });
 
+// Add a comment
+app.post("/comment", async (req, res) => {
+    try {
+        const { post_id, user_id, commentText } = req.body;
+        const newComment = await pool.query(
+            "INSERT INTO comment (post_id, user_id, content) VALUES( $1, $2, $3) RETURNING *",
+            [post_id, user_id, commentText]
+        );
+        res.json(newComment.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: "An error occurred on the server." });
+    }
+});
+
+// Search Text
+
+app.use("/server/explore", exploreRoutes);
+app.use("/server/ads", adsRoutes);
 
 
 

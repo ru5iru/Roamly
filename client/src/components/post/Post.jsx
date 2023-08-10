@@ -23,7 +23,7 @@ const Post = () => {
             const res = await fetch("http://localhost:5000/posts");
             const jsonData = await res.json();
             setPosts(jsonData);
-            console.log(jsonData);
+            // console.log(jsonData);
         } catch (err) {
             console.error(err.message);
         }

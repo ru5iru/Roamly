@@ -8,6 +8,8 @@ import { AuthContext } from "../../context/authContext";
 const Comments = ({ post_id }) => {
     const { currentUser } = useContext(AuthContext);
 
+    const user_id = 1;
+
     const [comments, setComments] = useState([]);
     const getComments = async () => {
         try {
@@ -24,21 +26,27 @@ const Comments = ({ post_id }) => {
         getComments();
     }, []);
 
-    // const sendComment = async (event) => {
-    //     event.preventDefault();
-    //     try {
-    //         // const body = { post_id, user_id, commentText };
-    //         const response = await fetch("http://localhost:5000/comments", {
-    //             method: "POST",
-    //             headers: { "Content-Type": "application/json" },
-    //             body: JSON.stringify(body)
-    //         });
-    //         console.log(response);
-    //         getComments();
-    //     } catch (err) {
-    //         console.error(err.message);
-    //     }
-    // };
+    const [commentText, setCommentText] = useState("");
+
+    const handleChange = (event) => { setCommentText(event.target.value); };
+
+    const submitComment = async (event) => {
+        console.log("submitComment");
+        event.preventDefault();
+        try {
+            const body = { post_id, user_id, commentText };
+            const response = await fetch("http://localhost:5000/comment", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body)
+            });
+            setCommentText("");
+            console.log(response);
+            getComments();
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
 
 
 
@@ -65,8 +73,10 @@ const Comments = ({ post_id }) => {
         <div className="comments">
             <div className="write">
                 <img src={Profilepic} alt="" />
-                <input type="text" placeholder="write a comment" />
-                <img src={Send} className="send" alt="" />
+                <form>
+                    <input type="text" placeholder="write a comment" value={commentText} onChange={handleChange} />
+                    <img type="submit" src={Send} onClick={submitComment} className="send" alt="" />
+                </form>
             </div>
             <img src={Line} className="line" alt="" />
             {comments.map((comment) => (
@@ -77,8 +87,8 @@ const Comments = ({ post_id }) => {
                     <div className="info">
                         <div className="comm">
                             <span>{comment.name}</span>
-                            <p>{comment.desc}</p>
-                            <p>{post_id}</p>
+                            <p>{comment.content}</p>
+                            {/* <p>{post_id}</p> */}
                         </div>
                         <div className="date">
                             <p>1 hour ago</p>
