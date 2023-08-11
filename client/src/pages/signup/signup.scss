@@ -1,205 +1,200 @@
 @import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap");
 
-
-
 .stext-center {
-  display: flex;
-  justify-content: center;
-  align-items: center; 
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
+   height: 100vh;
 
+   .scontainer {
+      align-items: center;
+      flex: 0 0 41.67%;
+      display: flex;
+      justify-content: center;
 
-  .scontainer {
-    align-items: center;
-    flex: 0 0 41.67%;
-    display: flex;
-    justify-content: center;
+      .scontainer-body {
+         display: flex;
+         align-items: center;
+         @media (max-width: 801px) {
+            justify-content: center;
+         }
 
+         .scontainer-content {
+            position: absolute;
 
-    .scontainer-body {
-        display: flex;
-        align-items: center;
-        @media (max-width: 801px) {
-          justify-content: center;
-        }
+            .scard {
+               border-radius: 0.8rem;
+               background: hsla(0, 0%, 90%, 0.5);
+               backdrop-filter: blur(30px);
+               border: none;
 
+               .scard-body {
+                  padding: 2rem 3rem;
+                  text-align: center;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 2rem;
 
-      .scontainer-content {
-        position: absolute;
-        
+                  .stitle {
+                     font-family: "Familjen Grotesk", sans-serif;
+                     font-weight: bold;
+                     font-size: 1.5rem;
+                     font-family: "Familjen Grotesk", sans-serif;
+                     color: #4f4f4f;
+                  }
 
+                  form {
+                     .srow {
+                        .scol {
+                           display: inline-block !important;
+                           .sform-outline-11 {
+                              margin-bottom: 0.8rem;
+                              margin-right: 0.2rem;
 
-        .scard {
-            border-radius: 0.8rem;
-            background: hsla(0, 0%, 90%, 0.5);
-            backdrop-filter: blur(30px);
-            border: none;
+                              .sform-control {
+                                 font-family: "Familjen Grotesk", sans-serif;
+                                 font-size: 0.9rem;
+                                 border-radius: 0.5rem;
+                                 border: 1px solid #ced4da;
+                                 font-size: 1rem;
+                                 padding: 1rem;
+                                 padding-left: 2.5rem;
+                                 padding-right: 2.5rem;
+                                 width: 106px;
+                                 height: 0.8rem;
+                                 background-color: #fff;
+                                 background-image: none;
+                                 background-clip: padding-box;
+                                 box-shadow: none;
+                                 transition: border-color 0.15s ease-in-out,
+                                    box-shadow 0.15s ease-in-out;
+                                 &:focus {
+                                    border-color: #80bdff;
+                                    outline: 0;
+                                    // box-shadow: 0 0 0 0.25rem rgb(0 123 255 / 25%);
+                                 }
+                              }
+                              .invalid-feedback {
+                                 font-family: "Familjen Grotesk", sans-serif;
+                                 font-size: 0.9rem;
+                                 color: #dc3545;
+                              }
+                           }
+                           .sform-outline-12 {
+                              margin-bottom: 0.8rem;
+                              margin-left: 0.2rem;
 
+                              .sform-control {
+                                 font-family: "Familjen Grotesk", sans-serif;
+                                 font-size: 0.9rem;
+                                 border-radius: 0.5rem;
+                                 border: 1px solid #ced4da;
+                                 font-size: 1rem;
+                                 padding: 1rem;
+                                 padding-left: 2.5rem;
+                                 padding-right: 2.5rem;
+                                 width: 106px;
+                                 height: 0.8rem;
+                                 background-color: #fff;
+                                 background-image: none;
+                                 background-clip: padding-box;
+                                 box-shadow: none;
+                                 transition: border-color 0.15s ease-in-out,
+                                    box-shadow 0.15s ease-in-out;
+                                 &:focus {
+                                    border-color: #80bdff;
+                                    outline: 0;
+                                    // box-shadow: 0 0 0 0.25rem rgb(0 123 255 / 25%);
+                                 }
+                              }
+                              .invalid-feedback {
+                                 font-family: "Familjen Grotesk", sans-serif;
+                                 font-size: 0.9rem;
+                                 color: #dc3545;
+                              }
+                           }
+                        }
 
-          .scard-body {
-            padding: 3rem;
-            text-align: center;
+                        .sform-outline-2 {
+                           margin-bottom: 0.8rem;
+                           .sform-control {
+                              font-family: "Familjen Grotesk", sans-serif;
+                              font-size: 0.9rem;
+                              border-radius: 0.5rem;
+                              border: 1px solid #ced4da;
+                              font-size: 1rem;
+                              padding: 1rem;
+                              padding-left: 2.5rem;
+                              padding-right: 2.5rem;
+                              width: 300px;
+                              height: 0.8rem;
+                              background-color: #fff;
+                              background-image: none;
+                              background-clip: padding-box;
+                              box-shadow: none;
+                              transition: border-color 0.15s ease-in-out,
+                                 box-shadow 0.15s ease-in-out;
+                              &:focus {
+                                 border-color: #80bdff;
+                                 outline: 0;
+                                 // box-shadow: 0 0 0 0.25rem rgb(0 123 255 / 25%);
+                              }
+                           }
+                           .invalid-feedback {
+                              font-family: "Familjen Grotesk", sans-serif;
+                              font-size: 0.9rem;
+                              color: #dc3545;
+                           }
+                        }
+                     }
 
+                     .sform-outline-3 {
+                        margin-bottom: 0.8rem;
+                        .sbtn {
+                           font-family: "Familjen Grotesk", sans-serif;
+                           width: 300px;
+                           font-size: 0.9rem;
+                           color: #fff;
+                           border-color: #007bff;
+                           background-color: #51bcd3; /* Set custom background color */
+                           cursor: pointer;
+                           padding: 0.5rem;
+                           color: #ffffff;
+                           border-radius: 0.5rem;
+                           border: none;
+                           &:hover {
+                              background-color: #007bff;
+                           }
+                        }
+                     }
 
-            .stitle {
-              font-family: "Familjen Grotesk", sans-serif;
-              font-weight: bold;
-              font-size: 1.5rem;
-              font-family: "Familjen Grotesk", sans-serif;
-              color: #4F4F4F;
+                     .stext-left {
+                        .ssub {
+                           font-family: "Familjen Grotesk", sans-serif;
+                           font-size: 0.9rem;
+                        }
+                     }
+                  }
+               }
             }
+         }
 
-            form {
-              .srow {
-                .scol {
-                    display: inline-block !important;
-                  .sform-outline-11 {
-                    margin-bottom: 0.8rem;
-                    margin-right: 0.2rem;
+         .scontainer-img {
+            .simg {
+               border-radius: 0.25rem;
+               box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.16);
+               height: 80vh;
+               width: 480px;
+               display: block;
+               margin-left: 400px;
+               object-fit: cover;
 
-                    .sform-control {
-                        font-family: "Familjen Grotesk", sans-serif;
-                    font-size: 0.9rem;
-                    border-radius: 0.5rem;
-                    border: 1px solid #ced4da;
-                    font-size: 1rem;
-                    padding: 1rem;
-                    padding-left: 2.5rem;
-                    padding-right: 2.5rem;
-                    width: 106px;
-                    height: 0.8rem;
-                    background-color: #fff;
-                    background-image: none;
-                    background-clip: padding-box;
-                    box-shadow: none;
-                    transition: border-color 0.15s ease-in-out,
-                      box-shadow 0.15s ease-in-out;
-                    &:focus {
-                      border-color: #80bdff;
-                      outline: 0;
-                      box-shadow: 0 0 0 0.25rem rgb(0 123 255 / 25%);
-                    }
-
-                    }
-                    .invalid-feedback {
-                      font-family: "Familjen Grotesk", sans-serif;
-                      font-size: 0.9rem;
-                      color: #dc3545;
-                    }
-                  }
-                  .sform-outline-12 {
-                    margin-bottom: 0.8rem;
-                    margin-left: 0.2rem;
-
-                    .sform-control {
-                        font-family: "Familjen Grotesk", sans-serif;
-                    font-size: 0.9rem;
-                    border-radius: 0.5rem;
-                    border: 1px solid #ced4da;
-                    font-size: 1rem;
-                    padding: 1rem;
-                    padding-left: 2.5rem;
-                    padding-right: 2.5rem;
-                    width: 106px;
-                    height: 0.8rem;
-                    background-color: #fff;
-                    background-image: none;
-                    background-clip: padding-box;
-                    box-shadow: none;
-                    transition: border-color 0.15s ease-in-out,
-                      box-shadow 0.15s ease-in-out;
-                    &:focus {
-                      border-color: #80bdff;
-                      outline: 0;
-                      box-shadow: 0 0 0 0.25rem rgb(0 123 255 / 25%);
-                    }
-
-                    }
-                    .invalid-feedback {
-                      font-family: "Familjen Grotesk", sans-serif;
-                      font-size: 0.9rem;
-                      color: #dc3545;
-                    }
-                  }
-                }
-
-                .sform-outline-2 {
-                    margin-bottom: 0.8rem;
-                  .sform-control {
-                    font-family: "Familjen Grotesk", sans-serif;
-                    font-size: 0.9rem;
-                    border-radius: 0.5rem;
-                    border: 1px solid #ced4da;
-                    font-size: 1rem;
-                    padding: 1rem;
-                    padding-left: 2.5rem;
-                    padding-right: 2.5rem;
-                    width: 300px;
-                    height: 0.8rem;
-                    background-color: #fff;
-                    background-image: none;
-                    background-clip: padding-box;
-                    box-shadow: none;
-                    transition: border-color 0.15s ease-in-out,
-                      box-shadow 0.15s ease-in-out;
-                    &:focus {
-                      border-color: #80bdff;
-                      outline: 0;
-                      box-shadow: 0 0 0 0.25rem rgb(0 123 255 / 25%);
-                    }
-                  }
-                  .invalid-feedback {
-                    font-family: "Familjen Grotesk", sans-serif;
-                    font-size: 0.9rem;
-                    color: #dc3545;
-                  }
-                }
-              }
-
-              .sform-outline-3 {
-                margin-bottom: 0.8rem;
-                .sbtn {
-                    font-family: "Familjen Grotesk", sans-serif;
-                  width: 300px;
-                  font-size: 0.9rem;
-                  color: #fff;
-                  border-color: #007bff;
-                  background-color: #51bcd3; /* Set custom background color */
-                  cursor: pointer;
-                  padding: 0.5rem;
-                  color: #ffffff;
-                  border-radius: 0.5rem;
-                  border: none;
-                  &:hover {
-                    background-color: #007bff;
-                  }
-                }
-              }
-
-              .stext-left {
-                .ssub {
-                    font-family: "Familjen Grotesk", sans-serif;
-                    font-size: 0.9rem;
-                }
-              }
+               @media (max-width: 801px) {
+                  display: none;
+               }
             }
-          }
-        }
+         }
       }
-
-      .scontainer-img {
-        .simg {
-            border-radius: 0.25rem;
-          box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.16);
-          height: 660px;
-          width: 480px;
-          display: block;
-          margin-left: 400px;
-
-          @media (max-width: 801px) {
-            display: none;
-          }
-        }
-      }
-    }
-  }
+   }
 }
