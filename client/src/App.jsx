@@ -8,6 +8,7 @@ import {
 import TripType from './pages/tripType/tripType';
 import PlacesDetails from './pages/placesDetails/placesDetails';
 import AdminPanel from './pages/adminPanel/adminPanel';
+import Users from './pages/users/users';
 
 function App() {
   const router = createBrowserRouter([
@@ -22,6 +23,10 @@ function App() {
     {
       path: "/triptype",
       element: <TripType />,
+    },
+    {
+      path: "/users",
+      element: <Users />,
     },
   ]);
 

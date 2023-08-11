@@ -12,7 +12,7 @@ function Tabs() {
                     <p>Dashboard</p>
                 </div>
             </Link>
-            <Link to="">
+            <Link to="/users">
                 <div className="tab tab-users">
                     <span class="material-icons">
                         people_alt

@@ -1,0 +1,38 @@
+.table{
+    width: 100%;
+    .user_table{
+        width: 100%;
+        table{
+            width: 500px;
+            border-collapse: collapse;
+            th{
+                background-color: #f0f9fd;
+                padding: 10px 25px;
+                font-size: 14px;
+                font-weight: 600;
+                font-family: 'klavika-bold';
+                color: #2B3674;
+                text-align: left;
+            }
+            td{
+                padding: 10px 20px;
+                font-size: 14px;
+                font-weight: 600;
+                font-family: 'klavika-bold';
+                color: #2B3674;
+                text-align: left;
+                span{
+                    cursor: pointer;
+                    font-size: 18px;
+                    color: #2B3674;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+            .icon{
+                width: 20px;
+            }
+        }
+    }
+}
