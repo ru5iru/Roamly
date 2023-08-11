@@ -6,7 +6,7 @@ import Plan from "../../assets/plan.png";
 import Messages from "../../assets/messages.png";
 import Search from "../../assets/Search_black.png";
 import Profile from "../../assets/profile_pic.png";
-import { AuthContext } from "../explore/context/authContext";
+// import { AuthContext } from "../explore/context/authContext";
 import { useContext } from "react";
 
 const LeftBar = () => {

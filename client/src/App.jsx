@@ -55,7 +55,7 @@ function App() {
                     <LeftBar />
                     <div>
                         <LeftBarhs />
-                        <Home />
+                        {/* <Home /> */}
                     </div>
                     <RightBar />
                 </div>
@@ -66,7 +66,7 @@ function App() {
     const Exp = () => {
         return (
             <div>
-                <Navbar />
+                <NavBar />
                 <div style={{ display: "flex" }}>
                     <LeftBar />
                     <div>
