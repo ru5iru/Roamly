@@ -1,33 +1,89 @@
-/* The following line can be included in your src/index.js or App.js file */
-import "./App.scss";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./components/navbar/navbar";
-import Placesdetails from "./pages/places/placesdetails";
-// import CollapsibleExample from "./components/collapsible/collapsible";
-import HotelPage from './pages/hotel/hotelpage';
-import ShopPage from './pages/shop/shoppage';
+// import Navbar from "./components/navbar/navbar";
+import RouteWithNavbar from "./RouteWithNavbar";
+import HotelPage from "./pages/hotel/hotelpage";
+import ShopPage from "./pages/shop/shoppage";
 import AdvertisementPage from "./pages/advertisement/advertisementpage";
-// import AdvertisementItem from "./components/advertisement/advertisementitem";
 import Places from "./pages/places/places";
 import TripType from "./pages/triptype/triptype";
 import Home from "./pages/home/home";
+import Login from "./pages/login/login";
+import Signup from "./pages/signup/signup";
+import FirstView from "./pages/firstview/firstview";
+import PlacesDetails from "./pages/places/placesdetails";
+import AdvertisementDetails from "./components/advertisement/advertisementdetails";
 
 function App() {
   return (
     <div>
       <Router>
-        <Navbar />
-        {/* <AdvertisementItem /> */}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/hotel" element={<HotelPage />} />
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/advertisement" element={<AdvertisementPage />} />
-          <Route path="/trip" element={<TripType />} />
-          <Route path="/places" element={<Places />} />
-          <Route path="/placedetails" element={<Placesdetails />} />
+          {/* Wrapper component with Navbar and route content */}
+          <Route
+            path="/"
+            element={<RouteWithNavbar showNavbar={true} element={<Home />} />}
+          />
+          <Route
+            path="/hotel"
+            element={
+              <RouteWithNavbar showNavbar={true} element={<HotelPage />} />
+            }
+          />
+          <Route
+            path="/advertisement"
+            element={
+              <RouteWithNavbar
+                showNavbar={true}
+                element={<AdvertisementPage />}
+              />
+            }
+          />
+          <Route
+            path="/places"
+            element={<RouteWithNavbar showNavbar={true} element={<Places />} />}
+          />
+          <Route
+            path="/placedetails"
+            element={
+              <RouteWithNavbar showNavbar={true} element={<PlacesDetails />} />
+            }
+          />
+          <Route
+            path="/shop"
+            element={
+              <RouteWithNavbar showNavbar={true} element={<ShopPage />} />
+            }
+          />
+          <Route
+            path="/triptype"
+            element={
+              <RouteWithNavbar showNavbar={true} element={<TripType />} />
+            }
+          />
+          <Route 
+          path="/advertisement/:adId"
+          element={
+            <RouteWithNavbar showNavbar={true} element={<AdvertisementDetails />} />
+          } />
+
+          <Route
+            path="/login"
+            element={<RouteWithNavbar showNavbar={false} element={<Login />} />}
+          />
+          <Route
+            path="/signup"
+            element={
+              <RouteWithNavbar showNavbar={false} element={<Signup />} />
+            }
+          />
+          <Route
+            path="/firstview"
+            element={
+              <RouteWithNavbar showNavbar={false} element={<FirstView />} />
+            }
+          />
         </Routes>
       </Router>
     </div>

@@ -17,12 +17,14 @@
             gap: 20px;
             font-size: 20px;
             .edit {
-                color: #006400; // Green color
+                color: #006400; 
                 margin-right: 20px;
+                cursor: pointer;
             }
 
             .dlt {
-                color: #8b0000; // Red color
+                color: #8b0000; 
+                cursor: pointer;
             }
         }
     }

@@ -19,9 +19,9 @@ export const Places = () => {
 
     return (
         <Link to={"/placedetails"}>
-        <div>
+        <div className="places">
             <div className="title-places" style={{ marginTop: '45px', marginBottom: '2rem'}}>
-                <h1 style={{ fontFamily: "'Familjen Grotesk', sans-serif"}}>Places for camping</h1>
+                <h1 style={{ fontFamily: "'Familjen Grotesk', sans-serif", marginRight: '20px'}}>Places for camping</h1>
             </div>
             <div className="card-list">
                 <article class="card">

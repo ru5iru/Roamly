@@ -4,6 +4,10 @@
 //   @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap');
 
+.places{
+  padding: 10px;
+}
+
 :root {
   /* Colors */
   --brand-color: #51BCD3;
@@ -238,5 +242,6 @@ p {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 5rem;
+  justify-items: center;
 }
 

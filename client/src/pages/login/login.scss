@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap");
+
+.ltext-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .lcontainer {
+    align-items: center;
+    flex: 0 0 41.67%;
+    display: flex;
+    justify-content: center;
+
+
+    .lcontainer-body {
+        display: flex;
+        align-items: center;
+        @media (max-width: 801px) {
+          justify-content: center;
+        }
+
+      .lcontainer-content {
+        position: absolute;
+        .lcard {
+            border-radius: 0.5rem;
+            background: hsla(0, 0%, 90%, 0.5);
+            backdrop-filter: blur(30px);
+            border: none;
+
+          .lcard-body {
+            padding: 3rem;
+            text-align: center;
+
+            .ltitle {
+              font-family: "Familjen Grotesk", sans-serif;
+              font-weight: bold;
+              font-size: 1.5rem;
+              font-family: "Familjen Grotesk", sans-serif;
+              color: #4F4F4F;
+            }
+
+            form {
+              .lrow {
+                .lform-outline {
+                  margin-bottom: 1.5rem;
+                  .lform-control {
+                    font-family: "Familjen Grotesk", sans-serif;
+                    font-size: 0.9rem;
+                    border-radius: 0.5rem;
+                    border: 1px solid #ced4da;
+                    font-size: 1rem;
+                    padding: 1rem;
+                    padding-left: 2.5rem;
+                    padding-right: 2.5rem;
+                    width: 300px;
+                    height: 0.8rem;
+                    background-color: #fff;
+                    background-image: none;
+                    background-clip: padding-box;
+                    box-shadow: none;
+                    transition: border-color 0.15s ease-in-out,
+                      box-shadow 0.15s ease-in-out;
+                    &:focus {
+                      border-color: #80bdff;
+                      outline: 0;
+                      box-shadow: 0 0 0 0.25rem rgb(0 123 255 / 25%);
+                    }
+                  }
+                }
+              }
+              .lform-outline {
+                margin-bottom: 1.5rem;
+                .lbtn {
+                  font-family: "Familjen Grotesk", sans-serif;
+                  width: 300px;
+                  font-size: 0.9rem;
+                  color: #fff;
+                  border-color: #007bff;
+                  background-color: #51bcd3; /* Set custom background color */
+                  cursor: pointer;
+                  padding: 0.5rem;
+                  color: #ffffff;
+                  border-radius: 0.5rem;
+                  border: none;
+                  &:hover {
+                    background-color: #007bff;
+                  }
+                }
+              }
+              .ltext-left {
+                .lsub {
+                    font-family: "Familjen Grotesk", sans-serif;
+                    font-size: 0.9rem;
+                }
+              }
+            }
+          }
+        }
+      }
+      .lcontainer-img {
+        .limg {
+          border-radius: 0.25rem;
+          box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.16);
+          height: 515px;
+          width: 400px;
+          display: block;
+          margin-left: 400px;
+
+          @media (max-width: 801px) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

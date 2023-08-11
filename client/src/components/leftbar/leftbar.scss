@@ -1,24 +1,22 @@
 @import "../../style.scss";
 
-body {
-    background: #F3FBFE;
-    margin: 0;
-    padding: 0;
 
+ /* I want the leftbar to be display as it is when I'm scrolling */
     .leftbar {
-        width: 280px;
-        height: 400px;
+        height: 100vh;
         border-radius: 10px;
         background: #FFFFFF;
-        margin-left: 18px;
-        margin-top: 18px;
+        // margin-left: 18px;
+        // margin-right: 18px;
         font-size: 16px;
         font-weight: bold;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: center;
+        align-items: flex-start;
+       
+        position: sticky;
 
         .menu {
-            margin-left: 16px;
+            // margin-left: 16px;
             height: 350px;
             display: flex;
             align-items: flex-start;
@@ -27,10 +25,10 @@ body {
 
             .menu_item {
                 display: flex;
-                justify-content: space-between;
+                justify-content:flex-start;
                 align-items: center;
                 background-color: #ECFBFE;
-                width: fit-content;
+                width: 100%;
                 padding-left: 5px;
                 padding-right: 5px;
                 padding-top: 7px;
@@ -44,6 +42,7 @@ body {
 
                 p {
                     padding-right: 18px;
+                    color: #065573;
                 }
             }
 
@@ -119,7 +118,7 @@ body {
             transform: scale(1.05);
         }
     }
-}
+
 
 @media only screen and (min-width: 1000px) {
     .leftbar {

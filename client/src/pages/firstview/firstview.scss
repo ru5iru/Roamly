@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap');
+
+.custom-stylefv {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/images/img3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Set the height to 100% of the viewport height */
+    width: 100%;
+    display: flex; /* Use flexbox to align items */
+    flex-direction: column; /* Align items vertically */
+    // justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+  }
+
+.titlefv {
+    color: #ffffff;
+    font-family: 'Familjen Grotesk', sans-serif; /* Set the font-family to Familjen Grotesk */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.custom-sizefv {
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal; 
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.contentfv {
+    color: #ffffff;
+    font-family: 'Familjen Grotesk', sans-serif;
+    text-align: center;
+    width: 40%;
+    font-size: 1.5rem;
+    margin-top: 30px;
+}
+
+
+.custom-buttonfv {
+    color: #ffffff;
+    font-family: 'Familjen Grotesk', sans-serif;
+    width: 395px;
+    font-size: 0.9rem;
+    display: flex; /* Use flexbox to center the button horizontally */
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 140px;
+    background-color: #51BCD3;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    margin-bottom: 25px;
+}
+
+.custom-buttonfv:hover {
+    background-color: #2E5A64; /* Set custom hover background color */
+    color: #9ae3f4; /* Set custom hover text color */
+}
+
+.centered-paragraph {
+    text-align: center;
+}

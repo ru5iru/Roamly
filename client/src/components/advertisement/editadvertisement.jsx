@@ -10,23 +10,22 @@ const EditAdvertisement = ({ adId }) => {
   const [end_date, setEndDate] = useState('');
 
   useEffect(() => {
-    // Fetch the existing advertisement data from the server
-    axios.get(`http://localhost:5000/advertisements/:${adId}`)
+    axios.get(`http://localhost:5000/advertisements/${adId}`)
       .then((response) => {
         const adData = response.data;
         setTitle(adData.title);
         setDescription(adData.description);
-        setStartDate(adData.start_date);
-        setEndDate(adData.end_date);
+        setStartDate(adData.start_date.substring(0, 10)); // Extract yyyy-MM-dd
+        setEndDate(adData.end_date.substring(0, 10)); // Extract yyyy-MM-dd
       })
       .catch((error) => {
         console.error('Error fetching advertisement data:', error);
       });
   }, [adId]);
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Send updated advertisement data to the back-end
     const updatedAdvertisement = { title, description, start_date, end_date };
     axios.put(`http://localhost:5000/advertisements/${adId}`, updatedAdvertisement)
       .then((response) => {
@@ -34,7 +33,6 @@ const EditAdvertisement = ({ adId }) => {
       })
       .catch((error) => {
         console.error('Error updating advertisement:', error);
-        
       });
   };
 
