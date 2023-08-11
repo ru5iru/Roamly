@@ -1,0 +1,125 @@
+@import "../../../style.scss";
+
+.allbadges {
+   @include themify($themes) {
+      position: fixed;
+      top: 4rem;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: opacity 1500ms;
+      text-transform: none;
+      z-index: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .badges-wrapper {
+         background-color: themed("bg");
+         padding: 2rem;
+         z-index: 999;
+         display: flex;
+         flex-direction: column;
+         -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+         -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+         box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+         position: relative;
+         border-radius: 20px;
+         height: 85%;
+         width: 20rem;
+         gap: 1.2rem;
+
+         .step-buttons {
+            display: flex;
+          }
+          
+          .step-btn {
+            flex: 1;
+            padding: 8px 16px;
+            background-color: #f2f2f2;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            text-align: center;
+            font-family: Fira Sans, sans-serif;
+            color: #2d3846;
+            font-weight: 600;
+            font-size: 1rem;
+          }
+          
+          .step-btn.active {
+            background-color: #ddd;
+          }
+
+         .badges-wrapper-2 {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: scroll;
+            gap: 1.2rem;
+
+
+            .step {
+               display: none;
+             }
+             
+             .step.active {
+               display: flex;
+             }
+
+            
+
+            .badgeTypeContainer {
+               // display: flex;
+               flex-direction: column;
+               gap: 0.5rem;
+
+               // .badgeHead {
+               //    color: #2d3846;
+               //    font-weight: 600;
+               //    font-size: 1.5rem;
+               // }
+
+               .badgeContainer {
+                  display: flex;
+                  flex-direction: row;
+                  gap: 1rem;
+                  align-items: center;
+
+                  .badgeInfo {
+                     display: flex;
+                     flex-direction: column;
+
+                     .badge-name {
+                        flex-wrap: wrap;
+                        color: #2d3846;
+                        font-weight: 600;
+                     }
+                     .badge-discription {
+                        flex-wrap: wrap;
+                        color: #777777;
+                        font-size: 0.8rem;
+                     }
+                  }
+               }
+            }
+         }
+
+         .closeBadges {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            display: flex;
+            justify-content: center;
+
+            .closeImg {
+               width: 1.5rem;
+               height: 1.5rem;
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,85 @@
+@import "../../../style.scss";
+
+.addpost {
+   @include themify($themes) {
+      -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+
+      border-radius: 20px;
+      background-color: themed("bg");
+      color: themed("textColor");
+      margin-bottom: 20px;
+      cursor: pointer;
+
+      .container {
+         padding: 20px;
+         display: flex;
+         flex-direction: column;
+         gap: 1rem;
+
+         .user {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+
+            .userInfo {
+               display: flex;
+               gap: 20px;
+               width: 100%;
+
+               .imgContainer {
+                  display: flex;
+                  
+                  img {
+                     width: 40px;
+                     height: 40px;
+                     border-radius: 50%;
+                     object-fit: cover;
+                  }
+               }
+
+               input {
+                  border: none;
+                  border-radius: 20px;
+                  width: 100%;
+                  padding-left: 1rem;
+                  font-size: 1rem;
+                  font-weight: 500;
+                  background-color: #f2f3f5;
+                  cursor: pointer;
+               }
+
+               input:hover {
+                  background-color: #dadde1;
+               }
+
+               input:focus {
+                  outline: none;
+               }
+            }
+         }
+
+         hr{
+            border: 1px solid #cccccc;
+         }
+
+         .info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            justify-content: space-around;
+
+            .item {
+               display: flex;
+               align-items: center;
+               gap: 10px;
+               cursor: pointer;
+               font-size: 1.1rem;
+               color: #6b7f99;
+            }
+         }
+      }
+   }
+}

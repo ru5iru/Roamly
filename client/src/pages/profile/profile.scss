@@ -1,0 +1,506 @@
+@import "../../style.scss";
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+.profile {
+   @include themify($themes) {
+      background-color: themed("bgSoft");
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: Fira Sans, sans-serif;
+
+      .images {
+         width: 80vw;
+         height: 50vh;
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+         -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+         box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+
+         @media (max-width: 600px) {
+            width: 100vw;
+         }
+
+         @media (min-width: 601px) {
+            width: 100vw;
+         }
+
+         @media (min-width: 768px) {
+            width: 90vw;
+         }
+
+         @media (min-width: 992px) {
+            width: 80vw;
+         }
+
+         .cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+         }
+      }
+      .profileContainer {
+         position: relative;
+         top: -15vh;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+
+         @media (max-width: 600px) {
+            top: -30vh;
+         }
+
+         @media (min-width: 601px) {
+            top: -30vh;
+         }
+
+         @media (min-width: 1200px) {
+            top: -20vh;
+         }
+
+         .uInfo {
+            height: 25vh;
+            width: 60vw;
+            -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            border-radius: 20px;
+            background-color: themed("bg");
+            color: themed("textColor");
+            padding: 6vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+            gap: 2vw;
+
+            @media (max-width: 600px) {
+               flex-direction: column;
+               height: auto;
+            }
+
+            @media (min-width: 601px) {
+               flex-direction: column;
+               height: auto;
+            }
+
+            @media (min-width: 768px) {
+               width: 50vw;
+            }
+
+            @media (min-width: 992px) {
+               width: 40vw;
+            }
+
+            @media (min-width: 1200px) {
+               width: 56vw;
+               flex-direction: row;
+            }
+
+            .left {
+               flex: 1;
+               display: flex;
+               flex-direction: row;
+               justify-content: center;
+               align-items: center;
+               gap: 15px;
+               margin-left: 1rem;
+
+               .profileImg {
+                  display: flex;
+                  align-items: center;
+                  gap: 20px;
+                  position: relative;
+
+                  .profilePic {
+                     width: 27vh;
+                     height: 27vh;
+                     border-radius: 50%;
+                     object-fit: cover;
+                  }
+                  .badge {
+                     position: absolute;
+                     bottom: 0;
+                     right: 1.5vh;
+                  }
+               }
+
+               .top {
+                  display: none;
+                  flex-direction: column;
+                  gap: 0.2vh;
+
+                  @media (min-width: 768px) {
+                     display: flex;
+                  }
+
+                  @media (min-width: 1200px) {
+                     display: none;
+                  }
+
+                  .profileName {
+                     color: #2d3846;
+                     font-weight: 600;
+                     font-size: 1.5rem;
+                  }
+
+                  .followCount {
+                     font-size: 1.1rem;
+                     color: #cccccc;
+                     font-weight: 500;
+                  }
+               }
+            }
+
+            .center {
+               flex: 3;
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               gap: 15px;
+
+               @media (max-width: 600px) {
+                  align-items: center;
+               }
+
+               @media (min-width: 601px) {
+                  align-items: center;
+               }
+
+               @media (min-width: 1200px) {
+                  align-items: normal;
+               }
+
+               .top {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 0.2vh;
+
+                  @media (max-width: 600px) {
+                     align-items: center;
+                  }
+
+                  @media (min-width: 601px) {
+                     align-items: center;
+                  }
+
+                  @media (min-width: 768px) {
+                     display: none;
+                  }
+
+                  @media (min-width: 1200px) {
+                     display: flex;
+                     align-items: normal;
+                  }
+
+                  .profileName {
+                     color: #2d3846;
+                     font-weight: 600;
+                     font-size: 1.5rem;
+                  }
+                  .userName {
+                     font-size: 1.1rem;
+                     color: #777777;
+                     display: none;
+                  }
+                  .followCount {
+                     font-size: 1.1rem;
+                     color: #cccccc;
+                     font-weight: 500;
+                  }
+               }
+               .bottom {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 0.5vh;
+
+                  @media (max-width: 600px) {
+                     justify-content: center;
+                     align-items: center;
+                  }
+
+                  @media (min-width: 601px) {
+                     justify-content: center;
+                     align-items: center;
+                  }
+
+                  @media (min-width: 1200px) {
+                     justify-content: initial;
+                     align-items: normal;
+                  }
+
+                  .head {
+                     color: #2d3846;
+                     font-weight: 600;
+                     font-size: 1.25rem;
+                  }
+                  .container {
+                     display: flex;
+                     flex-direction: row;
+                     align-items: center;
+                     gap: 1vw;
+
+                     @media (max-width: 600px) {
+                        flex-direction: column;
+                     }
+
+                     @media (min-width: 1200px) {
+                        flex-direction: row;
+                     }
+
+                     .badges {
+                     }
+                     .button {
+                        button {
+                           width: 4rem;
+                           background-color: #f3fbfe;
+                           border: none;
+                           border-radius: 5px;
+                           color: #16b4f1;
+                           font-weight: 500;
+                           font-size: 0.75rem;
+                           padding: 0.5rem 0rem;
+                           cursor: pointer;
+                           
+                        }
+                        button:hover{
+                           background-color: #ecf7ff;
+                        }
+                     }
+                  }
+               }
+            }
+
+            .right {
+               flex: 1.5;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               gap: 10px;
+
+               .updateBtn {
+                  button {
+                     display: flex;
+                     flex-direction: row;
+                     justify-content: center;
+                     align-items: center;
+                     gap: 2px;
+                     width: 6rem;
+                     background-color: #cccccc;
+                     border: none;
+                     border-radius: 5px;
+                     font-weight: 600;
+                     font-size: 0.75rem;
+                     padding: 0.5rem 0rem;
+                     cursor: pointer;
+
+                     @media (min-width: 1200px) {
+                        gap: 8px;
+                        width: 8rem;
+                     }
+                     span {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        img {
+                           width: 1.1rem;
+                           height: 1.1rem;
+                        }
+                     }
+                  }
+
+                  button:hover{
+                     background-color: #bbbbbb;
+                  }
+               }
+               .followMsg {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 0.8rem;
+
+                  @media (max-width: 600px) {
+                     flex-direction: row;
+                  }
+
+                  @media (min-width: 601px) {
+                     flex-direction: row;
+                  }
+
+                  @media (min-width: 1200px) {
+                     flex-direction: column;
+                  }
+
+                  button {
+                     display: flex;
+                     flex-direction: row;
+                     justify-content: center;
+                     align-items: center;
+                     gap: 3px;
+                     width: 6rem;
+                     background-color: #1876f2c8;
+                     color: white;
+                     border: none;
+                     border-radius: 5px;
+                     font-weight: 600;
+                     font-size: 0.75rem;
+                     padding: 0.5rem 0rem;
+                     cursor: pointer;
+
+                     @media (min-width: 1200px) {
+                        gap: 8px;
+                        width: 8rem;
+                     }
+
+                     span {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        img {
+                           width: 1.1rem;
+                           height: 1.1rem;
+                        }
+                     }
+                  }
+
+                  button:hover{
+                     background-color: #3c88eb;
+                  }
+               }
+            }
+         }
+
+         .profileBottom {
+            display: flex;
+            flex-direction: row;
+            width: 80vw;
+            gap: 2vw;
+
+            @media (max-width: 600px) {
+               flex-direction: column;
+            }
+
+            @media (min-width: 601px) {
+               flex-direction: column;
+            }
+
+            @media (min-width: 992px) {
+               flex-direction: row;
+            }
+
+            .left {
+               flex: 1;
+               display: flex;
+               flex-direction: column;
+               gap: 2vh;
+
+               @media (min-width: 700px) {
+                  flex-direction: row-reverse;
+               }
+
+               @media (min-width: 992px) {
+                  flex-direction: column;
+               }
+
+               .interests {
+                  height: auto;
+                  padding: 1.5rem;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 0.75rem;
+                  border-radius: 20px;
+                  background-color: white;
+                  -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+                  -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+                  box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+
+                  @media (min-width: 700px) {
+                     flex: 1;
+                     height: fit-content;
+                  }
+
+                  @media (min-width: 992px) {
+                     height: auto;
+                     flex: initial;
+                  }
+
+                  .interestHead {
+                     color: #2d3846;
+                     font-weight: 600;
+                     font-size: 1.25rem;
+                  }
+                  .interestContainer {
+                     display: flex;
+                     flex-wrap: wrap;
+
+                     .interest {
+                        border: 2px solid #16b4f1;
+                        padding: 0.1rem 1rem;
+                        margin: 3px;
+                        border-radius: 20px;
+                     }
+                  }
+               }
+
+               .uploads {
+                  height: auto;
+                  padding: 1.5rem;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 0.75rem;
+                  border-radius: 20px;
+                  background-color: white;
+                  -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+                  -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+                  box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+
+                  @media (min-width: 700px) {
+                     flex: 1;
+                  }
+
+                  @media (min-width: 992px) {
+                     flex: initial;
+                  }
+
+                  .uploadsHeadContainer {
+                     display: flex;
+                     flex-direction: row;
+                     justify-content: space-between;
+                     align-items: center;
+
+                     .uploadsHead {
+                        color: #2d3846;
+                        font-weight: 600;
+                        font-size: 1.25rem;
+                     }
+                     .seeMore {
+                        color: #16b4f1;
+                     }
+                  }
+                  .uploadContainer {
+                     display: grid;
+                     grid-template-columns: auto auto auto;
+                     gap: 0.5rem;
+
+                     .upload {
+                        height: 10vh;
+
+                        img {
+                           object-fit: cover;
+                           width: 100%;
+                           height: 100%;
+                           border-radius: 10px;
+                        }
+                     }
+                  }
+               }
+            }
+            .right {
+               flex: 2;
+            }
+         }
+      }
+   }
+}
