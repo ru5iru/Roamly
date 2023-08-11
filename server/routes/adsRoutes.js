@@ -1,9 +1,9 @@
 import express from "express";
 
-import { searchText } from "../controllers/explore.js";
+import { getAds } from "../controllers/adsController.js";
 
 const router = express.Router();
 
-router.get("/:query", searchText);
+router.get("/", getAds);
 
 export default router;

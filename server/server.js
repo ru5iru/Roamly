@@ -13,6 +13,9 @@ import badgeRoutes from "./routes/badgeRoutes.js"
 import postRoutes from "./routes/postRoutes.js"
 import interstRoutes from "./routes/interestRoutes.js"
 import likeRoutes from "./routes/likeRoutes.js"
+import exploreRoutes from "./routes/exploreRoutes.js"
+import adsRoutes from "./routes/adsRoutes.js"
+
 
 // start DB connection
 connectDB();
@@ -49,6 +52,12 @@ app.use("/server/interests", interstRoutes);
 
 // like routes
 app.use("/server/likes", likeRoutes);
+
+//Search routes
+app.use("/server/explore", exploreRoutes);
+
+//Ads routes
+app.use("/server/ads", adsRoutes);
 
 app.get('/', (req, res) => res.send('Server is ready'));
 
