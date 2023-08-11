@@ -1,4 +1,4 @@
-// import Login from "./pages/login/Login";
+import Login from "./pages/login/Login";
 import NavBar from "./components/navbar/Navbar";
 import LeftBar from "./components/leftBar/LeftBar";
 import LeftBarhs from "./components/leftBar/LeftBar_hs";
@@ -9,7 +9,7 @@ import ExploreTopBar from "./components/exploreTopBar/ExploreTopBar";
 import Home from "./pages/home/Home";
 // import Posts from "./components/post/Posts";
 import Profile from "./pages/profile/Profile";
-// import Signup from "./pages/signup/Signup";
+import Signup from "./pages/signup/Signup";
 import "./style.scss";
 import {
     createBrowserRouter,
@@ -110,14 +110,14 @@ function App() {
             path: "/",
             element: <Home />,
         },
-        // {
-        //     path: "/login",
-        //     element: <Login />,
-        // },
-        // {
-        //     path: "/signup",
-        //     element: <Signup />,
-        // },
+        {
+            path: "/login",
+            element: <Login />,
+        },
+        {
+            path: "/signup",
+            element: <Signup />,
+        },
         {
             path: "/feed",
             element: <Feed />,
