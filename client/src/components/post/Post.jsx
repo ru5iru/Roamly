@@ -41,7 +41,10 @@ const Post = ({ userID, post }) => {
 
    const mutation = useMutation(
       (liked) => {
-         const requestData = { user_id: currentUser.user_id, post_id: post.post_id };
+         const requestData = {
+            user_id: currentUser.user_id,
+            post_id: post.post_id,
+         };
 
          if (liked) {
             return makeRequest.delete("/likes", { params: requestData });
@@ -81,113 +84,121 @@ const Post = ({ userID, post }) => {
 
    return (
       <div className="post">
-         {postProfileIsLoading ? ("Loading") : (
+         {postProfileIsLoading ? (
+            "Loading"
+         ) : (
             <div className="container">
-            <div className="user">
-               <div className="userInfo">
-                  <img src={currentUser.profile_pic} alt="" />
-                  <div className="details">
-                     <Link
-                        to={`/profile/${post.user_id}`}
-                        style={{
-                           textDecoration: "none",
-                           color: "inherit",
-                        }}
-                     >
-                        <span className="name">{currentUser.firstname} {currentUser.lastname}</span>
-                     </Link>
-                     <span className="date">
-                        {formatCreatedAt(post.created_at)}
-                     </span>
-                  </div>
-               </div>
-               <MoreHorizIcon onClick={() => setMenuOpen(!menuOpen)} />
-               {menuOpen && (
-                  <div className="postMenu">
-                     <div className="sameUser">
-                        <button className="edit">
-                           <span>
-                              <img
-                                 src="https://img.icons8.com/ios-glyphs/90/ffffff/pencil--v1.png"
-                                 alt="pencil--v1"
-                              />
+               <div className="user">
+                  <div className="userInfo">
+                     <img src={postProfileData.profile_pic} alt="" />
+                     <div className="details">
+                        <Link
+                           to={`/profile/${post.user_id}`}
+                           style={{
+                              textDecoration: "none",
+                              color: "inherit",
+                           }}
+                        >
+                           <span className="name">
+                              {postProfileData.firstname}{" "}
+                              {postProfileData.lastname}
                            </span>
-                           <span>Edit Post</span>
-                        </button>
-                        <button className="delete" onClick={handleDelete}>
-                           <span>
-                              <img
-                                 src="https://img.icons8.com/ios-glyphs/90/ffffff/trash--v1.png"
-                                 alt="trash--v1"
-                              />
-                           </span>
-                           <span>Delete Post</span>
-                        </button>
+                        </Link>
+                        <span className="date">
+                           {formatCreatedAt(post.created_at)}
+                        </span>
                      </div>
-                     <div className="visitor">
-                        <button className="save">
-                           <span>
-                              <img
-                                 src="https://img.icons8.com/ios-glyphs/90/ffffff/bookmark-ribbon.png"
-                                 alt="bookmark-ribbon"
-                              />
-                           </span>
-                           <span>Save Post</span>
-                        </button>
-                        <button className="report">
-                           <span>
-                              <img
-                                 src="https://img.icons8.com/ios-glyphs/90/ffffff/warning-shield.png"
-                                 alt="warning-shield"
-                              />
-                           </span>
-                           <span>Report Post</span>
-                        </button>
-                     </div>
-                     <img
-                        className="closeImg"
-                        onClick={() => setMenuOpen(!menuOpen)}
-                        src="https://img.icons8.com/material-outlined/96/cancel--v1.png"
-                        alt="cancel--v1"
-                     />
                   </div>
-               )}
-            </div>
-            <div className="content">
-               <p>{post.content}</p>
-               {post.image !== null && <img src={post.image} alt="" />}
-            </div>
-            <hr />
-            <div className="info">
-               <div className="item">
-                  {likeIsLoading ? (
-                     "loading"
-                  ) : likeData.likeArray.includes(currentUser.user_id) ? (
-                     <FavoriteOutlinedIcon
-                        style={{ color: "#FF2171" }}
-                        onClick={handleLike}
-                     />
-                  ) : (
-                     <FavoriteBorderOutlinedIcon onClick={handleLike} />
+                  <MoreHorizIcon onClick={() => setMenuOpen(!menuOpen)} />
+                  {menuOpen && (
+                     <div className="postMenu">
+                        {post.user_id === currentUser.user_id ? (
+                           <div className="sameUser">
+                              <button className="edit">
+                                 <span>
+                                    <img
+                                       src="https://img.icons8.com/ios-glyphs/90/ffffff/pencil--v1.png"
+                                       alt="pencil--v1"
+                                    />
+                                 </span>
+                                 <span>Edit Post</span>
+                              </button>
+                              <button className="delete" onClick={handleDelete}>
+                                 <span>
+                                    <img
+                                       src="https://img.icons8.com/ios-glyphs/90/ffffff/trash--v1.png"
+                                       alt="trash--v1"
+                                    />
+                                 </span>
+                                 <span>Delete Post</span>
+                              </button>
+                           </div>
+                        ) : (
+                           <div className="visitor">
+                              <button className="save">
+                                 <span>
+                                    <img
+                                       src="https://img.icons8.com/ios-glyphs/90/ffffff/bookmark-ribbon.png"
+                                       alt="bookmark-ribbon"
+                                    />
+                                 </span>
+                                 <span>Save Post</span>
+                              </button>
+                              <button className="report">
+                                 <span>
+                                    <img
+                                       src="https://img.icons8.com/ios-glyphs/90/ffffff/warning-shield.png"
+                                       alt="warning-shield"
+                                    />
+                                 </span>
+                                 <span>Report Post</span>
+                              </button>
+                           </div>
+                        )}
+
+                        <img
+                           className="closeImg"
+                           onClick={() => setMenuOpen(!menuOpen)}
+                           src="https://img.icons8.com/material-outlined/96/cancel--v1.png"
+                           alt="cancel--v1"
+                        />
+                     </div>
                   )}
-                  {!likeIsLoading ? likeData.count.count : "loading"} Likes
                </div>
-               <div
-                  className="item"
-                  onClick={() => setCommentOpen(!commentOpen)}
-               >
-                  <ChatBubbleOutlinedIcon />
-                  12 Comments
+               <div className="content">
+                  <p>{post.content}</p>
+                  {post.image !== null && <img src={post.image} alt="" />}
                </div>
-               <div className="item">
-                  <ShareOutlinedIcon />
-                  Share
+               <hr />
+               <div className="info">
+                  <div className="item">
+                     {likeIsLoading ? (
+                        "loading"
+                     ) : likeData.likeArray.includes(currentUser.user_id) ? (
+                        <FavoriteOutlinedIcon
+                           style={{ color: "#FF2171" }}
+                           onClick={handleLike}
+                        />
+                     ) : (
+                        <FavoriteBorderOutlinedIcon onClick={handleLike} />
+                     )}
+                     {!likeIsLoading ? likeData.count.count : "loading"} Likes
+                  </div>
+                  <div
+                     className="item"
+                     onClick={() => setCommentOpen(!commentOpen)}
+                  >
+                     <ChatBubbleOutlinedIcon />
+                     12 Comments
+                  </div>
+                  <div className="item">
+                     <ShareOutlinedIcon />
+                     Share
+                  </div>
                </div>
+               {commentOpen && <Comments />}
             </div>
-            {commentOpen && <Comments />}
-         </div>
-         ) }
-         
+         )}
       </div>
    );
 };
