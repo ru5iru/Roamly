@@ -52,6 +52,8 @@ function Dashboard() {
                     <h3>Top Content Creators</h3>
                     <div className="creators">
                         <ContentCreators />
+                        <ContentCreators />
+                        <ContentCreators />
                     </div>
                 </div>
             </div>
