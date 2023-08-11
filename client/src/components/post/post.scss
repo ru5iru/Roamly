@@ -1,0 +1,244 @@
+@import "../../style.scss";
+
+.post {
+    @include themify($themes) {
+        -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+
+        border-radius: 20px;
+        background-color: themed("bg");
+        color: themed("textColor");
+
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 1rem;
+
+            .user {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+
+                .userInfo {
+                    display: flex;
+                    gap: 20px;
+
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                    .details {
+                        display: flex;
+                        flex-direction: column;
+
+                        .name {
+                            font-weight: 500;
+                        }
+
+                        .date {
+                            font-size: 12px;
+                        }
+                    }
+                }
+                .postMenu{
+                    background-color: white;
+                    height: auto;
+                    width: auto;
+                    z-index: 3;
+                    top: 0;
+                    right: 0;
+                    position: absolute;
+                    border: 1px solid lightgray;
+                    border-radius: 10px;
+                    overflow: hidden;
+
+                    .sameUser{
+                        display: initial;
+
+                        .edit {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 3px;
+                            width: 7rem;
+                            background-color: #1876f2c8;
+                            color: white;
+                            border: none;
+                            font-weight: 600;
+                            font-size: 0.75rem;
+                            padding: 0.5rem 0.5rem;
+
+                            @media (min-width: 1200px) {
+                                gap: 8px;
+                                width: 8rem;
+                             }
+       
+                            span {
+                               display: flex;
+                               flex-direction: row;
+                               justify-content: center;
+                               align-items: center;
+                               img {
+                                  width: 1.1rem;
+                                  height: 1.1rem;
+                               }
+                            }
+                         }
+       
+                         .edit:hover{
+                            background-color: #3c88eb;
+                         }
+
+                         .delete {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 3px;
+                            width: 7rem;
+                            background-color: #fc2969;
+                            color: white;
+                            border: none;
+                            font-weight: 600;
+                            font-size: 0.75rem;
+                            padding: 0.5rem 0.5rem;
+
+                            @media (min-width: 1200px) {
+                                gap: 8px;
+                                width: 8rem;
+                             }
+       
+                            span {
+                               display: flex;
+                               flex-direction: row;
+                               justify-content: center;
+                               align-items: center;
+                               img {
+                                  width: 1.1rem;
+                                  height: 1.1rem;
+                               }
+                            }
+                         }
+       
+                         .delete:hover{
+                            background-color: #F31559;
+                         }
+                    }
+
+                    .visitor{
+                        display: initial;
+
+                        .save {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 3px;
+                            width: 7rem;
+                            background-color: #1876f2c8;
+                            color: white;
+                            border: none;
+                            font-weight: 600;
+                            font-size: 0.75rem;
+                            padding: 0.5rem 0.5rem;
+       
+                            @media (min-width: 1200px) {
+                               gap: 8px;
+                               width: 8rem;
+                            }
+       
+                            span {
+                               display: flex;
+                               flex-direction: row;
+                               justify-content: center;
+                               align-items: center;
+                               img {
+                                  width: 1.1rem;
+                                  height: 1.1rem;
+                               }
+                            }
+                         }
+       
+                         .save:hover{
+                            background-color: #3c88eb;
+                         }
+
+                         .report {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 3px;
+                            width: 7rem;
+                            background-color: #fc2969;
+                            color: white;
+                            border: none;
+                            font-weight: 600;
+                            font-size: 0.75rem;
+                            padding: 0.5rem 0.5rem;
+
+                            @media (min-width: 1200px) {
+                                gap: 8px;
+                                width: 8rem;
+                             }
+       
+                            span {
+                               display: flex;
+                               flex-direction: row;
+                               justify-content: center;
+                               align-items: center;
+                               img {
+                                  width: 1.1rem;
+                                  height: 1.1rem;
+                               }
+                            }
+                         }
+       
+                         .report:hover{
+                            background-color: #F31559;
+                         }
+                    }
+                    .closeImg{
+                        position: absolute;
+                        top: 2px;
+                        right: 2px;
+                        width: 1rem;
+                        height: 1rem;
+                    }
+                }
+            }
+            .content{
+                margin: 0 0;
+
+                img{
+                    width: 100%;
+                    max-height: 500px;
+                    object-fit: cover;
+                    margin-top: 20px;
+                }
+            }
+
+            hr{
+                border: 1px solid #cccccc;
+             }
+
+            .info{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                .item{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    color: #6b7f99;
+                }
+            }
+        }
+    }
+}
