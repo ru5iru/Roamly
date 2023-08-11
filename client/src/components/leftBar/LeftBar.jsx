@@ -16,7 +16,7 @@ const LeftBar = () => {
 
     const handleHomeClick = () => {
         // Navigate to the home page when the Home menu item is clicked
-        navigate("/home");
+        navigate("/feed");
     };
     const handleExporeClick = () => {
         // Navigate to the home page when the Home menu item is clicked

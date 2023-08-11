@@ -47,7 +47,7 @@ function App() {
         );
     };
 
-    const Home = () => {
+    const Feed = () => {
         return (
             <div className="layout">
                 <NavBar />
@@ -99,15 +99,16 @@ function App() {
                 </ProtectedRoute>
             ),
             children: [
-                {
-                    path: "/",
-                    element: <Home />,
-                },
+
                 {
                     path: "/profile/:id",
                     element: <Profile />,
                 },
             ],
+        },
+        {
+            path: "/",
+            element: <Home />,
         },
         // {
         //     path: "/login",
@@ -118,8 +119,8 @@ function App() {
         //     element: <Signup />,
         // },
         {
-            path: "/home",
-            element: <Home />,
+            path: "/feed",
+            element: <Feed />,
         },
         {
             path: "/explore",
