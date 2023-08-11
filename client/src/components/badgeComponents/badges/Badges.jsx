@@ -3,7 +3,7 @@ import Badge from "../badge/Badge";
 import "./badges.scss";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { makeRequest } from "../../axios";
+import { makeRequest } from "../../../axios";
 
 const Badges = () => {
    const userId = 69690;

@@ -7,9 +7,9 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Link } from "react-router-dom";
 import Comments from "../comments/Comments";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../context/authContext";
-import { formatCreatedAt } from "./timeCalc.js";
-import { makeRequest } from "../../axios";
+import { AuthContext } from "../../../context/authContext";
+import { formatCreatedAt } from "../../../utils/timeCalc";
+import { makeRequest } from "../../../axios";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 
 const Post = ({ userID, post }) => {

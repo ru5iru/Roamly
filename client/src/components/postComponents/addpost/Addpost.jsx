@@ -3,7 +3,7 @@ import InsertPhotoRoundedIcon from '@mui/icons-material/InsertPhotoRounded';
 import TagFacesRoundedIcon from '@mui/icons-material/TagFacesRounded';
 import PlaceRoundedIcon from '@mui/icons-material/PlaceRounded';
 import { useContext } from "react";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../../context/authContext";
 
 const Addpost = ({ setOpenAddPost }) => {
    

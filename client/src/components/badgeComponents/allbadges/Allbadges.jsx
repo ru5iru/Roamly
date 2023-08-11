@@ -3,7 +3,7 @@ import Badge from "../badge/Badge";
 import axios from "axios";
 import "./allbadges.scss";
 import { useQuery } from "@tanstack/react-query";
-import { makeRequest } from "../../axios";
+import { makeRequest } from "../../../axios";
 
 const Allbadges = ({ userID, setOpenBadges }) => {
    const [activeStep, setActiveStep] = useState(1);

@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import "./postform.scss";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { makeRequest } from "../../axios";
+import { makeRequest } from "../../../axios";
 
 const PostForm = ({ setOpenAddPost }) => {
    const [content, setContent] = useState("");

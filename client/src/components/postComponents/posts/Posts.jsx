@@ -3,7 +3,7 @@ import axios from "axios";
 import Post from "../post/Post";
 import "./posts.scss";
 import { useQuery } from "@tanstack/react-query";
-import { makeRequest } from "../../axios";
+import { makeRequest } from "../../../axios";
 
 const Posts = ({ userID }) => {
    const userId = userID;
