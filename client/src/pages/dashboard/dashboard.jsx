@@ -47,6 +47,9 @@ function Dashboard() {
                             </span>
                         </div>
                     </div>
+                    <div className='Chart'>
+                        <h2>Chart</h2>
+                    </div>
                 </div>
                 <div className="top-content-creators">
                     <h3>Top Content Creators</h3>

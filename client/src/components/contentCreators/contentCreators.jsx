@@ -7,10 +7,14 @@ function ContentCreators() {
         <div className='creators-main'>
             <div className="creator-box">
                 <div className="creator-pfp">
-                    <img src= { Pfp } alt="loading error" />
-                    <span class="material-icons">
-                        stars
-                    </span>
+                    <div className="pfp-image">
+                        <img src= { Pfp } alt="loading error" />
+                    </div>
+                    <div className="pfp-badge">
+                        <span class="material-icons">
+                            stars
+                        </span>
+                    </div>
                 </div>
                 <div className="profile-options">
                     <div className="profile-name">
