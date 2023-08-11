@@ -1,7 +1,0 @@
-GET http://localhost:5000/server/ads
-# Content-Type: application/json
-
-# {
-#     "email":"k@q.com",
-#     "password":"123456"
-# }
