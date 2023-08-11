@@ -1,0 +1,28 @@
+.modify-advertisement {
+
+    h2 {
+        color: black;
+    }
+
+    .adv-form {
+
+        .adv-field {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px;
+            lable {}
+
+            input {}
+        }
+
+        .btn-adv-submit {
+            display: flex;
+            padding: 10px;
+            color: white;
+            justify-content: center;
+            background-color: #065573;
+            width: 100%;
+        }
+    }
+}
