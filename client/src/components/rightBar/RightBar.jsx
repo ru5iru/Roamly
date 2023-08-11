@@ -13,56 +13,6 @@ const RightBar = () => {
             </div>
             <div className="ads">
                 <Ad />
-                {/* <div className="ad">
-                    <img src={Ad1} alt="" />
-                    <div className="adDetails">
-                        <div className="Upper">
-                            <p>TeaHouse Chalets
-                                <br />
-                                <span>Belihuloya</span>
-                            </p>
-                        </div>
-                        <div className="Lower">
-                            <img src={Phone} alt="" />
-                            <p>043 229 8222</p>
-
-                        </div>
-                    </div>
-                </div> */}
-
-                <div className="ad">
-                    <img src={Ad2} alt="" />
-                    <div className="adDetails">
-                        <div className="Upper">
-                            <p>TeaHouse Chalets
-                                <br />
-                                <span>Belihuloya</span>
-                            </p>
-                        </div>
-                        <div className="Lower">
-                            <img src={Phone} alt="" />
-                            <p>043 229 8222</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="ad">
-                    <img src={Ad3} alt="" />
-                    <div className="adDetails">
-                        <div className="Upper">
-                            <p>TeaHouse Chalets
-                                <br />
-                                <span>Belihuloya</span>
-                            </p>
-                        </div>
-                        <div className="Lower">
-                            <img src={Phone} alt="" />
-                            <p>043 229 8222</p>
-
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     );

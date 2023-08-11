@@ -64,7 +64,7 @@ function App() {
                     <div>
                         <LeftBarhs />
                         <Actions toggleExploreBarVisibility={toggleExploreBarVisibility} />
-                        <Posts />
+                        {/* <Posts /> */}
                     </div>
                     <RightBar />
                 </div>
@@ -82,7 +82,7 @@ function App() {
                         <LeftBarhs />
                         <ExploreTopBar />
                         <Explore />
-                        <Posts />
+                        {/* <Posts /> */}
 
                     </div>
                 </div>

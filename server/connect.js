@@ -9,7 +9,7 @@ const pool = new Pool({
     host: "localhost",
     user: "postgres",
     password: "Sneha123",
-    database: "test1",
+    database: "roamly_interim",
     port: 5432, // Default PostgreSQL port
 });
 
