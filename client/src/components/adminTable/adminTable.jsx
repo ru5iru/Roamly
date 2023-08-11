@@ -1,4 +1,5 @@
 import './adminTable.scss';
+import { Link } from 'react-router-dom';
 
 function AdminTable() {
   return(
@@ -14,9 +15,11 @@ function AdminTable() {
                     <td>John Doe</td>
                     <td>0712233435</td>
                     <td className='icon'>
-                        <span class="material-icons">
-                            visibility
-                        </span>
+                        <Link to='/userprofile'>
+                            <span class="material-icons">
+                                visibility
+                            </span>
+                        </Link>
                     </td>
                 </tr>
                 <tr>

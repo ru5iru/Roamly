@@ -1,17 +1,17 @@
-function TravelerTable() {
+function GuideTable() {
   return(
     <div className="table">
         <div className="user_table">
             <table>
                 <tr>
                     <th>Name</th>
-                    <th>UserName</th>
+                    <th>Based on</th>
                     <th>Email</th>
                     <th className='icon'>Profile</th>
                 </tr>
                 <tr>
                     <td>John Doe</td>
-                    <td>JohnT</td>
+                    <td>Yala</td>
                     <td>JhonT@gmail.com</td>
                     <td className='icon'>
                         <span class="material-icons">
@@ -21,7 +21,7 @@ function TravelerTable() {
                 </tr>
                 <tr>
                     <td>Jonny Doemt</td>
-                    <td>JonnyDT</td>
+                    <td>Nuwara-eliya</td>
                     <td>JhnnyT@gmail.com</td>
                     <td className='icon'>
                         <span class="material-icons">
@@ -35,4 +35,4 @@ function TravelerTable() {
   );
 }
 
-export default TravelerTable;
+export default GuideTable;
