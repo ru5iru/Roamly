@@ -1,0 +1,118 @@
+@import "../../style.scss";
+
+.rightBar {
+    height: 850px;
+    border-radius: 10px;
+    background: #FFFFFF;
+    margin-top: 18px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .title {
+        height: 54px;
+        width: 100%;
+
+        text-align: left;
+        font-size: 21px;
+        font-weight: bold;
+
+        display: flex;
+        align-items: center;
+        margin-left: 13px;
+        justify-content: flex-start;
+    }
+
+    .ads {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+
+        .ad {
+
+            width: 20vw;
+            background-color: #D9D9D9;
+            margin-bottom: 10px;
+            border-radius: 5px;
+
+            img {
+                width: 20vw;
+                border-radius: 5px 5px 0 0;
+            }
+
+            .adDetails {
+                margin-left: 5px;
+
+                span {
+                    color: #AFAFAF;
+                }
+
+                .Lower {
+                    margin-top: 10px;
+                    margin-bottom: 5px;
+                    display: flex;
+
+                    img {
+                        width: initial;
+                        margin-right: 10px
+                    }
+                }
+            }
+        }
+
+
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .rightBar {
+        width: 22vw;
+
+        .ads {
+            width: 20vw;
+
+            .ad {
+                width: 20vw;
+
+                img {
+                    width: 20vw;
+                }
+
+            }
+        }
+    }
+
+
+}
+
+@media only screen and (max-width: 1440px) and (min-width: 1300px) {
+    .rightBar {
+        width: 19vw;
+
+        .ads {
+            width: 17vw;
+
+            .ad {
+                width: 17vw;
+
+                img {
+                    width: 17vw;
+                }
+
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .rightBar {
+        display: none;
+    }
+}
