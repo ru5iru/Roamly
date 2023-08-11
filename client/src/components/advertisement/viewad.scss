@@ -1,10 +1,10 @@
 /* viewad.scss */
 .view-ad {
-    border: 1px solid #ccc;
-    padding: 20px;
+    // border: 1px solid #ccc;
+    padding: 5px;
     margin: 10px;
     background-color: #f9f9f9;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    // box-shadow: 2px 2px 5px black;
   
     .ad-whole-up {
       display: flex;
@@ -13,7 +13,7 @@
       margin-bottom: 10px;
       background-color: #065573;
         color: #fff;
-        padding: 15px;
+        padding: 10px;
         border-radius: 5px;
 
   
@@ -65,15 +65,15 @@
       /* Styles for modal content */
       background-color: #fff;
       border-radius: 5px;
-      padding: 20px;
+      padding: 15px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     }
   
     .close-button {
       /* Styles for close button */
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 1px;
+      right: 14px;
       cursor: pointer;
   
       span {
@@ -106,6 +106,7 @@
             .ad-dates {
                 font-size: 0.8rem;
                 margin-top: 10px;
+                color: black;
             }
         }
     }

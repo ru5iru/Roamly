@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import './advertisementform.scss';
+import "../../pages/advertisement/advertisementpage.scss"
 
 const EditAdvertisement = ({ adId }) => {
   const [title, setTitle] = useState('');
