@@ -7,7 +7,6 @@ import Explore from "./components/explore/Explore";
 import ExploreBar from "./components/exploreBar/ExploreBar";
 import ExploreTopBar from "./components/exploreTopBar/ExploreTopBar";
 import Home from "./pages/home/Home";
-// import Posts from "./components/post/Posts";
 import Profile from "./pages/profile/Profile";
 import Signup from "./pages/signup/Signup";
 import "./style.scss";
@@ -22,6 +21,7 @@ import axios from "axios";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/authContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import FirstView from "./pages/firstView/FirstView";
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
 axios.defaults.withCredentials = true;
@@ -108,7 +108,7 @@ function App() {
         },
         {
             path: "/",
-            element: <Home />,
+            element: <FirstView />,
         },
         {
             path: "/login",
