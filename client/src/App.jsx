@@ -101,14 +101,14 @@ function App() {
             children: [
 
                 {
+                    path: "/",
+                    element: <FirstView />,
+                },
+                {
                     path: "/profile/:id",
                     element: <Profile />,
                 },
             ],
-        },
-        {
-            path: "/",
-            element: <FirstView />,
         },
         {
             path: "/login",
