@@ -63,7 +63,7 @@ function App() {
             }
           />
           <Route 
-          path="/advertisement/:adId"
+          path="/advertisement/adId"
           element={
             <RouteWithNavbar showNavbar={true} element={<AdvertisementDetails />} />
           } />

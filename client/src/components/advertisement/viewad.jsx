@@ -19,7 +19,7 @@ export const ViewAdd = ({ advertisement }) => {
   return (
     <div className="view-ad">
       <div className="ad-whole-up">
-        <h2>{advertisement.title}</h2>
+        <h2 className="ad-title">{advertisement.title}</h2>
         <div className="edit-delete">
           <FaRegEdit className="edit" title="Edit" onClick={handleButtonClick} />
       {isModalOpen && (
@@ -40,8 +40,8 @@ export const ViewAdd = ({ advertisement }) => {
           <img src={hotelAd3} alt="Advertisement" />
         </div>
         <div className="ad-right">
-          <h5>{advertisement.description}</h5>
-          <p>
+          <h6 className="ad-description">{advertisement.description}</h6>
+          <p className="ad-dates">
             {new Date(advertisement.start_date).getDate()}th of{" "}
             {new Date(advertisement.start_date).toLocaleString("default", {
               month: "long",

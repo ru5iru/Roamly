@@ -1,59 +1,114 @@
+/* viewad.scss */
 .view-ad {
-    display: flex;
-    flex-direction: column;
-
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  
     .ad-whole-up {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      background-color: #065573;
+        color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+
+  
+      .ad-title {
+        font-size: 1.5rem;
+        margin: 0;
+
+      }
+  
+      .edit-delete {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
         align-items: center;
-
-        h2 {
-            color: black;
-        }
-
-        .edit-delete {
-            padding: 0 20px;
-            gap: 20px;
-            font-size: 20px;
-            .edit {
-                color: #006400; 
-                margin-right: 20px;
-                cursor: pointer;
-            }
-
-            .dlt {
-                color: #8b0000; 
-                cursor: pointer;
-            }
+    }
+    
+    .edit-delete .edit,
+    .edit-delete .dlt {
+        cursor: pointer;
+        font-size: 20px;
+        color: #fff;
+        transition: transform 0.3s ease, background-color 0.3s ease; /* Include other transitions if needed */
+        transform-origin: center center; /* Set the scaling origin to the center */
+    
+        &:hover {
+            transform: scale(1.4);
+            will-change: transform; /* Optimize for smoother transitions */
         }
     }
-
+    
+    .edit-delete .edit {
+        margin-right: 20px;
+    }
+    
+    }
+  
+    .modal {
+      /* Styles for modal overlay */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .modal-content {
+      /* Styles for modal content */
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+  
+    .close-button {
+      /* Styles for close button */
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+  
+      span {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  
     .ad-whole-bottom {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-
+        padding: 10px;
+    
         .ad-left {
+            flex: 1;
+    
             img {
-                width: auto;
-                height: 200px;
+                width: 400px;
+                height: auto;
             }
-
         }
-
+    
         .ad-right {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 0 10px;
-
-            h5 {}
-
-            p {
-                color: black;
+            flex: 2;
+            padding: 0 20px;
+    
+            .ad-description {
+                font-size: 1rem;
+            }
+    
+            .ad-dates {
+                font-size: 0.8rem;
+                margin-top: 10px;
             }
         }
     }
-}
+    
+  }
+  

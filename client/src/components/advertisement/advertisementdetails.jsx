@@ -1,5 +1,3 @@
-// AdvertisementDetails.js
-
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -10,7 +8,7 @@ const AdvertisementDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/advertisements/:${adId}`)
+      .get(`http://localhost:5000/advertisements/${adId}`)
       .then((response) => {
         setAdvertisement(response.data);
       })

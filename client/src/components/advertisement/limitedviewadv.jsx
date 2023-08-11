@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import hotelAd3 from "../../assets/images/hotel-ad-3.jpeg";
 import "./viewad.scss";
-import { FaRegEdit } from "react-icons/fa";
-import { RiDeleteBin5Line } from "react-icons/ri";
 import EditAdvertisement from "./editadvertisement";
 
-export const ViewAdd = ({ advertisement }) => {
+export const LimitedViewAdd = ({ advertisement }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsModalOpen(true);
-  };
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -21,18 +15,16 @@ export const ViewAdd = ({ advertisement }) => {
       <div className="ad-whole-up">
         <h2>{advertisement.title}</h2>
         <div className="edit-delete">
-          <FaRegEdit className="edit" title="Edit" onClick={handleButtonClick} />
-      {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <div className="close-button" onClick={closeModal}>
-              <span>&times;</span>
+          {isModalOpen && (
+            <div className="modal">
+              <div className="modal-content">
+                <div className="close-button" onClick={closeModal}>
+                  <span>&times;</span>
+                </div>
+                <EditAdvertisement />
+              </div>
             </div>
-            <EditAdvertisement />
-          </div>
-        </div>
-      )}
-          <RiDeleteBin5Line className="dlt" title="Delete" />
+          )}
         </div>
       </div>
       <div className="ad-whole-bottom">
@@ -57,7 +49,7 @@ export const ViewAdd = ({ advertisement }) => {
   );
 };
 
-export default ViewAdd;
+export default LimitedViewAdd;
 
 // return (
 //   <div>
