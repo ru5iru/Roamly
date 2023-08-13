@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.admin_form_main{
+    width: 70%;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #f0f9fd;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    margin: 10px;
+    .admin_form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 30px 70px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        .form_title{
+            h2{
+                font-family: 'klavika-bold';
+                color: #2B3674;
+                text-align: left;
+            }
+        }
+        .form_row{
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            .row_detail{
+                display: flex;
+                flex-direction: column;
+                label{
+                    font-family: 'klavika-regular';
+                    color: #777777;
+                    margin-bottom: 5px;
+                    height: 30px;
+                }
+                input{
+                    width: 450px;
+                    height: 40px;
+                    border: 1px solid #777777;
+                    border-radius: 5px;
+                    padding: 0 10px;
+                    font-family: 'klavika-regular';
+                    color: #777777;
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
+        }
+        .form_buttons{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            button{
+                width: 40%;
+                height: 40px;
+                border: none;
+                margin: 10px 0;
+                border-radius: 5px;
+                font-family: 'klavika-bold';
+                font-size: 16px;
+                cursor: pointer;
+                &:focus{
+                    outline: none;
+                }
+            }
+            .createaccount{
+                background-color: #51BCD3;
+                color: #ffffff;
+            }
+            .cancel{
+                border: 1px solid #51BCD3;
+                border-radius: 5px;
+                background-color: #ffffff;
+                color: #51BCD3;
+            }
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}

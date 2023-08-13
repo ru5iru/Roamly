@@ -50,6 +50,12 @@ function UserDetails() {
                                 search
                             </span>
                         </div>
+                        <div className="button_boxtext">
+                            <h3>View all</h3>
+                            <span class="material-icons">
+                                unfold_more
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div className="user_traveler_table">
@@ -69,6 +75,12 @@ function UserDetails() {
                                 search
                             </span>
                         </div>
+                        <div className="button_boxtext">
+                            <h3>View all</h3>
+                            <span class="material-icons">
+                                unfold_more
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div className="user_traveler_table">
@@ -84,6 +96,12 @@ function UserDetails() {
                         <div className="botton_box">
                             <span class="material-icons">
                                 search
+                            </span>
+                        </div>
+                        <div className="button_boxtext">
+                            <h3>View all</h3>
+                            <span class="material-icons">
+                                unfold_more
                             </span>
                         </div>
                     </div>
@@ -105,6 +123,12 @@ function UserDetails() {
                                 search
                             </span>
                         </div>
+                        <div className="button_boxtext">
+                            <h3>View all</h3>
+                            <span class="material-icons">
+                                unfold_more
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div className="user_traveler_table">
@@ -120,6 +144,19 @@ function UserDetails() {
                         <div className="botton_box">
                             <span class="material-icons">
                                 search
+                            </span>
+                        </div>
+                        <div className="botton_box">
+                            <Link to='/addadmin'>
+                                <span class="material-icons">
+                                    add_circle
+                                </span>
+                            </Link>
+                        </div>
+                        <div className="button_boxtext">
+                            <h3>View all</h3>
+                            <span class="material-icons">
+                                unfold_more
                             </span>
                         </div>
                     </div>

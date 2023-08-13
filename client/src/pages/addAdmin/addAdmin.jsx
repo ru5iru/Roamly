@@ -1,3 +1,4 @@
+import './addAdmin.scss';
 import AdminNavbar from "../../components/adminNavbar/adminNavbar";
 import Tabs from "../../components/tabs/tabs";
 import AdminForm from "../../components/adminForm/adminForm";
@@ -5,9 +6,13 @@ import AdminForm from "../../components/adminForm/adminForm";
 function AddAdmin() {
     return(
         <div className="add_admin_main">
-            <AdminNavbar />
-            <Tabs />
-            <AdminForm />
+            <div className="addadnav">
+                <AdminNavbar />
+                <Tabs />
+            </div>
+            <div className="addadmin">
+                <AdminForm />
+            </div>
         </div>
     );
   }

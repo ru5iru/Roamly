@@ -1,10 +1,9 @@
 import './dashboard.scss';
-//import { Link } from 'react-router-dom';
 import ContentCreators from '../../components/contentCreators/contentCreators';
 
 function Dashboard() {
     return(
-        <div className='dashboard-main'>
+        <div className='dashboard_main'>
             <div className="stat">
                 <div className="stat-item">
                     <div className="stat-item-title">Ads Submitted</div>

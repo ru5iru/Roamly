@@ -15,7 +15,7 @@ function AdminTable() {
                     <td>John Doe</td>
                     <td>0712233435</td>
                     <td className='icon'>
-                        <Link to='/userprofile'>
+                        <Link to='/userprofile' className='link'>
                             <span class="material-icons">
                                 visibility
                             </span>

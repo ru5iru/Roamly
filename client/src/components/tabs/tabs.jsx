@@ -20,7 +20,7 @@ function Tabs() {
                     <p>Users</p>
                 </div>
             </Link>
-            <Link to="">
+            <Link to="/advertisementspage">
                 <div className="tab tab-advertisements">
                     <span class="material-icons">
                         campaign
@@ -28,7 +28,7 @@ function Tabs() {
                     <p>Advertisements</p>
                 </div>
             </Link>
-            <Link to="/">
+            <Link to="/reportspage">
                 <div className="tab tab-reports">
                     <span class="material-icons">
                         library_books
@@ -36,7 +36,7 @@ function Tabs() {
                     <p>Reports</p>
                 </div>
             </Link>
-            <Link to="/placesdetails">
+            <Link to="/placespage">
                 <div className="tab tab-places">
                     <span class="material-icons">
                         share_location
@@ -44,7 +44,7 @@ function Tabs() {
                     <p>Places</p>
                 </div>
             </Link>
-            <Link to="">
+            <Link to="/badgespage">
                 <div className="tab tab-badges">
                     <span class="material-icons">
                         stars
@@ -52,7 +52,7 @@ function Tabs() {
                     <p>Badges</p>
                 </div>
             </Link>
-            <Link to="/triptype">
+            <Link to="/profilepage">
                 <div className="tab q   tab-profile">
                     <span class="material-icons">
                         person
