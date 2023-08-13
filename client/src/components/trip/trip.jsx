@@ -4,7 +4,7 @@ import Picture1 from "../../assets/images/camping.jpg";
 
 const Trip = () => {
   return (
-    <Link to={"/places"}>
+    <Link to={"/trip/place"}>
     <div className="row">
         <div className="boxes">
             <img className="tripImage" src={Picture1} alt="loading error" />

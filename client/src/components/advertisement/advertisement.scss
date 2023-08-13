@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 30px;
+    margin-left: 40px;
     .advertisement {
         height: 250px;
         width: 200px;
@@ -27,9 +28,12 @@
             height: 25%;
             width: 100%;
             background-color: rgba(128, 128, 128, 0.536);
-            h6{text-align: center;
-            }p{
+            padding: 3px 2px;
+            .ad-title{
                 text-align: center;
+                font-size: 18px;
+                font-weight: 500;
+                color: #fff;
             }
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;

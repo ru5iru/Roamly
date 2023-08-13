@@ -20,39 +20,35 @@ export const ViewAdd = ({ advertisement }) => {
     <div className="view-ad">
       <div className="ad-whole-up">
         <h2 className="ad-title">{advertisement.title}</h2>
-        <div className="edit-delete">
-          <FaRegEdit className="edit" title="Edit" onClick={handleButtonClick} />
-      {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <div className="close-button" onClick={closeModal}>
-              <span>&times;</span>
-            </div>
-            <EditAdvertisement />
-          </div>
-        </div>
-      )}
-          <RiDeleteBin5Line className="dlt" title="Delete" />
-        </div>
+        
       </div>
       <div className="ad-whole-bottom">
-        <div className="ad-left">
+        <div className="ad-up">
           <img src={hotelAd3} alt="Advertisement" />
+          <p className="ad-details">{advertisement.details}</p>
         </div>
-        <div className="ad-right">
+        <div className="ad-bottom">
           <h6 className="ad-description">{advertisement.description}</h6>
-          <p className="ad-dates">
-            {new Date(advertisement.start_date).getDate()}th of{" "}
-            {new Date(advertisement.start_date).toLocaleString("default", {
-              month: "long",
-            })}{" "}
-            to {new Date(advertisement.end_date).getDate()}th of{" "}
-            {new Date(advertisement.end_date).toLocaleString("default", {
-              month: "long",
-            })}
-          </p>
         </div>
       </div>
+      <div className="edit-delete">
+          <FaRegEdit
+            className="edit"
+            title="Edit"
+            onClick={handleButtonClick}
+          />
+          {isModalOpen && (
+            <div className="modal">
+              <div className="modal-content">
+                <div className="close-button" onClick={closeModal}>
+                  <span>&times;</span>
+                </div>
+                <EditAdvertisement />
+              </div>
+            </div>
+          )}
+          <RiDeleteBin5Line className="dlt" title="Delete" />
+        </div>
     </div>
   );
 };

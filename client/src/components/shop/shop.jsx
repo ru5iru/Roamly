@@ -19,9 +19,8 @@ const Shop = () => {
         </div>
         <div className="right">
           <ul>
-            <li className="title">
+            <li>
                 <h3>Dimuthu Grocery</h3>
-                <FaCrown className="faCrown" />
             </li>
             <li>
               <p>

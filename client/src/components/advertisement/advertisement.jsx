@@ -11,7 +11,7 @@ const Advertisement = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/advertisements")
+      .get("http://localhost:8000/server/ads/advertisements")
       .then((response) => {
         setAdvertisements(response.data);
       })
@@ -30,7 +30,7 @@ const Advertisement = () => {
     setSelectedAdvertisement(null);
     setIsModalOpen(false);
   };
-
+ 
   return (
     <div className="advertisement-container">
       {isModalOpen && (
@@ -53,17 +53,7 @@ const Advertisement = () => {
             <img src={hotelAd3} alt="advertisement" />
           </div>
           <div className="bottom">
-            <h6>{ad.title}</h6>
-            <p>
-              {new Date(ad.start_date).toLocaleDateString("en-US", {
-                month: "numeric",
-                day: "numeric",
-              })}{"  --->  "}
-              {new Date(ad.end_date).toLocaleDateString("en-US", {
-                month: "numeric",
-                day: "numeric",
-              })}
-            </p>
+            <h4 className="ad-title">{ad.title}</h4>
           </div>
         </div>
       ))}

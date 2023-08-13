@@ -4,7 +4,7 @@ import Hotel from "../../assets/images/hotels.png";
 
 const HotelService = () => {
   return (
-    <Link to={"/hotel"}>
+    <Link to={"/trip/place/placedetails/hotels"}>
       <div className="service">
         <img src={Hotel} alt="Shop Services" />
         <span className="blur-background">

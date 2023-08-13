@@ -7,7 +7,7 @@ import hotelimg from "../../assets/images/hotelimg.png";
 import hotelpro from "../../assets/images/hotelpro.jpg";
 // import ViewButton from "../../components/advertisement/viewbutton";
 import { IoOptions } from "react-icons/io5";
-import LeftBar from "../../components/leftbar/leftbar";
+import LeftBar from "../../components/leftBar/LeftBar";
 import Filter from "../../components/filter/filter";
 
 export const AdvertisementPage = () => {
@@ -22,11 +22,6 @@ export const AdvertisementPage = () => {
   };
   return (
     <div className="hotel-profile">
-      <div className="left">
-        <div className="fixed-leftbar">
-          <LeftBar />
-        </div>
-      </div>
       <div className="right">
         <div className="hotel-image">
           <img className="hotel-cover" src={hotelimg} alt="hotel" />

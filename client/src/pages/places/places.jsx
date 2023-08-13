@@ -18,10 +18,10 @@ export const Places = () => {
     };
 
     return (
-        <Link to={"/placedetails"}>
+        <Link to={"/trip/place/placedetails"}>
         <div className="places">
-            <div className="title-places" style={{ marginTop: '45px', marginBottom: '2rem'}}>
-                <h1 style={{ fontFamily: "'Familjen Grotesk', sans-serif", marginRight: '20px'}}>Places for camping</h1>
+            <div className="title-places" style={{ marginBottom: '2rem'}}>
+                <h1 style={{ fontFamily: "'Familjen Grotesk', sans-serif", color: '#2b76e2'}}>Places for camping</h1>
             </div>
             <div className="card-list">
                 <article class="card">

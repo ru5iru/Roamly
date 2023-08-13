@@ -21,7 +21,7 @@
         border-radius: 5px;
 
         .left {
-            width: 50%;
+            width: 60%;
 
             img {
                 width: auto;
@@ -34,18 +34,8 @@
 
         .right {
             padding: 0 20px;
-            width: 75%;
-
-            .title {
-
-                display: flex;
-                justify-content: space-between;
-                .faCrown{
-                    font-size: 40px;
-                    color: #FFC107;
-
-                }
-            }
+            width: 50%;
+            line-height: 3;
 
             ul {
                 li {

@@ -49,67 +49,146 @@
     }
   
     .modal {
-      /* Styles for modal overlay */
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-  
-    .modal-content {
-      /* Styles for modal content */
-      background-color: #fff;
-      border-radius: 5px;
-      padding: 15px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    }
-  
-    .close-button {
-      /* Styles for close button */
-      position: absolute;
-      top: 1px;
-      right: 14px;
-      cursor: pointer;
-  
-      span {
-        font-size: 20px;
-        font-weight: bold;
+      z-index: 1000; /* Ensure it's above other content */
+      
+      .modal-content {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        width: 50%;
+        max-width: 90%;
+        position: relative;
+        
+        .close-button {
+          position: absolute;
+          top: 15px;
+          right: 22px;
+          cursor: pointer;
+          font-size: 25px;
+          transition: transform 0.3s ease-in-out;
+          
+          &:hover {
+              transform: scale(1.5);
+            color: #ff0000; /* Change color on hover */
+          }
+        }
       }
     }
   
+    // .ad-whole-bottom {
+    //     display: flex;
+    //     padding: 10px;
+    
+    //     .ad-left {
+    //         flex: 1;
+
+
+    
+    //         img {
+    //             width: 400px;
+    //             height: auto;
+    //         }
+    //     }
+    
+    //     .ad-right {
+    //         flex: 2;
+    //         padding: 0 20px;
+    
+    //         .ad-description {
+    //             font-size: 1rem;
+    //         }
+    
+    //         .ad-dates {
+    //             font-size: 0.8rem;
+    //             margin-top: 10px;
+    //             color: black;
+    //         }
+    //     }
+    // }
+
+    
     .ad-whole-bottom {
+      display: flex;
+      flex-direction: column; /* Stack items vertically */
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    
+      .ad-up {
         display: flex;
-        padding: 10px;
+        align-items: center;
+        padding: 15px;
     
-        .ad-left {
-            flex: 1;
-    
-            img {
-                width: 400px;
-                height: auto;
-            }
+        img {
+          max-width: 350px;
+          height: auto;
+          margin-right: 15px;
+          border-radius: 6px;
+          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+          align-self: stretch;
         }
     
-        .ad-right {
-            flex: 2;
-            padding: 0 20px;
-    
-            .ad-description {
-                font-size: 1rem;
-            }
-    
-            .ad-dates {
-                font-size: 0.8rem;
-                margin-top: 10px;
-                color: black;
-            }
+        .ad-details {
+          flex: 1;
+          color: #666;
+          font-size: 18px;
+          line-height: 1.4;
         }
+      }
+    
+      .ad-bottom {
+        background-color: #f8f8f8;
+        padding: 15px;
+    
+        .ad-description {
+          color: #333;
+          font-size: 18px;
+          margin: 0;
+        }
+      }
     }
     
+    .edit-delete {
+      display: flex;
+      align-items: center;
+      // background-color: black;
+      justify-content: flex-end;
+  }
+  
+  .edit-delete .edit,
+  .edit-delete .dlt {
+      cursor: pointer;
+      font-size: 20px;
+      color: #065573;
+      transition: transform 0.3s ease, background-color 0.3s ease; /* Include other transitions if needed */
+      transform-origin: center center; /* Set the scaling origin to the center */
+  
+      &:hover {
+        color: #00a651; /* Common color for hover */
+        transform: scale(1.4);
+        will-change: transform;
+      }
+    
+      &.dlt {
+        &:hover {
+          color: #ff3333; /* Redish color for .dlt on hover */
+        }
+      }
+  }
+  
+  .edit-delete .edit {
+      margin-right: 20px;
+  }
   }
   

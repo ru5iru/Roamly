@@ -22,6 +22,14 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/authContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import FirstView from "./pages/firstView/FirstView";
+import AdvertisementPage from "./pages/advertisement/advertisementpage";
+import TripType from "./pages/tripType/TripType";
+import Posts from "./components/postComponents/posts/Posts";
+import Places from "./pages/places/places";
+import PlacesDetails from "./pages/places/placesdetails";
+import ShopPage from "./pages/shop/shoppage"
+import HotelPage from "./pages/hotel/hotelpage"
+
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
 axios.defaults.withCredentials = true;
@@ -82,6 +90,114 @@ function App() {
         )
     };
 
+    const Ads = () => {
+        return (
+            <div>
+                <NavBar />
+                <div style={{ display: "flex" }}>
+                    <LeftBar />
+                    <div>
+                        <LeftBarhs />
+                        <AdvertisementPage />
+                        {/* <Posts /> */}
+                    </div>
+                        <RightBar />
+                </div>
+
+            </div>
+        )
+    };
+
+    const Trip = () => {
+        return (
+            <div>
+                <NavBar />
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <LeftBar />
+                    <div>
+                        <LeftBarhs />
+                        <TripType />
+                        {/* <Posts /> */}
+                    </div>
+                        <RightBar />
+                </div>
+
+            </div>
+        )
+    };
+
+    const Place = () => {
+        return (
+            <div>
+                <NavBar />
+                <div style={{ display: "flex", justifyContent: "space-between"  }}>
+                    <LeftBar />
+                    <div>
+                        <LeftBarhs />
+                        <Places />
+                        {/* <Posts /> */}
+                    </div>
+                        <RightBar />
+                </div>
+
+            </div>
+        )
+    };
+
+    const Placedetails = () => {
+        return (
+            <div>
+                <NavBar />
+                <div style={{ display: "flex", justifyContent: "space-between"  }}>
+                    <LeftBar />
+                    <div>
+                        <LeftBarhs />
+                        <PlacesDetails />
+                        {/* <Posts /> */}
+                    </div>
+                        <RightBar />
+                </div>
+
+            </div>
+        )
+    };
+    const Shop = () => {
+        return (
+            <div>
+                <NavBar />
+                <div style={{ display: "flex", justifyContent: "space-between"  }}>
+                    <LeftBar />
+                    <div>
+                        <LeftBarhs />
+                        <ShopPage />
+                        {/* <Posts /> */}
+                    </div>
+                        <RightBar />
+                </div>
+
+            </div>
+        )
+    };
+
+    const Hotel = () => {
+        return (
+            <div>
+                <NavBar />
+                <div style={{ display: "flex", justifyContent: "space-between"  }}>
+                    <LeftBar />
+                    <div>
+                        <LeftBarhs />
+                        <HotelPage />
+                        {/* <Posts /> */}
+                    </div>
+                        <RightBar />
+                </div>
+
+            </div>
+        )
+    };
+    
+
     const ProtectedRoute = ({ children }) => {
         if (!currentUser) {
             return <Navigate to="/login" />;
@@ -126,6 +242,30 @@ function App() {
             path: "/explore",
             element: <Exp />,
         },
+        {
+            path: "/advertisements",
+            element: <Ads />,
+        },
+        {
+            path: "/trip",
+            element: <Trip />
+        },
+        {
+            path: "/trip/place",
+            element: <Place />
+        },
+        {
+            path: "/trip/place/placedetails",
+            element: <Placedetails />
+        },
+        {
+            path: "/trip/place/placedetails/shops",
+            element: <Shop />
+        },
+        {
+            path: "/trip/place/placedetails/hotels",
+            element: <Hotel />
+        }
     ]);
 
     return (

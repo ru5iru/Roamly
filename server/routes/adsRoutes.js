@@ -1,9 +1,11 @@
 import express from "express";
 
-import { getAds } from "../controllers/adsController.js";
+import { getAds, addAd } from "../controllers/adsController.js";
 
 const router = express.Router();
 
-router.get("/", getAds);
+router.get("/advertisements", getAds);
+// router.get("/:id", getAds);
+router.post("/advertisements", addAd);
 
 export default router;

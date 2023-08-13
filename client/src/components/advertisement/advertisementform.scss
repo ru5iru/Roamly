@@ -12,12 +12,22 @@
             justify-content: space-between;
             padding: 10px;
             lable {}
+            input[type="text"]{
+                height: 35px;
+            }
+            input[type="text"], textarea, select{
+                padding: 5px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                padding: 5px;
+            }
 
-            input {}
         }
 
         .btn-adv-submit {
             display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 10px;
             color: white;
             justify-content: center;

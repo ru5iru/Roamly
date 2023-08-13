@@ -4,7 +4,7 @@ import Shops from "../../assets/images/shops.png";
 
 const ShopService = () => {
   return (
-    <Link to={"/shop"}>
+    <Link to={"/trip/place/placedetails/shops"}>
       <div className="service">
         <img src={Shops} alt="Shop Services" />
         <span className="blur-background">
