@@ -52,6 +52,19 @@ function App() {
         );
     };
 
+    const ProfilePage = () => {
+        return (
+            <QueryClientProvider client={queryClient}>
+                <div className={`theme-${darkMode ? "dark" : "light"}`}>
+                    <NavBar />
+                        <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "center" }}>
+                            <Profile />
+                        </div>
+                </div>
+            </QueryClientProvider>
+        );
+    };
+
     const Feed = () => {
         return (
             <QueryClientProvider client={queryClient}>
@@ -211,16 +224,19 @@ function App() {
                 </ProtectedRoute>
             ),
             children: [
-
                 {
                     path: "/",
                     element: <FirstView />,
-                },
-                {
-                    path: "/profile/:id",
-                    element: <Profile />,
-                },
+                }
             ],
+        },
+        {
+            path: "/profile/:id",
+            element: (
+                <ProtectedRoute>
+                    <ProfilePage />
+                </ProtectedRoute>
+            )
         },
         {
             path: "/login",
