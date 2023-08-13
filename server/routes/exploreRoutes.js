@@ -1,9 +1,9 @@
 import express from "express";
 
-import { searchText } from "../controllers/exploreController.js";
+import { searchAllPosts } from "../controllers/exploreController.js";
 
 const router = express.Router();
 
-router.get("/:query", searchText);
+router.get("/", searchAllPosts);
 
 export default router;

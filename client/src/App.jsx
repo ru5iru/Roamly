@@ -6,6 +6,7 @@ import RightBar from "./components/rightBar/RightBar";
 import Explore from "./components/explore/Explore";
 import ExploreBar from "./components/exploreBar/ExploreBar";
 import ExploreTopBar from "./components/exploreTopBar/ExploreTopBar";
+import Feedcontent from "./components/feed/feed";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Signup from "./pages/signup/Signup";
@@ -55,33 +56,45 @@ function App() {
 
     const Feed = () => {
         return (
-            <div className="layout">
-                <NavBar />
-                <div style={{ display: "flex" }}>
-                    <LeftBar />
-                    <div>
-                        <LeftBarhs />
+            <QueryClientProvider client={queryClient}>
+                <div className={`theme-${darkMode ? "dark" : "light"}`}>
+                    <NavBar />
+                    <div style={{ display: "flex" }}>
+                        <LeftBar />
+                        <div>
+                            <LeftBarhs />
+                            <Feedcontent />
+                            {/* <Home /> */}
+                        </div>
+                        <RightBar />
                     </div>
-                    <RightBar />
                 </div>
-            </div>
+            </QueryClientProvider >
         );
     };
 
     const Exp = () => {
         return (
-            <div>
-                <NavBar />
-                <div style={{ display: "flex" }}>
-                    <LeftBar />
-                    <div>
-                        <LeftBarhs />
-                        <ExploreTopBar />
-                        <Explore />
-                    </div>
-                </div>
+            <QueryClientProvider client={queryClient}>
+                <div className={`theme-${darkMode ? "dark" : "light"}`}>
+                    <NavBar />
+                    <div style={{ display: "flex" }}>
+                        <LeftBar />
+                        <div>
+                            <LeftBarhs />
+                            <ExploreTopBar />
+                            <div style={{ display: "flex" }}>
+                                <Explore />
+                                <RightBar />
+                            </div>
 
-            </div>
+                            {/* <Posts /> */}
+                        </div>
+
+                    </div>
+
+                </div>
+            </QueryClientProvider>
         )
     };
 
@@ -95,7 +108,7 @@ function App() {
                         <LeftBarhs />
                         <AdvertisementPage />
                     </div>
-                        <RightBar />
+                    <RightBar />
                 </div>
 
             </div>
@@ -111,7 +124,7 @@ function App() {
                     <div>
                         <LeftBarhs />
                     </div>
-                        <RightBar />
+                    <RightBar />
                 </div>
 
             </div>
@@ -122,13 +135,13 @@ function App() {
         return (
             <div>
                 <NavBar />
-                <div style={{ display: "flex", justifyContent: "space-between"  }}>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div>
                         <LeftBarhs />
                         <Places />
                     </div>
-                        <RightBar />
+                    <RightBar />
                 </div>
 
             </div>
@@ -139,13 +152,13 @@ function App() {
         return (
             <div>
                 <NavBar />
-                <div style={{ display: "flex", justifyContent: "space-between"  }}>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div>
                         <LeftBarhs />
                         <PlacesDetails />
                     </div>
-                        <RightBar />
+                    <RightBar />
                 </div>
 
             </div>
@@ -155,13 +168,13 @@ function App() {
         return (
             <div>
                 <NavBar />
-                <div style={{ display: "flex", justifyContent: "space-between"  }}>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div>
                         <LeftBarhs />
                         <ShopPage />
                     </div>
-                        <RightBar />
+                    <RightBar />
                 </div>
 
             </div>
@@ -172,19 +185,19 @@ function App() {
         return (
             <div>
                 <NavBar />
-                <div style={{ display: "flex", justifyContent: "space-between"  }}>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div>
                         <LeftBarhs />
                         <HotelPage />
                     </div>
-                        <RightBar />
+                    <RightBar />
                 </div>
 
             </div>
         )
     };
-    
+
 
     const ProtectedRoute = ({ children }) => {
         if (!currentUser) {

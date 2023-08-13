@@ -16,6 +16,8 @@ body {
         font-weight: bold;
         justify-content: space-between;
         align-items: center;
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+
 
         .menu {
             margin-left: 16px;
@@ -36,6 +38,8 @@ body {
                 padding-top: 7px;
                 padding-bottom: 7px;
                 border-radius: 5px;
+                box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.38);
+
 
                 img {
                     padding-left: 10px;

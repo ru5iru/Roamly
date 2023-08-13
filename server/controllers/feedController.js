@@ -1,12 +1,12 @@
 // import pool from "../connect.js";
 import asyncHandler from "express-async-handler";
 import {
-    getAllAds
-} from "../models/adsModel.js"
+    getAllFeed
+} from "../models/feedModel.js"
 
 
-const getAds = asyncHandler(async (req, res) => {
-    const ads = await getAllAds();
+const getFeed = asyncHandler(async (req, res) => {
+    const ads = await getAllFeed();
 
     if (ads.length > 0) {
         res.status(200).json(ads);
@@ -29,4 +29,4 @@ const getAds = asyncHandler(async (req, res) => {
 //     }
 // };
 
-export { getAds };
+export { getFeed };

@@ -8,6 +8,7 @@ import Search from "../../assets/search.png";
 import Search_blue from "../../assets/blue_search.png";
 import Profile_pic from "../../assets/profile_pic.png";
 import logo from "../../assets/Roamly.png";
+import Search_component from "../search/search.jsx";
 
 const Navbar = () => {
     const navigate = useNavigate(); // Initialize useNavigate
@@ -36,6 +37,7 @@ const Navbar = () => {
                 <img src={logo} alt="" className="logo" />
             </div>
             <div className="right">
+                {/* < Search_component /> */}
                 <div className="search-container">
                     <form className="search" id="search-bar">
                         <div className="display-flex-row height-100 align-items-center padding-left-3">

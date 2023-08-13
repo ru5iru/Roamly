@@ -15,6 +15,8 @@ import interstRoutes from "./routes/interestRoutes.js"
 import likeRoutes from "./routes/likeRoutes.js"
 import exploreRoutes from "./routes/exploreRoutes.js"
 import adsRoutes from "./routes/adsRoutes.js"
+import feedRoutes from "./routes/feedRoutes.js"
+
 
 
 // start DB connection
@@ -58,6 +60,9 @@ app.use("/server/explore", exploreRoutes);
 
 //Ads routes
 app.use("/server/ads", adsRoutes);
+
+//feed routes
+app.use("/server/feed", feedRoutes);
 
 app.get('/', (req, res) => res.send('Server is ready'));
 

@@ -44,7 +44,7 @@ const ExploreTopBar = () => {
 
 
 
-        </div>
+        </div >
 
 
 

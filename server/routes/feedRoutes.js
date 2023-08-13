@@ -1,9 +1,9 @@
 import express from "express";
 
-import { getAds } from "../controllers/adsController.js";
+import { getFeed } from "../controllers/feedController.js";
 
 const router = express.Router();
 
-router.get("/", getAds);
+router.get("/", getFeed);
 
 export default router;
