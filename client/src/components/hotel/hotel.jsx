@@ -45,13 +45,13 @@ const Hotel = () => {
                 <BookmarkIcon />
                 <span>
                   <a href="https://www.agoda.com/">
-                    <img src={agoda} alt="agoda" />
+                    <img className="img1" src={agoda} alt="agoda" />
                   </a>
                   <a href="https://www.booking.com/">
-                    <img src={booking} alt="booking.com" />
+                    <img className="img2" src={booking} alt="booking.com" />
                   </a>
                   <a href="https://www.kayak.com/">
-                    <img src={kayak} alt="kayak" />
+                    <img className="img3" src={kayak} alt="kayak" />
                   </a>
                 </span>
               </li>
