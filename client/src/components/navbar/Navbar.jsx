@@ -33,6 +33,10 @@ const Navbar = () => {
         setSearchText(e.target.value);
     };
 
+    const navigateFeed = () => {
+        navigate("/feed");
+    };
+
     const handleSearch = () => {
         // Your search logic here using the searchText
         console.log('Searching for:', searchText);
@@ -44,7 +48,7 @@ const Navbar = () => {
     return (
         <div className="navbar">
             <div className="left">
-                <img src={logo} alt="" className="logo" />
+                <img src={logo} alt="" className="logo" onClick={navigateFeed}/>
             </div>
             <div className="right">
                 {/* < Search_component /> */}
