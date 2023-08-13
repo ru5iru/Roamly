@@ -10,6 +10,7 @@
   align-items: left;
   margin-left: 3%;
 }
+
 .taxi-card {
   display: flex;
   background-color: #f0f0f0;
@@ -20,39 +21,39 @@
   justify-content: center;
   border-radius: 1%;
   position: relative;
+
+  .crown-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    .crown-icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .left-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .taxi-photo {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .right-section {
+    flex: 2;
+    padding-left: 20px;
+    margin-right: 5%;
+  }
 }
 
-.crown-container {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-.crown-icon {
-  width: 24px;
-  height: 24px;
-}
-
-.left-section {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.taxi-photo {
-  max-width: 100%;
-  height: auto;
-}
-
-.right-section {
-  flex: 2;
-  padding-left: 20px;
-  margin-right: 5%;
-}
-
-h1{
-  margin-left:5% ;
+h1 {
+  margin-left: 5%;
   margin-top: 2%;
 }
 
@@ -64,33 +65,27 @@ p {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
-}
 
-.icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 5px;
-}
+  .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+  }
 
-.type {
-  color: blue;
-}
-
-.mobile {
-  color: blue;
-}
-
-.passengers {
-  color: blue;
+  .type,
+  .mobile,
+  .passengers {
+    color: blue;
+  }
 }
 
 @media (max-width: 768px) {
   .taxi-card {
     flex-direction: column;
-  }
 
-  .right-section {
-    padding-left: 0;
-    margin-top: 20px;
+    .right-section {
+      padding-left: 0;
+      margin-top: 20px;
+    }
   }
 }
