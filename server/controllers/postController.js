@@ -4,7 +4,8 @@ import {
    getAllPosts,
    getPost,
    savePost,
-   deletePost
+   deletePost,
+   searchPosts
 } from "../models/postModel.js";
 
 // desc
@@ -58,6 +59,21 @@ const userPosts = asyncHandler(async (req, res) => {
    }
 });
 
+// desc
+// route
+// access
+
+const searchAllPosts = asyncHandler(async (req, res) => {
+   const posts = await searchPosts(req.query.phrase);
+
+   if (posts.length > 0) {
+      res.status(200).json(posts);
+   } else {
+      res.status(404);
+      throw new Error("Posts not found");
+   }
+});
+
 // desc    Add new post
 // route   POST /api/posts/
 // access  private
@@ -97,4 +113,4 @@ const removePost = asyncHandler(async (req, res) => {
    }
 });
 
-export { postByID, allPosts, userPosts, addPost, removePost };
+export { postByID, allPosts, userPosts, addPost, removePost, searchAllPosts };

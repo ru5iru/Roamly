@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import { postByID, allPosts, userPosts, addPost, removePost } from "../controllers/postController.js"
+import { postByID, allPosts, userPosts, addPost, removePost, searchAllPosts } from "../controllers/postController.js"
 import protect from "../middleware/authMiddleware.js";
 
 router.get("/all", allPosts);

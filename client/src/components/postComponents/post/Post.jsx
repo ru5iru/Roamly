@@ -6,17 +6,17 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Link } from "react-router-dom";
 import Comments from "../comments/Comments";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/authContext";
 import { formatCreatedAt } from "../../../utils/timeCalc";
 import { makeRequest } from "../../../axios";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
-const Post = ({ userID, post }) => {
+const Post = ({ userID, post, deleteMutation }) => {
    const { currentUser } = useContext(AuthContext);
    const [commentOpen, setCommentOpen] = useState(false);
    const [menuOpen, setMenuOpen] = useState(false);
-
    const {
       isLoading: likeIsLoading,
       error: likeError,
@@ -27,15 +27,14 @@ const Post = ({ userID, post }) => {
       })
    );
 
-   const {
-      isLoading: postProfileIsLoading,
-      error: postProfileError,
-      data: postProfileData,
-   } = useQuery(["postuser"], () =>
-      makeRequest.get("/users/profile/" + userID).then((res) => {
-         return res.data;
-      })
-   );
+   const [postProfileData, setPostProfileData] = useState([]);
+   useEffect(() => {
+      if (userID) {
+         axios.get("/users/profile/" + userID).then((response) => {
+            setPostProfileData(response.data);
+         });
+      }
+   }, [userID]);
 
    const queryClient = useQueryClient();
 
@@ -60,19 +59,6 @@ const Post = ({ userID, post }) => {
       }
    );
 
-   const deleteMutation = useMutation(
-      (postId) => {
-         const requestData = { post_id: postId };
-
-         return makeRequest.delete("/posts/", { params: requestData });
-      },
-      {
-         onSuccess: () => {
-            // Invalidate and refetch
-            queryClient.invalidateQueries(["posts"]);
-         },
-      }
-   );
 
    const handleLike = () => {
       mutation.mutate(likeData.likeArray.includes(currentUser.user_id));
@@ -84,10 +70,7 @@ const Post = ({ userID, post }) => {
 
    return (
       <div className="post">
-         {postProfileIsLoading ? (
-            "Loading"
-         ) : (
-            <div className="container">
+         <div className="container">
                <div className="user">
                   <div className="userInfo">
                      <img src={postProfileData.profile_pic} alt="" />
@@ -198,7 +181,6 @@ const Post = ({ userID, post }) => {
                </div>
                {commentOpen && <Comments />}
             </div>
-         )}
       </div>
    );
 };

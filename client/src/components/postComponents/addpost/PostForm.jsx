@@ -5,12 +5,12 @@ import { AuthContext } from "../../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../../axios";
 
-const PostForm = ({ setOpenAddPost }) => {
+const PostForm = ({ setOpenAddPost, setTriggerRefetch }) => {
    const [content, setContent] = useState("");
 
    const { currentUser } = useContext(AuthContext);
 
-   const queryClient = useQueryClient();
+   // const queryClient = useQueryClient();
    const user_id = currentUser.user_id;
 
    const mutation = useMutation(
@@ -20,7 +20,8 @@ const PostForm = ({ setOpenAddPost }) => {
       {
          onSuccess: () => {
             // Invalidate and refetch
-            queryClient.invalidateQueries(["posts"]);
+            // queryClient.invalidateQueries(["posts"]);
+            setTriggerRefetch(true)
          },
       }
    );

@@ -26,8 +26,8 @@ const interestsByUser = asyncHandler(async (req, res) => {
     if (interests.length > 0) {
        res.status(200).json(interests);
     } else {
-       res.status(404);
-       throw new Error("Interests not found");
+      res.status(404).json("Interests not found");
+      //  throw new Error("Interests not found");
     }
  });
 

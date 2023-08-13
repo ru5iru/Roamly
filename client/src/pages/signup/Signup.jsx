@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./signup.scss";
 import img2 from "../../assets/images/img2.jpg";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Signup = () => {
    const [inputs, setInputs] = useState({
@@ -12,6 +12,8 @@ export const Signup = () => {
       password: "",
       confirmPassword: "",
    });
+
+   const navigate = useNavigate();
 
    const [err, setErr] = useState(null);
 
@@ -26,6 +28,7 @@ export const Signup = () => {
             "http://localhost:8000/server/users/register",
             inputs
          );
+         navigate(`/login`);
       } catch (err) {
          setErr(err.response.data);
       }

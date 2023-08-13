@@ -1,32 +1,32 @@
+import "./badges.scss";
 import { useEffect, useState } from "react";
 import Badge from "../badge/Badge";
-import "./badges.scss";
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
-import { makeRequest } from "../../../axios";
 
-const Badges = () => {
-   const userId = 69690;
+const Badges = ({ userID }) => {
+   const [recentBadgeData, setRecentBadgeData] = useState([]);
+   const [error, setError] = useState(null);
 
-   const {
-      isLoading: recentBadgeIsLoading,
-      error: recentBadgeError,
-      data: recentBadgeData,
-   } = useQuery(["recentbadges"], () =>
-      makeRequest.get(`/badges/lastfive?userId=${userId}`).then((res) => {
-         return res.data;
-      })
-   );
+   useEffect(() => {
+      if (userID) {
+         axios
+            .get(`/badges/lastfive?userId=${userID}`)
+            .then((response) => {
+               setRecentBadgeData(response.data);
+            })
+            .catch((error) => {
+               setError("Error fetching badges");
+            });
+      }
+   }, [userID]);
 
    return (
       <div className="badges">
-         {recentBadgeError
-            ? "Something went wrong!"
-            : recentBadgeIsLoading
-            ? "loading"
-            : recentBadgeData.map((badge) => (
+         {recentBadgeData.length > 0
+            ? recentBadgeData.map((badge) => (
                  <Badge badge={badge} key={badge.badge_id} />
-              ))}
+              ))
+            : <div className="empty">No badges yet.</div>}
       </div>
    );
 };

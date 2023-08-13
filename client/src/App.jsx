@@ -23,8 +23,6 @@ import { AuthContext } from "./context/authContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import FirstView from "./pages/firstView/FirstView";
 import AdvertisementPage from "./pages/advertisement/advertisementpage";
-import TripType from "./pages/tripType/TripType";
-import Posts from "./components/postComponents/posts/Posts";
 import Places from "./pages/places/places";
 import PlacesDetails from "./pages/places/placesdetails";
 import ShopPage from "./pages/shop/shoppage"
@@ -63,7 +61,6 @@ function App() {
                     <LeftBar />
                     <div>
                         <LeftBarhs />
-                        {/* <Home /> */}
                     </div>
                     <RightBar />
                 </div>
@@ -81,8 +78,6 @@ function App() {
                         <LeftBarhs />
                         <ExploreTopBar />
                         <Explore />
-                        {/* <Posts /> */}
-
                     </div>
                 </div>
 
@@ -99,7 +94,6 @@ function App() {
                     <div>
                         <LeftBarhs />
                         <AdvertisementPage />
-                        {/* <Posts /> */}
                     </div>
                         <RightBar />
                 </div>
@@ -116,8 +110,6 @@ function App() {
                     <LeftBar />
                     <div>
                         <LeftBarhs />
-                        <TripType />
-                        {/* <Posts /> */}
                     </div>
                         <RightBar />
                 </div>
@@ -135,7 +127,6 @@ function App() {
                     <div>
                         <LeftBarhs />
                         <Places />
-                        {/* <Posts /> */}
                     </div>
                         <RightBar />
                 </div>
@@ -153,7 +144,6 @@ function App() {
                     <div>
                         <LeftBarhs />
                         <PlacesDetails />
-                        {/* <Posts /> */}
                     </div>
                         <RightBar />
                 </div>
@@ -170,7 +160,6 @@ function App() {
                     <div>
                         <LeftBarhs />
                         <ShopPage />
-                        {/* <Posts /> */}
                     </div>
                         <RightBar />
                 </div>
@@ -188,7 +177,6 @@ function App() {
                     <div>
                         <LeftBarhs />
                         <HotelPage />
-                        {/* <Posts /> */}
                     </div>
                         <RightBar />
                 </div>

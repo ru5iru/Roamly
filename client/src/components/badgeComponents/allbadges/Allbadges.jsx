@@ -2,23 +2,27 @@ import { useEffect, useState } from "react";
 import Badge from "../badge/Badge";
 import axios from "axios";
 import "./allbadges.scss";
-import { useQuery } from "@tanstack/react-query";
-import { makeRequest } from "../../../axios";
 
 const Allbadges = ({ userID, setOpenBadges }) => {
    const [activeStep, setActiveStep] = useState(1);
 
    const userId = userID;
 
-   const {
-      isLoading: badgeIsloading,
-      error: badgeError,
-      data: badgeData,
-   } = useQuery(["allbadges"], () =>
-      makeRequest.get(`/badges?userId=${userId}`).then((res) => {
-         return res.data;
-      })
-   );
+   const [badgeData, setRecentBadgeData] = useState([]);
+   const [error, setError] = useState(null);
+
+   useEffect(() => {
+      if (userID) {
+         axios
+            .get(`/badges?userId=${userId}`)
+            .then((response) => {
+               setRecentBadgeData(response.data);
+            })
+            .catch((error) => {
+               setError("Error fetching badges");
+            });
+      }
+   }, [userID]);
 
    const handleButtonClick = (step) => {
       setActiveStep(step);
@@ -27,24 +31,7 @@ const Allbadges = ({ userID, setOpenBadges }) => {
    const type_1 = [];
    const type_2 = [];
 
-   if (badgeError) {
-      const element = (
-         <div className="" key={1}>
-            "Something went wrong."
-         </div>
-      );
-      type_1.push(element);
-      type_2.push(element);
-   } else if (badgeIsloading) {
-      const element = (
-         <div className="" key={2}>
-            "Loading"
-         </div>
-      );
-      type_1.push(element);
-      type_2.push(element);
-   } else {
-      badgeData.forEach((badge) => {
+      badgeData?.length > 0 && badgeData.forEach((badge) => {
          if (badge.user_id === null) {
             badge.badge_color = "bg-grey-2";
          }
@@ -68,7 +55,6 @@ const Allbadges = ({ userID, setOpenBadges }) => {
             type_2.push(element);
          }
       });
-   }
 
    return (
       <div className="allbadges">

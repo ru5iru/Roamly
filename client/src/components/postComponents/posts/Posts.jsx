@@ -2,29 +2,35 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Post from "../post/Post";
 import "./posts.scss";
-import { useQuery } from "@tanstack/react-query";
-import { makeRequest } from "../../../axios";
 
-const Posts = ({ userID }) => {
-   const userId = userID;
-
-   const {
-      isLoading: postIsloading,
-      error: postError,
-      data: postData,
-   } = useQuery(["posts"], () =>
-      makeRequest.get(`/posts?userId=${userId}`).then((res) => {
-         return res.data;
-      })
-   );
+const Posts = ({ userID, deleteMutation }) => {
+   const [postData, setPostData] = useState([]);
+   const [error, setError] = useState(null);
+   useEffect(() => {
+      if (userID) {
+         axios
+            .get(`/posts?userId=${userID}`)
+            .then((response) => {
+               setPostData(response.data);
+            })
+            .catch((error) => {
+               setError("Error fetching badges");
+            });
+      }
+   }, [userID, deleteMutation]);
 
    return (
       <div className="posts">
-         {postError
-            ? "Something went wrong!"
-            : postIsloading
-            ? "loading"
-            : postData.map((post) => <Post userID={userId} post={post} key={post.post_id} />)}
+         {postData.length > 0
+            ? postData.map((post) => (
+                 <Post
+                    userID={userID}
+                    post={post}
+                    key={post.post_id}
+                    deleteMutation={deleteMutation}
+                 />
+              ))
+            : <div className="empty">User hasn't posted yet. :{`(`}</div>}
       </div>
    );
 };

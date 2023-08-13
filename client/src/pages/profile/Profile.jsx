@@ -5,10 +5,11 @@ import Posts from "../../components/postComponents/posts/Posts";
 import Badges from "../../components/badgeComponents/badges/Badges";
 import Badge from "../../components/badgeComponents/badge/Badge";
 import Update from "../../components/update/Update";
+import Interests from "../../components/interests/Interests";
 import Allbadges from "../../components/badgeComponents/allbadges/Allbadges";
 import Addpost from "../../components/postComponents/addpost/Addpost";
 import PostForm from "../../components/postComponents/addpost/PostForm";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import { AuthContext } from "../../context/authContext";
 import { useLocation } from "react-router-dom";
@@ -19,19 +20,17 @@ const Profile = () => {
    const [openBadges, setOpenBadges] = useState(false);
    const [openAddPost, setOpenAddPost] = useState(false);
 
-   const userId = 69690;
+   const[profileData, setProfileData] = useState([])
 
    const userID = parseInt(useLocation().pathname.split("/")[2]);
 
-   const {
-      isLoading: profileIsLoading,
-      error: profileError,
-      data: profileData,
-   } = useQuery(["user"], () =>
-      makeRequest.get("/users/profile/" + userID).then((res) => {
-         return res.data;
-      })
-   );
+   useEffect(() => {
+      if (userID) {
+        axios.get('/users/profile/' + userID).then(response => {
+         setProfileData(response.data);
+        });
+      }
+    }, [userID]);
 
    const expBadge = {
       badge_id: 1,
@@ -42,25 +41,32 @@ const Profile = () => {
       badge_color: "bg-platinum",
    };
 
-   const {
-      isLoading: interestIsloading,
-      error: interestError,
-      data: interestData,
-   } = useQuery(["interests"], () =>
-      makeRequest.get(`/interests?userId=${userId}`).then((res) => {
-         return res.data;
-      })
+
+   // const queryClient = useQueryClient();
+   const [triggerRefetch, setTriggerRefetch] = useState(false);
+
+   useEffect(() => {
+      if (triggerRefetch) {
+         setTriggerRefetch(false);
+      }
+   }, [triggerRefetch]);
+
+
+   const deleteMutation = useMutation(
+      (postId) => {
+         const requestData = { post_id: postId };
+         return makeRequest.delete("/posts/", { params: requestData });
+      },
+      {
+         onSuccess: () => {
+            setTriggerRefetch(true);
+         },
+      }
    );
 
    return (
       <div className="profile">
-         {profileError ? (
-            "Something went wrong."
-         ) : profileIsLoading ? (
-            "Loading"
-         ) : (
-            <>
-               <div className="images">
+         <div className="images">
                   <img className="cover" src={profileData.cover_pic} alt="" />
                </div>
                <div className="profileContainer">
@@ -96,7 +102,7 @@ const Profile = () => {
                            <div className="head">Achievements</div>
                            <div className="container">
                               <div className="badges">
-                                 <Badges />
+                                 <Badges userID={profileData.user_id}/>
                               </div>
                               <div className="button">
                                  <button
@@ -153,27 +159,7 @@ const Profile = () => {
                   </div>
                   <div className="profileBottom">
                      <div className="left">
-                        <div className="interests">
-                           <div className="interestHead">Interested In</div>
-                           <div className="interestContainer">
-                              {interestError
-                                 ? "Something went wrong!"
-                                 : interestIsloading
-                                 ? "loading"
-                                 : interestData.map((interest) => (
-                                      <div
-                                         className="interest"
-                                         key={interest.interest_id}
-                                      >
-                                         {interest.interest_name}
-                                      </div>
-                                   ))}
-                           </div>
-                           {/* <iframe
-                        src="https://maps.google.com/maps?q=6.0326,80.2170&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                        frameborder="0"
-                     ></iframe> */}
-                        </div>
+                        <Interests userID={userID}/>
                         <div className="uploads">
                            <div className="uploadsHeadContainer">
                               <div className="uploadsHead">Photos</div>
@@ -243,7 +229,7 @@ const Profile = () => {
                         ) : (
                            ""
                         )}
-                        <Posts userID={profileData.user_id} />
+                        <Posts userID={profileData.user_id} deleteMutation={deleteMutation}/>
                      </div>
                   </div>
                </div>
@@ -254,9 +240,7 @@ const Profile = () => {
                      setOpenBadges={setOpenBadges}
                   />
                )}
-               {openAddPost && <PostForm setOpenAddPost={setOpenAddPost} />}
-            </>
-         )}
+               {openAddPost && <PostForm setOpenAddPost={setOpenAddPost} setTriggerRefetch={setTriggerRefetch} />}
       </div>
    );
 };

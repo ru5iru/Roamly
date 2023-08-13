@@ -26,8 +26,8 @@ const loginUser = asyncHandler(async (req, res) => {
          cover_pic: user.cover_pic,
       });
    } else {
-      res.status(400);
-      throw new Error("Invalid email or password");
+      res.status(400).json("Invalid Email or Password");
+      // throw new Error("Invalid email or password");
    }
 });
 
