@@ -44,11 +44,9 @@ function App() {
             <QueryClientProvider client={queryClient}>
                 <div className={`theme-${darkMode ? "dark" : "light"}`}>
                     <NavBar />
-                    <div >
                         <div >
                             <Outlet />
                         </div>
-                    </div>
                 </div>
             </QueryClientProvider>
         );
@@ -59,12 +57,11 @@ function App() {
             <QueryClientProvider client={queryClient}>
                 <div className={`theme-${darkMode ? "dark" : "light"}`}>
                     <NavBar />
-                    <div style={{ display: "flex" }}>
+                    <div style={{ display: "flex", position: "relative", top: "4rem" }}>
                         <LeftBar />
                         <div>
                             <LeftBarhs />
                             <Feedcontent />
-                            {/* <Home /> */}
                         </div>
                         <RightBar />
                     </div>
@@ -78,7 +75,7 @@ function App() {
             <QueryClientProvider client={queryClient}>
                 <div className={`theme-${darkMode ? "dark" : "light"}`}>
                     <NavBar />
-                    <div style={{ display: "flex" }}>
+                    <div style={{ display: "flex", position: "relative", top: "4rem" }}>
                         <LeftBar />
                         <div>
                             <LeftBarhs />
@@ -87,8 +84,6 @@ function App() {
                                 <Explore />
                                 <RightBar />
                             </div>
-
-                            {/* <Posts /> */}
                         </div>
 
                     </div>
