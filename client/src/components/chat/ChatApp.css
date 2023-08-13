@@ -1,0 +1,97 @@
+/* ChatApp.css */
+.chat-app {
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    height: 100vh;
+    flex-direction: column;
+  }
+  
+  .chat-container {
+    border: 1px solid #ccc;
+    width: 90%;
+    /* max-width: 400px; */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .message-list {
+    padding: 10px;
+    overflow-y: scroll;
+    max-height: 60vh;
+  }
+  
+  .message {
+    padding: 8px;
+    /* margin: 8px; */
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+  }
+  
+  .other-message {
+    background-color: #f2f2f2;
+    align-self: flex-start;
+  }
+  
+  .message-input {
+    display: flex;
+    padding: 10px;
+    background-color: #f7f7f7;
+  }
+  
+  .message-input input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-right: 0;
+  }
+  
+  .message-input button {
+    padding: 2px 2px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  @media (min-width: 768px) {
+    /* Desktop layout */
+    .chat-app {
+      flex-direction: row;
+    }
+
+
+}
+
+@media (max-width: 768px) {
+ 
+  .chat-container {
+    width: 90%;
+  }
+
+  .message-input {
+    flex-direction: row;
+  }
+
+  .message-input input,
+  .message-input button {
+
+    margin-right: 0;
+    margin-top: 8px;
+  }
+
+  .message-list {
+    max-height: 50vh;
+  }
+}

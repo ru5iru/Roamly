@@ -1,0 +1,155 @@
+/* ChatBox.css */
+.chat-box {
+    /* flex: 1; */
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #ccc;
+    width: 70%;
+  }
+  
+  .chat-header {
+    display: flex;
+    align-items: center;
+    font-family: FiraSans Bold;
+    padding: 10px;
+    margin: 1%;
+    border-radius: 2%;
+    background-color: #51bcd3;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .chat-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px; 
+  }
+
+  .menu {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 80%;
+    display: none;
+  }
+
+  .chat-header-menu {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 60%;
+    
+  }
+
+  .emoji-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .user-emoji-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+  }
+
+  .button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
+
+  .user-emoji-picture {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+.message-list {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 70vh;
+  }
+  
+  
+  .message {
+    padding: 8px;
+    margin: 4px 8px;
+    border-radius: 8px;
+    max-width: 30%;
+    width: fit-content;
+    /* word-wrap: break-word; */
+  }
+  
+  .user-message {
+    background-color: #10adf4;
+    color: white;
+    align-self: flex-end; 
+    /* margin: right 0; */
+    margin-left: auto;
+    max-width: 30%;
+    /* word-wrap: break-word; */
+  }
+  
+  .other-message {
+    background-color: #f2f2f2;
+    align-self: flex-start;
+    margin-right: auto;
+  }
+  
+  .message-input {
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-top: 1px solid #ccc;
+    position: absolute;
+    bottom: 0;
+    width: 68%;
+    display: flex;
+    align-items: center;
+    border-radius: 2%;
+  }
+  
+  .message-input input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-right: 8px;
+    width: auto;
+  }
+  
+  @media (max-width: 768px) {
+    /* On desktop, set a specific width */
+    .chat-box {
+      width: 100%;
+      display: block;
+    }
+    .chat-header{
+        width: 100%;
+      }
+      .message-input input{
+        width: 100%;
+      }
+
+      .message-input {
+        width: 100%;
+       
+      }
+
+      .menu{
+        display: block;
+      }
+      .chat-header{
+        align-items: center;
+      }
+      .propic{
+        margin-left: 30%;
+      }
+  
+  }
+  
