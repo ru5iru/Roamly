@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./signup.scss";
-import img2 from "../../assets/images/img2.jpg";
+import img10 from "../../assets/images/img10.jpg";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
@@ -261,7 +261,7 @@ export const Signup = () => {
                   </div>
                </div>
                <div className="scontainer-img">
-                  <img src={img2} className="simg" alt="" />
+                  <img src={img10} className="simg" alt="" />
                </div>
             </div>
          </div>

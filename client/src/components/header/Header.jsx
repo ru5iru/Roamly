@@ -1,5 +1,5 @@
 import "./header.scss";
-import logowb from '../../assets/logowb.png'
+import logowb from '../../assets/images/logowb.png'
 
 export const Header = () => {
     return(

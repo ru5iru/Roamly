@@ -1,5 +1,5 @@
 import "./resetpw.scss"
-import img1 from '../../images/img1.jpg';
+// import img1 from '../../images/img1.jpg';
 
 
 
