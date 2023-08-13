@@ -15,7 +15,7 @@ function Ads() {
                 </div>
                 <div className="stat-item">
                     <div className="stat-item-title">Advertisements Returned</div>
-                    <div className="stat-item-value">123</div>
+                    <div className="stat-item-value">10</div>
                 </div>
             </div>
             <div className="ads">
@@ -34,25 +34,81 @@ function Ads() {
                             <tr>
                                 <td>John Dom</td>
                                 <td>Hotel</td>
-                                <td>Published</td>
+                                <td>Submitted</td>
                                 <td>2023-08-02</td>
                                 <td>Nuwara-eliya</td>
                                 <td>
-                                    <Link to='/advertisementspage'>
+                                    <Link to='/advertisementspage' className='link'>
                                         <span class="material-icons">
                                             visibility
                                         </span>
                                     </Link>
                                 </td>
                                 <td>
-                                    <Link to='/advertisementspage'>
+                                    <Link to='/advertisementspage' className='link'>
                                         <span class="material-icons">
                                             publish
                                         </span>
                                     </Link>
                                 </td>
                                 <td>
-                                    <Link to='/advertisementspage'>
+                                    <Link to='/advertisementspage' className='link'>
+                                        <span class="material-icons">
+                                            replay
+                                        </span>
+                                    </Link>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>John Dom</td>
+                                <td>Hotel</td>
+                                <td>Submitted</td>
+                                <td>2023-08-02</td>
+                                <td>Nuwara-eliya</td>
+                                <td>
+                                    <Link to='/advertisementspage' className='link'>
+                                        <span class="material-icons">
+                                            visibility
+                                        </span>
+                                    </Link>
+                                </td>
+                                <td>
+                                    <Link to='/advertisementspage' className='link'>
+                                        <span class="material-icons">
+                                            publish
+                                        </span>
+                                    </Link>
+                                </td>
+                                <td>
+                                    <Link to='/advertisementspage' className='link'>
+                                        <span class="material-icons">
+                                            replay
+                                        </span>
+                                    </Link>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>John Dom</td>
+                                <td>Hotel</td>
+                                <td>Submitted</td>
+                                <td>2023-08-02</td>
+                                <td>Nuwara-eliya</td>
+                                <td>
+                                    <Link to='/advertisementspage' className='link'>
+                                        <span class="material-icons">
+                                            visibility
+                                        </span>
+                                    </Link>
+                                </td>
+                                <td>
+                                    <Link to='/advertisementspage' className='link'>
+                                        <span class="material-icons">
+                                            publish
+                                        </span>
+                                    </Link>
+                                </td>
+                                <td>
+                                    <Link to='/advertisementspage' className='link'>
                                         <span class="material-icons">
                                             replay
                                         </span>
