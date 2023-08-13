@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import "./navbar.scss";
@@ -10,8 +10,18 @@ import Profile_pic from "../../assets/profile_pic.png";
 import logo from "../../assets/Roamly.png";
 import Search_component from "../search/search.jsx";
 
+import { AuthContext } from "../../context/authContext";
+
 const Navbar = () => {
+
+    const { currentUser } = useContext(AuthContext);
+
     const navigate = useNavigate(); // Initialize useNavigate
+
+    const handleProfileClick = () => {
+        // Navigate to the home page when the Home menu item is clicked
+        navigate("/profile/" + currentUser.user_id);
+    };
 
     const [searchText, setSearchText] = useState('');
 
@@ -62,7 +72,7 @@ const Navbar = () => {
                 </div>
                 <img src={Chat} alt="" />
                 <img src={Notification} alt="" />
-                <img src={Profile_pic} alt="" />
+                <img src={currentUser.profile_pic} alt="" className="usr_pic" onClick={handleProfileClick} />
             </div>
         </div>
     );
