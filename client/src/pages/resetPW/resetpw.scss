@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap");
+
+.containerr {
+    background-color: #f0f0f0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 100vw;
+
+    .titler {
+        font-family: "Fira Sans" , sans-serif;
+        font-size: 3rem;
+        // display: flex;
+        // top: 2rem;
+        font-weight: 500;
+        color: #4f4f4f;
+    }
+    .inputr {
+        padding: 3rem;
+        
+
+        .row-titler {
+            display: flex;
+            flex-direction: column;
+            font-family: "Fira Sans" , sans-serif;
+            font-size: 1rem;
+            padding: 0.7rem;
+            color: #4f4f4f;
+            justify-content: center;
+            align-items: center;
+
+            .form-inputr {
+                font-family: "Fira Sans", sans-serif;
+                font-size: 0.9rem;
+                border-radius: 0.5rem;
+                border: 1px solid #ced4da;
+                font-size: 1rem;
+                padding: 1rem;
+                padding-left: 2.5rem;
+                padding-right: 2.5rem;
+                width: 507px;
+                height: 0.8rem;
+                background-color: #fff;
+                background-image: none;
+                background-clip: padding-box;
+                box-shadow: none;
+                transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                &:focus {
+                    border-color: #80bdff;
+                    outline: 0;
+                    box-shadow: 0 0 0 0.25rem rgb(0 123 255 / 25%);
+                }
+
+            }
+            @media (max-width: 768px) {
+                .form-inputr {
+                  font-size: 0.9rem;
+                  padding: 1rem;
+                  width: 200px;
+                }
+            }
+        }
+
+        .row-titler {
+            display: flex;
+            flex-direction: column;
+            font-family: "Fira Sans" , sans-serif;
+            font-size: 1rem;
+            padding: 0.7rem;
+
+            .form-inputr{
+                font-family: "Fira Sans", sans-serif;
+                font-size: 0.9rem;
+                border-radius: 0.5rem;
+                border: 1px solid #ced4da;
+                font-size: 1rem;
+                padding: 1rem;
+                padding-left: 2.5rem;
+                padding-right: 2.5rem;
+                width: 507px;
+                height: 0.8rem;
+                background-color: #fff;
+                background-image: none;
+                background-clip: padding-box;
+                box-shadow: none;
+                transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                &:focus {
+                    border-color: #80bdff;
+                    outline: 0;
+                    box-shadow: 0 0 0 0.25rem rgb(0 123 255 / 25%);
+                }
+
+            }
+            @media (max-width: 768px) {
+                .form-inputr {
+                  font-size: 0.9rem;
+                  padding: 1rem;
+                  width: 200px;
+                }
+            }
+        }
+
+        .btnr {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */ 
+            margin-top: 1.5rem; 
+
+            .buttonr {
+                font-family: "Fira Sans", sans-serif;
+                width: 108px;
+                font-size: 1rem;
+                color: #fff;
+                border-color: #141f86;
+                background-color: #141f86; /* Set custom background color */
+                cursor: pointer;
+                padding: 1rem;
+                color: #ffffff;
+                border-radius: 0.5rem;
+                border: none;
+                font-weight: 600;
+                letter-spacing: 1px;
+                &:hover {
+                background-color: #10ADF4;
+                }
+
+            }
+        }
+    }
+}

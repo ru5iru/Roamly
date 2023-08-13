@@ -1,11 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap");
+
 
 .ltext-center {
    display: flex;
    justify-content: center;
    align-items: center;
    width: 100vw;
-   height: 100vh;
+   height: 90vh;
 
    .lcontainer {
       align-items: center;
@@ -37,10 +38,10 @@
                   gap: 2rem;
 
                   .ltitle {
-                     font-family: "Familjen Grotesk", sans-serif;
+                     font-family: "Fira Sans", sans-serif;
                      font-weight: bold;
                      font-size: 1.5rem;
-                     font-family: "Familjen Grotesk", sans-serif;
+                     font-family: "Fira Sans", sans-serif;
                      color: #4f4f4f;
                   }
 
@@ -49,7 +50,7 @@
                         .lform-outline {
                            margin-bottom: 1.5rem;
                            .lform-control {
-                              font-family: "Familjen Grotesk", sans-serif;
+                              font-family: "Fira Sans", sans-serif;
                               font-size: 0.9rem;
                               border-radius: 0.5rem;
                               border: 1px solid #ced4da;
@@ -76,26 +77,48 @@
                      .lform-outline {
                         margin-bottom: 1.5rem;
                         .lbtn {
-                           font-family: "Familjen Grotesk", sans-serif;
+                           font-family: "Fira Sans", sans-serif;
                            width: 381.6px;
                            font-size: 0.9rem;
                            color: #fff;
                            border-color: #007bff;
-                           background-color: #51bcd3; /* Set custom background color */
+                           background-color: #10ADF4; /* Set custom background color */
                            cursor: pointer;
                            padding: 0.5rem;
                            color: #ffffff;
                            border-radius: 0.5rem;
                            border: none;
                            &:hover {
-                              background-color: #007bff;
+                              background-color: #141f86;
                            }
                         }
                      }
                      .ltext-left {
                         .lsub {
-                           font-family: "Familjen Grotesk", sans-serif;
+                           font-family: "Fira sans", sans-serif;
                            font-size: 0.9rem;
+
+                           .fw-bold {
+                              color: #141f86;
+                              text-decoration:none;
+                           }
+
+                           .fw-bold:hover{
+                              color: #10ADF4;
+                           }
+                        }
+                        .lsub {
+                           font-family: "Fira Sans", sans-serif;
+                           font-size: 0.9rem;
+
+                           .fw-bold {
+                              color: #141f86;
+                              text-decoration:none;
+                           }
+
+                           .fw-bold:hover{
+                              color: #10ADF4;
+                           }
                         }
                      }
                   }

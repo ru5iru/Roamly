@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./signup.scss";
 import img2 from "../../assets/images/img2.jpg";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import validator from "validator";
 
 export const Signup = () => {
    const [inputs, setInputs] = useState({
@@ -13,9 +14,8 @@ export const Signup = () => {
       confirmPassword: "",
    });
 
-   const navigate = useNavigate();
-
    const [err, setErr] = useState(null);
+   const [validationErrors, setValidationErrors] = useState({});
 
    const handleChange = (e) => {
       setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -23,15 +23,51 @@ export const Signup = () => {
 
    const handleClick = async (e) => {
       e.preventDefault();
+
+      // Perform frontend validations
+    const errors = {};
+    if (!inputs.firstname) {
+      errors.firstName = "First name is required";
+    }
+    if (!inputs.lastname) {
+      errors.lastName = "Last name is required";
+    }
+    if (!inputs.email) {
+      errors.email = "Email is required";
+    } else if (!validator.isEmail(inputs.email)) {
+      errors.email = "Invalid email address";
+    }
+
+    // Password validation
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!inputs.password) {
+      errors.password = "Password is required";
+    } else if (!passwordPattern.test(inputs.password)) {
+      errors.password =
+        "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character.";
+    }
+
+    if (!inputs.confirmPassword) {
+      errors.confirmPassword = "Confirm password is required";
+    } else if (inputs.confirmPassword !== inputs.password) {
+      errors.confirmPassword = "Passwords do not match";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+    } else {
+      setValidationErrors({});
+
+
       try {
          await axios.post(
             "http://localhost:8000/server/users/register",
             inputs
          );
-         navigate(`/login`);
       } catch (err) {
          setErr(err.response.data);
       }
+   };
    };
 
    console.log(err);
@@ -51,16 +87,25 @@ export const Signup = () => {
                                     <input
                                        type="text"
                                        id="form3Example1"
-                                       name="firstname" //or just putting this line is enough to access db
+                                       name="firstname" 
                                        className="sform-control"
                                        placeholder="First name"
                                        onChange={handleChange}
                                        style={{
                                           fontFamily:
-                                             "'Familjen Grotesk', sans-serif",
+                                             "'Fira Sans', sans-serif",
                                           fontSize: "0.9rem",
                                        }}
                                     />
+                                    {validationErrors.firstName && (
+                                       <div className="error-msg" style={{
+                                       color: "red",
+                                       fontSize: "0.7rem",
+                                       fontFamily: "'Fira Sans', sans-serif",
+                                       }}>
+                                          {validationErrors.firstName}
+                                       </div>
+                                    )}
                                  </div>
                               </div>
                               <div className="scol">
@@ -74,10 +119,19 @@ export const Signup = () => {
                                        onChange={handleChange}
                                        style={{
                                           fontFamily:
-                                             "'Familjen Grotesk', sans-serif",
+                                             "'Fira Sans', sans-serif",
                                           fontSize: "0.9rem",
                                        }}
                                     />
+                                    {validationErrors.lastName && (
+                                       <div className="error-msg" style={{
+                                          color: "red",
+                                          fontSize: "0.7rem",
+                                          fontFamily: "'Fira Sans', sans-serif",
+                                       }}>
+                                          {validationErrors.lastName}
+                                       </div>
+                                    )}
                                  </div>
                               </div>
                               <div className="sform-outline-2">
@@ -90,10 +144,18 @@ export const Signup = () => {
                                     onChange={handleChange}
                                     style={{
                                        fontFamily:
-                                          "'Familjen Grotesk', sans-serif",
+                                          "'Fira Sans', sans-serif",
                                        fontSize: "0.9rem",
                                     }}
                                  />
+                                 {validationErrors.email && (
+                                    <div className="error-msg" style={{
+                                    color: "red",
+                                    fontSize: "0.7rem",
+                                    fontFamily: "'Fira Sans', sans-serif",
+                                    }}>
+                                    {validationErrors.email}</div>
+                                 )}
                               </div>
                               <div className="sform-outline-2">
                                  <input
@@ -105,10 +167,23 @@ export const Signup = () => {
                                     onChange={handleChange}
                                     style={{
                                        fontFamily:
-                                          "'Familjen Grotesk', sans-serif",
+                                          "'Fira Sans', sans-serif",
                                        fontSize: "0.9rem",
                                     }}
                                  />
+                                 {validationErrors.password && (
+                                    <div className="error-msg" style={{
+                                       color: "red",
+                                       fontSize: "0.7rem",
+                                       fontFamily: "'Fira Sans', sans-serif",
+                                    }}>
+                                    Password must be at least 8 characters long
+                                    <br />
+                                    and include at least one uppercase letter,
+                                    <br />
+                                    one lowercase letter, one digit, and one special character.
+                                    </div>
+                                 )}
                               </div>
                               <div className="sform-outline-2">
                                  <input
@@ -120,11 +195,20 @@ export const Signup = () => {
                                     onChange={handleChange}
                                     style={{
                                        fontFamily:
-                                          "'Familjen Grotesk', sans-serif",
+                                          "'Fira Sans', sans-serif",
                                        fontSize: "0.9rem",
                                     }}
                                  />
-                                 {err && err}
+                                 {validationErrors.confirmPassword && (
+                                    <div className="error-msg" style={{
+                                    color: "red",
+                                    fontSize: "0.7rem",
+                                    fontFamily: "'Fira Sans', sans-serif",
+                                    }}>
+                                    {validationErrors.confirmPassword}
+                                    </div>
+                                 )}
+                                 {err && <div className="error-msg">{err}</div>}
                               </div>
                            </div>
                            <div className="sform-outline-3">
@@ -134,7 +218,7 @@ export const Signup = () => {
                                  onClick={handleClick}
                                  style={{
                                     fontFamily:
-                                       "'Familjen Grotesk', sans-serif",
+                                       "'Fira Sans', sans-serif",
                                     width: "100%",
                                     fontSize: "0.9rem",
                                  }}
@@ -148,7 +232,7 @@ export const Signup = () => {
                                  className="ssub"
                                  style={{
                                     fontFamily:
-                                       "'Familjen Grotesk', sans-serif",
+                                       "'Fira Sans', sans-serif",
                                     color: "#9B9A9A",
                                  }}
                               >
@@ -156,26 +240,14 @@ export const Signup = () => {
                                  <a
                                     href="/login"
                                     className="fw-bold"
-                                    style={{
-                                       fontFamily:
-                                          "'Familjen Grotesk', sans-serif",
-                                       color: "#1E89EF",
-                                       fontSize: "0.9rem",
-                                    }}
                                  >
                                     Login
                                  </a>
                               </p>
                               <p className="ssub">
                                  <a
-                                    href="/signupService"
+                                    href="/signupSP"
                                     className="fw-bold"
-                                    style={{
-                                       fontFamily:
-                                          "'Familjen Grotesk', sans-serif",
-                                       color: "#1E89EF",
-                                       fontSize: "0.9rem",
-                                    }}
                                  >
                                     Register as a service
                                  </a>

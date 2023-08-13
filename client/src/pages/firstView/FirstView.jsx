@@ -22,7 +22,7 @@ export const FirstView = () => {
                type="submit"
                className="btn-primary btn-block mb-4 custom-buttonfv"
                style={{
-                  fontFamily: "'Familjen Grotesk', sans-serif",
+                  fontFamily: "'Fira Sans', sans-serif",
                   width: "120px",
                   fontSize: "0.9rem",
                }}
@@ -36,7 +36,7 @@ export const FirstView = () => {
                   href="/register"
                   className="fw-bold"
                   style={{
-                     fontFamily: "'Familjen Grotesk', sans-serif",
+                     fontFamily: "'Fira Sans', sans-serif",
                      color: "#51BCD3",
                      fontSize: "0.9rem",
                      textDecoration: "none",

@@ -18,18 +18,19 @@ const Login = () => {
       setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
    };
 
-   const { login, currentUser } = useContext(AuthContext);
-
+   const { login } = useContext(AuthContext);
 
    const handleLogin = async (e) => {
       e.preventDefault();
       try {
          await login(inputs);
-         navigate(`/profile/${currentUser.user_id}`);
+         navigate("/");
       } catch (err) {
          setErr(err.response.data);
       }
    };
+
+   console.log(err)
 
    return (
       <section className="ltext-center">
@@ -80,7 +81,6 @@ const Login = () => {
                                  <a
                                     href="/forgot-password"
                                     className="fw-bold"
-                                    style={{ color: "#1E89EF" }}
                                  >
                                     Forgot password?
                                  </a>
@@ -90,7 +90,6 @@ const Login = () => {
                                  <a
                                     href="/signup"
                                     className="fw-bold"
-                                    style={{ color: "#1E89EF" }}
                                  >
                                     Sign Up
                                  </a>

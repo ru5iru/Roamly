@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap");
 
 .stext-center {
    display: flex;
    justify-content: center;
    align-items: center;
    width: 100vw;
-   height: 100vh;
+   height: 90vh;
 
    .scontainer {
       align-items: center;
@@ -37,10 +37,10 @@
                   gap: 2rem;
 
                   .stitle {
-                     font-family: "Familjen Grotesk", sans-serif;
+                     font-family: "Fira Sans", sans-serif;
                      font-weight: bold;
                      font-size: 1.5rem;
-                     font-family: "Familjen Grotesk", sans-serif;
+                     font-family: "Fira Sans", sans-serif;
                      color: #4f4f4f;
                   }
 
@@ -53,7 +53,7 @@
                               margin-right: 0.2rem;
 
                               .sform-control {
-                                 font-family: "Familjen Grotesk", sans-serif;
+                                 font-family: "Fira Sans", sans-serif;
                                  font-size: 0.9rem;
                                  border-radius: 0.5rem;
                                  border: 1px solid #ced4da;
@@ -76,7 +76,7 @@
                                  }
                               }
                               .invalid-feedback {
-                                 font-family: "Familjen Grotesk", sans-serif;
+                                 font-family: "Fira Sans", sans-serif;
                                  font-size: 0.9rem;
                                  color: #dc3545;
                               }
@@ -86,7 +86,7 @@
                               margin-left: 0.2rem;
 
                               .sform-control {
-                                 font-family: "Familjen Grotesk", sans-serif;
+                                 font-family: "Fira Sans", sans-serif;
                                  font-size: 0.9rem;
                                  border-radius: 0.5rem;
                                  border: 1px solid #ced4da;
@@ -109,7 +109,7 @@
                                  }
                               }
                               .invalid-feedback {
-                                 font-family: "Familjen Grotesk", sans-serif;
+                                 font-family: "Fira Sans", sans-serif;
                                  font-size: 0.9rem;
                                  color: #dc3545;
                               }
@@ -119,7 +119,7 @@
                         .sform-outline-2 {
                            margin-bottom: 0.8rem;
                            .sform-control {
-                              font-family: "Familjen Grotesk", sans-serif;
+                              font-family: "Fira Sans", sans-serif;
                               font-size: 0.9rem;
                               border-radius: 0.5rem;
                               border: 1px solid #ced4da;
@@ -142,7 +142,7 @@
                               }
                            }
                            .invalid-feedback {
-                              font-family: "Familjen Grotesk", sans-serif;
+                              font-family: "Fira Sans", sans-serif;
                               font-size: 0.9rem;
                               color: #dc3545;
                            }
@@ -152,27 +152,49 @@
                      .sform-outline-3 {
                         margin-bottom: 0.8rem;
                         .sbtn {
-                           font-family: "Familjen Grotesk", sans-serif;
+                           font-family: "Fira Sans", sans-serif;
                            width: 300px;
                            font-size: 0.9rem;
                            color: #fff;
                            border-color: #007bff;
-                           background-color: #51bcd3; /* Set custom background color */
+                           background-color: #10ADF4; /* Set custom background color */
                            cursor: pointer;
                            padding: 0.5rem;
                            color: #ffffff;
                            border-radius: 0.5rem;
                            border: none;
                            &:hover {
-                              background-color: #007bff;
+                              background-color: #141f86;
                            }
                         }
                      }
 
                      .stext-left {
                         .ssub {
-                           font-family: "Familjen Grotesk", sans-serif;
+                           font-family: "Fira sans", sans-serif;
                            font-size: 0.9rem;
+
+                           .fw-bold {
+                              color: #141f86;
+                              text-decoration:none;
+                           }
+
+                           .fw-bold:hover{
+                              color: #10ADF4;
+                           }
+                        }
+                        .ssub {
+                           font-family: "Fira Sans", sans-serif;
+                           font-size: 0.9rem;
+
+                           .fw-bold {
+                              color: #141f86;
+                              text-decoration:none;
+                           }
+
+                           .fw-bold:hover{
+                              color: #10ADF4;
+                           }
                         }
                      }
                   }
