@@ -139,7 +139,7 @@ function App() {
       return (
          <div>
             <NavBar />
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                <LeftBar />
                <div>
                   <LeftBarhs />
@@ -154,7 +154,7 @@ function App() {
       return (
          <div>
             <NavBar />
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                <LeftBar />
                <div>
                   <LeftBarhs />
@@ -170,7 +170,7 @@ function App() {
       return (
          <div>
             <NavBar />
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                <LeftBar />
                <div>
                   <LeftBarhs />
@@ -185,7 +185,7 @@ function App() {
       return (
          <div>
             <NavBar />
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                <LeftBar />
                <div>
                   <LeftBarhs />
