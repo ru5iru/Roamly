@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import hotelAd3 from "../../assets/images/hotel-ad-3.jpeg";
+import hotelAd3 from "../../assets/images/hotel-ad-2.jpg";
 import "./viewad.scss";
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";

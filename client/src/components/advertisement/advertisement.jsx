@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ViewAdd from "./viewad"; // Import the correct path for ViewAdd
-import hotelAd3 from "../../assets/images/hotel-ad-3.jpeg";
+import hotelAd3 from "../../assets/images/hotel-ad-2.jpg";
 import "./advertisement.scss";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 
