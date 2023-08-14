@@ -38,7 +38,7 @@ const Shop = () => {
             </li>
             <li>
               <HotelIcon />
-              <span>Hotel</span>
+              <span>Shop</span>
             </li>
           </ul>
         </div>

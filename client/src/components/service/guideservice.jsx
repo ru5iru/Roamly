@@ -4,7 +4,7 @@ import Guides from "../../assets/images/guides.png";
 
 const Guideservice = () => {
   return (
-    <Link to={"/guide"}>
+    <Link to={"/trip/place/placedetails/guides"}>
       <div className="service">
         <img src={Guides} alt="Guide Services" />
         <span className="blur-background">

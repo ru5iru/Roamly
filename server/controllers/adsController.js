@@ -1,9 +1,6 @@
 // import pool from "../connect.js";
+import { getAllAds, saveAd, deleteAd } from "../models/adsModel.js"
 import asyncHandler from "express-async-handler";
-import {
-    getAllAds
-} from "../models/adsModel.js"
-
 
 const getAds = asyncHandler(async (req, res) => {
     const ads = await getAllAds();
@@ -15,6 +12,48 @@ const getAds = asyncHandler(async (req, res) => {
         throw new Error("Ads not found");
     }
 });
+
+// const getUserAds = asyncHandler(async (req, res) => {
+//     const ads = await getAllAds();
+
+//     if (ads.length > 0) {
+//         res.status(200).json(ads);
+//     } else {
+//         res.status(404);
+//         throw new Error("Ads not found");
+//     }
+// });
+
+const addAd = asyncHandler(async (req, res) => {
+    const { title, description, details } = req.body;
+  
+    const ad = await saveAd(title, description, details);
+  
+    if (ad.rows.length > 0) {
+        res.status(201).json(rows[0]);
+    } else {
+        res.status(400);
+        throw new Error("Invalid user data");
+    }
+  });
+
+
+// const addAd = asyncHandler(async (req, res) => {
+//     const { service_type, title, description, details } = req.body;
+
+//     const ad = await saveAd(service_type, title, description, details);
+
+//     if (ad.rows.length > 0) {
+//         res.status(201).json({
+//             ad_id: post.rows[0].ad_id,
+//             user_id: post.rows[0].user_id,
+//          });
+//     } else {
+//         res.status(400);
+//         throw new Error("Invalid user data");
+//     }
+// });
+
 
 // const getAds = async (req, res) => {
 //     // console.log("getAds???????");
@@ -29,4 +68,19 @@ const getAds = asyncHandler(async (req, res) => {
 //     }
 // };
 
-export { getAds };
+const removeAds = asyncHandler(async (req, res) => {
+    const { ad_id } = req.query;
+ 
+    const like = await deleteAd(ad_id);
+ 
+    if (like) {
+       res.status(201).json({
+          status: "succes",
+       });
+    } else {
+       res.status(400);
+       throw new Error("Invalid user data");
+    }
+ });
+
+export { getAds, addAd, removeAds };

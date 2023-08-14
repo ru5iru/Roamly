@@ -5,13 +5,29 @@ import Phone from "../../assets/Phone.png";
 import { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 
+
+
+
 const Ad = () => {
     const [ads, setAds] = useState([]);
+
+    // const getAds = async () => {
+    //     console.log("getAds");
+    //     try {
+    //         const res = await fetch("http://localhost:5000/server/ads/getAds");
+    //         const jsonData = await res.json();
+    //         setAds(jsonData);
+    //         console.log(jsonData);
+
+    //     } catch (err) {
+    //         console.error(err.message);
+    //     }
+    // };
 
     const getAds = async () => {
         console.log("getAds");
         try {
-            const response = await axios.get("http://localhost:8000/server/ads");
+            const response = await axios.get("http://localhost:5000/server/ads");
             const jsonData = response.data;
             setAds(jsonData);
             console.log(jsonData);
@@ -30,6 +46,7 @@ const Ad = () => {
             {
                 ads.map(ad => (
                     <div className="ad">
+
                         <img src={require('../../assets/' + ad.ad_img)} alt="" />
 
                         <div className="adDetails">

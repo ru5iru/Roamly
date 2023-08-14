@@ -1,65 +1,133 @@
-/* viewad.scss */
 .view-ad {
-    // border: 1px solid #ccc;
-    padding: 5px;
-    margin: 10px;
-    background-color: #f9f9f9;
-    // box-shadow: 2px 2px 5px black;
-  
-    .ad-whole-up {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      background-color: #065573;
-        color: #fff;
-        padding: 10px;
-        border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
+  background-color: #f9f9f9;
 
-  
-      .ad-title {
-        font-size: 1.5rem;
-        margin: 0;
+  .ad-whole-up {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #065573;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
 
-      }
-  
-      .edit-delete {
-        display: flex;
-        align-items: center;
+    .ad-title {
+      font-size: 1.5rem;
+      margin: 0;
     }
-    
-    .edit-delete .edit,
-    .edit-delete .dlt {
+
+    .edit-delete {
+      display: flex;
+      align-items: center;
+
+      .edit,
+      .dlt {
         cursor: pointer;
         font-size: 20px;
         color: #fff;
-        transition: transform 0.3s ease, background-color 0.3s ease; /* Include other transitions if needed */
-        transform-origin: center center; /* Set the scaling origin to the center */
-    
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        transform-origin: center center;
+
         &:hover {
-            transform: scale(1.4);
-            will-change: transform; /* Optimize for smoother transitions */
+          transform: scale(1.4);
+          will-change: transform;
         }
-    }
-    
-    .edit-delete .edit {
+      }
+
+      .edit {
         margin-right: 20px;
+      }
+      
+
     }
-    
+  }
+
+
+  .ad-whole-bottom {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+
+    .ad-up {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+
+      img {
+        max-width: 350px;
+        height: auto;
+        margin-right: 15px;
+        border-radius: 6px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        align-self: stretch;
+      }
+
+      .ad-details {
+        flex: 1;
+        color: #666;
+        font-size: 18px;
+        line-height: 1.4;
+      }
     }
-  
+
+    .ad-bottom {
+      background-color: #f8f8f8;
+      padding: 15px;
+
+      .ad-description {
+        color: #333;
+        font-size: 18px;
+        margin: 0;
+      }
+    }
+  }
+
+  .edit-delete {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .edit,
+    .dlt {
+      cursor: pointer;
+      font-size: 20px;
+      color: #065573;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      transform-origin: center center;
+
+      &:hover {
+        color: #00a651;
+        transform: scale(1.4);
+        will-change: transform;
+      }
+
+      &.dlt {
+        &:hover {
+          color: #ff3333;
+        }
+      }
+    }
+
+    .edit {
+      margin-right: 20px;
+    }
     .modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      background-color: rgba(0, 0, 0, 0.5);
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 1000; /* Ensure it's above other content */
-      
+      z-index: 1000;
+  
       .modal-content {
         background-color: white;
         border-radius: 8px;
@@ -68,7 +136,7 @@
         width: 50%;
         max-width: 90%;
         position: relative;
-        
+  
         .close-button {
           position: absolute;
           top: 15px;
@@ -76,119 +144,48 @@
           cursor: pointer;
           font-size: 25px;
           transition: transform 0.3s ease-in-out;
-          
+  
           &:hover {
-              transform: scale(1.5);
-            color: #ff0000; /* Change color on hover */
+            transform: scale(1.5);
+            color: #ff0000;
           }
         }
       }
     }
-  
-    // .ad-whole-bottom {
-    //     display: flex;
-    //     padding: 10px;
-    
-    //     .ad-left {
-    //         flex: 1;
-
-
-    
-    //         img {
-    //             width: 400px;
-    //             height: auto;
-    //         }
-    //     }
-    
-    //     .ad-right {
-    //         flex: 2;
-    //         padding: 0 20px;
-    
-    //         .ad-description {
-    //             font-size: 1rem;
-    //         }
-    
-    //         .ad-dates {
-    //             font-size: 0.8rem;
-    //             margin-top: 10px;
-    //             color: black;
-    //         }
-    //     }
-    // }
-
-    
-    .ad-whole-bottom {
+    .modal-dlt {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
       display: flex;
-      flex-direction: column; /* Stack items vertically */
-      background-color: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-    
-      .ad-up {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-    
-        img {
-          max-width: 350px;
-          height: auto;
-          margin-right: 15px;
-          border-radius: 6px;
-          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-          align-self: stretch;
-        }
-    
-        .ad-details {
-          flex: 1;
-          color: #666;
-          font-size: 18px;
-          line-height: 1.4;
-        }
-      }
-    
-      .ad-bottom {
-        background-color: #f8f8f8;
-        padding: 15px;
-    
-        .ad-description {
-          color: #333;
-          font-size: 18px;
-          margin: 0;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      .modal-content-dlt {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        width: 30%;
+        max-width: 30%;
+        position: relative;
+  
+        .close-button-dlt {
+          position: absolute;
+          top: 15px;
+          right: 22px;
+          cursor: pointer;
+          font-size: 25px;
+          transition: transform 0.3s ease-in-out;
+  
+          &:hover {
+            transform: scale(1.5);
+            color: #ff0000;
+          }
         }
       }
     }
-    
-    .edit-delete {
-      display: flex;
-      align-items: center;
-      // background-color: black;
-      justify-content: flex-end;
   }
-  
-  .edit-delete .edit,
-  .edit-delete .dlt {
-      cursor: pointer;
-      font-size: 20px;
-      color: #065573;
-      transition: transform 0.3s ease, background-color 0.3s ease; /* Include other transitions if needed */
-      transform-origin: center center; /* Set the scaling origin to the center */
-  
-      &:hover {
-        color: #00a651; /* Common color for hover */
-        transform: scale(1.4);
-        will-change: transform;
-      }
-    
-      &.dlt {
-        &:hover {
-          color: #ff3333; /* Redish color for .dlt on hover */
-        }
-      }
-  }
-  
-  .edit-delete .edit {
-      margin-right: 20px;
-  }
-  }
-  
+}

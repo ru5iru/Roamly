@@ -4,16 +4,26 @@ import "./viewad.scss";
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import EditAdvertisement from "./editadvertisement";
+import DeleteAdvertisement from "./dltadv";
 
 export const ViewAdd = ({ advertisement }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDltModalOpen, setIsDltModalOpen] = useState(false);
+  const [iseditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const handleButtonClick = () => {
-    setIsModalOpen(true);
+  const handleButtonClickEdit = () => {
+    setIsEditModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const handleButtonClickdlt = () => {
+    setIsDltModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setIsEditModalOpen(false);
+  };
+  
+  const closeDltModal = () => {
+    setIsDltModalOpen(false);
   };
 
   return (
@@ -35,19 +45,29 @@ export const ViewAdd = ({ advertisement }) => {
           <FaRegEdit
             className="edit"
             title="Edit"
-            onClick={handleButtonClick}
+            onClick={handleButtonClickEdit}
           />
-          {isModalOpen && (
+          {iseditModalOpen && (
             <div className="modal">
               <div className="modal-content">
-                <div className="close-button" onClick={closeModal}>
+                <div className="close-button" onClick={closeEditModal}>
                   <span>&times;</span>
                 </div>
                 <EditAdvertisement />
               </div>
             </div>
           )}
-          <RiDeleteBin5Line className="dlt" title="Delete" />
+          <RiDeleteBin5Line className="dlt" title="Delete" onClick={handleButtonClickdlt} />
+          {isDltModalOpen && (
+            <div className="modal-dlt">
+              <div className="modal-content-dlt">
+                <div className="close-button-dlt" onClick={closeDltModal}>
+                  <span>&times;</span>
+                </div>
+                <DeleteAdvertisement />
+              </div>
+            </div>
+          )}
         </div>
     </div>
   );

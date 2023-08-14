@@ -7,8 +7,7 @@ import "../../pages/advertisement/advertisementpage.scss"
 const EditAdvertisement = ({ adId }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [start_date, setStartDate] = useState('');
-  const [end_date, setEndDate] = useState('');
+  const [details, setDetails] = useState('');
 
   useEffect(() => {
     axios.get(`http://localhost:5000/advertisements/${adId}`)
@@ -16,8 +15,7 @@ const EditAdvertisement = ({ adId }) => {
         const adData = response.data;
         setTitle(adData.title);
         setDescription(adData.description);
-        setStartDate(adData.start_date.substring(0, 10)); // Extract yyyy-MM-dd
-        setEndDate(adData.end_date.substring(0, 10)); // Extract yyyy-MM-dd
+        setDetails(adData.details);
       })
       .catch((error) => {
         console.error('Error fetching advertisement data:', error);
@@ -27,7 +25,7 @@ const EditAdvertisement = ({ adId }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const updatedAdvertisement = { title, description, start_date, end_date };
+    const updatedAdvertisement = { title, description, details };
     axios.put(`http://localhost:5000/advertisements/${adId}`, updatedAdvertisement)
       .then((response) => {
         console.log('Advertisement updated successfully:', response.data);
@@ -47,15 +45,11 @@ const EditAdvertisement = ({ adId }) => {
         </div>
         <div className='adv-field'>
           <label htmlFor="description">Description:</label>
-          <textarea id="description" cols="10" value={description} onChange={(e) => setDescription(e.target.value)} />
+          <textarea id="description" rows="10" value={description} onChange={(e) => setDescription(e.target.value)} />
         </div>
         <div className='adv-field'>
-          <label htmlFor="start_date">Start Date:</label>
-          <input type="date" id="start_date" value={start_date} onChange={(e) => setStartDate(e.target.value)} />
-        </div>
-        <div className='adv-field'>
-          <label htmlFor="end_date">End Date:</label>
-          <input type="date" id="end_date" value={end_date} onChange={(e) => setEndDate(e.target.value)} />
+          <label htmlFor="details">Details:</label>
+          <textarea id="details" rows="5" value={details} onChange={(e) => setDetails(e.target.value)} />
         </div>
         <button className='btn-adv-submit' type="submit">Update Advertisement</button>
       </form>

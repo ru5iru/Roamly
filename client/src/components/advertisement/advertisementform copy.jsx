@@ -25,7 +25,7 @@ const AdvertisementForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Send advertisement data to the back-end for adding/updating
-    const newAdvertisement = { title, description, details };
+    const newAdvertisement = { service_type, title, description, details };
     axios
       .post("http://localhost:8000/server/ads/advertisements", newAdvertisement)
       .then((response) => {

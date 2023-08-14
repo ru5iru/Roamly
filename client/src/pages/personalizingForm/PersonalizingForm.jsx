@@ -1,11 +1,12 @@
 import "./personalizingform.scss";
 import hiking from '../../assets/images/hiking.png';
+import { Link } from "react-router-dom";
 
 const Personalizingform = () =>{
 
 
 return(
-    <section className="container">
+    <section className="personalizing-container">
         <div className="title">
             Tell us your travel preferences...
         </div>
@@ -186,9 +187,11 @@ return(
             </div>
 
             <div className="btn">
+                <Link to="/trip/place">
                 <button type="submit" className="buttonl">
                     Next
                 </button>
+                </Link>
             </div>
 
         </form>

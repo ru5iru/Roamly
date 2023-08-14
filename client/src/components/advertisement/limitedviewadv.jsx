@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import hotelAd3 from "../../assets/images/hotel-ad-3.jpeg";
 import "./viewad.scss";
+import { FaRegEdit } from "react-icons/fa";
+import { RiDeleteBin5Line } from "react-icons/ri";
 import EditAdvertisement from "./editadvertisement";
 
 export const LimitedViewAdd = ({ advertisement }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsModalOpen(true);
+  };
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -13,36 +19,16 @@ export const LimitedViewAdd = ({ advertisement }) => {
   return (
     <div className="view-ad">
       <div className="ad-whole-up">
-        <h2>{advertisement.title}</h2>
-        <div className="edit-delete">
-          {isModalOpen && (
-            <div className="modal">
-              <div className="modal-content">
-                <div className="close-button" onClick={closeModal}>
-                  <span>&times;</span>
-                </div>
-                <EditAdvertisement />
-              </div>
-            </div>
-          )}
-        </div>
+        <h2 className="ad-title">{advertisement.title}</h2>
+        
       </div>
       <div className="ad-whole-bottom">
-        <div className="ad-left">
+        <div className="ad-up">
           <img src={hotelAd3} alt="Advertisement" />
+          <p className="ad-details">{advertisement.details}</p>
         </div>
-        <div className="ad-right">
-          <h5>{advertisement.description}</h5>
-          <p>
-            {new Date(advertisement.start_date).getDate()}th of{" "}
-            {new Date(advertisement.start_date).toLocaleString("default", {
-              month: "long",
-            })}{" "}
-            to {new Date(advertisement.end_date).getDate()}th of{" "}
-            {new Date(advertisement.end_date).toLocaleString("default", {
-              month: "long",
-            })}
-          </p>
+        <div className="ad-bottom">
+          <h6 className="ad-description">{advertisement.description}</h6>
         </div>
       </div>
     </div>

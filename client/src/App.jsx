@@ -28,6 +28,10 @@ import Places from "./pages/places/places";
 import PlacesDetails from "./pages/places/placesdetails";
 import ShopPage from "./pages/shop/shoppage";
 import HotelPage from "./pages/hotel/hotelpage";
+import TaxiPage from "./pages/taxi/taxipage";
+import GuidePage from "./pages/guide/guidepage";
+import Personalizingform from "./pages/personalizingForm/PersonalizingForm";
+import LeftBarSp from "./components/leftBar/serviceProvider/leftBarSp";
 import Header from "./components/header/Header";
 import Forgotpwotp from "./pages/forgotPasswordOTP/fpotp";
 import ForgotPW from "./pages/forgotPassword/fp";
@@ -124,12 +128,11 @@ function App() {
          <div>
             <NavBar />
             <div style={{ display: "flex", position: "relative", top: "4rem" }}>
-               <LeftBar />
+               <LeftBarSp />
                <div>
                   <LeftBarhs />
                   <AdvertisementPage />
                </div>
-               <RightBar />
             </div>
          </div>
       );
@@ -143,6 +146,7 @@ function App() {
                <LeftBar />
                <div>
                   <LeftBarhs />
+                  <Personalizingform />
                </div>
                <RightBar />
             </div>
@@ -212,6 +216,42 @@ function App() {
          </div>
       );
    };
+
+   const Guide = () => {
+    return (
+        <div>
+            <NavBar />
+            <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between"  }}>
+                <LeftBar />
+                <div>
+                    <LeftBarhs />
+                    <GuidePage />
+                    {/* <Posts /> */}
+                </div>
+                    <RightBar />
+            </div>
+
+        </div>
+    )
+};
+
+const Taxi = () => {
+    return (
+        <div>
+            <NavBar />
+            <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between"  }}>
+                <LeftBar />
+                <div>
+                    <LeftBarhs />
+                    <TaxiPage />
+                    {/* <Posts /> */}
+                </div>
+                    <RightBar />
+            </div>
+
+        </div>
+    )
+};
 
    const ProtectedRoute = ({ children }) => {
       if (!currentUser) {
@@ -296,6 +336,14 @@ function App() {
          path: "/trip/place/placedetails/hotels",
          element: <Hotel />,
       },
+      {
+          path: "/trip/place/placedetails/taxis",
+          element: <Taxi />
+      },
+      {
+          path: "/trip/place/placedetails/guides",
+          element: <Guide />
+      }
    ]);
 
    return (

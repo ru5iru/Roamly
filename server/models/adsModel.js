@@ -3,10 +3,28 @@ import asyncHandler from 'express-async-handler';
 
 // get all ads
 const getAllAds = asyncHandler(async () => {
-    const sql = 'SELECT advertisement.*, service_provider.service_name,service_provider.location,users.contact_no FROM advertisement INNER JOIN service_provider ON advertisement.user_id = service_provider.user_id INNER JOIN users ON advertisement.user_id = users.user_id ';
+    const sql = 'SELECT * FROM advertisement';
     const result = await query(sql);
 
     return result.rows;
 });
 
-export { getAllAds };  
+const saveAd = asyncHandler(async (title, description, details) => {
+    const user_id = 2;
+    const service_type = "hotel";
+
+    const sql = 'INSERT INTO advertisement (user_id, service_type title, description, details) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+    const result = await query(sql, [user_id, service_type, title, description, details]);
+  
+    return result;
+  });
+
+  // delete post
+const deleteAd = asyncHandler(async (post_id) => {
+  const sql = 'DELETE FROM advertisement WHERE ad_id = $1';
+  const result = await query(sql, [ad_id]);
+
+  return true;
+});
+
+export { getAllAds, saveAd, deleteAd };

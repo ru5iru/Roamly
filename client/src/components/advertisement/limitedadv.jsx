@@ -1,19 +1,19 @@
-// LimitedAdvertisements.js
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import LimitedViewAdd from "./limitedviewadv";
+import ViewAdd from "./viewad"; // Import the correct path for ViewAdd
 import hotelAd3 from "../../assets/images/hotel-ad-3.jpeg";
 import "./advertisement.scss";
+import LimitedViewAdd from "./limitedviewadv";
 
-const LimitedAdvertisements = () => {
+const LimitedAdvertisement = () => {
   const [advertisementData, setAdvertisements] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAdvertisement, setSelectedAdvertisement] = useState(null);
+  const [visibleAds, setVisibleAds] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/advertisements")
+      .get("http://localhost:8000/server/ads/advertisements")
       .then((response) => {
         setAdvertisements(response.data);
       })
@@ -21,6 +21,15 @@ const LimitedAdvertisements = () => {
         console.error(error);
       });
   }, []);
+
+  useEffect(() => {
+    shuffleAndSetVisibleAds();
+  }, [advertisementData]);
+
+  const shuffleAndSetVisibleAds = () => {
+    const shuffledAds = shuffleArray(advertisementData);
+    setVisibleAds(shuffledAds.slice(0, 3));
+  };
 
   const handleAdvertisementClick = (ad) => {
     setSelectedAdvertisement(ad);
@@ -33,10 +42,14 @@ const LimitedAdvertisements = () => {
     setIsModalOpen(false);
   };
 
-  const shuffledAdvertisements = advertisementData.sort(
-    () => Math.random() - 0.5
-  );
-  const displayedAdvertisements = shuffledAdvertisements.slice(0, 4);
+  // Fisher-Yates Shuffle Algorithm
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
 
   return (
     <div className="advertisement-container">
@@ -50,7 +63,7 @@ const LimitedAdvertisements = () => {
           </div>
         </div>
       )}
-      {displayedAdvertisements.map((ad) => (
+      {visibleAds.map((ad) => (
         <div
           className="advertisement"
           key={ad.ad_id}
@@ -60,18 +73,7 @@ const LimitedAdvertisements = () => {
             <img src={hotelAd3} alt="advertisement" />
           </div>
           <div className="bottom">
-            <h6>{ad.title}</h6>
-            <p>
-              {new Date(ad.start_date).toLocaleDateString("en-US", {
-                month: "numeric",
-                day: "numeric",
-              })}
-              {"  --->  "}
-              {new Date(ad.end_date).toLocaleDateString("en-US", {
-                month: "numeric",
-                day: "numeric",
-              })}
-            </p>
+            <h4 className="ad-title">{ad.title}</h4>
           </div>
         </div>
       ))}
@@ -79,4 +81,4 @@ const LimitedAdvertisements = () => {
   );
 };
 
-export default LimitedAdvertisements;
+export default LimitedAdvertisement;
