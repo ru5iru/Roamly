@@ -14,8 +14,8 @@ const saveAd = asyncHandler(async (title, description, details) => {
     const user_id = 2;
     const service_type = "hotel";
 
-    const sql = 'INSERT INTO advertisement (user_id, service_type, title, description, details) VALUES ($1, $2, $3, $4, $5) RETURNING *';
-    const result = await query(sql, [user_id, service_type, title, description, details]);
+    const sql = 'INSERT INTO advertisement (ad_id, user_id, service_type, title, description, details) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
+    const result = await query(sql, [ad_id, user_id, service_type, title, description, details]);
   
     return result;
   });
