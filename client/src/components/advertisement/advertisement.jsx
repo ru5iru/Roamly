@@ -5,7 +5,7 @@ import hotelAd3 from "../../assets/images/hotel-ad-2.jpg";
 import "./advertisement.scss";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 
-const Advertisement = () => {
+const Advertisement = ({image}) => {
   const [advertisementData, setAdvertisements] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAdvertisement, setSelectedAdvertisement] = useState(null);
@@ -51,7 +51,7 @@ const Advertisement = () => {
           onClick={() => handleAdvertisementClick(ad)}
         >
           <div className="up">
-            <img src={hotelAd3} alt="advertisement" />
+            <img src={ad.ad_media} alt="advertisement" />
           </div>
           <div className="bottom">
             <h4 className="ad-title">{ad.title}</h4>
