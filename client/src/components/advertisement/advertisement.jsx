@@ -3,6 +3,7 @@ import axios from "axios";
 import ViewAdd from "./viewad"; // Import the correct path for ViewAdd
 import hotelAd3 from "../../assets/images/hotel-ad-3.jpeg";
 import "./advertisement.scss";
+import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 
 const Advertisement = () => {
   const [advertisementData, setAdvertisements] = useState([]);
@@ -54,6 +55,7 @@ const Advertisement = () => {
           </div>
           <div className="bottom">
             <h4 className="ad-title">{ad.title}</h4>
+            <h5 className="ad-number"><PhoneInTalkIcon />012-3456789</h5>
           </div>
         </div>
       ))}

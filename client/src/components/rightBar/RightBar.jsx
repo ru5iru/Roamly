@@ -13,7 +13,7 @@ const RightBar = () => {
                 <p>Trusted Partners</p>
             </div>
             <div className="ads">
-                <Ad />
+                <LimitedAdvertisements />
             </div>
         </div>
     );

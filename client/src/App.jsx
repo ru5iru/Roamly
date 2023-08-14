@@ -160,7 +160,7 @@ function App() {
             <NavBar />
             <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                <LeftBar />
-               <div>
+               <div style={{backgroundColor: "white"}}>
                   <LeftBarhs />
                   <Places />
                </div>
@@ -176,7 +176,7 @@ function App() {
             <NavBar />
             <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                <LeftBar />
-               <div>
+               <div style={{backgroundColor: "white"}}>
                   <LeftBarhs />
                   <PlacesDetails />
                </div>

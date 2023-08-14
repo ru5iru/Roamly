@@ -4,6 +4,7 @@ import ViewAdd from "./viewad"; // Import the correct path for ViewAdd
 import hotelAd3 from "../../assets/images/hotel-ad-3.jpeg";
 import "./advertisement.scss";
 import LimitedViewAdd from "./limitedviewadv";
+import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 
 const LimitedAdvertisement = () => {
   const [advertisementData, setAdvertisements] = useState([]);
@@ -74,6 +75,8 @@ const LimitedAdvertisement = () => {
           </div>
           <div className="bottom">
             <h4 className="ad-title">{ad.title}</h4>
+            <h5 className="ad-type">{ad.service_type}</h5>
+            <h5 className="ad-number"><PhoneInTalkIcon />012-3456789</h5>
           </div>
         </div>
       ))}
