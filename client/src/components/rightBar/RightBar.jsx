@@ -4,6 +4,7 @@ import Ad2 from "../../assets/ad2.png";
 import Ad3 from "../../assets/ad3.png";
 import Phone from "../../assets/Phone.png";
 import Ad from "../advertisement/Ad";
+import LimitedAdvertisement from "../advertisement/limitedadv";
 
 const RightBar = () => {
     return (
@@ -12,7 +13,7 @@ const RightBar = () => {
                 <p>Trusted Partners</p>
             </div>
             <div className="ads">
-                <Ad />
+                <LimitedAdvertisement />
             </div>
         </div>
     );

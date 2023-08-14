@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ViewAdd from "./viewad"; // Import the correct path for ViewAdd
-import hotelAd3 from "../../assets/images/hotel-ad-3.jpeg";
+import hotelAd3 from "../../assets/images/hotel-ad-2.jpg";
 import "./advertisement.scss";
 import LimitedViewAdd from "./limitedviewadv";
+import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 
 const LimitedAdvertisement = () => {
   const [advertisementData, setAdvertisements] = useState([]);
@@ -70,10 +71,12 @@ const LimitedAdvertisement = () => {
           onClick={() => handleAdvertisementClick(ad)}
         >
           <div className="up">
-            <img src={hotelAd3} alt="advertisement" />
+            <img src={ad.ad_media} alt="advertisement" />
           </div>
           <div className="bottom">
             <h4 className="ad-title">{ad.title}</h4>
+            <h5 className="ad-type">{ad.service_type}</h5>
+            <h5 className="ad-number"><PhoneInTalkIcon />012-3456789</h5>
           </div>
         </div>
       ))}

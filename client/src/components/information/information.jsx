@@ -1,3 +1,4 @@
+// import "./information.scss";
 import "./information.scss";
 import Photos from "../photos/photos";
 

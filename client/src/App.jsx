@@ -131,11 +131,10 @@ function App() {
                 <NavBar />
                 <div style={{ display: "flex", position: "relative", top: "4rem" }}>
                     <LeftBarSp />
-                    <div>
+                    <div style= {{display: "flex", position: "relative", left: "298px" }}>
                         <LeftBarhs />
                         <AdvertisementPage />
                     </div>
-                    <RightBar />
                 </div>
             </div>
         );
@@ -147,7 +146,7 @@ function App() {
                 <NavBar />
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
-                    <div>
+                    <div style= {{display: "flex", position: "relative", left: "298px" }}>
                         <LeftBarhs />
                         <Personalizingform />
                     </div>
@@ -163,7 +162,7 @@ function App() {
                 <NavBar />
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
-                    <div>
+                    <div style= {{display: "flex", position: "relative", left: "298px" }}>
                         <LeftBarhs />
                         <Places />
                     </div>
@@ -179,7 +178,7 @@ function App() {
                 <NavBar />
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
-                    <div>
+                    <div style= {{display: "flex", position: "relative", left: "298px" }}>
                         <LeftBarhs />
                         <PlacesDetails />
                     </div>
@@ -194,7 +193,7 @@ function App() {
                 <NavBar />
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
-                    <div>
+                    <div style= {{display: "flex", position: "relative", left: "298px" }}>
                         <LeftBarhs />
                         <ShopPage />
                     </div>
@@ -210,7 +209,7 @@ function App() {
                 <NavBar />
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
-                    <div>
+                    <div style= {{display: "flex", position: "relative", left: "298px" }}>
                         <LeftBarhs />
                         <HotelPage />
                     </div>
@@ -226,7 +225,7 @@ function App() {
                 <NavBar />
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
-                    <div>
+                    <div style= {{display: "flex", position: "relative", left: "298px" }}>
                         <LeftBarhs />
                         <GuidePage />
                         {/* <Posts /> */}
@@ -244,7 +243,7 @@ function App() {
                 <NavBar />
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
-                    <div>
+                    <div style= {{display: "flex", position: "relative", left: "298px" }}>
                         <LeftBarhs />
                         <TaxiPage />
                         {/* <Posts /> */}

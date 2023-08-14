@@ -6,7 +6,7 @@
     margin-left: 40px;
     .advertisement {
         height: 250px;
-        width: 200px;
+        width: 250px;
         margin-bottom: 20px;
         border-radius: 30px;
         cursor: pointer;
@@ -26,14 +26,29 @@
 
         .bottom {
             height: 25%;
-            width: 100%;
+            // width: 100%;
             background-color: rgba(128, 128, 128, 0.536);
             padding: 3px 2px;
+            line-height: 1.4;
             .ad-title{
-                text-align: center;
-                font-size: 18px;
+                text-align: left;
+                font-size: 14px;
                 font-weight: 500;
-                color: #fff;
+                color: #000000;
+            }
+            .ad-type{
+                text-align: left;
+                font-size: 14px;
+                font-weight: 500;
+                color: #d5d5d5;
+            }
+            .ad-number{
+                display: flex;
+                align-items: center;
+                text-align: left;
+                font-size: 14px;
+                font-weight: 500;
+                color: #000000;
             }
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;

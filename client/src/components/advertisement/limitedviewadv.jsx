@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import hotelAd3 from "../../assets/images/hotel-ad-3.jpeg";
+import hotelAd3 from "../../assets/images/hotel-ad-2.jpg";
 import "./viewad.scss";
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
@@ -24,7 +24,7 @@ export const LimitedViewAdd = ({ advertisement }) => {
       </div>
       <div className="ad-whole-bottom">
         <div className="ad-up">
-          <img src={hotelAd3} alt="Advertisement" />
+          <img src={advertisement.ad_media} alt="Advertisement" />
           <p className="ad-details">{advertisement.details}</p>
         </div>
         <div className="ad-bottom">

@@ -25,9 +25,9 @@ const Ad = () => {
     // };
 
     const getAds = async () => {
-        // console.log("getAds");
+        console.log("getAds");
         try {
-            const response = await axios.get("http://localhost:8000/server/ads/feed");
+            const response = await axios.get("http://localhost:5000/server/ads");
             const jsonData = response.data;
             setAds(jsonData);
             console.log(jsonData);
