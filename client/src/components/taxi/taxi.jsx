@@ -1,18 +1,15 @@
 import React from 'react';
 import './taxi.scss';
-// import taxiIcon from './taxi-icon.png';
-// import mobileIcon from './mobile-icon.png';
-// import passengersIcon from './passengers-icon.png';
-// import crownIcon from './crown-icon.png';
+import {BsFillTaxiFrontFill}  from 'react-icons/bs';
+import {BiSolidPhoneCall} from "react-icons/bi";
+import { FaPersonDress } from 'react-icons/fa6';
 
 function TaxiCard(props) {
-  const { photo, name, owner, type, mobile, passengers } = props;
+  const { photo, name, owner, type, mobile, passengers, description } = props;
 
   return (
     <div className="taxi-card">
-       <div className="crown-container">
-        <img src='https://png.pngtree.com/element_our/20200702/ourmid/pngtree-vip-golden-crown-icon-member-golden-crown-champion-first-ranking-exclusive-image_2291844.jpg' alt="crown icon" className="crown-icon" />
-      </div>
+      
       <div className="left-section">
         <img src={photo} alt={name} className="taxi-photo" />
       </div>
@@ -20,19 +17,22 @@ function TaxiCard(props) {
         <div className="details">
           <h2>{name}</h2>
           <p>
-            {owner}
+            Owner: {owner}
           </p>
           <p>
-            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf8dcwbDUv2Y5QfwfBa_gPlF_LPKFwPRo7RUYLRAoxRfNOjk_TsxDyzSnz_-BER9J_sJQ&usqp=CAU' alt="taxi icon" className="icon" />
+            <BsFillTaxiFrontFill />
             <span className="type">{type}</span>
           </p>
           <p>
-            <img src='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQITEJyULCnxeDmNeNixKaqdR4inGBs1X82t0CQZP6SZG98nNbN' alt="mobile icon" className="icon" />
+            <BiSolidPhoneCall />
             <span className="mobile">{mobile}</span>
           </p>
           <p>
-            <img src='https://w7.pngwing.com/pngs/389/412/png-transparent-font-awesome-computer-icons-user-profile-users-group-blind-miscellaneous-blue-text.png' alt="passengers icon" className="icon" />
+            <FaPersonDress />
             <span className="passengers">{passengers} (max)</span>
+          </p>
+          <p className="description">
+            {description}
           </p>
         </div>
       </div>
@@ -40,4 +40,74 @@ function TaxiCard(props) {
   );
 }
 
-export default TaxiCard;
+function Taxis() {
+  const taxis = [
+    {
+      photo: 'https://images.pexels.com/photos/951318/pexels-photo-951318.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      name: 'Elegance Limousine',
+      owner: 'Ava Martinez',
+      type: 'Limousine',
+      mobile: '+3456789012',
+      passengers: 10,
+      description: 'Arrive in style and sophistication with our luxurious and spacious limousine.',
+    },
+    {
+      photo: 'https://images.pexels.com/photos/136872/pexels-photo-136872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      name: 'Wilderness Explorer Taxi',
+      owner: 'Noah Williams',
+      type: 'Off-Road',
+      mobile: '+2345678901',
+      passengers: 5,
+      description: 'Embark on off-road adventures and discover hidden gems with our explorer taxi.',
+    },
+    {
+      photo: 'https://images.pexels.com/photos/1638459/pexels-photo-1638459.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      name: 'Sunset Dream Cab',
+      owner: 'Olivia Thompson',
+      type: 'Convertible',
+      mobile: '+9876543210',
+      passengers: 2,
+      description: 'Witness breathtaking sunsets and enjoy a romantic ride in our convertible taxi.',
+    },
+    {
+      photo: 'https://images.pexels.com/photos/3786091/pexels-photo-3786091.jpeg?auto=compress&cs=tinysrgb&w=600',
+      name: 'City Explorer Taxi',
+      owner: 'John Smith',
+      type: 'Sedan',
+      mobile: '+1234567890',
+      passengers: 4,
+      description: 'Explore the city in comfort and style with our modern sedan taxis.',
+    },
+    {
+      photo: 'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      name: 'Urban Cruiser Taxi',
+      owner: 'Michael Johnson',
+      type: 'Sedan',
+      mobile: '+1234567890',
+      passengers: 4,
+      description: 'Navigate the city with ease in our comfortable and efficient sedan taxis.',
+    }
+    
+  ];
+
+  return (
+    <div>
+      <div className="taxi-container">
+        {taxis.map((taxi, index) => (
+          <TaxiCard
+            key={index}
+            photo={taxi.photo}
+            name={taxi.name}
+            owner={taxi.owner}
+            type={taxi.type}
+            mobile={taxi.mobile}
+            passengers={taxi.passengers}
+            description={taxi.description}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default Taxis;
