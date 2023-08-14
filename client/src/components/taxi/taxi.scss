@@ -1,96 +1,65 @@
-// // .navbar {
-// //     background-color: black;
-// //     color: white;
-// //     padding: 10px 0;
-// //   }
-  
-// //   .navbar-container {
-// //     display: flex;
-// //     justify-content: left;
-// //     align-items: left;
-// //     margin-left: 3%;
-// //   }
-//   .taxi-card {
-//     display: flex;
-//     background-color: #f0f0f0;
-//     padding: 20px;
-//     margin-bottom: 20px;
-//     margin-left: 5%;
-//     margin-right: 5%;
-//     justify-content: center;
-//     border-radius: 1%;
-//     position: relative;
-//   }
-  
-//   .crown-container {
-//     position: absolute;
-//     top: 10px;
-//     right: 10px;
-//   }
-  
-//   .crown-icon {
-//     width: 24px;
-//     height: 24px;
-//   }
-  
-//   .left-section {
-//     flex: 1;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//   }
-  
-//   .taxi-photo {
-//     max-width: 100%;
-//     height: auto;
-//   }
-  
-//   .right-section {
-//     flex: 2;
-//     padding-left: 20px;
-//     margin-right: 5%;
-//   }
-  
-//   h1{
-//     margin-left:5% ;
-//     margin-top: 2%;
-//   }
-  
-//   h2 {
-//     margin-top: 0;
-//   }
-  
-//   p {
-//     margin-bottom: 10px;
-//     display: flex;
-//     align-items: center;
-//   }
-  
-//   .icon {
-//     width: 16px;
-//     height: 16px;
-//     margin-right: 5px;
-//   }
-  
-//   .type {
-//     color: blue;
-//   }
-  
-//   .mobile {
-//     color: blue;
-//   }
-  
-//   .passengers {
-//     color: blue;
-//   }
-  
-//   @media (max-width: 768px) {
-//     .taxi-card {
-//       flex-direction: column;
-//     }
-  
-//     .right-section {
-//       padding-left: 0;
-//       margin-top: 20px;
-//     }
-//   }
+// taxi.scss
+$primary-color: #228BE6;
+$accent-color: #F05F40;
+$text-color: #333;
+
+.taxi-card {
+  border: 2px solid $primary-color;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  background-color: #fff;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  height: 180px;
+
+  .crown-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+
+    .crown-icon {
+      width: 24px;
+      height: auto;
+    }
+  }
+
+  .left-section {
+    flex: 0 0 40%;
+    padding-right: 20px;
+    overflow: hidden;
+    border-radius: 8px;
+
+    .taxi-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .right-section {
+    flex: 1;
+
+    .details {
+      h2 {
+        color: $text-color;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .icon {
+        width: 20px;
+        height: auto;
+        margin-right: 8px;
+      }
+
+      .type,
+      .mobile,
+      .passengers {
+        color: $primary-color;
+        font-size: 1rem;
+      }
+    }
+  }
+}
