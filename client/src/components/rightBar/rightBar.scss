@@ -1,11 +1,12 @@
 @import "../../style.scss";
 
 .rightBar {
+    // position: fixed;
     height: 850px;
     border-radius: 10px;
     background: #FFFFFF;
     margin-top: 18px;
-    margin-left: 18px;
+    margin-left: 318px;
 
     font-size: 16px;
     font-weight: bold;
@@ -23,15 +24,14 @@
         width: 100%;
 
         text-align: left;
+        text-indent: 10px;
         font-size: 21px;
         font-weight: bold;
 
         display: flex;
         align-items: center;
-        margin-left: 2rem;
+        margin-left: 13px;
         justify-content: flex-start;
-
-        color: #2d3846;
     }
 
     .ads {

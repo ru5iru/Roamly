@@ -48,7 +48,7 @@ const Navbar = () => {
     return (
         <div className="navbar">
             <div className="left">
-                <img src={logo} alt="" className="logo" onClick={navigateFeed}/>
+                <img src={logo} alt="" className="logo" onClick={navigateFeed} />
             </div>
             <div className="right">
                 {/* < Search_component /> */}

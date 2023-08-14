@@ -5,8 +5,84 @@ body {
     margin: 0;
     padding: 0;
 
-    .filterbar {
+    .searchbar {
         height: 73px;
+        border-radius: 10px;
+        background: #FFFFFF;
+        margin-top: 18px;
+        font-size: 16px;
+        font-weight: bold;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+
+        form {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            .searchDiv {
+
+                width: 90%;
+                display: flex;
+
+                .search-input {
+                    height: 40px;
+                    border-radius: 28px 0 0 28px;
+                    border: solid 2px transparent;
+                    /* Set transparent border */
+                    border-top: 2px solid gainsboro;
+                    /* Apply top border */
+                    border-bottom: 2px solid gainsboro;
+                    /* Apply bottom border */
+                    border-left: 2px solid gainsboro;
+                    /* Apply left border */
+                    text-indent: 10px;
+                    width: 92%;
+                }
+
+                .search-button {
+                    height: 40px;
+                    width: 8%;
+                    border-radius: 0 28px 28px 0;
+                    border: solid 2px transparent;
+                    /* Set transparent border */
+                    border-top: 2px solid gainsboro;
+                    /* Apply top border */
+                    border-bottom: 2px solid gainsboro;
+                    /* Apply bottom border */
+                    border-right: 2px solid gainsboro;
+                    display: flex;
+                    background-color: gainsboro;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                }
+
+                .search-button:hover {
+                    cursor: pointer;
+                    background-color: #ebebeb;
+                    // border-color: #ebebeb;
+                }
+
+            }
+
+
+
+        }
+
+
+    }
+
+    .filterbar {
+        height: 53px;
         border-radius: 10px;
         background: #FFFFFF;
         margin-top: 18px;
@@ -36,6 +112,8 @@ body {
                 padding-top: 7px;
                 padding-bottom: 7px;
                 border-radius: 5px;
+
+
                 // box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.38);
 
                 // margin-left: 10px;
@@ -53,6 +131,12 @@ body {
                 }
             }
 
+            .menu_item_h.active {
+                background-color: #ebebeb;
+                color: black;
+                cursor: pointer;
+            }
+
             .menu_item_h:hover {
                 background-color: #ebebeb;
                 color: black;
@@ -66,8 +150,14 @@ body {
 }
 
 @media only screen and (min-width: 1450px) {
+
+    .searchbar {
+        width: 54.2vw;
+        margin-left: 18px;
+    }
+
     .filterbar {
-        width: 77.4vw;
+        width: 54.2vw;
         margin-left: 18px;
 
 
@@ -90,6 +180,12 @@ body {
 }
 
 @media only screen and (max-width: 1450px) and (min-width: 1200px) {
+
+    .searchbar {
+        width: 74vw;
+        margin-left: 18px;
+    }
+
     .filterbar {
         width: 74vw;
         margin-left: 18px;
@@ -106,6 +202,12 @@ body {
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 1000px) {
+
+    .searchbar {
+        width: 69vw;
+        margin-left: 18px;
+    }
+
     .filterbar {
         width: 69vw;
         margin-left: 18px;
@@ -130,6 +232,12 @@ body {
 }
 
 @media only screen and (max-width: 1000px) and (min-width: 700px) {
+
+    .searchbar {
+        width: 96vw;
+        margin-left: 10px;
+    }
+
     .filterbar {
 
         width: 96vw;
@@ -146,6 +254,13 @@ body {
 }
 
 @media only screen and (max-width: 700px) and (min-width: 500px) {
+
+    .searchbar {
+        width: 96vw;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .filterbar {
 
         width: 96vw;
@@ -176,6 +291,13 @@ body {
 
 
 @media only screen and (max-width: 500px) {
+
+    .searchbar {
+        width: 96vw;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .filterbar {
 
         width: 96vw;

@@ -31,10 +31,6 @@ const LeftBar = () => {
         // Navigate to the home page when the Home menu item is clicked
         navigate("/profile/" + currentUser.user_id);
     };
-    const handlePlanTripClick = () => {
-        // Navigate to the home page when the Home menu item is clicked
-        navigate("/trip");
-    };
 
     return (
         <div className="leftBar">
@@ -53,7 +49,7 @@ const LeftBar = () => {
                         <img src={Search} alt="" />
                         <p>Explore</p>
                     </div>
-                    <div className="menu_item" onClick={handlePlanTripClick}>
+                    <div className="menu_item">
                         <img src={Plan} alt="" />
                         <p>Plan Your Trip</p>
                     </div>
