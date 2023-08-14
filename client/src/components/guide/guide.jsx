@@ -3,13 +3,13 @@ import './guide.scss';
 
 
 function TravelGuide(props) {
-  const { photo, name, languages, telephone, isTopGuide } = props;
+  const { photo, name, languages, telephone, isTopGuide, description  } = props;
 
   return (
     <div className={`travel-guide-card ${isTopGuide ? 'top-guide' : ''}`}>
       {isTopGuide && (
         <div className="crown-container">
-          <img src='https://png.pngtree.com/element_our/20200702/ourmid/pngtree-vip-golden-crown-icon-member-golden-crown-champion-first-ranking-exclusive-image_2291844.jpg' alt="crown icon" className="crown-icon" />
+          {/* <img src='https://png.pngtree.com/element_our/20200702/ourmid/pngtree-vip-golden-crown-icon-member-golden-crown-champion-first-ranking-exclusive-image_2291844.jpg' alt="crown icon" className="crown-icon" /> */}
         </div>
       )}
       <div className="left-section">
@@ -26,6 +26,10 @@ function TravelGuide(props) {
             <img src='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQITEJyULCnxeDmNeNixKaqdR4inGBs1X82t0CQZP6SZG98nNbN' alt="phone icon" className="icon" />
             <span className="telephone">{telephone}</span>
           </p>
+          <p><span className='description'>
+            {description}
+          </span>
+          </p>
         </div>
       </div>
     </div>
@@ -40,6 +44,7 @@ function Guides() {
       languages: 'English, Sinhala',
       telephone: '1234567890',
       isTopGuide: true,
+      description: 'Enthusiastic local guide ready to show you the best of our vibrant culture and cuisine.',
     },
     {
       photo: 'https://qph.cf2.quoracdn.net/main-qimg-339a6d47c397c4691980ac0fef9ad08e-lq',
@@ -47,6 +52,7 @@ function Guides() {
       languages: 'English, French',
       telephone: '9876543210',
       isTopGuide: true,
+      description: 'Experienced guide with a passion for adventure and culture.',
     },
     {
       photo: 'https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg',
@@ -54,6 +60,7 @@ function Guides() {
       languages: 'English, German',
       telephone: '4567890123',
       isTopGuide: true,
+      description: 'History and art enthusiast excited to share the stories behind our landmarks.',
     },
     {
       photo: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg',
@@ -61,6 +68,7 @@ function Guides() {
       languages: 'English, Spanish',
       telephone: '7890123456',
       isTopGuide: false,
+      description: 'A local foodie and history buff eager to help you discover hidden gems and cultural treasures.',
     },
     {
         photo: 'https://qph.cf2.quoracdn.net/main-qimg-339a6d47c397c4691980ac0fef9ad08e-lq',
@@ -68,6 +76,7 @@ function Guides() {
         languages: 'English, Sinhala',
         telephone: '1234567890',
         isTopGuide: false,
+        description: 'Your gateway to authentic experiences, from local markets to traditional festivals.',
       },
       {
         photo: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg',
@@ -75,6 +84,7 @@ function Guides() {
         languages: 'English, French',
         telephone: '9876543210',
         isTopGuide:false,
+        description: 'Passionate storyteller, ready to unveil the history and legends of our region.',
       },
       {
         photo: 'https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg',
@@ -82,6 +92,7 @@ function Guides() {
         languages: 'English, German',
         telephone: '4567890123',
         isTopGuide: false,
+        description: 'Embark on unique adventures and create memories that will last a lifetime.',
       },
       {
         photo: 'https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg',
@@ -89,6 +100,7 @@ function Guides() {
         languages: 'English, Spanish',
         telephone: '7890123456',
         isTopGuide: false,
+        description: 'Join me for an unforgettable journey through culture, history, and natural wonders.',
       },
   ];
 
@@ -103,6 +115,7 @@ function Guides() {
             languages={guide.languages}
             telephone={guide.telephone}
             isTopGuide={guide.isTopGuide}
+            description={guide.description}
           />
         ))}
       </div>
