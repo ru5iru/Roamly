@@ -34,7 +34,7 @@ export const ViewAdd = ({ advertisement }) => {
       </div>
       <div className="ad-whole-bottom">
         <div className="ad-up">
-          <img src={hotelAd3} alt="Advertisement" />
+          <img src={advertisement.ad_media} alt="Advertisement" />
           <p className="ad-details">{advertisement.details}</p>
         </div>
         <div className="ad-bottom">

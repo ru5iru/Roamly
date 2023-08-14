@@ -71,7 +71,7 @@ const LimitedAdvertisement = () => {
           onClick={() => handleAdvertisementClick(ad)}
         >
           <div className="up">
-            <img src={hotelAd3} alt="advertisement" />
+            <img src={ad.ad_media} alt="advertisement" />
           </div>
           <div className="bottom">
             <h4 className="ad-title">{ad.title}</h4>
