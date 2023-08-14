@@ -3,11 +3,10 @@
 import "./shop.scss";
 import dimuthuStore from "../../assets/images/Dimuthu.png";
 
-import { FaCrown } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
 
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import HotelIcon from "@mui/icons-material/Hotel";
 
 const Shop = () => {
   return (
@@ -37,7 +36,7 @@ const Shop = () => {
               <span>0717073529</span>
             </li>
             <li>
-              <HotelIcon />
+              <FaCartShopping />
               <span>Shop</span>
             </li>
           </ul>
