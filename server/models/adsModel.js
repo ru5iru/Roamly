@@ -10,10 +10,11 @@ const getAllAds = asyncHandler(async () => {
 });
 
 const saveAd = asyncHandler(async (title, description, details) => {
+    const ad_id = const ad_id = Math.floor(Math.random() * 1000000000);
     const user_id = 2;
     const service_type = "hotel";
 
-    const sql = 'INSERT INTO advertisement (user_id, service_type title, description, details) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+    const sql = 'INSERT INTO advertisement (user_id, service_type, title, description, details) VALUES ($1, $2, $3, $4, $5) RETURNING *';
     const result = await query(sql, [user_id, service_type, title, description, details]);
   
     return result;
