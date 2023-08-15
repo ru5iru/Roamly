@@ -16,6 +16,7 @@ import ReportsPage from './pages/reportsPage/reportsPage';
 import PlacesPage from './pages/placesPage/placesPage';
 import BadgesPage from './pages/badgesPage/badgesPage';
 import ProfilePage from './pages/profilePage/profilePage';
+import AdViewPage from './pages/adViewPage/adViewPage';
 
 function App() {
   const router = createBrowserRouter([
@@ -62,6 +63,10 @@ function App() {
     {
       path: "/profilepage",
       element: <ProfilePage />,
+    },
+    {
+      path: "/adviewpage",
+      element: <AdViewPage />,
     },
   ]);
 

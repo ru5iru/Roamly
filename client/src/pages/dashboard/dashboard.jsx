@@ -1,5 +1,7 @@
 import './dashboard.scss';
 import ContentCreators from '../../components/contentCreators/contentCreators';
+import EditTrip from '../../components/editTrip/editTrip';
+import Chart1 from '../../assets/images/chart.jpg';
 
 function Dashboard() {
     return(
@@ -47,7 +49,7 @@ function Dashboard() {
                         </div>
                     </div>
                     <div className='Chart'>
-                        <h2>Chart</h2>
+                        <img src= {Chart1} alt="Chart" />
                     </div>
                 </div>
                 <div className="top-content-creators">
@@ -60,7 +62,10 @@ function Dashboard() {
                 </div>
             </div>
             <div className="select">
-                <h2>Available Trip Types</h2>
+                <div className="select-item">
+                    <h3>Available Trip Types</h3>
+                    <EditTrip />
+                </div>
             </div>
         </div>
     );

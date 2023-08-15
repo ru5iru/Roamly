@@ -1,35 +1,34 @@
 .trip_main{
     .row{
         display: flex;
-        .boxes{
-            width: 200px;
-            height: 200px;
-            position: relative;
+        .trip_box{
+            width: 100%;
             border-radius: 15px;
-            margin: 30px;
-            img{
+            margin: 10px;
+            table{
                 width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 15px;
-            }
-            h3{
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 50%;
-                color: white;
-                font-size: 25px;
-                background-color: rgba(0, 0, 0, 0.5);
-                border-radius: 0 0 15px 15px;
-                padding: 10px 0 0 10px;
-                transition: .5s eaes;
-                font-family: 'klavika-light';
-            }
-            &::hover{
-                transform: scale(1.05);
-                cursor: pointer;
+                th, td{
+                    border-bottom: 1px solid #ddd;
+                }
+                th{
+                    padding: 10px;
+                    text-align: left;
+                    width: 400px;
+                    font-size: 20px;
+                    font-family: 'klavika-bold';
+                }
+                td{
+                    padding: 10px;
+                    text-align: left;
+                    font-size: 18px;
+                    font-family: 'klavika-regular';
+                }
+                .thact{
+                    width: 100px;
+                }
+                .tdtype{
+                    width: 150px;
+                }
             }
         }
     }

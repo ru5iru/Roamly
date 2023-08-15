@@ -5,15 +5,12 @@
     position: absolute;
     top: 60px;
     right: 0;
-    background-color: #f0f9fd;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
     margin: 10px;
-    /*overflow: scroll;
-    flex: 1;*/
     .stat{
         display: flex;
         .stat-item{
@@ -26,6 +23,7 @@
             align-items: center;
             justify-content: center;
             margin: 0 5px 10px 5px;
+            color: #2B3674;
             .stat-item-title{
                 font-size: 20px;
                 font-family: 'klavika-medium';
@@ -34,12 +32,16 @@
                 font-size: 25px;
                 font-family: 'klavika-light';
             }
+            &:hover{
+                transform: scale(1.02);
+                cursor: pointer;
+            }
         }
     }
     .chart{
         width: 100%;
         height: 350px;
-        background-color: #f0f9fd;
+        background-color: #b7deee;
         border-radius: 5px;
         display: flex;
         .daily-chart{
@@ -97,6 +99,22 @@
                     }
                 }
             }
+            &:hover{
+                transform: scale(1.02);
+                cursor: pointer;
+            }
+            .Chart{
+                width: 80%;
+                height: 80%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
         }
         .top-content-creators{
             width: 60%;
@@ -115,13 +133,20 @@
     }
     .select{
         width: 100%;
-        height: 400px;
         background-color: #ffffff;
         border-radius: 5px;
         margin: 10px;
         display: flex;
-        align-items: center;
         justify-content: center;
+        .select-item{
+            padding: 20px;
+            h3{
+                font-size: 25px;
+                font-family: 'klavika-bold';
+                color: #0D1669;
+                text-align: center;
+            }
+        }
     }
 }
 

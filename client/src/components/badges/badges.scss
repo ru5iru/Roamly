@@ -5,7 +5,7 @@
     position: absolute;
     top: 60px;
     right: 0;
-    background-color: #f0f9fd;
+    background-color: #b7deee;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -17,10 +17,55 @@
         flex-direction: column;
         align-items: center;
         width: 100%;
-        height: 100px;
         background-color: #ffffff;
         margin: 0 10px 10px 10px;
         border-radius: 5px;
+        h2{
+            font-size: 1.5rem;
+            margin: 10px;
+            color: #2B3674;
+        }
+        .badgerow{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .badge{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 250px;
+                height: 100px;
+                margin: 10px;
+                .material-icons{
+                    margin: 5px;
+                }
+                .new{
+                    color: #72d0ea;
+                    border-radius: 50px;
+                    background-color: #3a5259;
+                    font-size: 20px;
+                }
+                .l1{
+                    color: #72eab4;
+                    border-radius: 50px;
+                    background-color: #3a594b;
+                    font-size: 30px;
+                }
+                .l2{
+                    color: #d0ea72;
+                    border-radius: 50px;
+                    background-color: #56593a;
+                    font-size: 40px;
+                }
+                .l3{
+                    color: #ea7272;
+                    border-radius: 50px;
+                    background-color: #593a3a;
+                    font-size: 50px;
+                }
+            }
+        }
     }
 }
 

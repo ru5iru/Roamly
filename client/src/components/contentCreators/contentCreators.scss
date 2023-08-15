@@ -9,11 +9,11 @@
 .creator-box{
     display: flex;
     flex-direction: row;
-    background-color: #f0f9fd;
+    background-color: #e9f9ff;
     border-radius: 20px;
-    margin: 5px 10px;
     justify-content: space-between;
     align-items: center;
+    padding: 5px;
     .creator-pfp{
         flex: 5%;
         width: 100%;
@@ -84,6 +84,10 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                &:hover{
+                    transform: scale(1.15);
+                    cursor: pointer;
+                }
             }
             .b_green{
                 background-color: #05CD99;

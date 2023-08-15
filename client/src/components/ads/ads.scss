@@ -34,6 +34,7 @@ $background-color_2: #f0f9fd;
 	        justify-content: center;
 	        margin: 0 5px;
 	        color: $color_1;
+            border: 1px solid $color_1;
 	        .stat-item-title{ 
                 font-size: 20px;
 	            font-family: $font-family_1;
@@ -77,6 +78,20 @@ $background-color_2: #f0f9fd;
                         padding: 5px;
                         text-align: center;
                         font-family: $font-family_2;
+                        color: #2B3674;
+                    }
+                    th{
+                        font-family: $font-family_3;
+                        padding: 10px;
+                        font-size: 18px;
+                    }
+                    td{
+                        font-family: $font-family_2;
+                        font-size: 18px;
+                        .material-icons{
+                            color: $color_1;
+                            cursor: pointer;
+                        }
                     }
                 }
             }
