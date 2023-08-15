@@ -1,0 +1,92 @@
+/* Sidebar.scss */
+$primary-color: #10adf4;
+$background-color: #f7f7f7;
+$light-gray: #ccc;
+
+.sidebar {
+  width: 100%;
+  background-color: $background-color;
+  border-right: 1px solid $light-gray;
+  overflow-y: auto;
+  display: block;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.chat-details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.chat-name {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.last-message {
+  margin-top: 0%;
+  color: #777;
+}
+
+.search-bar {
+  padding: 10px;
+  width: 90%;
+  background-color: #fff;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #c6e9f9;
+  color: black;
+}
+
+.user-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.find-people {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.find-people-icon {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  border-radius: 100%;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid $light-gray;
+  border-radius: 4px;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+}
