@@ -34,35 +34,32 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                width: 250px;
+                width: 200px;
                 height: 100px;
                 margin: 10px;
                 .material-icons{
                     margin: 5px;
                 }
-                .new{
-                    color: #72d0ea;
+                .l1, .l2, .l3, .l4, .add{
                     border-radius: 50px;
-                    background-color: #3a5259;
-                    font-size: 20px;
+                    font-size: 30px;
+                    color: #ffffff;
+                    padding: 10px;
                 }
                 .l1{
-                    color: #72eab4;
-                    border-radius: 50px;
-                    background-color: #3a594b;
-                    font-size: 30px;
+                    background-color: #72eab4;
                 }
                 .l2{
-                    color: #d0ea72;
-                    border-radius: 50px;
-                    background-color: #56593a;
-                    font-size: 40px;
+                    background-color: #dea254;
                 }
                 .l3{
-                    color: #ea7272;
-                    border-radius: 50px;
-                    background-color: #593a3a;
-                    font-size: 50px;
+                    background-color: #72b4ea;
+                }
+                .l4{
+                    background-color: #e672ea;
+                }
+                .add{
+                    background-color: #2B3674;
                 }
             }
         }

@@ -35,14 +35,6 @@
         p {
           color: inherit;
         }
-        &.active {
-          background-color: #3a398e;
-          color: #ffffff;
-          .material-icons,
-          p {
-            color: #ffffff;
-          }
-        }
         &:hover {
           background-color: #3a398e;
           color: #ffffff;
@@ -56,12 +48,17 @@
             font-family: 'klavika-medium';
         }
     }
-    a{
-        text-decoration: none;
-    }
-    .tab-dashboard{
+    .active {
+      .tab{
         background-color: #3a398e;
         color: #ffffff;
-        cursor: initial;
+        .material-icons,
+        p {
+          color: #ffffff;
+        }
+      }
+    }
+    a{
+        text-decoration: none;
     }
 }

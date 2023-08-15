@@ -1,88 +1,58 @@
 import './adView.scss';
 import Picture1 from '../../assets/images/hotel.jpg';
-import { Link } from 'react-router-dom';
 
 function AdView() {
     return(
         <div className="ad_view_main">
             <div className="adview_profile">
                 <div className="adview_profile_summary">
-                    <div className="profile_picture">
-                        <img src= {Picture1} alt="Avatar" />
+                    <div className="about">
+                        <div className="profile_picture">
+                            <img src= {Picture1} alt="Avatar" />
+                        </div>
+                        <div className='name'>
+                            <h1>Ocean Wave</h1>
+                        </div>
+                        <div className='actor'>
+                            <h3>Hotel</h3>
+                        </div>
                     </div>
-                    <div className='name'>
-                        <h1>Ocean Wave</h1>
-                    </div>
-                    <div className='actor'>
-                        <h3>Shop</h3>
-                    </div>
-                </div>
-                <div className="adview_profile_details">
                     <div className="profile_details">
                         <table>
                             <tr>
-                                <th>Email</th>
-                                <td>johnd@gmail.com</td>
+                                <th>Hotel Name</th>
+                                <td>Ocean Wave</td>
                             </tr>
                             <tr>
-                                <th>User Name</th>
-                                <td>johnyboi</td>
+                                <th>Location</th>
+                                <td>Lake Geneva, Kandy</td>
                             </tr>
                             <tr>
                                 <th>Contact Number</th>
-                                <td>0772244456</td>
+                                <td>+94772244456</td>
                             </tr>
                             <tr>
-                                <th>Joined Date</th>
-                                <td>2023-12-12</td>
+                                <th>Website</th>
+                                <td>www.oceanwave.com</td>
                             </tr>
                         </table>
                     </div>
+                </div>
+                <div className="adview_profile_details">
                     <div className="profile_reports">
-                        <h1>Reports</h1>
-                        <div className="table">
-                            <table>
-                                <tr>
-                                    <th>Status</th>
-                                    <th>Count</th>
-                                    <th>Action</th>
-                                </tr>
-                                <tr>
-                                    <td>Ongoing</td>
-                                    <td>30</td>
-                                    <td>
-                                        <Link to='/' className='link'>
-                                            <span class="material-icons">
-                                                visibility
-                                            </span>
-                                        </Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Ongoing</td>
-                                    <td>40</td>
-                                    <td>
-                                        <Link to='/' className='link'>
-                                            <span class="material-icons">
-                                                visibility
-                                            </span>
-                                        </Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Ongoing</td>
-                                    <td>50</td>
-                                    <td>
-                                        <Link to='/' className='link'>
-                                            <span class="material-icons">
-                                                visibility
-                                            </span>
-                                        </Link>
-                                    </td>
-                                </tr>
-                            </table>
+                        <h1>Topic : Introducing "Ocean Wave"</h1>
+                        <div className="ad_description">
+                            <p>🌊 Elegantly appointed waterfront rooms and suites, offering captivating vistas. Plush furnishings for ultimate comfort.</p> 
+                            <p>🍽 Indulge in a symphony of flavors with our fusion of local and global cuisines. Culinary artisans craft exquisite dishes.</p> 
+                            <p>🌸 Rejuvenate at our waterfront spa, where pampering treatments, massages, and rejuvenating therapies await.</p> 
+                            <p>🚣‍♀ Embark on aquatic adventures or stroll through lush gardens, immersing yourself in nature's embrace.</p> 
+                            <p>🎊 The ideal venue for celebrations and events. Our meticulous event planning ensures every occasion is extraordinary.</p>
                         </div>
                     </div>
+                    <div className="review_buttons">
+                    <button className="btn btn-primary">Accept and Publish</button>
+                    <button className="btn btn-danger">Review and Return</button>
+                </div>
                 </div>
             </div>
         </div>

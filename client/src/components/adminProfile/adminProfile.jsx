@@ -59,19 +59,8 @@ function AdminProfile() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Ongoing</td>
+                                    <td>Handled</td>
                                     <td>40</td>
-                                    <td>
-                                        <Link to='/' className='link'>
-                                            <span class="material-icons">
-                                                visibility
-                                            </span>
-                                        </Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Ongoing</td>
-                                    <td>50</td>
                                     <td>
                                         <Link to='/' className='link'>
                                             <span class="material-icons">
