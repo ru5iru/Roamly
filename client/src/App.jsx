@@ -39,6 +39,7 @@ import ForgotPW from "./pages/forgotPassword/fp";
 import ResetPW from "./pages/resetPW/ResetPW";
 import DashBoardPage from "./pages/dashboard/dashboardPage";
 import Verification from "./pages/signup/Verification";
+import ChatApp from "./components/chat/chatapp";
 // import Interests from "./pages/Interests/Interests";
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
@@ -141,6 +142,22 @@ function App() {
             <LeftBarhs />
             <AdvertisementPage />
           </div>
+        </div>
+      </div>
+    );
+  };
+  
+  const Chat = () => {
+    return (
+      <div>
+        <NavBar />
+        <div style={{ display: "flex", position: "relative", top: "4rem" }}>
+          <LeftBarSp />
+          <div style={{ display: "flex", position: "relative", left: "298px" }}>
+            <LeftBarhs />
+            <ChatApp />
+          </div>
+          <RightBar />
         </div>
       </div>
     );
@@ -413,6 +430,10 @@ function App() {
     {
       path: "/dashboard",
       element: <Dash />,
+    },
+    {
+      path: "/messages",
+      element: <Chat />,
     },
     {
       path: "/hotelProfile",
