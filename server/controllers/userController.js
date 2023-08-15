@@ -5,6 +5,7 @@ import {
    registerUsers,
    authUser,
    findUserByID,
+   isUserVerified,
 } from "../models/userModel.js";
 
 // desc    Login user

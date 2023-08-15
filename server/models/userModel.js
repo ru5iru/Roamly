@@ -86,4 +86,5 @@ export {
     authUser,
     findUserByEmail,
     findUserByID,
+    isUserVerified,
 };
