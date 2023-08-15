@@ -1,5 +1,5 @@
 import "./Ad.scss"
-import Ad1 from "../../assets/ad1.png";
+import Adv from "../../assets/ad1.png"
 import Phone from "../../assets/Phone.png";
 // import Ad from "../advertisement/Ad";
 import { useState, useEffect, Fragment } from "react";
@@ -47,7 +47,7 @@ const Ad = () => {
                 ads.map(ad => (
                     <div className="ad">
 
-                        <img src={require('../../assets/' + ad.ad_img)} alt="" />
+                        <img src={require('../../assets/' + Adv.ad_img)} alt="" />
 
                         <div className="adDetails">
                             <div className="Upper">
