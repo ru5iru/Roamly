@@ -1,6 +1,6 @@
 // ChatBox.js
 import React, { useState } from 'react';
-import './ChatBox.css';
+import './chatbox.scss';
 
 const ChatBox = ({ chat }) => {
   const [newMessage, setNewMessage] = useState('');
@@ -25,7 +25,7 @@ const ChatBox = ({ chat }) => {
   return (
     <div className="chat-box">
       <div className="chat-header">
-      <img src={"https://static.vecteezy.com/system/resources/previews/009/378/164/non_2x/arrow-icon-arrows-sign-black-arrows-free-png.png"} alt="chatlist" className='menu'/>
+      {/* <img src={"https://static.vecteezy.com/system/resources/previews/009/378/164/non_2x/arrow-icon-arrows-sign-black-arrows-free-png.png"} alt="chatlist" className='menu'/> */}
         <img src={chat.profilePicture} alt={chat.name} className='propic'/>
         <span className=''>{chat.name}</span>
         {/* <img src={"https://icons.veryicon.com/png/o/miscellaneous/cloud-call-center/call-up.png"} alt={chat.name} className='call'/> */}
