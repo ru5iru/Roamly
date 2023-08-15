@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./signup.scss";
 import img10 from "../../assets/images/img10.jpg";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import validator from "validator";
 
 export const Signup = () => {
@@ -13,6 +13,7 @@ export const Signup = () => {
       password: "",
       confirmPassword: "",
    });
+   const [success, setSuccess] = useState(false);
 
    const navigate = useNavigate();
 
@@ -61,15 +62,51 @@ export const Signup = () => {
       setValidationErrors({});
 
 
+      // try {
+      //   // Send signup data
+      //   await axios.post("http://localhost:8000/server/users/register", inputs);
+  
+      //   // Send verification email
+      //   await axios.post(
+      //     "http://localhost:8000/server/users/sendVerificationEmail",
+      //     { email: inputs.email } // Wrap the email in an object
+      //   );
+      // } catch (err) {
+      //   setErr(err.response.data);
+      // }
+
       try {
+         // Send signup data
+         await axios.post("http://localhost:8000/server/users/register", inputs);
+   
+         // Send verification email
          await axios.post(
-            "http://localhost:8000/server/users/register",
-            inputs
-         );
-         navigate(`/login`);
-      } catch (err) {
-         setErr(err.response.data);
-      }
+           "http://localhost:8000/server/users/sendVerificationEmail",
+           { email: inputs.email }
+         )
+         
+
+         .then(response => {
+            // Display an alert when the email is successfully sent
+            if (response.data.success) {
+               alert("Email has been sent!");
+            } else {
+               alert("Email has been sent!");
+            }
+            })
+            .catch(error => {
+            console.error("Error sending email:", error);
+            });
+         // If both requests are successful, update success state
+         setSuccess(true);
+         setErr(null); // Clear any previous errors
+       } catch (err) {
+         // Handle the error
+         console.error("Error:", err);
+   
+         // Update error state with a user-friendly message
+         setErr("An error occurred during registration.");
+       }
    };
    };
 

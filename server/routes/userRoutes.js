@@ -1,5 +1,7 @@
 import express from "express";
+import { sendVerificationEmail, verifyEmail } from "../controllers/verificationController.js";
 const router = express.Router();
+
 import {
     registerUser,
     loginUser,
@@ -17,5 +19,7 @@ router.post("/logout", logoutUser);
 router.get("/profile/:id", protect, getUserProfile);
 router.get("/profile", protect, getCurrentUserProfile);
 router.put("/profile", protect, updateUserProfile);
+router.post("/sendVerificationEmail", sendVerificationEmail);
+router.get("/verify/:token", verifyEmail);
 
 export default router;

@@ -38,6 +38,7 @@ import Forgotpwotp from "./pages/forgotPasswordOTP/fpotp";
 import ForgotPW from "./pages/forgotPassword/fp";
 import ResetPW from "./pages/resetPW/ResetPW";
 import DashBoardPage from "./pages/dashboard/dashboardPage";
+import Verification from "./pages/signup/Verification";
 // import Interests from "./pages/Interests/Interests";
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
@@ -154,6 +155,21 @@ function App() {
           <div style={{ display: "flex", position: "relative", left: "398px" }}>
             <LeftBarhs />
             <DashBoardPage />
+          </div>
+        </div>
+      </div>
+    );
+  };
+  
+  const HotelProfile = () => {
+    return (
+      <div>
+        <NavBar />
+        <div style={{ display: "flex", position: "relative", top: "4rem" }}>
+          <LeftBarSp />
+          <div style={{ display: "flex", position: "relative", left: "398px" }}>
+            <LeftBarhs />
+            <HotelProfile />
           </div>
         </div>
       </div>
@@ -359,6 +375,15 @@ function App() {
           path: "/resetpw",
           element: <ResetPW />,
         },
+        {
+          path: "/verify/:token",
+          element: (
+            <>
+              <Header />
+              <Verification />
+            </>
+          ),
+        },
         // {
         //     path: "/interets",
         //     element: <Interests />,
@@ -388,6 +413,10 @@ function App() {
     {
       path: "/dashboard",
       element: <Dash />,
+    },
+    {
+      path: "/hotelProfile",
+      element: <HotelProfile />,
     },
     {
       path: "/trip",

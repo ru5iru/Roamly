@@ -35,6 +35,10 @@ const LeftBarSp = () => {
     // Navigate to the home page when the Home menu item is clicked
     navigate("/messages");
   };
+  const handleProfileClick = () => {
+    // Navigate to the home page when the Home menu item is clicked
+    navigate("/hotelProfile");
+  };
 
   return (
     <div className="leftBar">
@@ -44,15 +48,19 @@ const LeftBarSp = () => {
             <img src={Dashboard} alt="Dashboard" />
             <p>Dashboard</p>
           </div>
-          <div className="menu_item">
-            <img src={Profile} alt="" />
+          <div className="menu_item"
+          //  onClick={handleProfileClick}
+           >
+            <img src={Profile} alt="Profile" />
             <p>Profile</p>
           </div>
           <div className="menu_item" onClick={handleAdsClick}>
             <img src={Ads} alt="" />
             <p>Advertisements</p>
           </div>
-          <div className="menu_item" onClick={handleBadgesClick}>
+          <div className="menu_item"
+          //  onClick={handleBadgesClick}
+           >
           <img src={Badge} alt="Badge" />
             <p>Badges</p>
           </div>
