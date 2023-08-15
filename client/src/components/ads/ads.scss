@@ -32,9 +32,9 @@ $background-color_2: #f0f9fd;
 	        flex-direction: column;
 	        align-items: center;
 	        justify-content: center;
-	        margin: 0 5px;
+	        margin: 10px;
 	        color: $color_1;
-            border: 1px solid $color_1;
+            box-shadow: 0 0 15px #2B3674;
 	        .stat-item-title{ 
                 font-size: 20px;
 	            font-family: $font-family_1;
@@ -74,11 +74,12 @@ $background-color_2: #f0f9fd;
                     width: 100%;
                     border-collapse: collapse;
                     th, td{
-                        border: 1px solid $color_1;
+                        border-bottom: 1px solid #dbdbdb;
                         padding: 5px;
                         text-align: center;
                         font-family: $font-family_2;
                         color: #2B3674;
+                        line-height: 2.5;
                     }
                     th{
                         font-family: $font-family_3;

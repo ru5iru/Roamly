@@ -15,7 +15,7 @@
     border-radius: 5px;
     padding-top: 10px;
     .tab {
-        background-color: #b7deee;
+        background-color: #ECFBFE;
         display: flex;
         z-index: 2;
         width: 320px;
@@ -36,7 +36,7 @@
           color: inherit;
         }
         &:hover {
-          background-color: #3a398e;
+          background-color: #1b5b75;
           color: #ffffff;
         }
         & .material-icons{
@@ -50,7 +50,7 @@
     }
     .active {
       .tab{
-        background-color: #3a398e;
+        background-color: #065573;
         color: #ffffff;
         .material-icons,
         p {

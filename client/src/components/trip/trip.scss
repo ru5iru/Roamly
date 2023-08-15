@@ -12,6 +12,7 @@
                 }
                 th{
                     padding: 10px;
+                    color: #065573;
                     text-align: left;
                     width: 400px;
                     font-size: 20px;
@@ -22,9 +23,19 @@
                     text-align: left;
                     font-size: 18px;
                     font-family: 'klavika-regular';
+                    color: #6f6f82;
+                    .material-icons{
+                        font-size: 20px;
+                        color: #ffffff;
+                        background-color: #9291b1;
+                        border-radius: 50%;
+                        padding: 4px;
+                        cursor: pointer;
+                    }
                 }
                 .thact{
                     width: 100px;
+                    text-align: center;
                 }
                 .tdtype{
                     width: 150px;

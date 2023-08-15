@@ -33,7 +33,7 @@ function ContentCreators() {
                         </div>
                         <div className="profile-badge b_purple">
                             <span class="material-icons">
-                                person
+                                star
                             </span>
                         </div>
                         <div className="profile-badge b_blue">

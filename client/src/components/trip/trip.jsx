@@ -8,17 +8,17 @@ const Trip = () => {
                     <table>
                         <tr>
                             <th className="tdtype">Trip Type</th>
-                            <th className="thact">Action</th>
                             <th>Places</th>
+                            <th className="thact">Action</th>
                         </tr>
                         <tr>
                             <td rowSpan={3}>Camping</td>
-                            <td rowSpan={3}>
+                            <td>Belihuloya Camping</td>
+                            <td rowSpan={3} className="thact">
                                 <span class="material-icons">
-                                    edit
+                                    add
                                 </span>
                             </td>
-                            <td>Belihuloya Camping</td>
                         </tr>
                         <tr>
                             <td>Mahagala Campsite</td>
@@ -28,12 +28,12 @@ const Trip = () => {
                         </tr>
                         <tr>
                             <td rowSpan={3}>Surfing</td>
-                            <td rowSpan={3}>
+                            <td>Belihuloya Camping</td>
+                            <td rowSpan={3} className="thact">
                                 <span class="material-icons">
-                                    edit
+                                    add
                                 </span>
                             </td>
-                            <td>Belihuloya Camping</td>
                         </tr>
                         <tr>
                             <td>Mahagala Campsite</td>
@@ -43,12 +43,12 @@ const Trip = () => {
                         </tr>
                         <tr>
                             <td rowSpan={7}>Beaches</td>
-                            <td rowSpan={7}>
+                            <td>Unawatuna</td>
+                            <td rowSpan={7} className="thact">
                                 <span class="material-icons">
-                                    edit
+                                    add
                                 </span>
                             </td>
-                            <td>Unawatuna</td>
                         </tr>
                         <tr>
                             <td>Bentota</td>
