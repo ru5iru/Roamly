@@ -1,8 +1,8 @@
 // ChatApp.js
 import React, { useState, useEffect } from 'react';
-import './ChatApp.css';
-import Sidebar from './Sidebar';
-import ChatBox from './ChatBox';
+import './chatapp.scss';
+import Sidebar from './sidebar';
+import ChatBox from './chatbox';
 
 const sampleChats = [
   {
