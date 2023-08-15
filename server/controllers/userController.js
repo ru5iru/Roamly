@@ -13,6 +13,16 @@ import {
 const loginUser = asyncHandler(async (req, res) => {
    const { email, password } = req.body;
 
+   const isVerified = await isUserVerified(email);
+
+   if (!isVerified) {
+      res.status(400).json("User is not registered.");
+      // console.log("User is not registered.");
+
+      // throw new Error("User is not registered.");
+   }
+
+
    const user = await authUser(email, password);
 
    if (user) {

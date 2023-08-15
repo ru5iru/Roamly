@@ -10,6 +10,14 @@ const isUserExists = asyncHandler(async (email) => {
     return result.rowCount > 0;
 });
 
+// find user is verified by email
+const isUserVerified = asyncHandler(async (email) => {
+    const sql = 'SELECT * FROM users WHERE isverified = true AND email = $1';
+    const result = await query(sql, [email]);
+
+    return result.rowCount > 0;
+});
+
 // find user is exists by user id
 const isUserExistsByID = asyncHandler(async (id) => {
     const sql = 'SELECT * FROM users WHERE user_id = $1';
