@@ -37,6 +37,7 @@ app.use(cookieParser());
 const allowedOrigins = ['http://localhost:3000'];
 app.use(cors({
     origin: allowedOrigins,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true // Allow credentials in the request
 }));
 
