@@ -141,6 +141,22 @@ function App() {
         );
     };
 
+    const Messenger = () => {
+        return (
+            <div>
+                <NavBar />
+                <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
+                
+                    <div style= {{display: "flex", position: "relative", left: "298px" }}>
+                      
+                        {/* <Messenger /> */}
+                    </div>
+                    
+                </div>
+            </div>
+        );
+    };
+
     const Trip = () => {
         return (
             <div>
@@ -315,6 +331,11 @@ function App() {
             path: "/feed",
             element: <Feed />,
         },
+
+        {
+            path: "/messenger",
+            element: <Messenger />,
+        },
         {
             path: "/explore",
             element: <Exp />,
@@ -323,6 +344,7 @@ function App() {
             path: "/advertisements",
             element: <Ads />,
         },
+
         {
             path: "/trip",
             element: <Trip />,
