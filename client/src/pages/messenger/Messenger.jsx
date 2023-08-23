@@ -1,3 +1,4 @@
+import Conversation from "../../components/conversations/Conversation";
 import "./messenger.scss";
 
 export default function Messenger() {
@@ -6,6 +7,12 @@ export default function Messenger() {
       <div className="chatMenu">
         <div className="chatMenuWrapper">
           <input placeholder="Search for friends" className="chatMenuInput" />
+          <Conversation />
+          <Conversation />
+          <Conversation />
+          <Conversation />
+          <Conversation />
+          <Conversation />
           </div>
       </div>
       <div className="chatBox">

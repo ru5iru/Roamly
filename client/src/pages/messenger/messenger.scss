@@ -5,6 +5,7 @@
 
     .chatMenu {
         flex: 3.5;
+        width: 500px;
 
         .chatMenuWrapper {
             padding: 10px 10px;
@@ -15,14 +16,13 @@
                 padding: 10px 10px;
                 border: none;
                 border-bottom: 1px solid gray;
-                // margin: 10%;
+
             }
         }
     }
     
     .chatBox {
         flex: 5.5;
-        // display: flex;
 
         .chatBoxWrapper {
             padding: 10px 10px;
@@ -44,43 +44,6 @@
 }
 
 
-// .messenger {
-//     height: calc(100vh - 70px);
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-between;
-//     align-items: stretch;
-  
-//     .chatMenu,
-//     .chatBox,
-//     .chatOnline {
-//       width: 100%;
-//       padding: 10px 10px;
-//       margin: 0 10px;
-
-//       .chatMenuWrapper {
-//         height: 100%;
-//       }
-    
-//       .chatBoxWrapper {
-//         height: 100%;
-//       }
-    
-//       .chatOnlineWrapper {
-//         height: 100%;
-  
-//         .chatMenuInput {
-//               width: 90%;
-//               padding: 10px 10px;
-//               border: none;
-//               border-bottom: 1px solid gray;
-//               // margin: 10%;
-//           }
-//       }
-//     }
-  
-    
-//   }
   
   
   
