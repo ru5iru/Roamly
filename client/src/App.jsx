@@ -39,6 +39,7 @@ import ForgotPW from "./pages/forgotPassword/fp";
 import ResetPW from "./pages/resetPW/ResetPW";
 import Verification from "./pages/signup/Verification";
 // import Interests from "./pages/Interests/Interests";
+import Messenger from  "./pages/messenger/Messenger"
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
 axios.defaults.withCredentials = true;
@@ -141,17 +142,16 @@ function App() {
         );
     };
 
-    const Messenger = () => {
+    const Chat = () => {
         return (
             <div>
                 <NavBar />
-                <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
-                
-                    <div style= {{display: "flex", position: "relative", left: "298px" }}>
-                      
-                        {/* <Messenger /> */}
-                    </div>
-                    
+                <div style={{ display: "flex",position: "relative", top: "4rem"}}>
+                    <LeftBarSp />
+                    <div style= {{display: "block", position: "relative", left: "300px", right: "10px"}}>  
+                    <LeftBarhs />
+                    <Messenger />
+                    </div>   
                 </div>
             </div>
         );
@@ -334,7 +334,7 @@ function App() {
 
         {
             path: "/messenger",
-            element: <Messenger />,
+            element: <Chat />,
         },
         {
             path: "/explore",
