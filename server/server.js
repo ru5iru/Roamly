@@ -16,6 +16,7 @@ import likeRoutes from "./routes/likeRoutes.js"
 import exploreRoutes from "./routes/exploreRoutes.js"
 import adsRoutes from "./routes/adsRoutes.js"
 import feedRoutes from "./routes/feedRoutes.js"
+import relationshipRoutes from "./routes/relationshipRoutes.js"
 
 
 
@@ -55,6 +56,9 @@ app.use("/server/interests", interstRoutes);
 
 // like routes
 app.use("/server/likes", likeRoutes);
+
+// relationship routes
+app.use("/server/relationships", relationshipRoutes);
 
 //Search routes
 app.use("/server/explore", exploreRoutes);
