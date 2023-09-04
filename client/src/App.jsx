@@ -38,6 +38,7 @@ import Forgotpwotp from "./pages/forgotPasswordOTP/fpotp";
 import ForgotPW from "./pages/forgotPassword/fp";
 import ResetPW from "./pages/resetPW/ResetPW";
 import Verification from "./pages/signup/Verification";
+import Chathome from "./pages/chat/chathome";
 // import Interests from "./pages/Interests/Interests";
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
@@ -137,6 +138,20 @@ function App() {
                         <AdvertisementPage />
                     </div>
                 </div>
+            </div>
+        );
+    };
+
+    const Messenger = () => {
+        return (
+            <div>
+                <NavBar />
+                {/* <div style={{ display: "flex", position: "relative", top: "4rem" }}> */}
+                    {/* <div style= {{display: "flex", position: "relative", left: "298px" }}> */}
+                    <div>
+                        <Chathome />
+                    </div>
+                {/* </div> */}
             </div>
         );
     };
@@ -314,6 +329,11 @@ function App() {
         {
             path: "/feed",
             element: <Feed />,
+        },
+
+        {
+            path: "/chat",
+            element: <Messenger />,
         },
         {
             path: "/explore",
