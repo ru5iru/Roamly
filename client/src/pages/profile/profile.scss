@@ -8,6 +8,14 @@
       align-items: center;
       font-family: Fira Sans, sans-serif;
 
+      .notFound{
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         height: 90vh;
+         font-size: 2rem;
+      }
+
       .images {
          width: 80vw;
          height: 50vh;

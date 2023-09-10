@@ -23,6 +23,7 @@ const Profile = () => {
    const [openAddPost, setOpenAddPost] = useState(false);
 
    const [profileData, setProfileData] = useState([]);
+   const [profileNotFound, setProfileNotFound] = useState(false);
 
    const userID = parseInt(useLocation().pathname.split("/")[2]);
 
@@ -30,6 +31,9 @@ const Profile = () => {
       if (userID) {
          axios.get("/users/profile/" + userID).then((response) => {
             setProfileData(response.data);
+         })
+         .catch((error) => {
+            setProfileNotFound(true);
          });
       }
    }, [userID]);
@@ -102,7 +106,16 @@ const Profile = () => {
       }
    );
 
-   return (
+   if (profileData.length === 0 ){
+      return(
+         <div className="profile">
+            <div className="notFound">
+               Page Not Found
+            </div>
+         </div>
+      )
+   } else {
+      return (
       <div className="profile">
          <div className="images">
             <img className="cover" src={profileData.cover_pic} alt="" />
@@ -303,6 +316,9 @@ const Profile = () => {
          )}
       </div>
    );
+   }
+
+   
 };
 
 export default Profile;
