@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import "./userdetails.scss";
 import axios from "axios";
 
-import agoda from "../../assets/images/agoda.png";
-import airbnb from "../../assets/images/airbnb.png";
-import booking from "../../assets/images/booking.png";
+import agoda from "../../assets/images/profile/agoda.png";
+import airbnb from "../../assets/images/profile/airbnb.png";
+import booking from "../../assets/images/profile/booking.png";
 
 const UserDetails = () => {
    return (

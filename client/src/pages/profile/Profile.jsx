@@ -7,6 +7,7 @@ import Rating from "../../components/ratingComponents/rating/Rating";
 import Badge from "../../components/badgeComponents/badge/Badge";
 import Update from "../../components/update/Update";
 import Interests from "../../components/interests/Interests";
+import UserDetails from "../../components/userdetails/UserDetails";
 import Allbadges from "../../components/badgeComponents/allbadges/Allbadges";
 import Addpost from "../../components/postComponents/addpost/Addpost";
 import PostForm from "../../components/postComponents/addpost/PostForm";
@@ -206,7 +207,11 @@ const Profile = () => {
             </div>
             <div className="profileBottom">
                <div className="left">
-                  <Interests userID={userID} />
+                  {profileData.user_type === "Hotel" ? (
+                     <UserDetails />
+                  ) : (
+                     <Interests userID={userID} />
+                  )}
                   <div className="uploads">
                      <div className="uploadsHeadContainer">
                         <div className="uploadsHead">Photos</div>
