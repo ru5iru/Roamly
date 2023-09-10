@@ -1,0 +1,16 @@
+.rating{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    i{
+        color: #fbc02d;
+    }
+
+    .empty{
+        display: flex;
+        justify-content: center;
+        font-weight: 500;
+        color: #2d3846;
+    }
+}

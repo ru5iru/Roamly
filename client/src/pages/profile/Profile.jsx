@@ -3,6 +3,7 @@ import axios from "axios";
 import "./profile.scss";
 import Posts from "../../components/postComponents/posts/Posts";
 import Badges from "../../components/badgeComponents/badges/Badges";
+import Rating from "../../components/ratingComponents/rating/Rating";
 import Badge from "../../components/badgeComponents/badge/Badge";
 import Update from "../../components/update/Update";
 import Interests from "../../components/interests/Interests";
@@ -143,7 +144,8 @@ const Profile = () => {
                      <div className="head">Achievements</div>
                      <div className="container">
                         <div className="badges">
-                           <Badges userID={profileData.user_id} />
+                           {/* <Badges userID={profileData.user_id} /> */}
+                           <Rating />
                         </div>
                         <div className="button">
                            <button onClick={() => setOpenBadges(!openBadges)}>
