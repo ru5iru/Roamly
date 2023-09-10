@@ -4,6 +4,8 @@ import img10 from "../../assets/images/img10.jpg";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import validator from "validator";
+import { db } from "../../../src/firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 export const Signup = () => {
    const [inputs, setInputs] = useState({
@@ -78,6 +80,7 @@ export const Signup = () => {
       try {
          // Send signup data
          await axios.post("http://localhost:8000/server/users/register", inputs);
+
    
          // Send verification email
          await axios.post(
@@ -93,6 +96,8 @@ export const Signup = () => {
             alert("Email has been sent!");
          }
          })
+
+         
          .catch(error => {
          console.error("Error sending email:", error);
          });
@@ -100,6 +105,16 @@ export const Signup = () => {
          // If both requests are successful, update success state
          setSuccess(true);
          setErr(null); // Clear any previous errors
+
+         await setDoc(doc(db,"users",inputs.email),{
+            firstname: inputs.firstname,
+            lastname: inputs.lastname,
+            email: inputs.email,
+         })
+
+         await setDoc(doc(db,"userChats",inputs.email), {});
+
+         
        } catch (err) {
          // Handle the error
          console.error("Error:", err);
