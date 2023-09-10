@@ -1,0 +1,27 @@
+.notFound {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   top: 7rem;
+   position: absolute;
+   gap: 15px;
+
+   .notFoundHead {
+      font-size: 2rem;
+      font-weight: 500;
+      color: #2d3846;
+   }
+
+   .notFoundDesc {
+      padding: 0 2rem;
+      display: flex;
+      text-align: center;
+      display: inline;
+      font-size: 1rem;
+      color: #2d3846;
+   }
+
+   a {
+      text-decoration: underline;
+   }
+}

@@ -11,10 +11,11 @@ import UserDetails from "../../components/userdetails/UserDetails";
 import Allbadges from "../../components/badgeComponents/allbadges/Allbadges";
 import Addpost from "../../components/postComponents/addpost/Addpost";
 import PostForm from "../../components/postComponents/addpost/PostForm";
+import NotFound from "../../components/notfound/NotFound";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import { AuthContext } from "../../context/authContext";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import PuffLoader from "react-spinners/PuffLoader";
 
 const Profile = () => {
@@ -110,10 +111,16 @@ const Profile = () => {
       }
    );
 
+   const navigate = useNavigate();
+
+   const navigateFeed = () => {
+      navigate("/feed");
+   };
+
    if (profileNotFound === "Not Found") {
       return (
          <div className="profile">
-            <div className="notFound">Page Not Found</div>
+            <NotFound />
          </div>
       );
    } else if (profileNotFound === "Loading") {
