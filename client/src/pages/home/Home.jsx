@@ -18,16 +18,14 @@ function Home() {
     const [openAddPost, setOpenAddPost] = useState(false);
 
     return (
-
-        <div style={{ display: "flex", position: "relative", top: "4rem" }}>
+        <div className="home">
             <LeftBar />
-            <div style={{ position: "relative", left: "298px" }}>
+            <div className="main-container-home">
                 <LeftBarhs />
-                <div style={{ marginLeft: 18 + 'px', marginTop: 18 + 'px' }}>
+                <div className="addPostContainer-home">
                     <Addpost setOpenAddPost={setOpenAddPost} />
                 </div>
                 <Feedcontent />
-                {/* <Home /> */}
             </div>
             <RightBar />
             {openAddPost && <PostForm setOpenAddPost={setOpenAddPost} />}

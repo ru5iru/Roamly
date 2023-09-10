@@ -296,11 +296,7 @@ function App() {
                 {
                     path: "/verify/:token",
                     element: <Verification />,
-                },
-                // {
-                //     path: "/interets",
-                //     element: <Interests />,
-                // },
+                }
             ],
         },
         {

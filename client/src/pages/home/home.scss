@@ -1,0 +1,22 @@
+.home {
+   display: flex;
+   position: relative;
+   top: 4rem;
+
+   .main-container-home {
+      position: fixed;
+      left: 280px;
+      margin-left: 20px;
+
+      @media only screen and (max-width: 1000px) {
+         left: 0;
+         margin-left: 0;
+      }
+
+      .addPostContainer-home {
+         margin-left: 20px;
+         margin-right: 20px;
+         margin-top: 20px;
+      }
+   }
+}

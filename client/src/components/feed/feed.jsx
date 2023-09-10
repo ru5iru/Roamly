@@ -30,14 +30,11 @@ const Feedcontent = () => {
     }, []);
 
     return (
-        // <div className="explore">
         <Fragment>
             <div className="feed">
                 {posts.map((post) => <Post userID={post.user_id} post={post} key={post.post_id} />)}
             </div>
         </Fragment>
-
-        // {/* // </div> */}
     );
 };
 
