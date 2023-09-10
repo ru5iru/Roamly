@@ -115,6 +115,10 @@
                gap: 15px;
                margin-left: 1rem;
 
+               @media (max-width: 768px) {
+                  margin-left: 0rem;
+               }
+
                .profileImg {
                   display: flex;
                   align-items: center;

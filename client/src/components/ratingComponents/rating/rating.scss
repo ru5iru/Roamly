@@ -1,10 +1,20 @@
 .rating{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 10px;
+    margin: 5px 0;
 
     i{
         color: #fbc02d;
+        font-size: 1.2rem;
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+
+    span{
+        font-size: 1.1rem;
+        font-weight: 500;
     }
 
     .empty{
