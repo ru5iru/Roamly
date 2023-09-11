@@ -25,7 +25,7 @@ const LeftBarhs = () => {
     return (
         <div className="leftBar">
 
-            <div className="hidden_leftbar">
+            <div className="hidden_leftbar-main">
                 <div className="menu_item_h" onClick={handleHomeClick}>
                     <img src={Home} alt="" />
                     <p>Home</p>
@@ -45,7 +45,7 @@ const LeftBarhs = () => {
 
             </div>
 
-            <div className="hidden_leftbar_s">
+            <div className="hidden_leftbar_s-main">
                 <div className="menu_item_h" onClick={handleHomeClick}>
                     <img src={Home} alt="" />
                 </div>

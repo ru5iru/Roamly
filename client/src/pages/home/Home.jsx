@@ -19,7 +19,9 @@ function Home() {
 
     return (
         <div className="home">
-            <LeftBar />
+            <div className="leftbar-container-home">
+                <LeftBar />
+            </div>
             <div className="main-container-home">
                 <LeftBarhs />
                 <div className="addPostContainer-home">
@@ -27,11 +29,11 @@ function Home() {
                 </div>
                 <Feedcontent />
             </div>
-            <RightBar />
+            <div className="rightbar-container-home">
+                <RightBar />
+            </div>
             {openAddPost && <PostForm setOpenAddPost={setOpenAddPost} />}
         </div>
-
-
     );
 };
 

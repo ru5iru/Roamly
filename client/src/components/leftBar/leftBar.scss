@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
 
-    .leftbar {
+    .leftbar-main {
         width: 280px;
         height: 400px;
         border-radius: 10px;
@@ -17,6 +17,10 @@ body {
         justify-content: space-between;
         align-items: center;
         position: fixed;
+
+        -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
 
 
         .menu {
@@ -72,8 +76,8 @@ body {
         }
     }
 
-    .hidden_leftbar {
-        width: 100vw;
+    .hidden_leftbar-main {
+        // width: 100vw;
         height: max-content;
         align-items: flex-start;
         justify-content: space-around;
@@ -110,8 +114,8 @@ body {
         }
     }
 
-    .hidden_leftbar_s {
-        width: 100vw;
+    .hidden_leftbar_s-main {
+        width: auto;
         height: max-content;
         align-items: flex-start;
         justify-content: space-around;
@@ -139,25 +143,25 @@ body {
 }
 
 @media only screen and (min-width: 1000px) {
-    .leftbar {
+    .leftbar-main {
         display: flex;
     }
 
-    .hidden_leftbar {
+    .hidden_leftbar-main {
         display: none;
     }
 
-    .hidden_leftbar_s {
+    .hidden_leftbar_s-main {
         display: none;
     }
 }
 
 @media only screen and (max-width: 1000px) and (min-width: 700px) {
-    .leftbar {
+    .leftbar-main {
         display: none;
     }
 
-    .hidden_leftbar {
+    .hidden_leftbar-main {
         display: flex;
 
         img {
@@ -165,21 +169,21 @@ body {
         }
     }
 
-    .hidden_leftbar_s {
+    .hidden_leftbar_s-main {
         display: none;
     }
 }
 
 @media only screen and (max-width: 700px) and (min-width: 500px) {
-    .leftbar {
+    .leftbar-main {
         display: none;
     }
 
-    .hidden_leftbar {
+    .hidden_leftbar-main {
         display: none;
     }
 
-    .hidden_leftbar_s {
+    .hidden_leftbar_s-main {
         display: flex;
 
         img {
@@ -190,15 +194,15 @@ body {
 
 
 @media only screen and (max-width: 500px) {
-    .leftbar {
+    .leftbar-main {
         display: none;
     }
 
-    .hidden_leftbar {
+    .hidden_leftbar-main {
         display: none;
     }
 
-    .hidden_leftbar_s {
+    .hidden_leftbar_s-main {
         display: flex;
 
         img {

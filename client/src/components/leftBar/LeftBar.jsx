@@ -37,9 +37,7 @@ const LeftBar = () => {
     };
 
     return (
-        <div className="leftBar">
-
-            <div className="leftbar">
+            <div className="leftbar-main">
                 <div className="menu">
                     <div className="menu_item" onClick={handleHomeClick}>
                         <img src={Home} alt="" />
@@ -63,7 +61,6 @@ const LeftBar = () => {
                     </div>
                 </div>
             </div>
-        </div>
     );
 };
 
