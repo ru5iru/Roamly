@@ -37,7 +37,11 @@ const Search = () => {
   };
 
   const handleSelect = async () => {
-    const combinedemails = currentUser.email + "&" + user.email;
+    const arr1 = currentUser.email.split('.');
+    const arr2 = user.email.split('.')
+    console.log(arr1[0]);
+    const combinedemails = arr1[0] + arr2[0];
+    console.log(combinedemails)
     
     try {
       const docRef = doc(db, "chats", combinedemails);
