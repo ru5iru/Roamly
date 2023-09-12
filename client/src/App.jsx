@@ -45,6 +45,7 @@ axios.defaults.baseURL = "http://localhost:8000/server/";
 axios.defaults.withCredentials = true;
 function App() {
     const { currentUser } = useContext(AuthContext);
+    console.log(currentUser)
 
     const { darkMode } = useContext(DarkModeContext);
 
@@ -144,6 +145,8 @@ function App() {
 
     const Messenger = () => {
         return (
+
+            // <QueryClientProvider client={queryClient}>
             <div>
                 <NavBar />
                 {/* <div style={{ display: "flex", position: "relative", top: "4rem" }}> */}
@@ -153,7 +156,9 @@ function App() {
                     </div>
                 {/* </div> */}
             </div>
+            // </QueryClientProvider>
         );
+        
     };
 
     const Trip = () => {

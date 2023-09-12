@@ -106,6 +106,7 @@ export const Signup = () => {
          setSuccess(true);
          setErr(null); // Clear any previous errors
 
+
          await setDoc(doc(db,"users",inputs.email),{
             firstname: inputs.firstname,
             lastname: inputs.lastname,
@@ -135,7 +136,7 @@ export const Signup = () => {
                   <div className="scard">
                      <div className="scard-body">
                         <h2 className="stitle">Sign Up</h2>
-                        <form>
+                        <form id="form">
                            <div className="srow ">
                               <div className="scol">
                                  <div className="sform-outline-11">
