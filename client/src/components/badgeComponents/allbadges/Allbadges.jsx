@@ -8,7 +8,7 @@ const Allbadges = ({ userID, setOpenBadges }) => {
 
    const userId = userID;
 
-   const [badgeData, setRecentBadgeData] = useState([]);
+   const [badgeData, setBadgeData] = useState([]);
    const [error, setError] = useState(null);
 
    useEffect(() => {
@@ -16,7 +16,7 @@ const Allbadges = ({ userID, setOpenBadges }) => {
          axios
             .get(`/badges?userId=${userId}`)
             .then((response) => {
-               setRecentBadgeData(response.data);
+               setBadgeData(response.data);
             })
             .catch((error) => {
                setError("Error fetching badges");

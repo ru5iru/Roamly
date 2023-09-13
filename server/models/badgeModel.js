@@ -19,7 +19,7 @@ const getAllbadges = asyncHandler(async () => {
 
 // get all badges by user
 const userBadges = asyncHandler(async (id) => {
-    const sql = 'SELECT bd.*, b.user_id FROM badge_details bd LEFT JOIN badges b ON bd.badge_id = b.badge_id AND b.user_id = $1';
+    const sql = 'SELECT bd.*, b.user_id FROM badge_details bd LEFT JOIN badges b ON bd.badge_id = b.badge_id AND b.user_id = $1 ORDER BY bd.badge_id';
     
     const result = await query(sql, [id]);
 
