@@ -6,7 +6,9 @@ $primary-color: #141f86;
 .personalizing-container {
     justify-content: center;
     align-items: center;
-    // height: 100vh;
+    top: 10vh;
+    // position: fixed;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,10 +27,12 @@ $primary-color: #141f86;
         font-weight: bold;
         font-size: 2.5rem;
         color: #0D1669;
+        margin-top: 10vh;
     }
 
     form {
         .row {
+            width: 70vw;
             .row-title {
                 font-family: "Fira Sans", sans-serif;
                 font-weight: 500;
@@ -40,14 +44,14 @@ $primary-color: #141f86;
                     font-size: 0.9rem;
                     border-radius: 0.5rem;
                     border: 1px solid #ced4da;
-                    font-size: 1.5rem;
-                    padding: 1.5rem;
+                    font-size: 1rem;
+                    padding: 1rem;
                     padding-left: 2.5rem;
                     padding-right: 2.5rem;
                     // width: 507px;
                     width: 100%;
                     /* Adjusted to use full width */
-                    max-width: 507px;
+                    max-width: 70vw;
                     /* Added a max-width for larger screens */
                     // height: 0.8rem;
                     background-color: #fff;
@@ -72,9 +76,10 @@ $primary-color: #141f86;
             .container-rbuttons {
                 .radio-tile-group {
                     display: grid;
-                    grid-template-columns: repeat(4, 1fr);
-                    grid-auto-rows: minmax(7rem, 1fr);
-                    gap: 1rem;
+                    grid-row: inherit;
+                    grid-template-columns: repeat(6, 1fr);
+                    // grid-auto-rows: minmax(7rem, 1fr);
+                    // gap: 1rem;
                     // grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); /* Responsive grid layout */
                     flex-wrap: wrap;
                     justify-content: center;
@@ -83,7 +88,7 @@ $primary-color: #141f86;
                     .input-container {
                         position: relative;
                         height: 7rem;
-                        width: 7rem;
+                        width: 10rem;
                         margin: 0.5rem;
 
                         //make actual radio input invisible

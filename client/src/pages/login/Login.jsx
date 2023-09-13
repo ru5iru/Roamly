@@ -80,7 +80,7 @@ const Login = () => {
                            <div className="ltext-left">
                               <p className="lsub">
                                  <a
-                                    href="/forgot-password"
+                                    href="/forgotPw"
                                     className="fw-bold"
                                  >
                                     Forgot password?
