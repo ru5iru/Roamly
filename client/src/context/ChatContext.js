@@ -15,14 +15,14 @@ import {
     };
   
     const chatReducer = (state, action) => {
+      const arr1 = currentUser.email.split('.');
+      // const arr2 = user.email.split('.')
+      const arr2 = action.payload.email.split('.');
       switch (action.type) {
         case "CHANGE_USER":
           return {
-            user: action.payload,
-            chatId:
-              currentUser.email > action.payload.email
-                ? currentUser.email + action.payload.email
-                : action.payload.email + currentUser.email,
+            user: action.payload,    
+            chatId: arr1[0] + arr2[0]
           };
   
         default:
