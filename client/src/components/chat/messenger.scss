@@ -199,12 +199,11 @@
             }
 
             &.other{
-                flex-direction: row-reverse;
+                // flex-direction: row-reverse;
 
                 .messageContent{
-                    align-items:flex-start ;
                     p{
-                        background-color: white;
+                        background-color: #d9e1ecc8;
                         color: black;
                         border-radius: 0px 10px 10px 10px;
                     }

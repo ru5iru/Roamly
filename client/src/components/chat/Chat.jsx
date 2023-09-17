@@ -10,6 +10,7 @@ import { ChatContext } from '../../context/ChatContext'
 const Chat = () => {
   // const {user} = useState("null")
   const {data} = useContext(ChatContext);
+  console.log(data.chatId)
   return (
     <div className='chat'>
       <div className="chatInfo">

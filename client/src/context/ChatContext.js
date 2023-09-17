@@ -8,73 +8,6 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
   
   export const ChatContext = createContext();
-  
-  // export const ChatContextProvider = ({ children }) => {
-  //   const { currentUser } = useContext(AuthContext);
-  //   const INITIAL_STATE = {
-  //     chatId: "null",
-  //     user: {},
-  //   };
-
-    
-  
-  //   const chatReducer = (state, action) => {
-  
-  //     // switch (action.type) {
-  //     //   case "CHANGE_USER":
-  //     //     const arr1 = currentUser.email.split('.');
-  //     //     const arr2 = action.payload.email.split('.')
-  //     //     // console.log(arr1[0]);
-
-  //     //     let id;
-  //     //     id = arr1[0] + arr2[0];
-
-  //     //     const docRef = doc(db, "chats", id);
-  //     //     const res = await getDoc(docRef);
-          
-  //     //     if (!res.exists()) {
-  //     //       id = arr2[0] + arr1[0];
-  //     //       const docRef2 = doc(db, "chats", id);
-  //     //       const res2 = await getDoc(docRef2);
-            
-  //     //       if (!res2.exists()) {
-  //     //         id = arr1[0] + arr2[0];
-
-  //     //       }else{
-  //     //         id = arr2[0] + arr1[0];
-  //     //       }
-  //     //     }else{
-  //     //       id = arr1[0] + arr2[0];
-  //     //     }
-  //     //     return {
-  //     //       user: action.payload,
-  //     //       chatId: id,
-  //     //     };
-
-  //     switch (action.type) {
-  //       case "CHANGE_USER":
-  //         return {
-  //           user: action.payload,
-  //           chatId: action.payload.id + currentUser.id,
-  //         };
-  
-  //       default:
-  //         return state;
-  //     }
-
-      
-  //   };
-  
-  //   const [state, dispatch] = useReducer(chatReducer, INITIAL_STATE);
-  
-  //   return (
-  //     <ChatContext.Provider value={{ data:state, dispatch }}>
-  //       {children}
-  //     </ChatContext.Provider>
-  //   );
-  // };
-
-  
 
 
   export const ChatContextProvider = ({ children }) => {
@@ -89,8 +22,10 @@ import { db } from "../firebase";
       const docRef = doc(db, "chats", chatId);
       const res = await getDoc(docRef);
       if (res.exists()){
+        console.log(true)       
         return true;
       }else {
+        console.log(false)       
         return false;
       }
     };
@@ -104,12 +39,11 @@ import { db } from "../firebase";
           const arr2 = arr1[0].split('@')
           const id1 = ar2[0] + "@" + arr2[0];
           const id2 = arr2[0] + "@" + ar2[0];
-          console.log(checkChatIdExists(id2) )
-          console.log(checkChatIdExists(id1) )
+          // console.log(checkChatIdExists(id2) )
+          // console.log(checkChatIdExists(id1) )
           return {
             user: action.payload,
-            chatId: checkChatIdExists(id2) ? id2  : id1,
-            
+            chatId: (!checkChatIdExists(id1)) ? id2  : id1,          
           
           };
   

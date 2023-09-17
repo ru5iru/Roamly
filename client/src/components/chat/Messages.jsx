@@ -2,15 +2,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import Message from './Message' 
 import './messenger.scss'
 import { ChatContext } from '../../context/ChatContext'
-import { doc, onSnapshot } from 'firebase/firestore'
+import { doc, getDoc, onSnapshot } from 'firebase/firestore'
 import { db } from '../../../src/firebase'
 
 const Messages = () => {
     const [ messages, setMessages] = useState([])
     const { data } = useContext(ChatContext);
 
-    console.log(data.chatId)
-  
+    console.log("from messages: "+data.chatId)
 
   useEffect(()=>{  
     const unSub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
@@ -23,6 +22,23 @@ const Messages = () => {
     };
   }, [data.chatId]);
 
+    const ar = data.chatId.split('@');
+    const first = ar[0];
+    const second = ar[1];
+
+    const chatId2 = second + '@' + first;
+
+
+  useEffect(()=>{  
+    const unSub = onSnapshot(doc(db, "chats", chatId2), (doc) => {
+      doc.exists() && setMessages(doc.data().messages);
+      
+    });
+
+    return () => {
+      unSub();
+    };
+  }, [chatId2]);
   
 
 
