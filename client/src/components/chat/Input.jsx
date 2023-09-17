@@ -22,225 +22,147 @@ const Input = () => {
   const [img, setImg] = useState(null);
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
-  console.log("hi")
 
   const handleSend = async () => {
     const ar = data.chatId.split('@');
     const first = ar[0];
     const second = ar[1];
-
     const chatId2 = second + '@' + first;
 
-    // // const downloadURL = await getDownloadURL(uploadTaskSnapshot.ref);
-    const chatDocRef = doc(db, 'chats', data.chatId);
-    const chatDocSnap = await getDoc(chatDocRef);
-    const chatDocRef2 = doc(db, 'chats', chatId2);
-    const chatDocSnap2 = await getDoc(chatDocRef2);
-    console.log(data.chatId)
-    // let chatDocRef;
-    // let chatDocSnap;
     let chatId;
+    let chatDocSnap;
+    let chatDocSnap2;
 
-    if (!chatDocSnap.exists() && !chatDocSnap2.exists()) {
-      console.log("hi2")
-      console.log(chatDocSnap.exists())
-      console.log(chatDocSnap2.exists())
-      chatId=data.chatId
-      await setDoc(chatDocRef, {
-                messages: [
-                  {
-                    id: uuid(),
-                    text,
-                    senderId: currentUser.email,
-                    date: Timestamp.now(),
-                    // img: downloadURL,
-                  },
-                ],
-              });
-      
-    } else if (chatDocSnap.exists() && !chatDocSnap2.exists()){
-      console.log("hi3")
-      chatId=data.chatId
-      await updateDoc(chatDocRef, {
-        messages: arrayUnion({
-          id: uuid(),
-          text,
-          senderId: currentUser.email,
-          date: Timestamp.now(),
-          // img: downloadURL,
-        }),
-      });
+    try {
+      const chatDocRef = doc(db, 'chats', data.chatId);
+      chatDocSnap = await getDoc(chatDocRef);
+      const chatDocRef2 = doc(db, 'chats', chatId2);
+      chatDocSnap2 = await getDoc(chatDocRef2);
 
-    }else /* if (!chatDocSnap.exists() && chatDocSnap2.exists())*/{
-      chatId=chatId2
-      console.log("hi4")
-      await updateDoc(chatDocRef2, {
-        messages: arrayUnion({
-          id: uuid(),
-          text,
-          senderId: currentUser.email,
-          date: Timestamp.now(),
-          // img: downloadURL,
-        }),
-      });
+      if (!img) {
+        // Handle sending text messages when no image is selected
+        if (!chatDocSnap.exists() && !chatDocSnap2.exists()) {
+          // Create a new chat document if it doesn't exist
+          chatId = data.chatId;
+          await setDoc(chatDocRef, {
+            messages: [
+              {
+                id: uuid(),
+                text,
+                senderId: currentUser.email,
+                date: Timestamp.now(),
+              },
+            ],
+          });
+        } else if (chatDocSnap.exists() && !chatDocSnap2.exists()) {
+          // Add a text message to an existing chat document
+          chatId = data.chatId;
+          await updateDoc(chatDocRef, {
+            messages: arrayUnion({
+              id: uuid(),
+              text,
+              senderId: currentUser.email,
+              date: Timestamp.now(),
+            }),
+          });
+        } else {
+          // Add a text message to the other user's chat document
+          chatId = chatId2;
+          await updateDoc(chatDocRef2, {
+            messages: arrayUnion({
+              id: uuid(),
+              text,
+              senderId: currentUser.email,
+              date: Timestamp.now(),
+            }),
+          });
+        }
+      } else {
+        // Handle sending messages with images
+        const imageRef = ref(storage, 'images/' + uuid()); // Replace 'images/' with your desired storage path
+        const uploadTask = uploadBytesResumable(imageRef, img);
 
-    }
-    
-    //   if(chatDocSnap2.exists()) {
-    //     chatId = chatId2
-    //     chatDocRef = doc(db, 'chats', chatId2);
-    //     chatDocSnap = await getDoc(chatDocRef);
-    //     console.log("chatId2")
-    //   }else{
-    //     chatId = data.chatId
-    //     chatDocRef = doc(db, 'chats', data.chatId);
-    //     chatDocSnap = await getDoc(chatDocRef);
-    //     console.log("data.chatId")
-    //   }
-    // }
-
-    // try {
-     
-      // if (Img) {
-      //   const storageRef = ref(storage, uuid());
-      //   // const uploadTask = uploadBytesResumable(storageRef, Img);
-
-      //   // const uploadTaskSnapshot = await uploadTask;
-
-      //   if (uploadTaskSnapshot.state === 'success') {
-      //     const downloadURL = await getDownloadURL(uploadTaskSnapshot.ref);
-          
-      //     if(chatDocSnap.exists()){
-      //       console.log('yes')
-      //       await updateDoc(chatDocRef, {
-      //         messages: arrayUnion({
-      //           id: uuid(),
-      //           text,
-      //           senderId: currentUser.email,
-      //           date: Timestamp.now(),
-      //           img: downloadURL,
-      //         }),
-      //       });
-      //     } else {
-        //       await setDoc(chatDocRef, {
-        //         messages: [
-        //           {
-        //             id: uuid(),
-        //             text,
-        //             senderId: currentUser.email,
-        //             date: Timestamp.now(),
-        //             img: downloadURL,
-        //           },
-        //         ],
-        //       });
-        //     // }
-        //   }
-        // }else {
-        //   if(chatDocSnap.exists()){
-        //     await updateDoc(chatDocRef, {
-        //       messages: arrayUnion({
-        //         id: uuid(),
-        //         text,
-        //         senderId: currentUser.email,
-        //         date: Timestamp.now(),
-        //         // img: downloadURL,
-        //       }),
-        //     });
-        //   } else {
-        //       await setDoc(chatDocRef, {
-        //         messages: [
-        //           {
-        //             id: uuid(),
-        //             text,
-        //             senderId: currentUser.email,
-        //             date: Timestamp.now(),
-        //             // img: downloadURL,
-        //           },
-        //         ],
-        //       });
-        // }
-        // console.log(chatId)
-        await updateDoc(doc(db, 'userChats', currentUser.email), {
-          
-          [chatId + '.lastMessage']: {
-            text,
-          },
-          [chatId + '.date']: serverTimestamp(),
+        uploadTask.on('state_changed', (snapshot) => {
+          // Track the upload progress if needed
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log(`Upload is ${progress}% done`);
         });
 
-        await updateDoc(doc(db, 'userChats', data.user.email), {
-          [chatId + '.lastMessage']: {
-            text,
-          },
-          [chatId + '.date']: serverTimestamp(),
-        });
-      
+        await uploadTask;
 
+        const downloadURL = await getDownloadURL(imageRef);
+
+        if (!chatDocSnap.exists() && !chatDocSnap2.exists()) {
+          // Create a new chat document with an image message
+          chatId = data.chatId;
+          await setDoc(chatDocRef, {
+            messages: [
+              {
+                id: uuid(),
+                text,
+                senderId: currentUser.email,
+                date: Timestamp.now(),
+                img: downloadURL,
+              },
+            ],
+          });
+        } else if (chatDocSnap.exists() && !chatDocSnap2.exists()) {
+          // Add an image message to an existing chat document
+          chatId = data.chatId;
+          await updateDoc(chatDocRef, {
+            messages: arrayUnion({
+              id: uuid(),
+              text,
+              senderId: currentUser.email,
+              date: Timestamp.now(),
+              img: downloadURL,
+            }),
+          });
+        } else {
+          // Add an image message to the other user's chat document
+          chatId = chatId2;
+          await updateDoc(chatDocRef2, {
+            messages: arrayUnion({
+              id: uuid(),
+              text,
+              senderId: currentUser.email,
+              date: Timestamp.now(),
+              img: downloadURL,
+            }),
+          });
+        }
+      }
+
+      // Update last message and date in userChats for both users
+      await updateDoc(doc(db, 'userChats', currentUser.email), {
+        [chatId + '.lastMessage']: {
+          text,
+        },
+        [chatId + '.date']: serverTimestamp(),
+      });
+
+      await updateDoc(doc(db, 'userChats', data.user.email), {
+        [chatId + '.lastMessage']: {
+          text,
+        },
+        [chatId + '.date']: serverTimestamp(),
+      });
+
+      // Clear input fields
       setText('');
       setImg(null);
-    // } catch (error) {
-    //   console.error('Error:', error);
-    // }
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle the error here (e.g., show an error message to the user)
+    }
   };
-
-  // const handleSend = async () => {
-  //   if (img) {
-  //     const storageRef = ref(storage, uuid());
-
-  //     const uploadTask = uploadBytesResumable(storageRef, img);
-
-  //     uploadTask.on(
-  //       (error) => {
-  //         console.log(error)
-  //       },
-  //       () => {
-  //         getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-  //           await updateDoc(doc(db, "chats", data.chatId), {
-  //             messages: arrayUnion({
-  //               id: uuid(),
-  //               text,
-  //               senderId: currentUser.id,
-  //               date: Timestamp.now(),
-  //               img: downloadURL,
-  //             }),
-  //           });
-  //         });
-  //       }
-  //     );
-  //   } else {
-  //     await updateDoc(doc(db, "chats", data.chatId), {
-  //       messages: arrayUnion({
-  //         id: uuid(),
-  //         text,
-  //         senderId: currentUser.id,
-  //         date: Timestamp.now(),
-  //       }),
-  //     });
-  //   }
-
-  //   await updateDoc(doc(db, "userChats", currentUser.id), {
-  //     [data.chatId + ".lastMessage"]: {
-  //       text,
-  //     },
-  //     [data.chatId + ".date"]: serverTimestamp(),
-  //   });
-
-  //   await updateDoc(doc(db, "userChats", data.user.id), {
-  //     [data.chatId + ".lastMessage"]: {
-  //       text,
-  //     },
-  //     [data.chatId + ".date"]: serverTimestamp(),
-  //   });
-
-  //   setText("");
-  //   setImg(null);
-  // };
 
   return (
     <div className="input">
       <input
         type="text"
         placeholder="Type something..."
+        value={text}
         onChange={(e) => setText(e.target.value)}
       />
       <div className="send">
@@ -258,6 +180,6 @@ const Input = () => {
       </div>
     </div>
   );
+};
 
-  }
 export default Input;
