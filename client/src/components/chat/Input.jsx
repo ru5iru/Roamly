@@ -61,7 +61,7 @@ const Input = () => {
     } else if (chatDocSnap.exists() && !chatDocSnap2.exists()){
       console.log("hi3")
       chatId=data.chatId
-      await updateDoc(chatDocRef, {
+      await updateDoc(chatDocRef2, {
         messages: arrayUnion({
           id: uuid(),
           text,
