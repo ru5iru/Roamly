@@ -37,36 +37,47 @@ const Search = () => {
   };
 
   const handleSelect = async () => {
-    const arr1 = currentUser.email.split('.');
-    const arr2 = user.email.split('.')
-    // console.log(arr1[0]);
-    const combinedemails = arr1[0] + arr2[0];
-    // console.log(combinedemails)
-    
+    const ar1 = currentUser.email.split('.');
+    const ar2 = ar1[0].split('@');
+    const arr1 = user.email.split('.')
+    const arr2 = arr1[0].split('@')
+    const combinedId1 = ar2[0] + "@" + arr2[0];
+    const combinedId2 = arr2[0] + "@" + ar2[0]; // Add this line
+  
     try {
-      const docRef = doc(db, "chats", combinedemails);
-      const res = await getDoc(docRef);
-      
-      if (!res.exists()) {
-        await setDoc(docRef, { messages: [] });
-        
+      const docRef1 = doc(db, "chats", combinedId1);
+      const res1 = await getDoc(docRef1);
+  
+      const docRef2 = doc(db, "chats", combinedId2); // Add this line
+      const res2 = await getDoc(docRef2); // Add this line
+  
+      if (!res1.exists() && !res2.exists()) {
+        // Neither chat room exists, create one.
+        console.log(res1.exists())
+        console.log(res2.exists())
+  
+        await setDoc(docRef1, { messages: [] });
+  
         await updateDoc(doc(db, "userChats", currentUser.email), {
-          [combinedemails + ".userInfo"]: {
+          [combinedId1 + ".userInfo"]: {
             firstname: user.firstname,
             lastname: user.lastname,
             email: user.email,
           },
-          [combinedemails + ".date"]: serverTimestamp(),
+          [combinedId1 + ".date"]: serverTimestamp(),
         });
   
         await updateDoc(doc(db, "userChats", user.email), {
-          [combinedemails + ".userInfo"]: {
+          [combinedId1 + ".userInfo"]: {
             firstname: currentUser.firstname,
             lastname: currentUser.lastname,
             email: currentUser.email,
           },
-          [combinedemails + ".date"]: serverTimestamp(),
+          [combinedId1 + ".date"]: serverTimestamp(),
         });
+      } else {
+        // A chat room already exists for this pair of users.
+        console.log("Chat room already exists for this pair of users.");
       }
     } catch (err) {
       setErr(true);
@@ -74,6 +85,7 @@ const Search = () => {
     setUser(null)
     setUsername("")
   };
+  
   
 
   return (

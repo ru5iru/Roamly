@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./signup.scss";
 import img10 from "../../assets/images/img10.jpg";
 import axios from "axios";
@@ -6,6 +6,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import validator from "validator";
 import { db } from "../../../src/firebase";
 import { doc, setDoc } from "firebase/firestore";
+import { v4 as uuid } from 'uuid'
 
 export const Signup = () => {
    const [inputs, setInputs] = useState({
@@ -106,8 +107,9 @@ export const Signup = () => {
          setSuccess(true);
          setErr(null); // Clear any previous errors
 
-
+         // const uid = useRef.push().key;
          await setDoc(doc(db,"users",inputs.email),{
+            id:uuid(),
             firstname: inputs.firstname,
             lastname: inputs.lastname,
             email: inputs.email,
