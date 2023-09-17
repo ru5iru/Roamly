@@ -105,20 +105,27 @@ import { db } from "../firebase";
           const id2= arr2[0] + "@" + ar2[0];
   
           if (checkChatIdExists(id1)) {
+            console.log("id1")
             return {
               user: action.payload,
               chatId: id1,
+              // chatId2:id2,
             };
           } else {
             if(checkChatIdExists(id2)) {
+              console.log("id2")
               return {
                 user: action.payload,
                 chatId: id2,
+                // chatId2:id1,
               };
             }else{
+              
+              console.log("id1,id2")
               return {
                 user: action.payload,
                 chatId: id1,
+                // chatId: id2
               };
             }
           }

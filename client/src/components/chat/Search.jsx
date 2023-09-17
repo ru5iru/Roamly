@@ -51,10 +51,11 @@ const Search = () => {
       const docRef2 = doc(db, "chats", combinedId2); // Add this line
       const res2 = await getDoc(docRef2); // Add this line
   
+      console.log(res1.exists())
+        console.log(res2.exists())
       if (!res1.exists() && !res2.exists()) {
         // Neither chat room exists, create one.
-        console.log(res1.exists())
-        console.log(res2.exists())
+        
   
         await setDoc(docRef1, { messages: [] });
   
