@@ -36,7 +36,7 @@ const Input = () => {
     const chatDocSnap = await getDoc(chatDocRef);
     const chatDocRef2 = doc(db, 'chats', chatId2);
     const chatDocSnap2 = await getDoc(chatDocRef2);
-    // console.log(data.chatId)
+    console.log(data.chatId)
     // let chatDocRef;
     // let chatDocSnap;
     let chatId;
@@ -61,7 +61,7 @@ const Input = () => {
     } else if (chatDocSnap.exists() && !chatDocSnap2.exists()){
       console.log("hi3")
       chatId=data.chatId
-      await updateDoc(chatDocRef2, {
+      await updateDoc(chatDocRef, {
         messages: arrayUnion({
           id: uuid(),
           text,
