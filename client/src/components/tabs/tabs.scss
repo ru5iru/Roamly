@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-.tabs-main{
+.tabs-main {
     width: 28%;
     position: fixed;
     top: 60px;
@@ -14,6 +14,7 @@
     margin: 10px;
     border-radius: 5px;
     padding-top: 10px;
+
     .tab {
         background-color: #ECFBFE;
         display: flex;
@@ -28,37 +29,45 @@
         border-radius: 5px;
         color: black;
         transition: background-color 0.3s, color 0.3s;
+
         p {
-          width: 100%;
+            width: 100%;
         }
+
         .material-icons,
         p {
-          color: inherit;
+            color: inherit;
         }
+
         &:hover {
-          background-color: #1b5b75;
-          color: #ffffff;
+            background-color: #1b5b75;
+            color: #ffffff;
         }
-        & .material-icons{
+
+        & .material-icons {
             margin-right: 10px;
             font-size: 30px;
         }
-        & p{
+
+        & p {
             font-size: 20px;
             font-family: 'klavika-medium';
         }
     }
+
     .active {
-      .tab{
-        background-color: #065573;
-        color: #ffffff;
-        .material-icons,
-        p {
-          color: #ffffff;
+        .tab {
+            background-color: #065573;
+            color: #ffffff;
+
+            .material-icons,
+            p {
+                color: #ffffff;
+            }
         }
-      }
     }
-    a{
+
+    a {
         text-decoration: none;
     }
 }
