@@ -37,9 +37,11 @@ import Header from "./components/header/Header";
 import Forgotpwotp from "./pages/forgotPasswordOTP/fpotp";
 import ForgotPW from "./pages/forgotPassword/fp";
 import ResetPW from "./pages/resetPW/ResetPW";
-import DashBoardPage from "./pages/dashboard/dashboardPage";
+import HeaderTravel from "./components/header/HeaderTravel";
 import Verification from "./pages/signup/Verification";
-import ChatApp from "./components/chat/chatapp";
+import SignupSP from "./pages/signupSP/SignupSP";
+import Payment from "./pages/payment/Payment";
+import Notification from "./pages/notification/notification";
 // import Interests from "./pages/Interests/Interests";
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
@@ -146,8 +148,8 @@ function App() {
       </div>
     );
   };
-  
-  const Chat = () => {
+
+  const Payments = () => {
     return (
       <div>
         <NavBar />
@@ -155,38 +157,22 @@ function App() {
           <LeftBarSp />
           <div style={{ display: "flex", position: "relative", left: "298px" }}>
             <LeftBarhs />
-            <ChatApp />
+            <Payment />
           </div>
-          <RightBar />
         </div>
       </div>
     );
   };
 
-  const Dash = () => {
+  const Notifications = () => {
     return (
       <div>
         <NavBar />
         <div style={{ display: "flex", position: "relative", top: "4rem" }}>
           <LeftBarSp />
-          <div style={{ display: "flex", position: "relative", left: "398px" }}>
+          <div style={{ display: "flex", position: "relative", left: "298px" }}>
             <LeftBarhs />
-            <DashBoardPage />
-          </div>
-        </div>
-      </div>
-    );
-  };
-  
-  const HotelProfile = () => {
-    return (
-      <div>
-        <NavBar />
-        <div style={{ display: "flex", position: "relative", top: "4rem" }}>
-          <LeftBarSp />
-          <div style={{ display: "flex", position: "relative", left: "398px" }}>
-            <LeftBarhs />
-            <HotelProfile />
+            <Notification />
           </div>
         </div>
       </div>
@@ -196,22 +182,8 @@ function App() {
   const Trip = () => {
     return (
       <div>
-        <NavBar />
-        <div
-          style={{
-            display: "flex",
-            position: "relative",
-            top: "4rem",
-            justifyContent: "space-between",
-          }}
-        >
-          <LeftBar />
-          <div style={{ display: "flex", position: "relative", left: "298px" }}>
-            <LeftBarhs />
-            <Personalizingform />
-          </div>
-          <RightBar />
-        </div>
+        <HeaderTravel />
+        <Personalizingform />
       </div>
     );
   };
@@ -219,22 +191,8 @@ function App() {
   const Place = () => {
     return (
       <div>
-        <NavBar />
-        <div
-          style={{
-            display: "flex",
-            position: "relative",
-            top: "4rem",
-            justifyContent: "space-between",
-          }}
-        >
-          <LeftBar />
-          <div style={{ display: "flex", position: "relative", left: "298px" }}>
-            <LeftBarhs />
-            <Places />
-          </div>
-          <RightBar />
-        </div>
+        <HeaderTravel />
+        <Places />
       </div>
     );
   };
@@ -242,44 +200,16 @@ function App() {
   const Placedetails = () => {
     return (
       <div>
-        <NavBar />
-        <div
-          style={{
-            display: "flex",
-            position: "relative",
-            top: "4rem",
-            justifyContent: "space-between",
-          }}
-        >
-          <LeftBar />
-          <div style={{ display: "flex", position: "relative", left: "298px" }}>
-            <LeftBarhs />
-            <PlacesDetails />
-          </div>
-          <RightBar />
-        </div>
+        <HeaderTravel />
+        <Placedetails />
       </div>
     );
   };
   const Shop = () => {
     return (
       <div>
-        <NavBar />
-        <div
-          style={{
-            display: "flex",
-            position: "relative",
-            top: "4rem",
-            justifyContent: "space-between",
-          }}
-        >
-          <LeftBar />
-          <div style={{ display: "flex", position: "relative", left: "298px" }}>
-            <LeftBarhs />
-            <ShopPage />
-          </div>
-          <RightBar />
-        </div>
+        <HeaderTravel />
+        <ShopPage />
       </div>
     );
   };
@@ -287,22 +217,8 @@ function App() {
   const Hotel = () => {
     return (
       <div>
-        <NavBar />
-        <div
-          style={{
-            display: "flex",
-            position: "relative",
-            top: "4rem",
-            justifyContent: "space-between",
-          }}
-        >
-          <LeftBar />
-          <div style={{ display: "flex", position: "relative", left: "298px" }}>
-            <LeftBarhs />
-            <HotelPage />
-          </div>
-          <RightBar />
-        </div>
+        <HeaderTravel />
+        <HotelPage />
       </div>
     );
   };
@@ -310,23 +226,8 @@ function App() {
   const Guide = () => {
     return (
       <div>
-        <NavBar />
-        <div
-          style={{
-            display: "flex",
-            position: "relative",
-            top: "4rem",
-            justifyContent: "space-between",
-          }}
-        >
-          <LeftBar />
-          <div style={{ display: "flex", position: "relative", left: "298px" }}>
-            <LeftBarhs />
-            <GuidePage />
-            {/* <Posts /> */}
-          </div>
-          <RightBar />
-        </div>
+        <HeaderTravel />
+        <GuidePage />
       </div>
     );
   };
@@ -334,23 +235,8 @@ function App() {
   const Taxi = () => {
     return (
       <div>
-        <NavBar />
-        <div
-          style={{
-            display: "flex",
-            position: "relative",
-            top: "4rem",
-            justifyContent: "space-between",
-          }}
-        >
-          <LeftBar />
-          <div style={{ display: "flex", position: "relative", left: "298px" }}>
-            <LeftBarhs />
-            <TaxiPage />
-            {/* <Posts /> */}
-          </div>
-          <RightBar />
-        </div>
+        <HeaderTravel />
+        <TaxiPage />
       </div>
     );
   };
@@ -394,12 +280,11 @@ function App() {
         },
         {
           path: "/verify/:token",
-          element: (
-            <>
-              <Header />
-              <Verification />
-            </>
-          ),
+          element: <Verification />,
+        },
+        {
+          path: "/signupsp",
+          element: <SignupSP />,
         },
         // {
         //     path: "/interets",
@@ -428,16 +313,12 @@ function App() {
       element: <Ads />,
     },
     {
-      path: "/dashboard",
-      element: <Dash />,
+      path: "advertisements/payments",
+      element: <Payments />,
     },
     {
-      path: "/messages",
-      element: <Chat />,
-    },
-    {
-      path: "/hotelProfile",
-      element: <HotelProfile />,
+      path: "/notification",
+      element: <Notifications />,
     },
     {
       path: "/trip",

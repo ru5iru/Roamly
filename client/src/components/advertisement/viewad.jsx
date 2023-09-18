@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import hotelAd3 from "../../assets/images/hotel-ad-2.jpg";
 import "./viewad.scss";
 import { FaRegEdit } from "react-icons/fa";
@@ -9,6 +10,8 @@ import DeleteAdvertisement from "./dltadv";
 export const ViewAdd = ({ advertisement }) => {
   const [isDltModalOpen, setIsDltModalOpen] = useState(false);
   const [iseditModalOpen, setIsEditModalOpen] = useState(false);
+
+  const adId = advertisement.ad_id;
 
   const handleButtonClickEdit = () => {
     setIsEditModalOpen(true);
@@ -39,6 +42,7 @@ export const ViewAdd = ({ advertisement }) => {
         </div>
         <div className="ad-bottom">
           <h6 className="ad-description">{advertisement.description}</h6>
+          <p>{advertisement.ad_id}</p>
         </div>
       </div>
       <div className="edit-delete">
@@ -53,7 +57,7 @@ export const ViewAdd = ({ advertisement }) => {
                 <div className="close-button" onClick={closeEditModal}>
                   <span>&times;</span>
                 </div>
-                <EditAdvertisement />
+                <EditAdvertisement adId={adId}/>
               </div>
             </div>
           )}

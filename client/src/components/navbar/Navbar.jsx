@@ -22,6 +22,11 @@ const Navbar = () => {
         // Navigate to the home page when the Home menu item is clicked
         navigate("/profile/" + currentUser.user_id);
     };
+    
+    const handleNotificationClick = () => {
+        // Navigate to the home page when the Home menu item is clicked
+        navigate("/notification/");
+    };
 
     const [searchText, setSearchText] = useState('');
 
@@ -75,7 +80,7 @@ const Navbar = () => {
                     </form>
                 </div>
                 <img src={Chat} alt="" />
-                <img src={Notification} alt="" />
+                <img src={Notification} alt="notification" onClick={handleNotificationClick} />
                 <img src={currentUser.profile_pic} alt="" className="usr_pic" onClick={handleProfileClick} />
             </div>
         </div>

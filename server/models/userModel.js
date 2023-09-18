@@ -80,11 +80,63 @@ const registerUsers = asyncHandler(async (firstname, lastname, email, password) 
     return result;
 });
 
+// register service
+const registerServices = asyncHandler(
+    async (
+      firstname,
+      lastname,
+      email,
+      password,
+      usertype,
+      servicename,
+      servicetype,
+      type,
+      location,
+      
+    ) => {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+  
+      function generateRandomUserID() {
+        return Math.floor(Math.random() * 90000) + 10000;
+      }
+      let randomUserID = generateRandomUserID();
+  
+      while (!isUserExistsByID(randomUserID)) {
+        randomUserID = generateRandomUserID();
+      }
+  
+      const userQuery =
+        "INSERT INTO users (firstname, lastname, user_id, email, password_hash, user_type) VALUES ($1, $2, $3, $4, $5, $6) RETURNING firstname, lastname, user_id, email, user_type";
+      const serviceProviderQuery =
+        "INSERT INTO service_provider (user_id, service_name, service, type, location) VALUES ($1, $2, $3, $4, $5) RETURNING user_id, service_name, service, type, location";
+  
+      const user = await query(userQuery, [
+        firstname,
+        lastname,
+        randomUserID,
+        email,
+        hashedPassword,
+        usertype
+      ]);
+      const serviceProvider = await query(serviceProviderQuery, [
+        randomUserID,
+        servicename,
+        servicetype,
+        type,
+        location,
+      ]);
+  
+      return { user, serviceProvider };
+    }
+  );
+
 export {
     isUserExists,
     registerUsers,
     authUser,
     findUserByEmail,
     findUserByID,
-    isUserVerified
+    isUserVerified,
+    registerServices,
 };

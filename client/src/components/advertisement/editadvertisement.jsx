@@ -5,12 +5,13 @@ import './advertisementform.scss';
 import "../../pages/advertisement/advertisementpage.scss"
 
 const EditAdvertisement = ({ adId }) => {
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [details, setDetails] = useState('');
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/advertisements/${adId}`)
+    axios.get(`http://localhost:8000/server/ads/advertisements/${adId}`)
       .then((response) => {
         const adData = response.data;
         setTitle(adData.title);
@@ -23,17 +24,35 @@ const EditAdvertisement = ({ adId }) => {
   }, [adId]);
   
 
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const updatedAdvertisement = { title, description, details };
+  //   axios.put(`http://localhost:8000/server/ads/advertisements/${adId}`, updatedAdvertisement)
+  //     .then((response) => {
+  //       console.log('Advertisement updated successfully:', response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error updating advertisement:', error);
+  //     });
+  // };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const updatedAdvertisement = { title, description, details };
-    axios.put(`http://localhost:5000/advertisements/${adId}`, updatedAdvertisement)
+  
+    const updatedAdvertisement = { adId, title, description, details };
+    
+    axios
+      .put(`http://localhost:8000/server/ads/advertisements/${adId}`, updatedAdvertisement)
       .then((response) => {
-        console.log('Advertisement updated successfully:', response.data);
+        console.log("Advertisement updated successfully:", response.data);
+        /* refresh the page */
+        // window.location.reload();
       })
       .catch((error) => {
-        console.error('Error updating advertisement:', error);
+        console.error("Error updating advertisement:", error);
       });
   };
+  
 
   return (
     <div className='modify-advertisement'>

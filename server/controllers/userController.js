@@ -1,12 +1,12 @@
 import asyncHandler from "express-async-handler";
 import generateToken from "../utils/generateToken.js";
-
 import {
    isUserExists,
    registerUsers,
    authUser,
    findUserByID,
-   isUserVerified
+   isUserVerified,
+   registerServices,
 } from "../models/userModel.js";
 
 // desc    Login user
@@ -14,6 +14,7 @@ import {
 // access  Public
 const loginUser = asyncHandler(async (req, res) => {
    const { email, password } = req.body;
+
    const isVerified = await isUserVerified(email);
 
    if (!isVerified) {
@@ -22,9 +23,9 @@ const loginUser = asyncHandler(async (req, res) => {
 
       // throw new Error("User is not registered.");
    }
-   const user = await authUser(email, password);
 
-   
+
+   const user = await authUser(email, password);
 
    if (user) {
       generateToken(res, user.user_id);
@@ -60,14 +61,16 @@ const logoutUser = asyncHandler(async (req, res) => {
 const registerUser = asyncHandler(async (req, res) => {
    const { firstname, lastname, email, password } = req.body;
 
+   const usertype = "Traveller";
    const isExist = await isUserExists(email);
+
 
    if (isExist) {
       res.status(400);
       throw new Error("Email already used.");
    }
 
-   const user = await registerUsers(firstname, lastname, email, password);
+   const user = await registerUsers(firstname, lastname, email, password, usertype);
 
    if (user.rowCount > 0) {
       res.status(201).json({
@@ -80,6 +83,47 @@ const registerUser = asyncHandler(async (req, res) => {
       res.status(400);
       throw new Error("Invalid user data");
    }
+});
+
+
+//register new service
+
+const registerService = asyncHandler(async (req, res) => {
+   const { firstname, lastname, email, password, servicename, servicetype, type, location } = req.body;
+
+   const usertype = "Service";
+
+   // try {
+   // Check if the email already exists in the users table
+   const isExist = await isUserExists(email);
+
+   if (isExist) {
+      res.status(400);
+      throw new Error("Email already used.");
+   }
+
+      // Register the user and service provider
+    const { user, serviceProvider } = await registerServices(
+      firstname, lastname, email, password, usertype, servicename, servicetype, type, location
+    );
+      
+
+    if (user.rowCount > 0) {
+      // Send a response with the user and service provider data
+      res.status(201).json({
+         user_id: user.user_id,
+         firstname: user.firstname,
+         lastname: user.lastname,
+         email: user.email,
+         servicename: serviceProvider.service_name,
+         servicetype: serviceProvider.service,
+         type: serviceProvider.type,
+         location: serviceProvider.location,
+      });
+   } else {
+      res.status(400);
+      throw new Error("Invalid user data");
+   } 
 });
 
 // desc    Get user profile
@@ -148,4 +192,5 @@ export {
    getCurrentUserProfile,
    getUserProfile,
    updateUserProfile,
+   registerService,
 };
