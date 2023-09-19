@@ -38,10 +38,6 @@ const Navbar = () => {
    };
 
    const handleSearch = () => {
-      // Your search logic here using the searchText
-      console.log("Searching for:", searchText);
-
-      // Redirect to another page with the search query as a parameter
       navigate(`/explore?query=${searchText}`);
    };
 

@@ -31,8 +31,6 @@ const Login = () => {
       }
    };
 
-   console.log(err)
-
    return (
       <section className="ltext-center">
          <div className="lcontainer">

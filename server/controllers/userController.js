@@ -18,9 +18,6 @@ const loginUser = asyncHandler(async (req, res) => {
 
    if (!isVerified) {
       res.status(400).json("User is not registered.");
-      // console.log("User is not registered.");
-
-      // throw new Error("User is not registered.");
    }
 
 

@@ -13,7 +13,6 @@ const UserProfile = ({ user }) => {
     const navigate = useNavigate();
 
     const handleNameClick = () => {
-        // console.log("Clicked");
         navigate("/profile/" + user.user_id);
 
     };

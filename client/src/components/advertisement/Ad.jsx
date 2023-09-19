@@ -1,7 +1,5 @@
 import "./Ad.scss"
-import Ad1 from "../../assets/ad1.png";
 import Phone from "../../assets/Phone.png";
-// import Ad from "../advertisement/Ad";
 import { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 
@@ -11,26 +9,11 @@ import axios from "axios";
 const Ad = () => {
     const [ads, setAds] = useState([]);
 
-    // const getAds = async () => {
-    //     console.log("getAds");
-    //     try {
-    //         const res = await fetch("http://localhost:5000/server/ads/getAds");
-    //         const jsonData = await res.json();
-    //         setAds(jsonData);
-    //         console.log(jsonData);
-
-    //     } catch (err) {
-    //         console.error(err.message);
-    //     }
-    // };
-
     const getAds = async () => {
-        // console.log("getAds");
         try {
             const response = await axios.get("http://localhost:8000/server/ads/feed");
             const jsonData = response.data;
             setAds(jsonData);
-            console.log(jsonData);
         } catch (error) {
             console.error(error.message);
         }
@@ -45,7 +28,7 @@ const Ad = () => {
         <Fragment>
             {
                 ads.map(ad => (
-                    <div className="ad">
+                    <div className="ad" key={ad.service_name}>
 
                         <img src={require('../../assets/' + ad.ad_img)} alt="" />
 

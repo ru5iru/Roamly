@@ -17,7 +17,6 @@ const SearchBar = () => {
 
     const handleSearch = () => {
         navigate(`/explore?query=${searchText}`);
-        console.log('Searching for:', searchText);
     };
 
 

@@ -13,12 +13,10 @@ const Feedcontent = () => {
     const [posts, setPosts] = useState([]);
 
     const getPosts = async () => {
-        console.log("getSearchResults");
         try {
             const response = await axios.get(`http://localhost:8000/server/feed`);
             const jsonData = response.data;
             setPosts(jsonData);
-            console.log(jsonData);
         } catch (error) {
             console.error(error.message);
         }
