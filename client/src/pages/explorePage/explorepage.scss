@@ -1,0 +1,46 @@
+.explorepage {
+   display: flex;
+   flex-direction: row;
+   position: relative;
+   top: 4rem;
+
+   @media only screen and (max-width: 1000px) and (min-width: 700px) {
+      margin: 0 5rem;
+   }
+
+   .leftbar-container-explore {
+      width: 478px;
+      flex: 0.8;
+
+      @media only screen and (max-width: 1300px) {
+         flex: 1.5;
+      }
+   }
+
+   .main-container-explore {
+      flex: 2;
+      margin: 0 20px 20px 20px;
+      width: -webkit-fill-available;
+      max-width: 52rem;
+
+      @media only screen and (max-width: 1500px) {
+         max-width: 50rem;
+      }
+
+      @media only screen and (max-width: 1430px) {
+         max-width: 47rem;
+      }
+
+      @media only screen and (max-width: 1360px) {
+         max-width: 45rem;
+      }
+
+      @media only screen and (max-width: 1300px) {
+         max-width: 60rem;
+      }
+   }
+
+   .rightbar-container-explore {
+      margin-right: 20px;
+   }
+}

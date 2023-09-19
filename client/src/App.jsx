@@ -3,11 +3,6 @@ import NavBar from "./components/navbar/Navbar";
 import LeftBar from "./components/leftBar/LeftBar";
 import LeftBarhs from "./components/leftBar/LeftBar_hs";
 import RightBar from "./components/rightBar/RightBar";
-import Explore from "./components/explore/Explore";
-import ExploreBar from "./components/exploreBar/ExploreBar";
-import SearchBar from "./components/exploreTopBar/SearchBar";
-import ExploreTopBar from "./components/exploreTopBar/ExploreTopBar";
-import Feedcontent from "./components/feed/feed";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Signup from "./pages/signup/Signup";
@@ -38,6 +33,7 @@ import Forgotpwotp from "./pages/forgotPasswordOTP/fpotp";
 import ForgotPW from "./pages/forgotPassword/fp";
 import ResetPW from "./pages/resetPW/ResetPW";
 import Verification from "./pages/signup/Verification";
+import ExplorePage from "./pages/explorePage/ExplorePage";
 // import Interests from "./pages/Interests/Interests";
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
@@ -104,23 +100,7 @@ function App() {
             <QueryClientProvider client={queryClient}>
                 <NavBar />
                 <div className={`theme-${darkMode ? "dark" : "light"}`}>
-
-                    <div style={{ display: "flex", position: "relative", top: "4rem" }}>
-                        <LeftBar />
-                        <div>
-                            <LeftBarhs />
-                            <div style={{ display: "block", left: "298px", position: "relative" }}>
-                                <SearchBar />
-                                <ExploreTopBar onActiveStepChange={handleActiveStepChange} activeStep={activeStep} />
-                                <Explore activeStep={activeStep} />
-
-                            </div>
-
-                        </div>
-                        <RightBar />
-
-                    </div>
-
+                    <ExplorePage />
                 </div>
             </QueryClientProvider >
         )
