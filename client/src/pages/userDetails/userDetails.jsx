@@ -147,7 +147,7 @@ function UserDetails() {
                             </span>
                         </div>
                         <div className="botton_box">
-                            <Link to='/addadmin'>
+                            <Link to='/addservice'>
                                 <span class="material-icons">
                                     add_circle
                                 </span>
