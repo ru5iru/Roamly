@@ -1,7 +1,8 @@
 import AsyncHandler from "express-async-handler";
 import { getTodaypReports, getTodayuReports, getOngoingpReports, getOngoinguReports } from "../models/reportsModel.js";
 import { getuReportsND, getpReportsND, getuReportsD, getpReportsD } from "../models/reportsModel.js";
-import { getpReportDetails, getpDetails, getallprDetails } from "../models/reportsModel.js";
+import { getpReportDetails, getpDetails, getallprDetails, getallprCount } from "../models/reportsModel.js";
+import { updatearchivePost } from "../models/reportsModel.js";
 
 const getTodayPReports = AsyncHandler(async (req, res) => {
     const preports = await getTodaypReports();
@@ -123,4 +124,29 @@ const getAllReports = AsyncHandler(async (req, res) => {
         throw new Error("Users not found");
     }
 });
-export { getTodayPReports, getTodayUReports, getOngoingPReports, getOngoingUReports, getUserReportsND, getPostReportsND, getUserReportsD, getPostReportsD, getpostReportDetails, getPostDetails, getAllReports };
+
+const getAllReportCount = AsyncHandler(async (req, res) => {
+    const preport = await getallprCount(req.query.selectedPostID);
+
+    if (preport) {
+        res.status(200).json(preport);
+    } else {
+        res.status(404);
+        throw new Error("Users not found");
+    }
+});
+
+const archivePost = AsyncHandler(async (req, res) => {
+    console.log("Archiving post with ID:", req.query.postID);
+    const preport = await updatearchivePost(req.query.postID);
+    if (preport) {
+        res.status(200).json(preport);
+        console.log("Archived post with ID:", req.query.postID);
+
+    } else {
+        res.status(404);
+        throw new Error("Users not found");
+    }
+});
+
+export { getTodayPReports, getTodayUReports, getOngoingPReports, getOngoingUReports, getUserReportsND, getPostReportsND, getUserReportsD, getPostReportsD, getpostReportDetails, getPostDetails, getAllReports, getAllReportCount, archivePost };
