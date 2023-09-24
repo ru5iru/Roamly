@@ -11,6 +11,19 @@ function Reported_post_view({ selectedPost, onBackToReports }) {
         onBackToReports(); // Call the provided function to go back to the table view
     };
 
+    const archivePost = async (postID) => {
+        console.log("Archiving post with ID:", postID);
+        try {
+            const response = await makeRequest.post(`/reports/archivePost?postID=${postID}`);
+            console.log("Response data:", response.data);
+            return response.data;
+        } catch (error) {
+            console.error("Error archiving Post:", error);
+            throw error;
+        }
+    };
+
+
 
     console.log("Component rendered with selectedPost:", selectedPost);
 
@@ -46,6 +59,16 @@ function Reported_post_view({ selectedPost, onBackToReports }) {
         }
     );
 
+    const { data: AllreportsCount, isLoadingPost2, isErrorPost2 } = useQuery(
+        ["AllreportsCount"],
+        async () => {
+            const response = await makeRequest.get(`/reports/allReportCount?selectedPostID=${PostreportData[0].reported_post_id}`);
+            return response.data;
+        }
+    );
+
+    // console.log(AllreportsCount[0]);
+
 
     return (
         <div className='r_post_view'>
@@ -60,10 +83,12 @@ function Reported_post_view({ selectedPost, onBackToReports }) {
                 <div className='content'>
                     <h4>
                         Post ID : {PostreportData ? PostreportData[0].reported_post_id : "Loading..."}
+                        <br />
+                        <span>Post Status : {PostreportData ? (PostreportData[0].archived == true ? "Post Removed" : "Currently Displaying") : "Loading..."}</span>
                     </h4>
                     <br />
                     <p>
-                        Posted By : {PostreportData ? PostreportData[0].firstname : "Loading..."}
+                        Posted By : {PostreportData ? PostreportData[0].firstname : "Loading..."} {PostreportData ? PostreportData[0].lastname : "Loading..."}
                     </p>
                     <br />
                     <p>
@@ -88,7 +113,7 @@ function Reported_post_view({ selectedPost, onBackToReports }) {
                 <img src={LineV} alt="line" className='lineV' />
                 <div className='all-reports'>
                     <h4>Other Reports for the Post</h4>
-                    <p>Total : 54</p>
+                    <p>Total : {AllreportsCount ? AllreportsCount[0].report_count : "Loading"}</p>
                     <table>
                         <thead>
                             <tr>
@@ -121,7 +146,9 @@ function Reported_post_view({ selectedPost, onBackToReports }) {
             <img src={Line} alt="line" className='line' />
 
             <div className='buttons'>
-                <button>Remove Post</button>
+                <button onClick={() => archivePost(PostreportData[0].reported_post_id)}>Remove Post</button>
+
+                {/* <button onClick={archivePost(PostreportData[0].reported_post_id)} >Remove Post</button> */}
                 <button>Mark As Ongoing</button>
                 <button>Mark As Done</button>
             </div>

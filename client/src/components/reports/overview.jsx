@@ -40,6 +40,9 @@ function Report_Overview() {
         }
     );
 
+    // console.log(reportsDataOP[0]);
+    // console.log(reportsDataOU[0]);
+
 
     return (
         <div className="reports_overview">

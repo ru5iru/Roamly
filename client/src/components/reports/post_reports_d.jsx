@@ -3,14 +3,14 @@ import React from 'react';
 import { useState } from 'react';
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
-//import Icon from '@mui/material/Icon';
+import Icon from '@mui/material/Icon';
 
 function Post_Report_td() {
 
     const PAGE_SIZE = 7; // Number of rows to display per page
     const [currentPage, setCurrentPage] = useState(0);
 
-    const { data: reportsData, isLoading} = useQuery(
+    const { data: reportsData, isLoading, isError } = useQuery(
         ["reportsData"],
         async () => {
             const response = await makeRequest.get(`/reports/postReportsD`);
@@ -18,16 +18,25 @@ function Post_Report_td() {
         }
     );
 
+    // Calculate the range of rows to display based on the current page
+    const startIndex = currentPage * PAGE_SIZE;
+    const endIndex = startIndex + PAGE_SIZE;
+
+    // Slice the data array to display only the current page's rows
+    const displayedData = reportsData ? reportsData.slice(startIndex, endIndex) : [];
+
     const totalPages = Math.ceil((reportsData?.length || 0) / PAGE_SIZE);
 
     return (
         <div className="t-div">
             <div className="t-div-topic">
                 <p>Post Reports - Completed</p>
+
             </div>
             <table>
                 <thead>
                     <tr>
+                        <th>Report ID</th>
                         <th>Poster</th>
                         <th>Post ID</th>
                         <th>Report Type</th>
@@ -40,6 +49,7 @@ function Post_Report_td() {
                 <tbody>
                     {reportsData && reportsData.map((row) => (
                         <tr key={row.id}>
+                            <td>{row.report_id}</td>
                             <td>{row.poster_name}</td>
                             <td>{row.reported_post_id}</td>
                             <td>{row.type}</td>
@@ -55,7 +65,10 @@ function Post_Report_td() {
                             <td>{row.remedy}</td>
                         </tr>
                     ))}
+
                 </tbody>
+
+
             </table>
 
             {/* Pagination Controls */}
