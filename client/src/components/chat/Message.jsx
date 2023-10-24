@@ -9,6 +9,7 @@ const Message = ({message}) => {
   const {data} = useContext(ChatContext)
 
   const ref = useRef()
+  
 
   useEffect(()=>{
     ref.current?.scrollIntoView({behavior:"smooth"})
@@ -23,6 +24,9 @@ const Message = ({message}) => {
     minute: '2-digit',
   });
 
+  if (!message || !message.date) {
+  
+}
 
   return (
     <div ref={ref} className={`message ${message.senderId === currentUser.email ? "owner" : "other"} `} >
@@ -31,7 +35,7 @@ const Message = ({message}) => {
         <p>{message.text}</p>
         {message.img && <img src={message.img} alt="" />}
         <div className="messageInfo">
-        <span className="messageTime">{formattedDateTime}</span> {/* Display the formatted date and time */}
+        <span className="messageTime">{formattedDateTime}</span>
       </div>
       </div>
       

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import './messenger.scss'
+import search from '../../assets/search.png';
 import { collection, query, where, getDocs, setDoc, doc, updateDoc, getDoc, serverTimestamp} from "firebase/firestore";
 import {db} from '../../../src/firebase'
 import { AuthContext } from "../../context/authContext";
@@ -92,18 +93,21 @@ const Search = () => {
   return (
     <div className="search">
       <div className="searchForm">
-        <input
-          type="text"
-          placeholder="Find a user"
-          onKeyDown={handleKey}
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
-        />
+        <div className="searchInputContainer">
+          {/* <img src={search} alt="" /> */}
+          <input
+            type="text"
+            placeholder="  🔍  Find a user"
+            onKeyDown={handleKey}
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          />
+        </div>
       </div>
-      
+  
       {user && (
-        <div className="userChat" onClick={handleSelect} >
-          <img src={user.profile_pic} />
+        <div className="userChat" onClick={handleSelect}>
+          <img src={user.profile_pic} alt={user.firstname} />
           <div className="userChatInfo">
             <span>{user.firstname} {user.lastname}</span>
           </div>
@@ -112,6 +116,7 @@ const Search = () => {
       {err && <span>User not found!</span>}
     </div>
   );
+  
 };
 
 export default Search;

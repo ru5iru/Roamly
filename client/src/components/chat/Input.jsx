@@ -51,6 +51,7 @@ const Input = () => {
                 text,
                 senderId: currentUser.email,
                 date: Timestamp.now(),
+                // deleteid: null,
               },
             ],
           });
@@ -63,6 +64,7 @@ const Input = () => {
               text,
               senderId: currentUser.email,
               date: Timestamp.now(),
+              // deleteid: null,
             }),
           });
         } else {
@@ -74,6 +76,7 @@ const Input = () => {
               text,
               senderId: currentUser.email,
               date: Timestamp.now(),
+              // deleteid: null,
             }),
           });
         }
@@ -103,6 +106,7 @@ const Input = () => {
                 senderId: currentUser.email,
                 date: Timestamp.now(),
                 img: downloadURL,
+                // deleteid: null,
               },
             ],
           });
@@ -116,6 +120,7 @@ const Input = () => {
               senderId: currentUser.email,
               date: Timestamp.now(),
               img: downloadURL,
+              // deleteid: null,
             }),
           });
         } else {
@@ -128,6 +133,7 @@ const Input = () => {
               senderId: currentUser.email,
               date: Timestamp.now(),
               img: downloadURL,
+              // deleteid: null,
             }),
           });
         }
@@ -161,7 +167,7 @@ const Input = () => {
     <div className="input">
       <input
         type="text"
-        placeholder="Type something..."
+        placeholder="      Type something..."
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
