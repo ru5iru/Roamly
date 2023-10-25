@@ -1,5 +1,4 @@
 import "./firstView.scss";
-import img3 from "../../assets/images/img3.jpg";
 
 export const FirstView = () => {
    return (

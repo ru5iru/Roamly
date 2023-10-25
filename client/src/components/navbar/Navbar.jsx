@@ -6,12 +6,9 @@ import Chat from "../../assets/Chat.png";
 import Notification from "../../assets/Notification.png";
 import Search from "../../assets/search.png";
 import Search_blue from "../../assets/blue_search.png";
-import Profile_pic from "../../assets/profile_pic.png";
 import logo from "../../assets/Roamly.png";
-import Search_component from "../search/search.jsx";
 
 import { AuthContext } from "../../context/authContext";
-import axios from "axios";
 
 const Navbar = () => {
    const { currentUser, logout } = useContext(AuthContext);
@@ -74,6 +71,7 @@ const Navbar = () => {
                         type="submit"
                         className="search-button-b navimg"
                         onClick={handleSearch}
+                        alt="search"
                      />
                   </div>
                   <img
