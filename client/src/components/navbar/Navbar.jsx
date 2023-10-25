@@ -11,6 +11,7 @@ import logo from "../../assets/Roamly.png";
 import Search_component from "../search/search.jsx";
 
 import { AuthContext } from "../../context/authContext";
+import axios from "axios";
 
 const Navbar = () => {
    const { currentUser } = useContext(AuthContext);
@@ -40,6 +41,11 @@ const Navbar = () => {
    const handleSearch = () => {
       navigate(`/explore?query=${searchText}`);
    };
+
+   const handleLogout = async () => {
+      await axios.post("http://localhost:8000/server/users/logout");
+      navigate("/");
+   }
 
    return (
       <div className="navbar">
@@ -97,7 +103,7 @@ const Navbar = () => {
                         {currentUser.firstname} {currentUser.lastname}
                      </div>
                   </div>
-                  <div className="itemContainer">
+                  <div className="itemContainer" onClick={() => handleLogout()}>
                      <div className="itemIcon">
                         <img
                            src="https://img.icons8.com/ios-glyphs/60/aaaaaa/exit.png"
