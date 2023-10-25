@@ -8,7 +8,7 @@ import {
     getUserProfile,
     updateUserProfile
 } from "../controllers/userController.js";
-import protect from "../middleware/authMiddleware.js";
+import { protect, permit } from "../middleware/authMiddleware.js";
 import { sendVerificationEmail, verifyEmail } from "../controllers/verificationController.js";
 
 

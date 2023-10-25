@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import { likesByID, addLike, removeLike } from "../controllers/likeController.js"
-import protect from "../middleware/authMiddleware.js";
+import { protect, permit } from "../middleware/authMiddleware.js";
 
 router.get("/", likesByID);
 router.post("/", addLike);

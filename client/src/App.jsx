@@ -289,43 +289,83 @@ function App() {
         },
         {
             path: "/feed",
-            element: <Feed />,
+            element: (
+                <ProtectedRoute>
+                    <Feed />
+                </ProtectedRoute>
+            ),
         },
         {
             path: "/explore",
-            element: <Exp />,
+            element: (
+                <ProtectedRoute>
+                    <Exp />
+                </ProtectedRoute>
+            ),
         },
         {
             path: "/advertisements",
-            element: <Ads />,
+            element: (
+                <ProtectedRoute>
+                    <Ads />
+                </ProtectedRoute>
+            ),
         },
         {
             path: "/trip",
-            element: <Trip />,
+            element: (
+                <ProtectedRoute>
+                    <Trip />
+                </ProtectedRoute>
+            ),
         },
         {
             path: "/trip/place",
-            element: <Place />,
+            element: (
+                <ProtectedRoute>
+                    <Place />
+                </ProtectedRoute>
+            ),
         },
         {
             path: "/trip/place/placedetails",
-            element: <Placedetails />,
+            element: (
+                <ProtectedRoute>
+                    <Placedetails />
+                </ProtectedRoute>
+            ),
         },
         {
             path: "/trip/place/placedetails/shops",
-            element: <Shop />,
+            element: (
+                <ProtectedRoute>
+                    <Shop />
+                </ProtectedRoute>
+            ),
         },
         {
             path: "/trip/place/placedetails/hotels",
-            element: <Hotel />,
+            element: (
+                <ProtectedRoute>
+                    <Hotel />
+                </ProtectedRoute>
+            ),
         },
         {
             path: "/trip/place/placedetails/taxis",
-            element: <Taxi />
+            element: (
+                <ProtectedRoute>
+                    <Taxi />
+                </ProtectedRoute>
+            ),
         },
         {
             path: "/trip/place/placedetails/guides",
-            element: <Guide />
+            element: (
+                <ProtectedRoute>
+                    <Guide />
+                </ProtectedRoute>
+            ),
         }
     ]);
 

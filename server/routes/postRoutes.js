@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import { postByID, allPosts, userPosts, addPost, removePost, searchAllPosts } from "../controllers/postController.js"
-import protect from "../middleware/authMiddleware.js";
+import { protect, permit } from "../middleware/authMiddleware.js";
 
 router.get("/all", allPosts);
 router.get("/:id", postByID);

@@ -21,4 +21,17 @@ const protect = asyncHandler(async (req, res, next) => {
     }
 });
 
-export default protect;
+const permit = (...allowedRoles) => {
+    return (req, res, next) => {
+        const user = req.user;
+
+        if (user && allowedRoles.includes(user.type)) {
+            next();
+        } else {
+            res.status(403);
+            throw new Error('Forbidden');
+        }
+    }
+}
+
+export {protect, permit};
