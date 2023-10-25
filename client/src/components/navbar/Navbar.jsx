@@ -14,7 +14,7 @@ import { AuthContext } from "../../context/authContext";
 import axios from "axios";
 
 const Navbar = () => {
-   const { currentUser } = useContext(AuthContext);
+   const { currentUser, logout } = useContext(AuthContext);
 
    const navigate = useNavigate(); // Initialize useNavigate
 
@@ -43,7 +43,7 @@ const Navbar = () => {
    };
 
    const handleLogout = async () => {
-      await axios.post("http://localhost:8000/server/users/logout");
+      logout();
       navigate("/");
    }
 
