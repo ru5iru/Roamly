@@ -22,10 +22,10 @@ import { db } from "../firebase";
       const docRef = doc(db, "chats", chatId);
       const res = await getDoc(docRef);
       if (res.exists()){
-        console.log(true)       
+        // console.log(true)       
         return true;
       }else {
-        console.log(false)       
+        // console.log(false)       
         return false;
       }
     };

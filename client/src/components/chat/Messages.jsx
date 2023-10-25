@@ -55,37 +55,3 @@ const Messages = () => {
 }
 
 export default Messages
-
-// import React from 'react'
-// import Message from './Message' 
-// import './messenger.scss'
-
-// const Messages = () => {
-//   return (
-//     <div className='messages'>
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message />
-//         <Message /> 
-      
-//     </div>
-//   )
-// }
-
-// export default Messages

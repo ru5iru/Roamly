@@ -152,6 +152,8 @@ const Input = () => {
           text,
         },
         [chatId + '.date']: serverTimestamp(),
+
+        [chatId + '.unreadmessages']: true,
       });
 
       // Clear input fields

@@ -14,6 +14,8 @@ const Chat = () => {
   // const {user} = useState("null")
   const {data} = useContext(ChatContext);
   const { currentUser } = useContext(AuthContext);
+
+  
   // console.log(data.chatId)
 
   // const [isDeleteChatVisible, setIsDeleteChatVisible] = useState(false);
