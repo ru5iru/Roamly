@@ -177,7 +177,7 @@ const Profile = () => {
                         </div>
                      </div>
                      <div className="bottom">
-                        {profileData.user_type === "Hotel" ? (
+                        {profileData.user_type != "Traveller" ? (
                            <>
                               <div className="head">Rating</div>
                               <div className="container">
@@ -258,7 +258,7 @@ const Profile = () => {
                </div>
                <div className="profileBottom">
                   <div className="left">
-                     {profileData.user_type === "Hotel" ? (
+                     {profileData.user_type != "Traveller" ? (
                         <UserDetails />
                      ) : (
                         <Interests userID={userID} />
