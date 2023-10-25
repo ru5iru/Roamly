@@ -116,10 +116,17 @@
             }
 
             .userchatInfo{
-                span{
+
+                .userbar{
                     font-size: 22px;
                     font-weight: 500;
                     margin-left: 5px;
+                }
+
+                .unreadmsg{
+                    margin-left: 10px;
+                    height: 24px;
+                    width: 24px;
                 }
                 p{
                     font-size: 16px;

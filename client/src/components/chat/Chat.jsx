@@ -9,6 +9,7 @@ import { ChatContext } from '../../context/ChatContext'
 // import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase'
 import { AuthContext } from '../../context/authContext'
+import { doc, updateDoc } from 'firebase/firestore'
 
 const Chat = () => {
   // const {user} = useState("null")
@@ -55,6 +56,16 @@ const Chat = () => {
   //   setIsDeleteChatVisible(false);
   //   // After successful deletion, you can navigate the user back to the chat list or perform other actions as needed
   // };
+
+//   const handleReadMessages =async(u,chatId) =>{
+//   if(u.userInfo.email==data.user.email){
+//     await updateDoc(doc(db, 'userChats', currentUser.email), {
+//       [chatId + '.unreadmessages']:'false',
+      
+// updateDoc(doc(db, 'userChats', currentUser.email), {
+//       [data.chatId + '.unreadmessages']:'false',  
+// });
+ 
   return (
     <div className='chat'>
       <div className="chatInfo">

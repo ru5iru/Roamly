@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/authContext";
 import { doc, onSnapshot, setDoc, updateDoc } from 'firebase/firestore'
 import {db} from '../../../src/firebase'
 import { ChatContext } from '../../context/ChatContext';
+import chatemoji from '../../../src/assets/newmsg.png'
 // import Chat from './Chat';
 
 export default function Chats() {
@@ -28,42 +29,13 @@ export default function Chats() {
     currentUser.email && getChats();
   },[currentUser.email]);
 
-//   const handleSelect = (u) => {
-    
-//     const { userId, chatId } = currentUser; // Adjust this to fetch the correct user and chat IDs
-//     const userChatsRef = doc(db, 'userChats', userId)
-//     console.log("======================================================================================================");
-//     console.log(u);
-//     // const chatId = u.chatId;
-
-//     const updateObject = {};
-//     updateObject[`${chatId}.${u.chatId}.unreadmessages`] = false;
-  
-//     updateDoc(userChatsRef, updateObject).then(() => {
-//       console.log('Unread messages updated successfully');
-//     }).catch((error) => {
-//       console.error('Error updating unread messages:', error);
-//     });
-//     dispatch({ type: "CHANGE_USER", payload: u.userInfo });
-// };
-
-
-const handleReadMessages= async(chatId)=>{
-//  if 
-
-}
-
-
 
 const handleSelect = async(u,chatId) => {
 
   await updateDoc(doc(db, 'userChats', currentUser.email), {
     [chatId + '.unreadmessages']:'false',
     
-   
   });
-  console.log("CHATID: "+ chatId)
-  // handleReadMessages(chatId);
   dispatch({ type: "CHANGE_USER", payload: u.userInfo });
 };
 
@@ -77,11 +49,12 @@ const handleSelect = async(u,chatId) => {
         <div className="userchat" key={chat[0]} onClick={()=>handleSelect(chat[1],chat[0]/*.userInfo,chat[1].unreadmessages*/)}>
           <img src={chat[1].userInfo?.profile_pic} alt="" />
           <div className="userchatInfo">
-            <span>{chat[1].userInfo?.firstname} {chat[1].userInfo?.lastname}</span>
-            <span className='unreadmessages'>1</span>
-            <p>{chat[1].lastMessage?.text}</p>
+            <span className='userbar'>{chat[1].userInfo?.firstname} {chat[1].userInfo?.lastname}</span>
+            {chat[1].unreadmessages === true && <span><img className='unreadmsg' src={chatemoji} alt="" /></span>}
+            {chat[1].unreadmessages === true && <p><strong>{chat[1].lastMessage?.text}</strong></p> || <p>{chat[1].lastMessage?.text}</p>}
+
             
-            {/* {chat[1].unreadMessages > 0 && <span>({chat[1].unreadMessages})</span>} */}
+            
           </div>
         </div>
       ))}
