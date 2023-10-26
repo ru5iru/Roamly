@@ -1,10 +1,7 @@
 import { query } from '../config/db.js';
 import asyncHandler from 'express-async-handler';
-import {
-  getLikes,
-  getComments,
-  getShares,
-} from '../models/notificationModel.js';
+import getLikes from '../models/likeModel.js';
+// import getComments from '../models/Model.js';
 
 const getPostOwner = async (postId) => {
   const sql = 'SELECT user_id FROM posts WHERE post_id = $1';
@@ -21,10 +18,10 @@ const createNotification = async (user_id, action, postId) => {
 
   if (action === 'like') {
     notification_message = `Your post was liked by ${targetUser}`;
-  } else if (action === 'comment') {
-    notification_message = `Your post was commented on by ${targetUser}`;
-  } else if (action === 'share') {
-    notification_message = `Your post was shared by ${targetUser}`;
+//   } else if (action === 'comment') {
+//     notification_message = `Your post was commented on by ${targetUser}`;
+//   } else if (action === 'share') {
+//     notification_message = `Your post was shared by ${targetUser}`;
   } else {
     // Handle other notification types
     notification_message = 'You have a new notification';
@@ -39,8 +36,8 @@ const notifyLikesCommentsShares = asyncHandler(async (req, res) => {
   const { userId, postId } = req.body;
 
   const likes = await getLikes(postId);
-  const comments = await getComments(postId);
-  const shares = await getShares(postId);
+//   const comments = await getComments(postId);
+//   const shares = await getShares(postId);
 
   const notifications = [];
 
@@ -51,19 +48,19 @@ const notifyLikesCommentsShares = asyncHandler(async (req, res) => {
     });
   });
 
-  comments.forEach((comment) => {
-    notifications.push({
-      user_id: comment.user_id,
-      notification_message: `Your post was commented on by ${userId}`,
-    });
-  });
+//   comments.forEach((comment) => {
+//     notifications.push({
+//       user_id: comment.user_id,
+//       notification_message: `Your post was commented on by ${userId}`,
+//     });
+//   });
 
-  shares.forEach((share) => {
-    notifications.push({
-      user_id: share.user_id,
-      notification_message: `Your post was shared by ${userId}`,
-    });
-  });
+//   shares.forEach((share) => {
+//     notifications.push({
+//       user_id: share.user_id,
+//       notification_message: `Your post was shared by ${userId}`,
+//     });
+//   });
 
   // Use the createNotification function to create notifications
   const createdNotifications = await Promise.all(
