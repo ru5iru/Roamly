@@ -32,10 +32,12 @@ const deleteLike = asyncHandler(async (user_id, post_id) => {
 
     return true;
 });
+  
 
 export {
     getLikes,
     getLikesCount,
     saveLike,
     deleteLike
+
 }
