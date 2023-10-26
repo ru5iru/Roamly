@@ -34,6 +34,7 @@ import ForgotPW from "./pages/forgotPassword/fp";
 import ResetPW from "./pages/resetPW/ResetPW";
 import Verification from "./pages/signup/Verification";
 import ExplorePage from "./pages/explorePage/ExplorePage";
+import MarkInterests from "./pages/interests/MarkInterests";
 // import Interests from "./pages/Interests/Interests";
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
@@ -240,7 +241,6 @@ function App() {
         if (!currentUser) {
             return <Navigate to="/login" />;
         }
-
         return children;
     };
 
@@ -276,6 +276,10 @@ function App() {
                 {
                     path: "/verify/:token",
                     element: <Verification />,
+                },
+                {
+                    path: "/markinterests",
+                    element: <MarkInterests />,
                 }
             ],
         },
