@@ -9,12 +9,15 @@ import Search_blue from "../../assets/blue_search.png";
 import Profile_pic from "../../assets/profile_pic.png";
 import logo from "../../assets/Roamly.png";
 import Search_component from "../search/search.jsx";
+import Notify from "../notification/Notification"
 
 import { AuthContext } from "../../context/authContext";
 
 const Navbar = () => {
 
     const { currentUser } = useContext(AuthContext);
+    const [showNotification, setShowNotification] = useState(false);
+
 
     const navigate = useNavigate(); // Initialize useNavigate
 
@@ -43,6 +46,11 @@ const Navbar = () => {
 
         // Redirect to another page with the search query as a parameter
         navigate(`/explore?query=${searchText}`);
+    };
+
+    // notifications
+    const handleNotify = () => {
+        setShowNotification(true);
     };
 
     return (
@@ -74,8 +82,9 @@ const Navbar = () => {
                         />
                     </form>
                 </div>
-                <img src={Chat} alt="" />
-                <img src={Notification} alt="" />
+                <img src={Chat} alt="" />    
+                <img src={Notification} alt="" onClick={handleNotify} className='notifyicon'/> {/* view notofications */}
+                <div className='shownotify'>{showNotification && <Notify />}</div>
                 <img src={currentUser.profile_pic} alt="" className="usr_pic" onClick={handleProfileClick} />
             </div>
         </div>
