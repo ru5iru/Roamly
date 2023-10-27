@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import "./navbar.scss";
@@ -11,12 +11,24 @@ import logo from "../../assets/Roamly.png";
 import Search_component from "../search/search.jsx";
 import Notify from "../notification/Notification"
 
+
+
 import { AuthContext } from "../../context/authContext";
 
-const Navbar = () => {
+const Navbar = ({socket}) => {
 
     const { currentUser } = useContext(AuthContext);
-    const [showNotification, setShowNotification] = useState(false);
+
+    const [showNotification, setShowNotification] = useState(false)
+    const [notifications, setNotifications] = useState([]);
+
+    useEffect(()=>{
+        socket.on("getNotification", (data)=>{
+            setNotifications((prev)=>[...prev,data]);
+        });
+    },[socket]);
+    
+    console.log(notifications);
 
 
     const navigate = useNavigate(); // Initialize useNavigate

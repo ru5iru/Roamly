@@ -61,11 +61,10 @@ function App() {
 
     
 
-    useEffect(()=>{
-        const socket = io("http://localhost:5000");
-       
-    },[]);
-
+    useEffect(() => {
+        setSocket(io("http://localhost:5000"));
+      }, []);
+    
     useEffect(()=>{
         socket?.emit("newUser", user)
     },[socket, user]);

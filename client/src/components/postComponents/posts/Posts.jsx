@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Post from "../post/Post";
 import "./posts.scss";
+import { Socket } from "socket.io-client";
 
 const Posts = ({ userID, deleteMutation }) => {
    const [postData, setPostData] = useState([]);
@@ -28,8 +29,8 @@ const Posts = ({ userID, deleteMutation }) => {
                     post={post}
                     key={post.post_id}
                     deleteMutation={deleteMutation}
-                    socket ={socket}
-                    user ={user}
+                    socket ={Socket}
+                  //   user ={user}
                  />
               ))
             : <div className="empty">User hasn't posted yet. :{`(`}</div>}

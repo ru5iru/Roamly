@@ -51,14 +51,6 @@ const io = new Server({
     }
 });
 
-// io.on("connection",(socket)=>{
-//     // console.log("someone has connected");
-//     io.emit("firstEvent", "Hello this is test");
-
-//     // socket.on("disconnect",()=>{
-//     // })
-// });
-
 let onlineUsers=[];
 
 const addNewUser = (username, socketId)=>{
@@ -70,7 +62,8 @@ const removeUser =(socketId) =>{
 };
 
 const getUser =(username) => {
-    return onlineUsers.find(user=>username === username);
+    return onlineUsers.find((user)=>username === username);
+
 };
 
 
@@ -82,6 +75,10 @@ io.on("connection",(socket)=>{
 
     socket.on("sendNotification", ({senderName,receiverName,type})=>{
         const receiver = getUser(receiverName)
+        io.to(receiver.socketId).emit("getNotification", {
+            senderName,
+            type,
+        });
     });
 
 
