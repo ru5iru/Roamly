@@ -28,6 +28,8 @@ const Posts = ({ userID, deleteMutation }) => {
                     post={post}
                     key={post.post_id}
                     deleteMutation={deleteMutation}
+                    socket ={socket}
+                    user ={user}
                  />
               ))
             : <div className="empty">User hasn't posted yet. :{`(`}</div>}

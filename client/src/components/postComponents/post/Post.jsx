@@ -67,8 +67,14 @@ const Post = ({ userID, post, deleteMutation }) => {
         mutation.mutate(likeData.likeArray.includes(currentUser.user_id));
     };
 
-    const handleNotification = () =>{
+    const handleNotification = (type) =>{
         setLiked(true);
+        socket.emit("sendNotification", {
+            senderId:currentUser.firstname+currentUser.firstname,
+            receiverId:postProfileData.firstname + postProfileData.lastname,
+            type,
+
+        })
     }
 
     const handleDelete = () => {
@@ -173,7 +179,7 @@ const Post = ({ userID, post, deleteMutation }) => {
                             // <FavoriteBorderOutlinedIcon onClick={handleLike} />
                             <FavoriteBorderOutlinedIcon onClick={() => {
                                 handleLike();
-                                handleNotification();
+                                handleNotification(1);
                               }} />
                               
                         )}

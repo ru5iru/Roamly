@@ -21,8 +21,6 @@ import exploreRoutes from "./routes/exploreRoutes.js"
 import adsRoutes from "./routes/adsRoutes.js"
 import feedRoutes from "./routes/feedRoutes.js"
 
-
-
 // start DB connection
 connectDB();
 
@@ -53,13 +51,44 @@ const io = new Server({
     }
 });
 
+// io.on("connection",(socket)=>{
+//     // console.log("someone has connected");
+//     io.emit("firstEvent", "Hello this is test");
+
+//     // socket.on("disconnect",()=>{
+//     // })
+// });
+
+let onlineUsers=[];
+
+const addNewUser = (username, socketId)=>{
+    !onlineUsers.some(user=>user.username === username) && onlineUsers.push({username, socketId});
+};
+
+const removeUser =(socketId) =>{
+    onlineUsers = onlineUsers.filter(user=>user.socketId !== socketId); 
+};
+
+const getUser =(username) => {
+    return onlineUsers.find(user=>username === username);
+};
+
+
 io.on("connection",(socket)=>{
-    // console.log("someone has connected");
-    io.emit("firstEvent", "Hello this is test")
+
+    socket.on("newUser", (username)=>{
+        addNewUser(username, socket.id);
+    });
+
+    socket.on("sendNotification", ({senderName,receiverName,type})=>{
+        const receiver = getUser(receiverName)
+    });
+
 
     socket.on("disconnect",()=>{
-        // console.log("someone has left");
-    })
+        removeUser(socket.id);
+    });
+
 });
 
 

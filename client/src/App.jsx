@@ -55,12 +55,20 @@ function App() {
 
     const [activeStep, setActiveStep] = useState(0);
 
+    const [username, setUsername]=useState("");
+    const [user, setUser] = useState("");
+    const [socket, setSocket] = useState(null)
+
     
 
     useEffect(()=>{
         const socket = io("http://localhost:5000");
-        console.log(socket);
+       
     },[]);
+
+    useEffect(()=>{
+        socket?.emit("newUser", user)
+    },[socket, user]);
 
 
     const handleActiveStepChange = (step) => {
@@ -84,7 +92,7 @@ function App() {
         return (
             <QueryClientProvider client={queryClient}>
                 <div className={`theme-${darkMode ? "dark" : "light"}`}>
-                    <NavBar />
+                    <NavBar socket ={socket}/>
                     <div
                         style={{
                             display: "flex",
@@ -104,7 +112,7 @@ function App() {
         return (
             <QueryClientProvider client={queryClient}>
                 <div className={`theme-${darkMode ? "dark" : "light"}`}>
-                    <NavBar />
+                    <NavBar socket ={socket}/>
                     <Home />
                 </div>
             </QueryClientProvider >
@@ -114,7 +122,7 @@ function App() {
     const Exp = () => {
         return (
             <QueryClientProvider client={queryClient}>
-                <NavBar />
+                <NavBar socket ={socket}/>
                 <div className={`theme-${darkMode ? "dark" : "light"}`}>
 
                     <div style={{ display: "flex", position: "relative", top: "4rem" }}>
@@ -141,7 +149,7 @@ function App() {
     const Ads = () => {
         return (
             <div>
-                <NavBar />
+                <NavBar socket ={socket}/>
                 <div style={{ display: "flex", position: "relative", top: "4rem" }}>
                     <LeftBarSp />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -158,7 +166,7 @@ function App() {
 
             // <QueryClientProvider client={queryClient}>
             <div>
-                <NavBar />
+                <NavBar socket ={socket}/>
                 {/* <div style={{ display: "flex", position: "relative", top: "4rem" }}> */}
                     {/* <div style= {{display: "flex", position: "relative", left: "298px" }}> */}
                     <div>
@@ -174,7 +182,7 @@ function App() {
     const Trip = () => {
         return (
             <div>
-                <NavBar />
+                <NavBar socket ={socket}/>
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -190,7 +198,7 @@ function App() {
     const Place = () => {
         return (
             <div>
-                <NavBar />
+                <NavBar socket ={socket}/>
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -206,7 +214,7 @@ function App() {
     const Placedetails = () => {
         return (
             <div>
-                <NavBar />
+                <NavBar socket ={socket}/>
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -221,7 +229,7 @@ function App() {
     const Shop = () => {
         return (
             <div>
-                <NavBar />
+                <NavBar socket ={socket}/>
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -237,7 +245,7 @@ function App() {
     const Hotel = () => {
         return (
             <div>
-                <NavBar />
+                <NavBar socket ={socket}/>
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -253,7 +261,7 @@ function App() {
     const Guide = () => {
         return (
             <div>
-                <NavBar />
+                <NavBar socket ={socket}/>
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -271,7 +279,7 @@ function App() {
     const Taxi = () => {
         return (
             <div>
-                <NavBar />
+                <NavBar socket ={socket}/>
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
