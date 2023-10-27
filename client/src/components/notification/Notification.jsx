@@ -1,38 +1,28 @@
+// // NotificationComponent.js
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import "./notification.scss"
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
 
-const Notification = ({ userId }) => {
-  const [notifications, setNotifications] = useState([]);
+// const Notification = () => {
+//   const [notifications, setNotifications] = useState([]);
 
-  useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        const response = await axios.get(`/api/notifications?userId=${userId}`);
-        setNotifications(response.data);
-      } catch (error) {
-        console.error('Error fetching notifications', error);
-      }
-    };
-    fetchNotifications();
-  }, [userId]);
+//   const handleNotificationClick = async () => {
+//     try {
+//       const response = await axios.get('/server/notifications');
+//       setNotifications(response.data);
+//     } catch (error) {
+//       console.error('Error fetching notifications: ', error);
+//     }
+//   };
 
-  return (
-    <div className='notifyContainer'>
-      <h2>Notifications</h2>
-      <ul>
-        notification1
-        notification2
-        {/* {notifications.map((notification) => (
-          <li key={notification.id}>
-            {notification.notification_message}
-          </li>
-        ))} */}
-      </ul>
-    </div>
-  );
-};
+//   return (
+//     <div className='notifyContainer'> 
+//       <button onClick={handleNotificationClick}>View Notifications</button>
+//       {notifications.map((notification) => (
+//         <div key={notification.id}>{notification.message}</div>
+//       ))}
+//     </div>
+//   );
+// };
 
-export default Notification;
-
+// export default Notification;

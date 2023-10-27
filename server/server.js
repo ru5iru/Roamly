@@ -1,9 +1,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import http from 'http';
 dotenv.config();
 import cookieParser from 'cookie-parser';
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import cors from 'cors';
+
+import { Server} from 'socket.io';
+
 import { connectDB } from "./config/db.js";
 const port = process.env.PORT || 5000;
 
@@ -41,6 +45,24 @@ app.use(cors({
     credentials: true // Allow credentials in the request
 }));
 
+//socket server
+
+const io = new Server({
+    cors:{
+        origin:"http://localhost:3000"
+    }
+});
+
+io.on("connection",(socket)=>{
+    // console.log("someone has connected");
+    io.emit("firstEvent", "Hello this is test")
+
+    socket.on("disconnect",()=>{
+        // console.log("someone has left");
+    })
+});
+
+
 // user routes
 app.use('/server/users', userRoutes);
 
@@ -65,7 +87,8 @@ app.use("/server/ads", adsRoutes);
 //feed routes
 app.use("/server/feed", feedRoutes);
 
-app.get('/', (req, res) => res.send('Server is ready'));
+//notifications routes
+// app.use('/server/notifications', notificationRoutes);
 
 // error handlers
 app.use(notFound);
@@ -74,3 +97,5 @@ app.use(errorHandler);
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)
 });
+
+io.listen(5000);

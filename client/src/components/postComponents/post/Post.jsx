@@ -12,10 +12,12 @@ import { formatCreatedAt } from "../../../utils/timeCalc";
 import { makeRequest } from "../../../axios";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
+// import {io} from "socket.io-client";
 
 const Post = ({ userID, post, deleteMutation }) => {
     const { currentUser } = useContext(AuthContext);
-
+    const [liked,setLiked] = useState(false)
+    
     const [commentOpen, setCommentOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const {
@@ -64,6 +66,10 @@ const Post = ({ userID, post, deleteMutation }) => {
     const handleLike = () => {
         mutation.mutate(likeData.likeArray.includes(currentUser.user_id));
     };
+
+    const handleNotification = () =>{
+        setLiked(true);
+    }
 
     const handleDelete = () => {
         deleteMutation.mutate(post.post_id);
@@ -164,7 +170,12 @@ const Post = ({ userID, post, deleteMutation }) => {
                                 onClick={handleLike}
                             />
                         ) : (
-                            <FavoriteBorderOutlinedIcon onClick={handleLike} />
+                            // <FavoriteBorderOutlinedIcon onClick={handleLike} />
+                            <FavoriteBorderOutlinedIcon onClick={() => {
+                                handleLike();
+                                handleNotification();
+                              }} />
+                              
                         )}
                         {!likeIsLoading ? likeData.count.count : "loading"} Likes
                     </div>

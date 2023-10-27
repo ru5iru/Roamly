@@ -1,8 +1,9 @@
-import express from 'express';
-import { notifyLikesCommentsShares } from '../controllers/notificationController';
+// import express from 'express';
+// import { getNotifications } from '../controllers/notificationController.js';
 
-const router = express.Router();
+// const router = express.Router();
 
-router.post('/notify', notifyLikesCommentsShares);
+// router.get('/notifications', getNotifications);
 
-export default router;
+// export default router;
+

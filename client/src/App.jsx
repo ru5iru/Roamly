@@ -18,7 +18,7 @@ import {
     Outlet,
     Navigate,
 } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/authContext";
@@ -39,7 +39,9 @@ import ForgotPW from "./pages/forgotPassword/fp";
 import ResetPW from "./pages/resetPW/ResetPW";
 import Verification from "./pages/signup/Verification";
 import Chathome from "./pages/chat/chathome";
+import {io} from "socket.io-client";
 // import Interests from "./pages/Interests/Interests";
+
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
 axios.defaults.withCredentials = true;
@@ -52,6 +54,14 @@ function App() {
     const queryClient = new QueryClient();
 
     const [activeStep, setActiveStep] = useState(0);
+
+    
+
+    useEffect(()=>{
+        const socket = io("http://localhost:5000");
+        console.log(socket);
+    },[]);
+
 
     const handleActiveStepChange = (step) => {
         setActiveStep(step);
