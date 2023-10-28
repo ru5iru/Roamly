@@ -77,7 +77,10 @@ const MarkInterests = () => {
    };
 
    return (
-      <div className="container">
+      <div className="outer-container-mi">
+         <div className="container-mi">
+         <div className="interests-head-mi">Interests</div>
+         <div className="interests-desc-mi">Create Your Unique Travel Profile: Pick your interests.</div>
          <ul className="ks-cboxtags">
             {interestData.map((interest) => (
                <li key={interest.interest_id}>
@@ -93,7 +96,8 @@ const MarkInterests = () => {
                </li>
             ))}
          </ul>
-         <button onClick={handleSubmit}>Submit</button>
+         <button className="submit-mi" onClick={handleSubmit}>Submit</button>
+      </div>
       </div>
    );
 };

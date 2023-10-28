@@ -160,7 +160,12 @@ const Profile = () => {
                         <div className="profileName">
                            {profileData.firstname} {profileData.lastname}
                         </div>
-                        <div className="followCount">12334 followers</div>
+                        <div className="followCount">
+                           {relationshipsLoading
+                              ? "loading"
+                              : relationshipsData.count.count}{" "}
+                           followers
+                        </div>
                      </div>
                   </div>
                   <div className="center">
