@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler";
-import { getAllInterests, getUserInterests } from "../models/interestModel.js"
+import { getAllInterests, getUserInterests, markInterests } from "../models/interestModel.js"
 
 // desc
 // route
@@ -31,4 +31,14 @@ const interestsByUser = asyncHandler(async (req, res) => {
     }
  });
 
- export { allInterets, interestsByUser }
+// desc
+// route
+// access
+
+const addInterets = asyncHandler(async (req, res) => {
+   const { user_id, checkboxes } = req.body; 
+   const result = await markInterests(user_id, checkboxes)
+   // console.log(checkboxes)
+});
+
+ export { allInterets, interestsByUser, addInterets }
