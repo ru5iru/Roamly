@@ -8,6 +8,9 @@ import axios from "axios";
 const MarkInterests = () => {
    const [interestData, setInterestData] = useState([]);
    const [userInterestData, setUserInterestData] = useState([]);
+   
+   const { currentUser } = useContext(AuthContext);
+   const user_id = currentUser.user_id;
 
    const getInterests = async () => {
       try {
@@ -21,6 +24,7 @@ const MarkInterests = () => {
 
    useEffect(() => {
       getInterests();
+      getUserInterests();
    }, []);
 
    const [checkboxes, setCheckboxes] = useState({
@@ -43,8 +47,18 @@ const MarkInterests = () => {
       17: false,
    });
 
-   const { currentUser } = useContext(AuthContext);
-   const user_id = currentUser.user_id;
+   const getUserInterests = async () => {
+      try {
+         const response = await axios.get(`/interests?userId=${user_id}`);
+         const jsonData = response.data.map((interest) => interest.interest_id);
+         setUserInterestData(jsonData);
+         jsonData.forEach(value => {
+            checkboxes[value] = true;
+         })
+      } catch (error) {
+         console.error(error.message);
+      }
+   };
 
    const mutation = useMutation((newInterests) => {
       return makeRequest.post("/interests", newInterests);
