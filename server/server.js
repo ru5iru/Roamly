@@ -54,15 +54,16 @@ const io = new Server({
 let onlineUsers=[];
 
 const addNewUser = (username, socketId)=>{
-    !onlineUsers.some(user=>user.username === username) && onlineUsers.push({username, socketId});
+    !onlineUsers.some((user)=>user.username === username) && 
+    onlineUsers.push({username, socketId});
 };
 
 const removeUser =(socketId) =>{
-    onlineUsers = onlineUsers.filter(user=>user.socketId !== socketId); 
+    onlineUsers = onlineUsers.filter((user)=>user.socketId !== socketId); 
 };
 
 const getUser =(username) => {
-    return onlineUsers.find((user)=>username === username);
+    return onlineUsers.find((user)=>user.username === username);
 
 };
 
@@ -73,13 +74,21 @@ io.on("connection",(socket)=>{
         addNewUser(username, socket.id);
     });
 
-    socket.on("sendNotification", ({senderName,receiverName,type})=>{
-        const receiver = getUser(receiverName)
+    socket.on("sendNotification", ({senderName,receiverId,type})=>{
+        const receiver = getUser(receiverId)
         io.to(receiver.socketId).emit("getNotification", {
             senderName,
             type,
         });
     });
+
+    // socket.on("sendText", ({ senderName, receiverId, text }) => {
+    //     const receiver = getUser(receiverId);
+    //     io.to(receiver.socketId).emit("getText", {
+    //       senderName,
+    //       text,
+    //     });
+    //   });
 
 
     socket.on("disconnect",()=>{

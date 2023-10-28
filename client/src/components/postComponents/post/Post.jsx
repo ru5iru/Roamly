@@ -72,10 +72,10 @@ const Post = ({ userID, post, deleteMutation, socket }) => {
     };
 
     const handleNotification = (type) =>{
-        setLiked(true);
+        type === 1 && setLiked(true);
         socket?.emit("sendNotification", {
             senderName:currentUser.firstname+" "+currentUser.lastname,
-            receiverName:postProfileData.firstname + " " + postProfileData.lastname,
+            receiverId:post.user_id,
             type,
 
         })

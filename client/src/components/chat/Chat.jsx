@@ -75,7 +75,6 @@ const Chat = () => {
           <div className="chatIcons">
             {/* <img src={cam} alt="" />
             <img src={add} alt="" /> */}
-            <img src={more} alt="" /*onClick={() => setIsDeleteChatVisible(!isDeleteChatVisible)}*//>
 
 
             {/* {isDeleteChatVisible && (

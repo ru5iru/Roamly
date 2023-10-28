@@ -9,7 +9,7 @@ import Search_blue from "../../assets/blue_search.png";
 import Profile_pic from "../../assets/profile_pic.png";
 import logo from "../../assets/Roamly.png";
 import Search_component from "../search/search.jsx";
-import Notify from "../notification/Notification"
+import Notifications from "../notification/Notification"
 
 
 
@@ -21,6 +21,7 @@ const Navbar = ({socket}) => {
 
     const [showNotification, setShowNotification] = useState(false)
     const [notifications, setNotifications] = useState([]);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         socket?.on("getNotification", (data) => {
@@ -65,6 +66,28 @@ const Navbar = ({socket}) => {
         setShowNotification(true);
     };
 
+    const displayNotification = ({senderName, type})=> {
+        let action;
+
+        if(type === 1){
+            action ="liked"
+        }else if (type === 2){
+            action = "commented"
+        }else{
+            action = "shared"
+        }
+
+        return (
+            <><span className='notification'>{`${senderName} ${action} your post`}</span>
+            </>
+        )
+    }
+
+    const handleRead = () => {
+        setNotifications([]);
+        setOpen(false);
+      };
+
     return (
         <div className="navbar">
             <div className="left">
@@ -95,12 +118,32 @@ const Navbar = ({socket}) => {
                     </form>
                 </div>
                 <img src={Chat} alt="" />    
-                <img src={Notification} alt="" onClick={handleNotify} className='notifyicon'/> {/* view notofications */}
-                <div className='shownotify'>{showNotification && <Notify />}</div>
+                {/* <img src={Notification} alt="" onClick={handleNotify} className='notifyicon'/> */}
+
+                <div className='count' onClick={() => setOpen(!open)}>
+                    <img src={Notification} alt="" />
+                    {
+                        notifications.length >0 &&
+                        <div className="counter">{notifications.length}</div>
+                    }
+                </div>
+
+                {open && (
+                <div className="notifications">
+                    {notifications.map((n) => displayNotification(n))}
+                    <button className="nButton" onClick={handleRead}>
+                        Mark as read
+                    </button>
+                </div>
+      )}
+          
                 <img src={currentUser.profile_pic} alt="" className="usr_pic" onClick={handleProfileClick} />
             </div>
-        </div>
-    );
+
+    
+     </div>
+    )
+    
 };
 
 export default Navbar;

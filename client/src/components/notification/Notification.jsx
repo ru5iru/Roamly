@@ -1,5 +1,3 @@
-// // NotificationComponent.js
-
 // import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
 
@@ -17,10 +15,10 @@
 
 //   return (
 //     <div className='notifyContainer'> 
-//       <button onClick={handleNotificationClick}>View Notifications</button>
-//       {notifications.map((notification) => (
-//         <div key={notification.id}>{notification.message}</div>
-//       ))}
+//       {/* <button onClick={handleNotificationClick}>View Notifications</button> */}
+//       {/* {notifications.map((notification) => (
+//         <div className='singleNotification' key={notification.id}>{notification.message}</div>
+//       ))} */}
 //     </div>
 //   );
 // };
