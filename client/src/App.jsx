@@ -56,7 +56,7 @@ function App() {
     const [activeStep, setActiveStep] = useState(0);
 
     const [username, setUsername]=useState("");
-    const [user, setUser] = useState("");
+    // const [user, setUser] = useState("");
     const [socket, setSocket] = useState(null)
 
     
@@ -66,8 +66,8 @@ function App() {
       }, []);
     
     useEffect(()=>{
-        socket?.emit("newUser", user)
-    },[socket, user]);
+        socket?.emit("newUser", username)
+    },[socket, username]);
 
 
     const handleActiveStepChange = (step) => {
@@ -112,7 +112,7 @@ function App() {
             <QueryClientProvider client={queryClient}>
                 <div className={`theme-${darkMode ? "dark" : "light"}`}>
                     <NavBar socket ={socket}/>
-                    <Home />
+                    <Home socket={socket}/>
                 </div>
             </QueryClientProvider >
         );

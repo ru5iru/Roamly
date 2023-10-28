@@ -29,7 +29,7 @@ const Posts = ({ userID, deleteMutation }) => {
                     post={post}
                     key={post.post_id}
                     deleteMutation={deleteMutation}
-                    socket ={Socket}
+                    socket ={socket}
                   //   user ={user}
                  />
               ))

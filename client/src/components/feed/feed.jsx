@@ -8,7 +8,7 @@ import { makeRequest } from '../../axios.js'; // Import your axios instance or e
 
 import Post from "../postComponents/post/Post";
 
-const Feedcontent = () => {
+const Feedcontent = ({socket}) => {
 
     const [posts, setPosts] = useState([]);
 
@@ -33,7 +33,7 @@ const Feedcontent = () => {
         // <div className="explore">
         <Fragment>
             <div className="feed">
-                {posts.map((post) => <Post userID={post.user_id} post={post} key={post.post_id} />)}
+                {posts.map((post) => <Post userID={post.user_id} post={post} key={post.post_id} socket={socket} />)}
             </div>
         </Fragment>
 

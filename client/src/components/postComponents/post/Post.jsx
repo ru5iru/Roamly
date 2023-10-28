@@ -76,6 +76,7 @@ const Post = ({ userID, post, deleteMutation, socket }) => {
 
         })
     }
+    
 
     const handleDelete = () => {
         deleteMutation.mutate(post.post_id);

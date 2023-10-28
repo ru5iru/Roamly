@@ -13,7 +13,7 @@ import { useState } from "react";
 // import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 
-function Home() {
+function Home({socket}) {
 
     const [openAddPost, setOpenAddPost] = useState(false);
 
@@ -26,7 +26,7 @@ function Home() {
                 <div style={{ marginLeft: 18 + 'px', marginTop: 18 + 'px' }}>
                     <Addpost setOpenAddPost={setOpenAddPost} />
                 </div>
-                <Feedcontent />
+                <Feedcontent socket={socket}/>
                 {/* <Home /> */}
             </div>
             <RightBar />
