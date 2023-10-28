@@ -29,7 +29,7 @@ const Interests = ({ userID }) => {
    return (
       <div className="interests">
          <div className="interestsHeadContainer">
-            <div className="interestHead">Interested In</div>
+            <div className="interestsHead">Interested In</div>
             <div className="seeMore" onClick={handleEditClick}>Edit</div>
          </div>
          
