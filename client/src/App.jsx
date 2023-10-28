@@ -107,6 +107,17 @@ function App() {
         )
     };
 
+    const MarkInterestsPage = () => {
+        return (
+            <QueryClientProvider client={queryClient}>
+                <NavBar />
+                <div className={`theme-${darkMode ? "dark" : "light"}`}>
+                    <MarkInterests />
+                </div>
+            </QueryClientProvider >
+        )
+    };
+
     const Ads = () => {
         return (
             <div>
@@ -277,11 +288,19 @@ function App() {
                     path: "/verify/:token",
                     element: <Verification />,
                 },
-                {
-                    path: "/markinterests",
-                    element: <MarkInterests />,
-                }
+                // {
+                //     path: "/markinterests",
+                //     element: <MarkInterests />,
+                // }
             ],
+        },
+        {
+            path: "/markinterests",
+            element: (
+                <ProtectedRoute>
+                    <MarkInterestsPage />
+                </ProtectedRoute>
+            ),
         },
         {
             path: "/profile/:id",

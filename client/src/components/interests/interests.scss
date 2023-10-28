@@ -20,11 +20,21 @@
        flex: initial;
     }
 
-    .interestHead {
-       color: #2d3846;
-       font-weight: 600;
-       font-size: 1.25rem;
-    }
+    .interestsHeadContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .interestsHead {
+         color: #2d3846;
+         font-weight: 600;
+         font-size: 1.25rem;
+      }
+      .seeMore {
+         color: #16b4f1;
+      }
+   }
     .interestContainer {
        display: flex;
        flex-wrap: wrap;

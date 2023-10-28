@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import "./interests.scss";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Interests = ({ userID }) => {
    const [interestData, setInterestData] = useState([]);
    const [error, setError] = useState(null);
+
+   const navigate = useNavigate();
 
    useEffect(() => {
       if (userID) {
@@ -19,9 +22,17 @@ const Interests = ({ userID }) => {
       }
    }, [userID]);
 
+   const handleEditClick = () => {
+      navigate("/markinterests");
+   };
+
    return (
       <div className="interests">
-         <div className="interestHead">Interested In</div>
+         <div className="interestsHeadContainer">
+            <div className="interestHead">Interested In</div>
+            <div className="seeMore" onClick={handleEditClick}>Edit</div>
+         </div>
+         
          <div className="interestContainer">
             {interestData.length > 0
                ? interestData.map((interest) => (

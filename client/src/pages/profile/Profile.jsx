@@ -90,7 +90,6 @@ const Profile = () => {
       badge_color: "bg-platinum",
    };
 
-   // const queryClient = useQueryClient();
    const [triggerRefetch, setTriggerRefetch] = useState(false);
 
    useEffect(() => {

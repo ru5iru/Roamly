@@ -4,12 +4,15 @@ import { AuthContext } from "../../context/authContext";
 import { useMutation } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const MarkInterests = () => {
    const [interestData, setInterestData] = useState([]);
    
    const { currentUser } = useContext(AuthContext);
    const user_id = currentUser.user_id;
+
+   const navigate = useNavigate();
 
    const getInterests = async () => {
       try {
@@ -74,6 +77,7 @@ const MarkInterests = () => {
       );
       e.preventDefault();
       mutation.mutate({ user_id, checkboxes });
+      navigate("/profile/" + currentUser.user_id);
    };
 
    return (
