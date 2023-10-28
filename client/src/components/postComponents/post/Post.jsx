@@ -62,6 +62,10 @@ const Post = ({ userID, post, deleteMutation, socket }) => {
         }
     );
 
+    // const sender_Name = currentUser.firstname+currentUser.lastname;
+    // const receiver_Name = postProfileData.firstname + postProfileData.lastname;
+    // console.log("sender name :"+ sender_Name );
+    // console.log("Receiver name :"+ receiver_Name );
 
     const handleLike = () => {
         mutation.mutate(likeData.likeArray.includes(currentUser.user_id));
@@ -69,14 +73,15 @@ const Post = ({ userID, post, deleteMutation, socket }) => {
 
     const handleNotification = (type) =>{
         setLiked(true);
-        socket.emit("sendNotification", {
-            senderName:currentUser.firstname+currentUser.firstname,
-            receiverName:postProfileData.firstname + postProfileData.lastname,
+        socket?.emit("sendNotification", {
+            senderName:currentUser.firstname+" "+currentUser.lastname,
+            receiverName:postProfileData.firstname + " " + postProfileData.lastname,
             type,
 
         })
     }
     
+
 
     const handleDelete = () => {
         deleteMutation.mutate(post.post_id);

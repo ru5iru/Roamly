@@ -23,7 +23,7 @@ const Navbar = ({socket}) => {
     const [notifications, setNotifications] = useState([]);
 
     useEffect(() => {
-        socket.on("getNotification", (data) => {
+        socket?.on("getNotification", (data) => {
           setNotifications((prev) => [...prev, data]);
         });
       }, [socket]);
