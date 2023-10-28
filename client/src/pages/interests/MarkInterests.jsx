@@ -7,7 +7,6 @@ import axios from "axios";
 
 const MarkInterests = () => {
    const [interestData, setInterestData] = useState([]);
-   const [userInterestData, setUserInterestData] = useState([]);
    
    const { currentUser } = useContext(AuthContext);
    const user_id = currentUser.user_id;
@@ -51,7 +50,6 @@ const MarkInterests = () => {
       try {
          const response = await axios.get(`/interests?userId=${user_id}`);
          const jsonData = response.data.map((interest) => interest.interest_id);
-         setUserInterestData(jsonData);
          jsonData.forEach(value => {
             checkboxes[value] = true;
          })
