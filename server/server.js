@@ -16,6 +16,8 @@ import likeRoutes from "./routes/likeRoutes.js"
 import exploreRoutes from "./routes/exploreRoutes.js"
 import adsRoutes from "./routes/adsRoutes.js"
 import feedRoutes from "./routes/feedRoutes.js"
+import serviceRoutes from "./routes/serviceRoutes.js"
+
 
 
 
@@ -43,6 +45,9 @@ app.use(cors({
 
 // user routes
 app.use('/server/users', userRoutes);
+
+// service routes
+app.use('/server/services', serviceRoutes);
 
 // badge routes
 app.use("/server/badges", badgeRoutes);

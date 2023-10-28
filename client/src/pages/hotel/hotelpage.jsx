@@ -9,8 +9,6 @@ export const HotelPage = () => {
       <div className="mid-page">
         <h1>Hotels near Belihuloya</h1>
         <Hotel />
-        <Hotel />
-        <Hotel />
       </div>
     </div>
   );

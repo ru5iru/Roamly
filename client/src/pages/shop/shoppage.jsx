@@ -10,8 +10,6 @@ export const ShopPage = () => {
       <div className="mid-page">
         <h1>Shops near Belihuloya</h1>
         <Shop />
-        <Shop />
-        <Shop />
       </div>
       
     </div>
