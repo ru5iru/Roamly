@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import RatingPosts from "../../components/ratingComponents/ratingPosts/RatingPosts";
 import Rating from "../../components/ratingComponents/rating/Rating";
 import axios from "axios";
+import AddReview from "../../components/ratingComponents/addReview/addReview";
 
 const RatingsPage = () => {
    const service_id = parseInt(useLocation().pathname.split("/")[2]);
@@ -35,17 +36,15 @@ const RatingsPage = () => {
    const ratinArr = postData.map((post) => post.rating);
 
    const calculateAverage = (ratingArray) => {
-
       if (ratingArray.length === 0) {
-        return 0;
+         return 0;
       }
       const sum = ratingArray.reduce((total, current) => total + current, 0);
       let average = sum / ratingArray.length;
       average = Math.round(average * 2) / 2;
-    
-      return average;
-    };
 
+      return average;
+   };
 
    return (
       <div className="ratingspage">
@@ -65,7 +64,10 @@ const RatingsPage = () => {
                      <div className="profileName">
                         {postProfileData.firstname} {postProfileData.lastname}
                      </div>
-                     <Rating rating={calculateAverage(ratinArr)} count={ratinArr.length} />
+                     <Rating
+                        rating={calculateAverage(ratinArr)}
+                        count={ratinArr.length}
+                     />
                   </div>
                </div>
                <div className="center">
@@ -73,10 +75,14 @@ const RatingsPage = () => {
                      <div className="profileName">
                         {postProfileData.firstname} {postProfileData.lastname}
                      </div>
-                     <Rating rating={calculateAverage(ratinArr)} count={ratinArr.length} />
+                     <Rating
+                        rating={calculateAverage(ratinArr)}
+                        count={ratinArr.length}
+                     />
                   </div>
                </div>
             </div>
+            <AddReview />
             <RatingPosts posts={postData} serviceID={service_id} />
          </div>
          <div className="right"></div>

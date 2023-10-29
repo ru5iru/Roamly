@@ -16,15 +16,6 @@ const RatingPost = ({ serviceID, post }) => {
     const { currentUser } = useContext(AuthContext);
 
     const [menuOpen, setMenuOpen] = useState(false);
-   //  const {
-   //      isLoading: likeIsLoading,
-   //      error: likeError,
-   //      data: likeData,
-   //  } = useQuery(["likes", post.post_id], () =>
-   //      makeRequest.get(`/likes?postId=${post.post_id}`).then((res) => {
-   //          return res.data;
-   //      })
-   //  );
 
     const [postProfileData, setPostProfileData] = useState([]);
     
@@ -37,36 +28,6 @@ const RatingPost = ({ serviceID, post }) => {
     }, [serviceID]);
 
     const queryClient = useQueryClient();
-
-   //  const mutation = useMutation(
-   //      (liked) => {
-   //          const requestData = {
-   //              user_id: currentUser.user_id,
-   //              post_id: post.post_id,
-   //          };
-
-   //          if (liked) {
-   //              return makeRequest.delete("/likes", { params: requestData });
-   //          } else {
-   //              return makeRequest.post("/likes", requestData);
-   //          }
-   //      },
-   //      {
-   //          onSuccess: () => {
-   //              // Invalidate and refetch
-   //              queryClient.invalidateQueries(["likes"]);
-   //          },
-   //      }
-   //  );
-
-
-   //  const handleLike = () => {
-   //      mutation.mutate(likeData.likeArray.includes(currentUser.user_id));
-   //  };
-
-   //  const handleDelete = () => {
-   //      deleteMutation.mutate(post.post_id);
-   //  };
 
     return (
         <div className="ratingpost">
