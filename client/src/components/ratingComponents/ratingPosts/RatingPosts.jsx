@@ -21,7 +21,7 @@ const RatingPosts = ({ serviceID }) => {
    }, [serviceID]);
 
    return (
-      <div className="posts">
+      <div className="ratingposts">
          {postData.length > 0
             ? postData.map((post) => (
                  <RatingPost

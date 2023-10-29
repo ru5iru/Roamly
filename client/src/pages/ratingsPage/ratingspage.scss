@@ -1,12 +1,201 @@
 .ratingspage{
    display: flex;
    margin-top: 20px;
+   margin-bottom: 20px;
 
    .left{
       flex: 1;
    }
    .center{
       flex: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .uInfo {
+         height: 20vh;
+         width: 30vw;
+         -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+         -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+         box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+         border-radius: 10px;
+         background-color: themed("bg");
+         color: themed("textColor");
+         padding: 6vh;
+         display: flex;
+         align-items: center;
+         justify-content: space-evenly;
+         margin-bottom: 20px;
+         gap: 2vw;
+         background-color: white;
+
+         @media (max-width: 600px) {
+            flex-direction: column;
+            height: auto;
+         }
+
+         @media (min-width: 601px) {
+            flex-direction: column;
+            height: auto;
+         }
+
+         @media (min-width: 768px) {
+            width: 50vw;
+         }
+
+         @media (min-width: 992px) {
+            width: 40vw;
+         }
+
+         @media (min-width: 1200px) {
+            width: 30vw;
+            flex-direction: row;
+         }
+
+         .left {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-left: 1rem;
+
+            @media (max-width: 768px) {
+               margin-left: 0rem;
+            }
+
+            .profileImg {
+               display: flex;
+               align-items: center;
+               gap: 20px;
+               position: relative;
+
+               .profilePic {
+                  width: 15vh;
+                  height: 15vh;
+                  border-radius: 50%;
+                  object-fit: cover;
+               }
+               .badge {
+                  position: absolute;
+                  bottom: 0;
+                  right: 1.5vh;
+               }
+            }
+
+            .top {
+               display: none;
+               flex-direction: column;
+               gap: 0.2vh;
+
+               @media (min-width: 768px) {
+                  display: flex;
+               }
+
+               @media (min-width: 1200px) {
+                  display: none;
+               }
+
+               .profileName {
+                  color: #2d3846;
+                  font-weight: 600;
+                  font-size: 1.5rem;
+               }
+            }
+         }
+
+         .center {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+
+            @media (max-width: 600px) {
+               align-items: center;
+            }
+
+            @media (min-width: 601px) {
+               align-items: center;
+            }
+
+            @media (min-width: 1200px) {
+               align-items: normal;
+            }
+
+            .top {
+               display: flex;
+               flex-direction: column;
+               gap: 0.2vh;
+
+               @media (max-width: 600px) {
+                  align-items: center;
+               }
+
+               @media (min-width: 601px) {
+                  align-items: center;
+               }
+
+               @media (min-width: 768px) {
+                  display: none;
+               }
+
+               @media (min-width: 1200px) {
+                  display: flex;
+                  align-items: normal;
+               }
+
+               .profileName {
+                  color: #2d3846;
+                  font-weight: 600;
+                  font-size: 1.5rem;
+               }
+   
+            }
+            .bottom {
+               display: flex;
+               flex-direction: column;
+               gap: 0.5vh;
+
+               @media (max-width: 600px) {
+                  justify-content: center;
+                  align-items: center;
+               }
+
+               @media (min-width: 601px) {
+                  justify-content: center;
+                  align-items: center;
+               }
+
+               @media (min-width: 1200px) {
+                  justify-content: initial;
+                  align-items: normal;
+               }
+
+               .head {
+                  color: #2d3846;
+                  font-weight: 600;
+                  font-size: 1.25rem;
+               }
+               .container {
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  gap: 1vw;
+
+                  @media (max-width: 600px) {
+                     flex-direction: column;
+                  }
+
+                  @media (min-width: 1200px) {
+                     flex-direction: row;
+                  }
+               }
+            }
+         }
+
+      }
    }
    .right{
       flex: 1;
