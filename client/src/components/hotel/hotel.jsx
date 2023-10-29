@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import './hotel.scss';
+import React, { useEffect, useState } from "react";
+import "./hotel.scss";
 import booking from "../../assets/images/booking.png";
 import agoda from "../../assets/images/agoda.png";
 import kayak from "../../assets/images/kayak.png";
-import { FaPhone, FaMapMarkerAlt, FaHotel, FaBookmark } from 'react-icons/fa';
-import axios from 'axios';
+import { FaPhone, FaMapMarkerAlt, FaHotel, FaBookmark } from "react-icons/fa";
+import axios from "axios";
 
 function HotelCard(props) {
-  const { photo,name, phone, location, type } = props;
+  const { photo, name, phone, location, type } = props;
 
   return (
     <div className="hotel-card">
@@ -23,7 +23,7 @@ function HotelCard(props) {
           </p>
           <p>
             <FaPhone />
-            <span className="phone">{phone}</span>
+            <span className="phone">0{phone}</span>
           </p>
           <p>
             <FaHotel />
@@ -45,26 +45,23 @@ function HotelCard(props) {
       </div>
     </div>
   );
-
 }
 
-
 function Hotel() {
-
   const [hotelDetails, setHotelDetails] = useState([]);
 
   useEffect(() => {
     axios
-    .get("http://localhost:8000/server/services/hotels?location=Sri")
-    .then((response) => {
-      setHotelDetails(response.data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  },[]);
+      .get("http://localhost:8000/server/services/hotels?location=Sri")
+      .then((response) => {
+        setHotelDetails(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
-  console.log(hotelDetails)
+  console.log(hotelDetails);
 
   return (
     <div>
