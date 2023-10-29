@@ -2,12 +2,12 @@ import "./addreview.scss";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/authContext";
 
-const AddReview = () => {
+const AddReview = ({setOpenAddReview}) => {
    
    const {currentUser} = useContext(AuthContext);
 
    return (
-      <div className="addreview">
+      <div className="addreview" onClick={ () => setOpenAddReview(true) }>
          <div className="container">
             <div className="user">
                <div className="userInfo">
@@ -15,7 +15,7 @@ const AddReview = () => {
                      <img src={currentUser.profile_pic} alt="" />
                   </div>
                   
-                  <input type="text" placeholder="Share your adventure.." />
+                  <input type="text" onClick={ () => setOpenAddReview(true) } placeholder="Share your adventure.." />
                </div>
             </div>
             <hr />

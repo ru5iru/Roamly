@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./ratingspage.scss";
 import { useLocation } from "react-router-dom";
 import RatingPosts from "../../components/ratingComponents/ratingPosts/RatingPosts";
 import Rating from "../../components/ratingComponents/rating/Rating";
 import axios from "axios";
 import AddReview from "../../components/ratingComponents/addReview/addReview";
+import { AuthContext } from "../../context/authContext";
+import ReviewForm from "../../components/ratingComponents/addReview/ReviewForm";
 
 const RatingsPage = () => {
    const service_id = parseInt(useLocation().pathname.split("/")[2]);
 
    const [postProfileData, setPostProfileData] = useState([]);
+   const [openAddReview, setOpenAddReview] = useState(false);
+   const [triggerRefetch, setTriggerRefetch] = useState(false);
+
+   const { currentUser } = useContext(AuthContext);
 
    useEffect(() => {
       axios.get("/users/profile/" + service_id).then((response) => {
@@ -82,10 +88,16 @@ const RatingsPage = () => {
                   </div>
                </div>
             </div>
-            <AddReview />
+            {service_id != currentUser.user_id ? <AddReview setOpenAddReview={setOpenAddReview}/> : ""}
             <RatingPosts posts={postData} serviceID={service_id} />
          </div>
          <div className="right"></div>
+         {openAddReview && (
+               <ReviewForm
+               setOpenAddReview={setOpenAddReview}
+                  setTriggerRefetch={setTriggerRefetch}
+               />
+            )}
       </div>
    );
 };
