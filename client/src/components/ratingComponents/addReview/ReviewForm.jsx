@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./reviewform.scss";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { AuthContext } from "../../../context/authContext";
@@ -7,16 +8,17 @@ import { makeRequest } from "../../../axios";
 import { Rating } from "@mui/material";
 
 const ReviewForm = ({ setOpenAddReview, setTriggerRefetch }) => {
-   const [content, setContent] = useState("");
-   const [userRating, setUserRating] = useState(1);
+   const [comment, setComment] = useState("");
+   const [rating, setRating] = useState(1);
 
    const { currentUser } = useContext(AuthContext);
 
    const user_id = currentUser.user_id;
+   const service_id = parseInt(useLocation().pathname.split("/")[2]);
 
    const mutation = useMutation(
-      (newPost) => {
-         return makeRequest.post("/posts", newPost);
+      (newReview) => {
+         return makeRequest.post("/ratings", newReview);
       },
       {
          onSuccess: () => {
@@ -27,21 +29,18 @@ const ReviewForm = ({ setOpenAddReview, setTriggerRefetch }) => {
 
    const handleClick = async (e) => {
       e.preventDefault();
-      mutation.mutate({ user_id, content });
-      setContent("");
+      mutation.mutate({ service_id, user_id, rating, comment });
+      setComment("");
       setOpenAddReview(false);
    };
 
    const handleRatingChange = (event, newValue) => {
-      setUserRating(newValue);
-      console.log(newValue)
+      setRating(newValue);
    };
 
    return (
       <div className="reviewform">
          <div className="create-post-wrapper">
-            {/* <div className="create-post-head">Rate</div> */}
-            {/* <hr /> */}
             <div className="userInfo">
                <img src={currentUser.profile_pic} alt="" />
                <div className="details">
@@ -54,7 +53,7 @@ const ReviewForm = ({ setOpenAddReview, setTriggerRefetch }) => {
             <div className="ratehere">Rate Your Experience</div>
             <Rating
                name="rating"
-               value={userRating}
+               value={rating}
                precision={1}
                size="large"
                onChange={handleRatingChange}
@@ -63,9 +62,9 @@ const ReviewForm = ({ setOpenAddReview, setTriggerRefetch }) => {
                <textarea
                   name=""
                   id=""
-                  onChange={(e) => setContent(e.target.value)}
-                  value={content}
-                  cols="30"
+                  onChange={(e) => setComment(e.target.value)}
+                  value={comment}
+                  cols="40"
                   rows="6"
                   placeholder="Write a review.."
                   autoFocus
