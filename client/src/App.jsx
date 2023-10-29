@@ -119,6 +119,17 @@ function App() {
         )
     };
 
+    const ReviewsPage = () => {
+        return (
+            <QueryClientProvider client={queryClient}>
+                <NavBar />
+                <div className={`theme-${darkMode ? "dark" : "light"}`}>
+                    <RatingsPage />
+                </div>
+            </QueryClientProvider >
+        )
+    };
+
     const Ads = () => {
         return (
             <div>
@@ -289,11 +300,19 @@ function App() {
                     path: "/verify/:token",
                     element: <Verification />,
                 },
-                {
-                    path: "/ratings/:id",
-                    element: <RatingsPage />,
-                }
+                // {
+                //     path: "/ratings/:id",
+                //     element: <RatingsPage />,
+                // }
             ],
+        },
+        {
+            path: "/ratings/:id",
+            element: (
+                <ProtectedRoute>
+                    <ReviewsPage />
+                </ProtectedRoute>
+            ),
         },
         {
             path: "/markinterests",
