@@ -7,6 +7,8 @@ import axios from "axios";
 import AddReview from "../../components/ratingComponents/addReview/addReview";
 import { AuthContext } from "../../context/authContext";
 import ReviewForm from "../../components/ratingComponents/addReview/ReviewForm";
+import { useMutation } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
 
 const RatingsPage = () => {
    const service_id = parseInt(useLocation().pathname.split("/")[2]);
@@ -27,6 +29,9 @@ const RatingsPage = () => {
    const [error, setError] = useState(null);
 
    useEffect(() => {
+      if (triggerRefetch) {
+         setTriggerRefetch(false);
+      }
       if (service_id) {
          axios
             .get(`/ratings?service_id=${service_id}`)
@@ -37,7 +42,7 @@ const RatingsPage = () => {
                setError("Error fetching badges");
             });
       }
-   }, [service_id]);
+   }, [service_id, triggerRefetch]);
 
    const ratinArr = postData.map((post) => post.rating);
 
@@ -51,6 +56,18 @@ const RatingsPage = () => {
 
       return average;
    };
+
+   const deleteMutation = useMutation(
+      (rating_id) => {
+         const requestData = { rating_id: rating_id };
+         return makeRequest.delete("/ratings/", { params: requestData });
+      },
+      {
+         onSuccess: () => {
+            setTriggerRefetch(true);
+         },
+      }
+   );
 
    return (
       <div className="ratingspage">
@@ -89,7 +106,7 @@ const RatingsPage = () => {
                </div>
             </div>
             {service_id != currentUser.user_id ? <AddReview setOpenAddReview={setOpenAddReview}/> : ""}
-            <RatingPosts posts={postData} serviceID={service_id} />
+            <RatingPosts posts={postData} serviceID={service_id} deleteMutation={deleteMutation} />
          </div>
          <div className="right"></div>
          {openAddReview && (

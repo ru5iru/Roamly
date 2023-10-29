@@ -14,25 +14,10 @@ const AddReview = ({setOpenAddReview}) => {
                   <div className="imgContainer">
                      <img src={currentUser.profile_pic} alt="" />
                   </div>
-                  
-                  <input type="text" onClick={ () => setOpenAddReview(true) } placeholder="Share your adventure.." />
+                  <input type="text" onClick={ () => setOpenAddReview(true) } placeholder="Write a review.." />
                </div>
             </div>
             <hr />
-            {/* <div className="info">
-               <div className="item">
-                  <InsertPhotoRoundedIcon />
-                  Photos
-               </div>
-               <div className="item">
-                  <TagFacesRoundedIcon />
-                  Activities | Adventures
-               </div>
-               <div className="item">
-                  <PlaceRoundedIcon />
-                  Places
-               </div>
-            </div> */}
          </div>
       </div>
    );

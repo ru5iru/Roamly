@@ -3,7 +3,7 @@ import axios from "axios";
 import RatingPost from "../ratingPost/RatingPost";
 import "./ratingposts.scss";
 
-const RatingPosts = ({ posts, serviceID }) => {
+const RatingPosts = ({ posts, serviceID, deleteMutation }) => {
 
    return (
       <div className="ratingposts">
@@ -13,7 +13,7 @@ const RatingPosts = ({ posts, serviceID }) => {
                     serviceID={serviceID}
                     post={post}
                     key={post.rating_id}
-                  //   deleteMutation={deleteMutation}
+                    deleteMutation={deleteMutation}
                  />
               ))
             : <div className="empty">User hasn't posted yet. :{`(`}</div>}

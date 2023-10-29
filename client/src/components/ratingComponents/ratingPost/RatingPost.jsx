@@ -58,23 +58,14 @@ const RatingPost = ({ serviceID, post }) => {
                         <div className="postMenu">
                             {post.user_id === currentUser.user_id ? (
                                 <div className="sameUser">
-                                    <button className="edit">
-                                        <span>
-                                            <img
-                                                src="https://img.icons8.com/ios-glyphs/90/ffffff/pencil--v1.png"
-                                                alt="pencil--v1"
-                                            />
-                                        </span>
-                                        <span>Edit Post</span>
-                                    </button>
-                                    <button className="delete" onClick="">
+                                    <button className="delete">
                                         <span>
                                             <img
                                                 src="https://img.icons8.com/ios-glyphs/90/ffffff/trash--v1.png"
                                                 alt="trash--v1"
                                             />
                                         </span>
-                                        <span>Delete Post</span>
+                                        <span>Delete Review</span>
                                     </button>
                                 </div>
                             ) : (
