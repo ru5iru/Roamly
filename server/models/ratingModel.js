@@ -37,4 +37,12 @@ const saveReview = asyncHandler(async (service_id, user_id, rating, comment) => 
    return result;
 });
 
-export {getServiceRatings, saveReview}
+// delete review
+const deleteReview = asyncHandler(async (rating_id) => {
+   const sql = 'DELETE FROM ratings WHERE rating_id = $1';
+   const result = await query(sql, [rating_id]);
+
+   return true;
+});
+
+export {getServiceRatings, saveReview, deleteReview}

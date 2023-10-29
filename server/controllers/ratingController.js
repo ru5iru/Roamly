@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler";
-import {getServiceRatings, saveReview} from "../models/ratingModel.js";
+import {getServiceRatings, saveReview, deleteReview} from "../models/ratingModel.js";
 
 // desc
 // route
@@ -36,4 +36,23 @@ const addReview = asyncHandler(async (req, res) => {
    }
 });
 
-export {serviceRatings, addReview}
+// desc
+// route
+// access
+
+const removePost = asyncHandler(async (req, res) => {
+   const { rating_id } = req.query;
+
+   const result = await deleteReview(rating_id);
+
+   if (result) {
+      res.status(201).json({
+         status: "succes",
+      });
+   } else {
+      res.status(400);
+      throw new Error("Invalid user data");
+   }
+});
+
+export {serviceRatings, addReview, removePost}
