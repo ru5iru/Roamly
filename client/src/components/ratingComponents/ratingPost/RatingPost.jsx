@@ -12,7 +12,7 @@ import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import Rating from "../rating/Rating";
 import axios from "axios";
 
-const RatingPost = ({ serviceID, post }) => {
+const RatingPost = ({ serviceID, post, deleteMutation }) => {
     const { currentUser } = useContext(AuthContext);
 
     const [menuOpen, setMenuOpen] = useState(false);
@@ -28,6 +28,10 @@ const RatingPost = ({ serviceID, post }) => {
     }, [serviceID]);
 
     const queryClient = useQueryClient();
+
+    const handleDelete = () => {
+        deleteMutation.mutate(post.rating_id);
+    };
 
     return (
         <div className="ratingpost">
@@ -58,14 +62,14 @@ const RatingPost = ({ serviceID, post }) => {
                         <div className="postMenu">
                             {post.user_id === currentUser.user_id ? (
                                 <div className="sameUser">
-                                    <button className="delete">
+                                    <button className="delete" onClick={handleDelete}>
                                         <span>
                                             <img
                                                 src="https://img.icons8.com/ios-glyphs/90/ffffff/trash--v1.png"
                                                 alt="trash--v1"
                                             />
                                         </span>
-                                        <span>Delete Review</span>
+                                        <span>Delete</span>
                                     </button>
                                 </div>
                             ) : (
