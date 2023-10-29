@@ -188,6 +188,11 @@ const Profile = () => {
                                  <div className="badges">
                                     <Rating rating={3.5} />
                                  </div>
+                                 <div className="button">
+                                    <button>
+                                       See More
+                                    </button>
+                                 </div>
                               </div>
                            </>
                         ) : (
