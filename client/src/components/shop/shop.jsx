@@ -30,7 +30,6 @@ const Shop = () => {
     <div>
       {shopDetails.map((shop, index) => (
         <div className="hotel">
-          {/* <h1>Hotels near Belihuloya</h1> */}
           <div className="cardd">
             <div className="left">
               <img src={dimuthuStore} alt="Tree" />
@@ -40,22 +39,17 @@ const Shop = () => {
                 <li>
                   <h3>{shop.service_name}</h3>
                 </li>
-                {/* <li>
-                  <p>
-                   {shop.location}
-                  </p>
-                </li> */}
                 <li>
                   <LocationOnIcon />
-                  <span>{shop.location}</span>
+                  <span className="location">{shop.location}</span>
                 </li>
                 <li>
                   <PhoneInTalkIcon />
-                  <span>{shop.contact_no}</span>
+                  <span className="phone">0{shop.contact_no}</span>
                 </li>
                 <li>
                   <FaCartShopping />
-                  <span>{shop.type}</span>
+                  <span className="shop">{shop.type}</span>
                 </li>
               </ul>
             </div>
