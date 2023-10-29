@@ -1,6 +1,6 @@
 import "./rating.scss";
 
-const Rating = ({ rating, display = true }) => {
+const Rating = ({ rating, count, display = true }) => {
    const stars = [];
 
    for (let i = 1; i <= 5; i++) {
@@ -17,7 +17,7 @@ const Rating = ({ rating, display = true }) => {
       <div className="rating">
          {stars}
          {display ? <span className="rValue">{rating}</span> : ""}
-         {display ? <span className="rCount">(10)</span> : ""}
+         {display ? <span className="rCount">({count})</span> : ""}
       </div>
    );
 };

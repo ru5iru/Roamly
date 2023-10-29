@@ -3,27 +3,12 @@ import axios from "axios";
 import RatingPost from "../ratingPost/RatingPost";
 import "./ratingposts.scss";
 
-const RatingPosts = ({ serviceID }) => {
-   const [postData, setPostData] = useState([]);
-   const [error, setError] = useState(null);
-
-   useEffect(() => {
-      if (serviceID) {
-         axios
-            .get(`/ratings?service_id=${serviceID}`)
-            .then((response) => {
-               setPostData(response.data);
-            })
-            .catch((error) => {
-               setError("Error fetching badges");
-            });
-      }
-   }, [serviceID]);
+const RatingPosts = ({ posts, serviceID }) => {
 
    return (
       <div className="ratingposts">
-         {postData.length > 0
-            ? postData.map((post) => (
+         {posts.length > 0
+            ? posts.map((post) => (
                  <RatingPost
                     serviceID={serviceID}
                     post={post}
