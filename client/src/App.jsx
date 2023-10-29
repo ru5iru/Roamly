@@ -35,6 +35,7 @@ import ResetPW from "./pages/resetPW/ResetPW";
 import Verification from "./pages/signup/Verification";
 import ExplorePage from "./pages/explorePage/ExplorePage";
 import MarkInterests from "./pages/interests/MarkInterests";
+import RatingsPage from "./pages/ratingsPage/RatingsPage";
 // import Interests from "./pages/Interests/Interests";
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
@@ -288,10 +289,10 @@ function App() {
                     path: "/verify/:token",
                     element: <Verification />,
                 },
-                // {
-                //     path: "/markinterests",
-                //     element: <MarkInterests />,
-                // }
+                {
+                    path: "/ratings/:id",
+                    element: <RatingsPage />,
+                }
             ],
         },
         {

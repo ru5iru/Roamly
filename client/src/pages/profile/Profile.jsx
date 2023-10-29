@@ -116,6 +116,10 @@ const Profile = () => {
       navigate("/feed");
    };
 
+   const handleServiceClick = () => {
+      navigate("/ratings/" + userID);
+   };
+
    if (profileNotFound === "Not Found") {
       return (
          <div className="profile">
@@ -189,7 +193,7 @@ const Profile = () => {
                                     <Rating rating={3.5} />
                                  </div>
                                  <div className="button">
-                                    <button>
+                                    <button onClick={handleServiceClick}>
                                        See More
                                     </button>
                                  </div>
