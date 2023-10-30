@@ -80,6 +80,14 @@ const registerUsers = asyncHandler(async (firstname, lastname, email, password) 
     return result;
 });
 
+const saveProPic = asyncHandler(async (user_id, img) => {
+
+    const sql = 'UPDATE users SET profile_pic = $2 WHERE user_id = $1 RETURNING user_id';
+    const result = await query(sql, [user_id, img]);
+
+    return result;
+});
+
 export {
     isUserExists,
     registerUsers,
@@ -87,4 +95,5 @@ export {
     findUserByEmail,
     findUserByID,
     isUserVerified,
+    saveProPic
 };

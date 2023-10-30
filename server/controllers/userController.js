@@ -6,6 +6,7 @@ import {
    authUser,
    findUserByID,
    isUserVerified,
+   saveProPic
 } from "../models/userModel.js";
 
 // desc    Login user
@@ -130,12 +131,21 @@ const getUserProfile = asyncHandler(async (req, res) => {
 });
 
 // desc    Update user profile
-// route   PUT /api/users/profile
+// route   PUT /users/propic
 // access  Private
-const updateUserProfile = asyncHandler(async (req, res) => {
-   console.log(req.user);
+const updateProfilePic = asyncHandler(async (req, res) => {
+   const { user_id, img } = req.body;
 
-   res.status(200).json({ message: "Update user profile" });
+   const post = await saveProPic(user_id, img);
+
+   if (post.rowCount > 0) {
+      res.status(201).json({
+         user_id: post.rows[0].user_id,
+      });
+   } else {
+      res.status(400);
+      throw new Error("Error");
+   }
 });
 
 export {
@@ -144,5 +154,5 @@ export {
    logoutUser,
    getCurrentUserProfile,
    getUserProfile,
-   updateUserProfile,
+   updateProfilePic,
 };

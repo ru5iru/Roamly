@@ -25,7 +25,7 @@ const UpdatePP = ({ profilePic, setOpenUpdatePP, setTriggerRefetch }) => {
 
    const mutation = useMutation(
       (newPP) => {
-         return makeRequest.post("/user/propic", newPP);
+         return makeRequest.put("/users/propic", newPP);
       },
       {
          onSuccess: () => {
