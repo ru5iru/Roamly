@@ -129,4 +129,4 @@ const removePost = asyncHandler(async (req, res) => {
    }
 });
 
-export { postByID, allPosts, userPosts, addPost, removePost, searchAllPosts };
+export { postByID, allPosts, userPosts, addPost, removePost, searchAllPosts, userRecentPhotos };

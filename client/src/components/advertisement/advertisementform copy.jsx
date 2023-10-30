@@ -10,7 +10,7 @@ const AdvertisementForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newAdvertisement = { service_type, title, description, details };
+    const newAdvertisement = { title, description, details };
     axios
       .post("http://localhost:8000/server/ads/advertisements", newAdvertisement)
       .then((response) => {
