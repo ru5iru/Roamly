@@ -88,6 +88,14 @@ const saveProPic = asyncHandler(async (user_id, img) => {
     return result;
 });
 
+const saveCoverPic = asyncHandler(async (user_id, img) => {
+
+    const sql = 'UPDATE users SET cover_pic = $2 WHERE user_id = $1 RETURNING user_id';
+    const result = await query(sql, [user_id, img]);
+
+    return result;
+});
+
 export {
     isUserExists,
     registerUsers,
@@ -95,5 +103,6 @@ export {
     findUserByEmail,
     findUserByID,
     isUserVerified,
-    saveProPic
+    saveProPic,
+    saveCoverPic
 };
