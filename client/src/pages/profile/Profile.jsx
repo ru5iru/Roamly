@@ -100,8 +100,7 @@ const Profile = () => {
       badge_id: 1,
       badge_name: "star",
       badge_desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      badge_img:
-         "https://img.icons8.com/fluency-systems-filled/96/ffffff/star.png",
+      badge_img: "https://img.icons8.com/ios-filled/100/777777/camera--v3.png",
       badge_color: "bg-platinum",
    };
 
@@ -189,6 +188,21 @@ const Profile = () => {
          <div className="profile">
             <div className="images">
                <img className="cover" src={profileData.cover_pic} alt="" />
+               <div className="badge">
+                  {/* <Badge badge={expBadge} /> */}
+                  <div className="upp-container">
+                     <div className="upp-circle">
+                        <div className="upp-content">
+                           <img
+                              className="upp-img"
+                              src={expBadge.badge_img}
+                              alt=""
+                           />
+                           Edit Cover Photo
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
             <div className="profileContainer">
                <div className="uInfo">
@@ -200,7 +214,18 @@ const Profile = () => {
                            alt=""
                         />
                         <div className="badge">
-                           <Badge badge={expBadge} />
+                           {/* <Badge badge={expBadge} /> */}
+                           <div className="upp-container">
+                              <div className="upp-circle">
+                                 <div className="upp-content">
+                                    <img
+                                       className="upp-img"
+                                       src={expBadge.badge_img}
+                                       alt=""
+                                    />
+                                 </div>
+                              </div>
+                           </div>
                         </div>
                      </div>
 
@@ -230,7 +255,7 @@ const Profile = () => {
                         </div>
                      </div>
                      <div className="bottom">
-                        {profileData.user_type != "Traveller" ? (
+                        {profileData.user_type !== "Traveller" ? (
                            <>
                               <div className="head">Rating</div>
                               <div className="container">
@@ -316,7 +341,7 @@ const Profile = () => {
                </div>
                <div className="profileBottom">
                   <div className="left">
-                     {profileData.user_type != "Traveller" ? (
+                     {profileData.user_type !== "Traveller" ? (
                         <UserDetails />
                      ) : (
                         <Interests userID={userID} />
@@ -326,9 +351,7 @@ const Profile = () => {
                            <div className="uploadsHead">Photos</div>
                            <div className="seeMore">See More Photos</div>
                         </div>
-                        <div className="uploadContainer">
-                        {stack}
-                        </div>
+                        <div className="uploadContainer">{stack}</div>
                      </div>
                   </div>
                   <div className="right">

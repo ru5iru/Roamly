@@ -14,6 +14,7 @@
          display: flex;
          flex-direction: row;
          align-items: center;
+         position: relative;
          -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
          -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
          box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
@@ -38,6 +39,55 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+         }
+
+         .badge {
+            position: absolute;
+            top: 1rem;
+            right: 2.7vh;
+
+            .upp-container {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               width: auto;
+               height: auto;
+               border-radius: 5px;
+               background-color: #f3fbfe !important;
+               margin: 0 !important;
+               font-size: 1rem;
+               color: #777777;
+
+               .upp-circle {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  vertical-align: middle;
+                  width: auto;
+                  height: auto;
+                  // border-radius: 50%;
+
+                  .upp-content {
+                     font-size: 1.7rem;
+                     display: flex;
+                     justify-content: center;
+                     align-items: center;
+                     font-size: 1rem;
+                     font-weight: 500;
+                     gap: 5px;
+                     margin: 5px;
+
+                     .upp-img {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                     }
+                  }
+               }
+            }
+
+            .upp-container:hover{
+               background-color: #eee !important;
+            }
          }
       }
       .profileContainer {
@@ -126,7 +176,43 @@
                   .badge {
                      position: absolute;
                      bottom: 0;
-                     right: 1.5vh;
+                     right: 2.7vh;
+
+                     .upp-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background-color: #f3fbfe !important;
+                        margin: 0 !important;
+
+                        .upp-circle {
+                           display: flex;
+                           justify-content: center;
+                           align-items: center;
+                           vertical-align: middle;
+                           width: 40px;
+                           height: 40px;
+                           border-radius: 50%;
+
+                           .upp-content {
+                              font-size: 1.7rem;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+
+                              .upp-img {
+                                 width: 1.5rem;
+                                 height: 1.5rem;
+                              }
+                           }
+                        }
+                     }
+                     .upp-container:hover{
+                        background-color: #eee !important;
+                     }
                   }
                }
 
@@ -266,9 +352,8 @@
                            font-size: 0.75rem;
                            padding: 0.5rem 0rem;
                            cursor: pointer;
-                           
                         }
-                        button:hover{
+                        button:hover {
                            background-color: #ecf7ff;
                         }
                      }
@@ -315,7 +400,7 @@
                      }
                   }
 
-                  button:hover{
+                  button:hover {
                      background-color: #bbbbbb;
                   }
                }
@@ -369,7 +454,7 @@
                      }
                   }
 
-                  button:hover{
+                  button:hover {
                      background-color: #3c88eb;
                   }
                }
