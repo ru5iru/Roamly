@@ -8,7 +8,7 @@ export default function Chathome() {
     <div className='chathome'> 
       <div className="container">
         <Sidebar />
-        <Chat />
+        <Chat  />
       </div>
     </div>
   )

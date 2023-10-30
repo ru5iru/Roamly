@@ -1,12 +1,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import http from 'http';
+// import http from 'http';
 dotenv.config();
 import cookieParser from 'cookie-parser';
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import cors from 'cors';
+// import http from 'http';
 
-import { Server} from 'socket.io';
+import { Server } from 'socket.io';
 
 import { connectDB } from "./config/db.js";
 const port = process.env.PORT || 5000;
@@ -26,6 +27,7 @@ connectDB();
 
 // create express app
 const app = express();
+
 
 // middlewares to parse raw JSON from request body (req.body) and
 // urlencoded data (req.query) from URL query string (?key=value&key2=value2)
@@ -51,35 +53,64 @@ const io = new Server({
     }
 });
 
+// io.on("connection", (socket)=>{
+//     console.log("someone has connected")
+
+//     socket.on("disconnect", ()=>{
+//         console.log("someone left")
+//     })
+// })
+
 let onlineUsers=[];
 
-const addNewUser = (username, socketId)=>{
-    !onlineUsers.some((user)=>user.username === username) && 
-    onlineUsers.push({username, socketId});
+const addNewUser = (userEmail, socketId)=>{
+    // !onlineUsers.some((user)=>user.userEmail === userEmail) && 
+    onlineUsers.push({userEmail, socketId});
+
+    
+    // console.log("user :"+user.userEmail)
+    
 };
+
+console.log("array:"+onlineUsers)
 
 const removeUser =(socketId) =>{
     onlineUsers = onlineUsers.filter((user)=>user.socketId !== socketId); 
 };
 
-const getUser =(username) => {
-    return onlineUsers.find((user)=>user.username === username);
+const getUser =(userEmail) => {
+    return onlineUsers.find((user)=>user.userEmail === userEmail);
 
 };
 
-
 io.on("connection",(socket)=>{
 
-    socket.on("newUser", (username)=>{
-        addNewUser(username, socket.id);
+    // io.emit("firstEvent", "hello")
+    // console.log(socket)
+    // console.log("someone has connected")
+    socket.on("newUser", (userEmail)=>{
+        console.log(userEmail)
+        addNewUser(userEmail, socket.id);
+
+        
     });
 
-    socket.on("sendNotification", ({senderName,receiverId,type})=>{
-        const receiver = getUser(receiverId)
-        io.to(receiver.socketId).emit("getNotification", {
+    socket.on("sendNotification", ({senderName,receiverEmail,type})=>{
+        console.log("sender :"+senderName)
+        console.log("receiver :"+receiverEmail)
+        const receiver = getUser(receiverEmail)
+        // const receiver= "Thisura Wijesinghe"
+        
+        
+        io.to(receiver?.socketId).emit("getNotification", {
             senderName,
             type,
         });
+
+        // socket?.emit("getNotification", {
+        //     senderName,
+        //     type,
+        // });
     });
 
     // socket.on("sendText", ({ senderName, receiverId, text }) => {

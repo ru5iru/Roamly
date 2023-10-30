@@ -46,6 +46,8 @@ import {io} from "socket.io-client";
 axios.defaults.baseURL = "http://localhost:8000/server/";
 axios.defaults.withCredentials = true;
 function App() {
+    // const [username, setUsername]=useState("");
+    const [user, setUser] = useState("");
     const { currentUser } = useContext(AuthContext);
     console.log(currentUser)
 
@@ -55,19 +57,31 @@ function App() {
 
     const [activeStep, setActiveStep] = useState(0);
 
-    const [username, setUsername]=useState("");
-    // const [user, setUser] = useState("");
-    const [socket, setSocket] = useState(null)
-
     
+    const [socket, setSocket] = useState(null)
+    // console.log(server.port)
 
+    // useEffect(()=>{
+    //    const socket=io("http://localhost:5000") 
+    //    console.log(socket)
+    // },[])
+// console.log(socket)
     useEffect(() => {
         setSocket(io("http://localhost:5000"));
+    //    (socket?.on("firstEvent",(msj)=>{
+    //        console.log(msj) 
+    //     }))
+    //     // console.log(socket)
+        
       }, []);
+
+    //   console.log(socket)
     
-    useEffect(()=>{
-        socket?.emit("newUser", username)
-    },[socket, username]);
+    useEffect(() => {
+        socket?.emit("newUser", currentUser.email);
+      }, [socket, currentUser.email]);
+
+    //   console.log(currentUser.email)
 
 
     const handleActiveStepChange = (step) => {
@@ -92,6 +106,7 @@ function App() {
             <QueryClientProvider client={queryClient}>
                 <div className={`theme-${darkMode ? "dark" : "light"}`}>
                     <NavBar socket ={socket}/>
+                    {/* <NavBar/> */}
                     <div
                         style={{
                             display: "flex",
@@ -100,7 +115,7 @@ function App() {
                             justifyContent: "center",
                         }}
                     >
-                        <Profile />
+                        <Profile socket={socket}/>
                     </div>
                 </div>
             </QueryClientProvider>
@@ -112,7 +127,9 @@ function App() {
             <QueryClientProvider client={queryClient}>
                 <div className={`theme-${darkMode ? "dark" : "light"}`}>
                     <NavBar socket ={socket}/>
+                    {/* <NavBar/> */}
                     <Home socket={socket}/>
+                    {/* <Home/> */}
                 </div>
             </QueryClientProvider >
         );
@@ -122,6 +139,7 @@ function App() {
         return (
             <QueryClientProvider client={queryClient}>
                 <NavBar socket ={socket}/>
+                {/* <NavBar/> */}
                 <div className={`theme-${darkMode ? "dark" : "light"}`}>
 
                     <div style={{ display: "flex", position: "relative", top: "4rem" }}>
@@ -149,6 +167,7 @@ function App() {
         return (
             <div>
                 <NavBar socket ={socket}/>
+                {/* <NavBar/> */}
                 <div style={{ display: "flex", position: "relative", top: "4rem" }}>
                     <LeftBarSp />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -166,6 +185,7 @@ function App() {
             // <QueryClientProvider client={queryClient}>
             <div>
                 <NavBar socket ={socket}/>
+                {/* <NavBar/> */}
                 {/* <div style={{ display: "flex", position: "relative", top: "4rem" }}> */}
                     {/* <div style= {{display: "flex", position: "relative", left: "298px" }}> */}
                     <div>
@@ -182,6 +202,7 @@ function App() {
         return (
             <div>
                 <NavBar socket ={socket}/>
+                {/* <NavBar/> */}
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -198,6 +219,7 @@ function App() {
         return (
             <div>
                 <NavBar socket ={socket}/>
+                {/* <NavBar/> */}
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -214,6 +236,7 @@ function App() {
         return (
             <div>
                 <NavBar socket ={socket}/>
+                {/* <NavBar/> */}
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -229,6 +252,7 @@ function App() {
         return (
             <div>
                 <NavBar socket ={socket}/>
+                {/* <NavBar/> */}
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -245,6 +269,7 @@ function App() {
         return (
             <div>
                 <NavBar socket ={socket}/>
+                {/* <NavBar/> */}
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -261,6 +286,7 @@ function App() {
         return (
             <div>
                 <NavBar socket ={socket}/>
+                {/* <NavBar/> */}
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -278,7 +304,8 @@ function App() {
     const Taxi = () => {
         return (
             <div>
-                <NavBar socket ={socket}/>
+                 <NavBar socket ={socket}/>
+                {/* // <NavBar/> */}
                 <div style={{ display: "flex", position: "relative", top: "4rem", justifyContent: "space-between" }}>
                     <LeftBar />
                     <div style= {{display: "flex", position: "relative", left: "298px" }}>
@@ -312,7 +339,7 @@ function App() {
                 },
                 {
                     path: "/login",
-                    element: <Login />,
+                    element: <Login/>,
                 },
                 {
                     path: "/signup",

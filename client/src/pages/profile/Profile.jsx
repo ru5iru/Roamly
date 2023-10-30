@@ -13,8 +13,9 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import { AuthContext } from "../../context/authContext";
 import { useLocation } from "react-router-dom";
+import { Socket } from "socket.io-client";
 
-const Profile = () => {
+const Profile = ({socket}) => {
    const { currentUser } = useContext(AuthContext);
    const [openUpdate, setOpenUpdate] = useState(false);
    const [openBadges, setOpenBadges] = useState(false);
@@ -229,7 +230,7 @@ const Profile = () => {
                         ) : (
                            ""
                         )}
-                        <Posts userID={profileData.user_id} deleteMutation={deleteMutation}/>
+                        <Posts userID={profileData.user_id} deleteMutation={deleteMutation} socket={socket}/>
                      </div>
                   </div>
                </div>

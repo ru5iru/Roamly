@@ -4,7 +4,7 @@ import Post from "../post/Post";
 import "./posts.scss";
 import { Socket } from "socket.io-client";
 
-const Posts = ({ userID, deleteMutation }) => {
+const Posts = ({ userID, deleteMutation,socket }) => {
    const [postData, setPostData] = useState([]);
    const [error, setError] = useState(null);
    useEffect(() => {

@@ -30,6 +30,7 @@ const Post = ({ userID, post, deleteMutation, socket }) => {
         })
     );
 
+    // console.log("from Post :"+socket)
     const [postProfileData, setPostProfileData] = useState([]);
     useEffect(() => {
         if (userID) {
@@ -37,7 +38,7 @@ const Post = ({ userID, post, deleteMutation, socket }) => {
                 setPostProfileData(response.data);
             });
         }
-    }, [userID]);
+    }, [userID]); 
 
     const queryClient = useQueryClient();
 
@@ -62,23 +63,21 @@ const Post = ({ userID, post, deleteMutation, socket }) => {
         }
     );
 
-    // const sender_Name = currentUser.firstname+currentUser.lastname;
-    // const receiver_Name = postProfileData.firstname + postProfileData.lastname;
-    // console.log("sender name :"+ sender_Name );
-    // console.log("Receiver name :"+ receiver_Name );
-
     const handleLike = () => {
         mutation.mutate(likeData.likeArray.includes(currentUser.user_id));
     };
 
     const handleNotification = (type) =>{
-        type === 1 && setLiked(true);
+        console.log(socket)
+        setLiked(true);
         socket?.emit("sendNotification", {
             senderName:currentUser.firstname+" "+currentUser.lastname,
-            receiverId:post.user_id,
+            // receiverName:postProfileData.firstname+ " "+postProfileData.lastname,
+            receiverEmail:postProfileData.email,
             type,
 
         })
+        
     }
     
 

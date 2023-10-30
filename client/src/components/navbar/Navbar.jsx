@@ -9,7 +9,7 @@ import Search_blue from "../../assets/blue_search.png";
 import Profile_pic from "../../assets/profile_pic.png";
 import logo from "../../assets/Roamly.png";
 import Search_component from "../search/search.jsx";
-import Notifications from "../notification/Notification"
+// import Notifications from "../notification/Notification"
 
 
 
@@ -23,13 +23,16 @@ const Navbar = ({socket}) => {
     const [notifications, setNotifications] = useState([]);
     const [open, setOpen] = useState(false);
 
+    console.log(socket)
+
     useEffect(() => {
         socket?.on("getNotification", (data) => {
+            // console.log(data)
           setNotifications((prev) => [...prev, data]);
         });
       }, [socket]);
     
-    console.log(notifications);
+    console.log(notifications)
 
 
     const navigate = useNavigate(); // Initialize useNavigate
@@ -62,13 +65,13 @@ const Navbar = ({socket}) => {
     };
 
     // notifications
-    const handleNotify = () => {
-        setShowNotification(true);
-    };
+    // const handleNotify = () => {
+    //     setShowNotification(true);
+    // };
 
     const displayNotification = ({senderName, type})=> {
         let action;
-
+        
         if(type === 1){
             action ="liked"
         }else if (type === 2){
