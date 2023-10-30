@@ -6,12 +6,23 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../../axios";
 
 const PostForm = ({ setOpenAddPost, setTriggerRefetch }) => {
+   const [file, setFile] = useState(null);
    const [content, setContent] = useState("");
 
    const { currentUser } = useContext(AuthContext);
 
-   // const queryClient = useQueryClient();
    const user_id = currentUser.user_id;
+
+   const upload = async () => {
+      try {
+         const formData = new FormData();
+         formData.append("file", file);
+         const res = await makeRequest.post("/upload", formData);
+         return res.data;
+      } catch (err) {
+         console.log(err);
+      }
+   };
 
    const mutation = useMutation(
       (newPost) => {
@@ -19,20 +30,20 @@ const PostForm = ({ setOpenAddPost, setTriggerRefetch }) => {
       },
       {
          onSuccess: () => {
-            // Invalidate and refetch
-            // queryClient.invalidateQueries(["posts"]);
-            setTriggerRefetch(true)
+            setTriggerRefetch(true);
          },
       }
    );
 
    const handleClick = async (e) => {
       e.preventDefault();
-      mutation.mutate({user_id, content});
+      let imgUrl = "";
+      if (file) imgUrl = await upload();
+      mutation.mutate({ user_id, content, img: imgUrl });
       setContent("");
       setOpenAddPost(false);
+      setFile(null);
    };
-
 
    return (
       <div className="postform">
@@ -42,7 +53,9 @@ const PostForm = ({ setOpenAddPost, setTriggerRefetch }) => {
             <div className="userInfo">
                <img src={currentUser.profile_pic} alt="" />
                <div className="details">
-                  <span className="name">{currentUser.firstname} {currentUser.lastname}</span>
+                  <span className="name">
+                     {currentUser.firstname} {currentUser.lastname}
+                  </span>
                   <span className="date">Just now</span>
                </div>
             </div>
@@ -59,13 +72,25 @@ const PostForm = ({ setOpenAddPost, setTriggerRefetch }) => {
                ></textarea>
             </div>
             <div className="files">
-               <label htmlFor="image">
+               <label htmlFor="file">
                   <span>Choose a image</span>
                   <div className="imgContainer">
+                     {file && (
+                        <img
+                           className="file"
+                           alt=""
+                           src={URL.createObjectURL(file)}
+                        />
+                     )}
                      <CloudUploadIcon className="icon" />
                   </div>
                </label>
-               <input type="file" id="image" style={{ display: "none" }} />
+               <input
+                  type="file"
+                  id="file"
+                  style={{ display: "none" }}
+                  onChange={(e) => setFile(e.target.files[0])}
+               />
             </div>
 
             <button className="updateDetails" onClick={handleClick}>

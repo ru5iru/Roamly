@@ -35,6 +35,15 @@ const getAllPosts = asyncHandler(async () => {
     return result.rows;
 });
 
+// get recent images
+const getRecentImages = asyncHandler(async (id) => {
+    const sql = 'SELECT post_id, image FROM post WHERE image IS NOT NULL AND user_id = $1 ORDER BY created_at DESC LIMIT 9';
+    
+    const result = await query(sql, [id]);
+
+    return result.rows;
+});
+
 // search all posts
 const searchPosts = asyncHandler(async (phrase) => {
     const searchString = "%" + phrase + "%";
@@ -47,9 +56,9 @@ const searchPosts = asyncHandler(async (phrase) => {
 
 
 // add post
-const savePost = asyncHandler(async (user_id, content) => {
+const savePost = asyncHandler(async (user_id, content, img) => {
 
-    const image = null;
+    const image = img;
 
     function generateRandomPostID( user_id ){
         let randomID = Math.floor(Math.random() * 90000) + 10000;
@@ -82,5 +91,6 @@ export {
     getUserPosts,
     savePost,
     deletePost,
-    searchPosts
+    searchPosts,
+    getRecentImages
 }

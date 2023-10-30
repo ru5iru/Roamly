@@ -5,7 +5,8 @@ import {
    getPost,
    savePost,
    deletePost,
-   searchPosts
+   searchPosts,
+   getRecentImages
 } from "../models/postModel.js";
 
 // desc
@@ -63,6 +64,21 @@ const userPosts = asyncHandler(async (req, res) => {
 // route
 // access
 
+const userRecentPhotos = asyncHandler(async (req, res) => {
+   const posts = await getRecentImages(req.query.userId);
+
+   if (posts.length > 0) {
+      res.status(200).json(posts);
+   } else {
+      res.status(404);
+      throw new Error("Photos not found");
+   }
+});
+
+// desc
+// route
+// access
+
 const searchAllPosts = asyncHandler(async (req, res) => {
    const posts = await searchPosts(req.query.phrase);
 
@@ -78,9 +94,9 @@ const searchAllPosts = asyncHandler(async (req, res) => {
 // route   POST /api/posts/
 // access  private
 const addPost = asyncHandler(async (req, res) => {
-   const { user_id, content } = req.body;
+   const { user_id, content, img } = req.body;
 
-   const post = await savePost(user_id, content);
+   const post = await savePost(user_id, content, img);
 
    if (post.rowCount > 0) {
       // do we have to generate token here?
