@@ -6,6 +6,7 @@ import Badges from "../../components/badgeComponents/badges/Badges";
 import Rating from "../../components/ratingComponents/rating/Rating";
 import Badge from "../../components/badgeComponents/badge/Badge";
 import Update from "../../components/update/Update";
+import UpdatePP from "../../components/update/UpdatePP";
 import Interests from "../../components/interests/Interests";
 import UserDetails from "../../components/userdetails/UserDetails";
 import Allbadges from "../../components/badgeComponents/allbadges/Allbadges";
@@ -20,7 +21,11 @@ import PuffLoader from "react-spinners/PuffLoader";
 
 const Profile = () => {
    const { currentUser } = useContext(AuthContext);
+   const [profilePic, setProfilePic] = useState("");
+   const [coverPic, setCoverPic] = useState("");
    const [openUpdate, setOpenUpdate] = useState(false);
+   const [openUpdatePP, setOpenUpdatePP] = useState(false);
+   const [openUpdateCP, setOpenUpdateCP] = useState(false);
    const [openBadges, setOpenBadges] = useState(false);
    const [openAddPost, setOpenAddPost] = useState(false);
 
@@ -38,12 +43,16 @@ const Profile = () => {
             .then((response) => {
                setProfileNotFound("Found");
                setProfileData(response.data);
+               setProfilePic(response.data.profile_pic);
+               setCoverPic(response.data.cover_pic)
             })
             .catch((error) => {
                setProfileNotFound("Not Found");
             });
       }
    }, [userID]);
+
+   console.log(profilePic)
 
    useEffect(() => {
       if (userID) {
@@ -137,18 +146,18 @@ const Profile = () => {
    const stack = [];
 
    imagesData.length > 0 ? (
-      imagesData.forEach((image) => {
+      imagesData.forEach((image, index) => {
          let element = "";
 
          if (image.image !== null && image.image.length > 50) {
             element = (
-               <div className="upload" key={image.image}>
+               <div className="upload" key={index}>
                   <img src={image.image} alt="" />
                </div>
             );
          } else if (image.image !== null) {
             element = (
-               <div className="upload" key={image.image}>
+               <div className="upload" key={index}>
                   <img
                      src={require("../../../public/upload/" + image.image)}
                      alt=""
@@ -215,7 +224,7 @@ const Profile = () => {
                         />
                         <div className="badge">
                            {/* <Badge badge={expBadge} /> */}
-                           <div className="upp-container">
+                           <div className="upp-container" onClick={() => setOpenUpdatePP(!openUpdatePP)}>
                               <div className="upp-circle">
                                  <div className="upp-content">
                                     <img
@@ -368,6 +377,7 @@ const Profile = () => {
                </div>
             </div>
             {openUpdate && <Update setOpenUpdate={setOpenUpdate} />}
+            {openUpdatePP && <UpdatePP profilePic={profilePic} setOpenUpdatePP={setOpenUpdatePP} />}
             {openBadges && (
                <Allbadges
                   userID={profileData.user_id}

@@ -73,10 +73,9 @@ const Post = ({ userID, post, deleteMutation }) => {
       imgSource = post.image;
    } else if (post.image != null) {
       try {
-         console.log(post.image);
          imgSource = require("../../../../public/upload/" + post.image);
       } catch {
-         console.log("error");
+         
       }
    }
 
