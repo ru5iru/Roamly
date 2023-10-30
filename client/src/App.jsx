@@ -31,7 +31,6 @@ import ShopPage from "./pages/shop/shoppage";
 import HotelPage from "./pages/hotel/hotelpage";
 import TaxiPage from "./pages/taxi/taxipage";
 import GuidePage from "./pages/guide/guidepage";
-import Personalizingform from "./pages/personalizingForm/PersonalizingForm";
 import LeftBarSp from "./components/leftBar/serviceProvider/leftBarSp";
 import Header from "./components/header/Header";
 import Forgotpwotp from "./pages/forgotPasswordOTP/fpotp";
@@ -42,6 +41,7 @@ import Verification from "./pages/signup/Verification";
 import SignupSP from "./pages/signupSP/SignupSP";
 import Payment from "./pages/payment/Payment";
 import Notification from "./pages/notification/notification";
+import PersonalizingForm from "./pages/personalizingForm/PersonalizingForm";
 // import Interests from "./pages/Interests/Interests";
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
@@ -181,16 +181,16 @@ function App() {
 
   const Trip = () => {
     return (
-      <div>
+      <div style={{ top: "4rem" }}>
         <HeaderTravel />
-        <Personalizingform />
+        <PersonalizingForm />
       </div>
     );
   };
 
   const Place = () => {
     return (
-      <div>
+      <div style={{ top: "4rem" }}>
         <HeaderTravel />
         <Places />
       </div>
@@ -199,7 +199,7 @@ function App() {
 
   const Placedetails = () => {
     return (
-      <div>
+      <div style={{ top: "4rem" }}>
         <HeaderTravel />
         <Placedetails />
       </div>
@@ -207,7 +207,7 @@ function App() {
   };
   const Shop = () => {
     return (
-      <div>
+      <div style={{ top: "4rem" }}>
         <HeaderTravel />
         <ShopPage />
       </div>
@@ -216,7 +216,7 @@ function App() {
 
   const Hotel = () => {
     return (
-      <div>
+      <div style={{ top: "4rem" }}>
         <HeaderTravel />
         <HotelPage />
       </div>
@@ -225,7 +225,7 @@ function App() {
 
   const Guide = () => {
     return (
-      <div>
+      <div style={{ top: "4rem" }}>
         <HeaderTravel />
         <GuidePage />
       </div>
@@ -234,7 +234,7 @@ function App() {
 
   const Taxi = () => {
     return (
-      <div>
+      <div style={{ top: "4rem" }}>
         <HeaderTravel />
         <TaxiPage />
       </div>
@@ -329,7 +329,7 @@ function App() {
       element: <Place />,
     },
     {
-      path: "/trip/place/placedetails",
+      path: "/trip/place/placedetails/:placeId",
       element: <Placedetails />,
     },
     {

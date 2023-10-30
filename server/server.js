@@ -22,6 +22,7 @@ import exploreRoutes from "./routes/exploreRoutes.js"
 import adsRoutes from "./routes/adsRoutes.js"
 import feedRoutes from "./routes/feedRoutes.js"
 import paymentRoutes from "./routes/paymentRoutes.js"
+import historyRoutes from "./routes/historyRoutes.js"
 
 
 // start DB connection
@@ -43,58 +44,6 @@ app.use(cors({
     credentials: true // Allow credentials in the request
 }));
 
-
-
-
-const express = require("express");
-const { resolve } = require("path");
-// Replace if using a different env file or config
-const env = require("dotenv").config({ path: "./.env" });
-
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2022-08-01",
-});
-
-app.use(express.static(process.env.STATIC_DIR));
-
-app.get("/", (req, res) => {
-  const path = resolve(process.env.STATIC_DIR + "/index.html");
-  res.sendFile(path);
-});
-
-app.get("/config", (req, res) => {
-  res.send({
-    publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
-  });
-});
-
-app.post("/create-payment-intent", async (req, res) => {
-  console.log("Received POST request to /create-payment-intent");
-  try {
-    const paymentIntent = await stripe.paymentIntents.create({
-      currency: "EUR",
-      amount: 1999,
-      automatic_payment_methods: { enabled: true },
-    });
-
-    // Send publishable key and PaymentIntent details to client
-    res.send({
-      clientSecret: paymentIntent.client_secret,
-    });
-  } catch (e) {
-    console.error("Error in /create-payment-intent:", e);
-    return res.status(400).send({
-      error: {
-        message: e.message,
-      },
-    });
-  }
-});
-
-
-
-
-
 // user routes
 app.use('/server/users', userRoutes);
 
@@ -115,6 +64,9 @@ app.use("/server/explore", exploreRoutes);
 
 //Ads routes
 app.use("/server/ads", adsRoutes);
+
+// History routes
+app.use("/server/history", historyRoutes);
 
 //Payment routes
 // app.use("/server/payment", paymentRoutes);

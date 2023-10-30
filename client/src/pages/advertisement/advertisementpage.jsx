@@ -30,7 +30,7 @@ export const AdvertisementPage = () => {
           />
         </div> */}
         <div className="add-ad">
-          <div className="filter">
+          {/* <div className="filter">
             <IoOptions title="Filter" onClick={handleButtonClick} />
             {isModalOpen && (
         <div className="modal">
@@ -42,7 +42,7 @@ export const AdvertisementPage = () => {
           </div>
         </div>
       )}
-          </div>
+          </div> */}
           <Addbutton />
         </div>
         <div className="content">

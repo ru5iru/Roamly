@@ -73,7 +73,7 @@ const AdvertisementForm = () => {
           />
         </div>
         <button className="btn-adv-submit" type="submit">
-          Add Advertisement
+          Publish Request
         </button>
       </form>
     </div>

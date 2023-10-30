@@ -2,7 +2,7 @@ import "./personalizingform.scss";
 import hiking from '../../assets/images/hiking.png';
 import { Link } from "react-router-dom";
 
-const Personalizingform = () =>{
+const PersonalizingformA = () =>{
 
 
 return(
@@ -206,4 +206,4 @@ return(
 
 
 
-export default Personalizingform;
+export default PersonalizingformA;

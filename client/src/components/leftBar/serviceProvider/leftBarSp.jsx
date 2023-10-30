@@ -58,12 +58,12 @@ const LeftBarSp = () => {
             <img src={Ads} alt="" />
             <p>Advertisements</p>
           </div>
-          <div className="menu_item"
+          {/* <div className="menu_item"
           //  onClick={handleBadgesClick}
            >
           <img src={Badge} alt="Badge" />
             <p>Badges</p>
-          </div>
+          </div> */}
           {/* <div className="menu_item" onClick={handleReportsClick}>
           <img src={Reports} alt="Reports" />
             <p>Reports</p>

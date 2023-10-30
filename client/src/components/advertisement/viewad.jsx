@@ -46,7 +46,7 @@ export const ViewAdd = ({ advertisement }) => {
         </div>
       </div>
       <div className="edit-delete">
-          <FaRegEdit
+          {/* <FaRegEdit
             className="edit"
             title="Edit"
             onClick={handleButtonClickEdit}
@@ -60,7 +60,7 @@ export const ViewAdd = ({ advertisement }) => {
                 <EditAdvertisement adId={adId}/>
               </div>
             </div>
-          )}
+          )} */}
           <RiDeleteBin5Line className="dlt" title="Delete" onClick={handleButtonClickdlt} />
           {isDltModalOpen && (
             <div className="modal-dlt">
