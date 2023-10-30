@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
-import { getadminData } from "../controllers/adminController.js";
+import { getUserAdminD } from "../controllers/adminController.js";
 
-router.get("/postAdminData", getadminData);
+router.get("/useradminD", getUserAdminD);
 
 export default router;

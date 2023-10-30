@@ -9,13 +9,13 @@ const port = process.env.PORT || 5000;
 
 // routes
 import userRoutes from "./routes/userRoutes.js";
-import badgeRoutes from "./routes/badgeRoutes.js"
-import postRoutes from "./routes/postRoutes.js"
-import interstRoutes from "./routes/interestRoutes.js"
-import likeRoutes from "./routes/likeRoutes.js"
-import exploreRoutes from "./routes/exploreRoutes.js"
-import adsRoutes from "./routes/adsRoutes.js"
-import feedRoutes from "./routes/feedRoutes.js"
+import badgeRoutes from "./routes/badgeRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
+import interstRoutes from "./routes/interestRoutes.js";
+import likeRoutes from "./routes/likeRoutes.js";
+import exploreRoutes from "./routes/exploreRoutes.js";
+import adsRoutes from "./routes/adsRoutes.js";
+import feedRoutes from "./routes/feedRoutes.js";
 import ReportsRoutes from "./routes/reportsRoutes.js";
 import AdminRoutes from "./routes/adminRoutes.js";
 

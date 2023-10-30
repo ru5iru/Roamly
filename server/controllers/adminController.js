@@ -1,15 +1,15 @@
 import AsyncHandler from "express-async-handler";
-import { getAdminDetails } from "../models/adminModel.js";
+import { getUadminD } from "../models/adminModel.js";
 
-const getadminData = AsyncHandler(async (req, res) => {
-    const preports = await getAdminDetails();
+const getUserAdminD = AsyncHandler(async (req, res) => {
+    const adata = await getUadminD();
 
-    if (preports) {
-        res.status(200).json(preports);
+    if (adata) {
+        res.status(200).json(adata);
     } else {
         res.status(404);
         throw new Error("Users not found");
     }
 });
 
-export { getadminData };
+export { getUserAdminD };
