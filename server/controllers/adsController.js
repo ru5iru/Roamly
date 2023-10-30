@@ -1,5 +1,5 @@
 // import pool from "../connect.js";
-import { getAllAds, saveAd, deleteAd, getAllAdsFeed } from "../models/adsModel.js"
+import { getAllAds, saveAd, deleteAd, getAllAdsFeed, getAllAds } from "../models/adsModel.js"
 import asyncHandler from "express-async-handler";
 
 const getAds = asyncHandler(async (req, res) => {
@@ -52,4 +52,15 @@ const getAdsFeed = asyncHandler(async (req, res) => {
     }
 });
 
-export { getAds, addAd, removeAds, getAdsFeed };
+const getAdvertisementsD = AsyncHandler(async (req, res) => {
+    const adsd = await getAllAds();
+
+    if (adsd) {
+        res.status(200).json(preports);
+    } else {
+        res.status(404);
+        throw new Error("Users not found");
+    }
+});
+
+export { getAds, addAd, removeAds, getAdsFeed, getAdvertisementsD };

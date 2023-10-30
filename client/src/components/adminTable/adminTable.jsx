@@ -2,14 +2,14 @@ import './adminTable.scss';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { useQuery } from "@tanstack/react-query";
-import { makeRequest } from "../../axios";
+import { makeRequest } from "../../axios";  
 
 function AdminTable() {
 
     const { data: adminsData } = useQuery(
         ["adminsData"],
         async () => {
-            const response = await makeRequest.get(`/admins/useradminD`);
+            const response = await makeRequest.get(`/users/useradminD`);
             return response.data;
         }
     );

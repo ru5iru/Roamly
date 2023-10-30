@@ -5,7 +5,6 @@ import asyncHandler from "express-async-handler";
 const getAllAds = asyncHandler(async () => {
     const sql = "SELECT * FROM advertisement";
     const result = await query(sql);
-
     return result.rows;
 });
 

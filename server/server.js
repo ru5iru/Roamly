@@ -17,7 +17,6 @@ import exploreRoutes from "./routes/exploreRoutes.js";
 import adsRoutes from "./routes/adsRoutes.js";
 import feedRoutes from "./routes/feedRoutes.js";
 import ReportsRoutes from "./routes/reportsRoutes.js";
-import AdminRoutes from "./routes/adminRoutes.js";
 
 // start DB connection
 connectDB();
@@ -67,9 +66,6 @@ app.use("/server/feed", feedRoutes);
 
 // user routes
 app.use("/server/users", userRoutes);
-
-// admin routes
-app.use("/server/admins", AdminRoutes);
 
 app.get('/', (req, res) => res.send('Server is ready'));
 

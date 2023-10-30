@@ -7,6 +7,7 @@ import {
     findUserByID,
     isUserVerified,
 } from "../models/userModel.js";
+import { getUadminD } from "../models/userModel.js";
 
 // desc    Login user
 // route   POST /api/users/login
@@ -141,6 +142,18 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     res.status(200).json({ message: "Update user profile" });
 });
 
+// Admins
+const getUserAdminD = asyncHandler(async (req, res) => {
+    const adata = await getUadminD();
+
+    if (adata) {
+        res.status(200).json(adata);
+    } else {
+        res.status(404);
+        throw new Error("Users not found");
+    }
+});
+
 export {
     registerUser,
     loginUser,
@@ -148,4 +161,5 @@ export {
     getCurrentUserProfile,
     getUserProfile,
     updateUserProfile,
+    getUserAdminD
 };

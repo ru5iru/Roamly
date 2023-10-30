@@ -1,7 +1,19 @@
 import { Link } from 'react-router-dom';
 import './ads.scss';
+import React from 'react';
+import { useQuery } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
 
 function Ads() {
+
+    const { data: adsData } = useQuery(
+        ["adsData"],
+        async () => {
+            const response = await makeRequest.get(`/ads/advertisementsD`);
+            return response.data;
+        }
+    );
+
     return(
         <div className="ads_main">
             <div className="stat">
@@ -31,90 +43,22 @@ function Ads() {
                                 <th>Location</th>
                                 <th>Action</th>
                             </tr>
-                            <tr>
-                                <td>Hilton</td>
-                                <td>Hotel</td>
-                                <td>Submitted</td>
-                                <td>2023-08-02</td>
-                                <td>Nuwara-eliya</td>
-                                <td>
-                                    <Link to='/adviewpage' className='link'>
-                                        <span class="material-icons">
-                                            visibility
-                                        </span>
-                                    </Link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ocean Wave</td>
-                                <td>Shop</td>
-                                <td>Published</td>
-                                <td>2023-06-15</td>
-                                <td>Kandy</td>
-                                <td>
-                                    <Link to='/adviewpage' className='link'>
-                                        <span class="material-icons">
-                                            visibility
-                                        </span>
-                                    </Link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>John Dom</td>
-                                <td>Taxi</td>
-                                <td>Submitted</td>
-                                <td>2023-02-02</td>
-                                <td>Colombo</td>
-                                <td>
-                                    <Link to='/advertisementspage' className='link'>
-                                        <span class="material-icons">
-                                            visibility
-                                        </span>
-                                    </Link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hilton</td>
-                                <td>Hotel</td>
-                                <td>Submitted</td>
-                                <td>2023-08-02</td>
-                                <td>Nuwara-eliya</td>
-                                <td>
-                                    <Link to='/advertisementspage' className='link'>
-                                        <span class="material-icons">
-                                            visibility
-                                        </span>
-                                    </Link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ocean Wave</td>
-                                <td>Shop</td>
-                                <td>Published</td>
-                                <td>2023-06-15</td>
-                                <td>Kandy</td>
-                                <td>
-                                    <Link to='/advertisementspage' className='link'>
-                                        <span class="material-icons">
-                                            visibility
-                                        </span>
-                                    </Link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>John Dom</td>
-                                <td>Taxi</td>
-                                <td>Submitted</td>
-                                <td>2023-02-02</td>
-                                <td>Colombo</td>
-                                <td>
-                                    <Link to='/advertisementspage' className='link'>
-                                        <span class="material-icons">
-                                            visibility
-                                        </span>
-                                    </Link>
-                                </td>
-                            </tr>
+                            {adsData && adsData.map((row) => (
+                                <tr key={row.id}>
+                                    <td>{row.creator}</td>
+                                    <td>{row.type}</td>
+                                    <td>{row.status}</td>
+                                    <td>{row.date}</td>
+                                    <td>{row.location}</td>
+                                    <td>
+                                        <Link to='/adviewpage' className='link'>
+                                            <span class="material-icons">
+                                                visibility
+                                            </span>
+                                        </Link>
+                                    </td>
+                                </tr>
+                            ))}
                         </table>
                     </div>
                 </div>

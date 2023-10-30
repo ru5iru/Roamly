@@ -1,6 +1,7 @@
 import { query } from '../config/db.js';
 import asyncHandler from 'express-async-handler';
 import bcrypt from 'bcryptjs';
+import asyncHandler from "express-async-handler";
 
 // find user is exists by email
 const isUserExists = asyncHandler(async (email) => {
@@ -80,6 +81,13 @@ const registerUsers = asyncHandler(async (firstname, lastname, email, password) 
     return result;
 });
 
+// View Admins
+const getUadminD = asyncHandler(async () => {
+    const sql = 'SELECT user_id, firstname, lastname, contact_no, user_type FROM users WHERE user_type = "Admin"';
+    const result = await query(sql);
+    return result.rows;
+});
+
 export {
     isUserExists,
     registerUsers,
@@ -87,4 +95,5 @@ export {
     findUserByEmail,
     findUserByID,
     isUserVerified,
+    getUadminD
 };

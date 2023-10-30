@@ -46,7 +46,7 @@ function AdView() {
                             <p>🍽 Indulge in a symphony of flavors with our fusion of local and global cuisines. Culinary artisans craft exquisite dishes.</p> 
                             <p>🌸 Rejuvenate at our waterfront spa, where pampering treatments, massages, and rejuvenating therapies await.</p> 
                             <p>🚣‍♀ Embark on aquatic adventures or stroll through lush gardens, immersing yourself in nature's embrace.</p> 
-                            <p>🎊 The ideal venue for celebrations and events. Our meticulous event planning ensures every occasion is extraordinary.</p>
+                            <p>🎊 The ideal venue for celebrations and events. Our meticulous event planning ensures every occasion is extraordinary. </p>
                         </div>
                     </div>
                     <div className="review_buttons">
