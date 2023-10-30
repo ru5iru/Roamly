@@ -11,8 +11,7 @@ const getAllInterests = asyncHandler(async () => {
 
 // get all interests by user
 const getUserInterests = asyncHandler(async (id) => {
-   const sql =
-      "SELECT id.*, i.user_id FROM interest_details id INNER JOIN interests i ON id.interest_id = i.interest_id AND i.user_id = $1";
+   const sql = "SELECT id.*, i.user_id FROM interest_details id INNER JOIN interests i ON id.interest_id = i.interest_id AND i.user_id = $1";
 
    const result = await query(sql, [id]);
 
@@ -21,11 +20,9 @@ const getUserInterests = asyncHandler(async (id) => {
 
 // mark interests
 const markInterests = asyncHandler(async (id, content) => {
-   const sql1 =
-      "INSERT INTO interests (interest_id, user_id) VALUES ($1, $2) RETURNING interest_id, user_id";
+   const sql1 = "INSERT INTO interests (interest_id, user_id) VALUES ($1, $2) RETURNING interest_id, user_id";
    const sql2 = "DELETE FROM interests WHERE interest_id = $1 AND user_id = $2";
-   const sql3 =
-      "SELECT * FROM interests WHERE interest_id = $1 AND user_id = $2";
+   const sql3 = "SELECT * FROM interests WHERE interest_id = $1 AND user_id = $2";
 
    for (const key in content) {
       if (content[key] === true) {

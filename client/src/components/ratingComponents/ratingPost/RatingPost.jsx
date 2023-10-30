@@ -57,7 +57,7 @@ const RatingPost = ({ serviceID, post, deleteMutation }) => {
                             </span>
                         </div>
                     </div>
-                    <MoreHorizIcon onClick={() => setMenuOpen(!menuOpen)} />
+                    {/* <MoreHorizIcon onClick={() => setMenuOpen(!menuOpen)} />
                     {menuOpen && (
                         <div className="postMenu">
                             {post.user_id === currentUser.user_id ? (
@@ -102,7 +102,7 @@ const RatingPost = ({ serviceID, post, deleteMutation }) => {
                                 alt="cancel--v1"
                             />
                         </div>
-                    )}
+                    )} */}
                 </div>
                 <div className="content">
                     <div className="rate">
