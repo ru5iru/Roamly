@@ -36,6 +36,18 @@ const Profile = () => {
 
    const userID = parseInt(useLocation().pathname.split("/")[2]);
 
+   const setImageUrl = (currUrl) => {
+      if (currUrl !== null && currUrl.length > 50) {
+         return currUrl;
+      } else if (currUrl !== null) {
+         try {
+            return require("../../../public/upload/" + currUrl);
+         } catch {
+            
+         }
+      }
+   }
+
    useEffect(() => {
       if (userID) {
          axios
@@ -43,7 +55,7 @@ const Profile = () => {
             .then((response) => {
                setProfileNotFound("Found");
                setProfileData(response.data);
-               setProfilePic(response.data.profile_pic);
+               setProfilePic(setImageUrl(response.data.profile_pic));
                setCoverPic(response.data.cover_pic)
             })
             .catch((error) => {
@@ -52,8 +64,7 @@ const Profile = () => {
       }
    }, [userID]);
 
-   console.log(profilePic)
-
+   
    useEffect(() => {
       if (userID) {
          axios
@@ -219,7 +230,7 @@ const Profile = () => {
                      <div className="profileImg">
                         <img
                            className="profilePic"
-                           src={profileData.profile_pic}
+                           src={profilePic}
                            alt=""
                         />
                         <div className="badge">
