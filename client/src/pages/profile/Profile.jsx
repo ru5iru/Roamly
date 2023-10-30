@@ -7,6 +7,7 @@ import Rating from "../../components/ratingComponents/rating/Rating";
 import Badge from "../../components/badgeComponents/badge/Badge";
 import Update from "../../components/update/Update";
 import UpdatePP from "../../components/update/UpdatePP";
+import UpdateCP from "../../components/update/UpdateCP";
 import Interests from "../../components/interests/Interests";
 import UserDetails from "../../components/userdetails/UserDetails";
 import Allbadges from "../../components/badgeComponents/allbadges/Allbadges";
@@ -42,11 +43,9 @@ const Profile = () => {
       } else if (currUrl !== null) {
          try {
             return require("../../../public/upload/" + currUrl);
-         } catch {
-            
-         }
+         } catch {}
       }
-   }
+   };
 
    useEffect(() => {
       if (userID) {
@@ -56,7 +55,7 @@ const Profile = () => {
                setProfileNotFound("Found");
                setProfileData(response.data);
                setProfilePic(setImageUrl(response.data.profile_pic));
-               setCoverPic(response.data.cover_pic)
+               setCoverPic(setImageUrl(response.data.cover_pic));
             })
             .catch((error) => {
                setProfileNotFound("Not Found");
@@ -64,7 +63,6 @@ const Profile = () => {
       }
    }, [userID]);
 
-   
    useEffect(() => {
       if (userID) {
          axios
@@ -207,46 +205,54 @@ const Profile = () => {
       return (
          <div className="profile">
             <div className="images">
-               <img className="cover" src={profileData.cover_pic} alt="" />
-               <div className="badge">
-                  {/* <Badge badge={expBadge} /> */}
-                  <div className="upp-container">
-                     <div className="upp-circle">
-                        <div className="upp-content">
-                           <img
-                              className="upp-img"
-                              src={expBadge.badge_img}
-                              alt=""
-                           />
-                           Edit Cover Photo
+               <img className="cover" src={coverPic} alt="" />
+               {profileData.user_id === currentUser.user_id ? (
+                  <div className="badge">
+                     <div
+                        className="upp-container"
+                        onClick={() => setOpenUpdateCP(!openUpdateCP)}
+                     >
+                        <div className="upp-circle">
+                           <div className="upp-content">
+                              <img
+                                 className="upp-img"
+                                 src={expBadge.badge_img}
+                                 alt=""
+                              />
+                              Edit Cover Photo
+                           </div>
                         </div>
                      </div>
                   </div>
-               </div>
+               ) : (
+                  ""
+               )}
             </div>
             <div className="profileContainer">
                <div className="uInfo">
                   <div className="left">
                      <div className="profileImg">
-                        <img
-                           className="profilePic"
-                           src={profilePic}
-                           alt=""
-                        />
-                        <div className="badge">
-                           {/* <Badge badge={expBadge} /> */}
-                           <div className="upp-container" onClick={() => setOpenUpdatePP(!openUpdatePP)}>
-                              <div className="upp-circle">
-                                 <div className="upp-content">
-                                    <img
-                                       className="upp-img"
-                                       src={expBadge.badge_img}
-                                       alt=""
-                                    />
+                        <img className="profilePic" src={profilePic} alt="" />
+                        {profileData.user_id === currentUser.user_id ? (
+                           <div className="badge">
+                              <div
+                                 className="upp-container"
+                                 onClick={() => setOpenUpdatePP(!openUpdatePP)}
+                              >
+                                 <div className="upp-circle">
+                                    <div className="upp-content">
+                                       <img
+                                          className="upp-img"
+                                          src={expBadge.badge_img}
+                                          alt=""
+                                       />
+                                    </div>
                                  </div>
                               </div>
                            </div>
-                        </div>
+                        ) : (
+                           ""
+                        )}
                      </div>
 
                      <div className="top">
@@ -388,7 +394,20 @@ const Profile = () => {
                </div>
             </div>
             {openUpdate && <Update setOpenUpdate={setOpenUpdate} />}
-            {openUpdatePP && <UpdatePP profilePic={profilePic} setOpenUpdatePP={setOpenUpdatePP} setTriggerRefetch={setTriggerRefetch} />}
+            {openUpdatePP && (
+               <UpdatePP
+                  profilePic={profilePic}
+                  setOpenUpdatePP={setOpenUpdatePP}
+                  setTriggerRefetch={setTriggerRefetch}
+               />
+            )}
+            {openUpdateCP && (
+               <UpdateCP
+                  coverPic={coverPic}
+                  setOpenUpdateCP={setOpenUpdateCP}
+                  setTriggerRefetch={setTriggerRefetch}
+               />
+            )}
             {openBadges && (
                <Allbadges
                   userID={profileData.user_id}

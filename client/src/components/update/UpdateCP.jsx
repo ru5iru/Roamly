@@ -1,47 +1,83 @@
+import { useContext, useState } from "react";
 import "./update.scss";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { AuthContext } from "../../context/authContext";
+import { useMutation } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
 
-const Update = ({ setOpenUpdate }) => {
+const UpdateCP = ({ coverPic, setOpenUpdateCP, setTriggerRefetch }) => {
+   const [file, setFile] = useState(null);
+
+   const { currentUser } = useContext(AuthContext);
+
+   const user_id = currentUser.user_id;
+
+   const upload = async () => {
+      try {
+         const formData = new FormData();
+         formData.append("file", file);
+         const res = await makeRequest.post("/upload", formData);
+         return res.data;
+      } catch (err) {
+         console.log(err);
+      }
+   };
+
+   const mutation = useMutation(
+      (newCP) => {
+         return makeRequest.put("/users/coverpic", newCP);
+      },
+      {
+         onSuccess: () => {
+            setTriggerRefetch(true);
+         },
+      }
+   );
+
+   const handleUpdateCP = async (e) => {
+      e.preventDefault();
+      let imgUrl = "";
+      if (file) imgUrl = await upload();
+      mutation.mutate({ user_id, img: imgUrl });
+      setOpenUpdateCP(false);
+      setFile(null);
+   };
+
    return (
       <div className="update">
          <div className="update-wrapper">
-            <div className="update-head">Update Profile</div>
+            <div className="update-head">Update Cover Picture</div>
             <div className="files">
-               <label htmlFor="cover">
-                  <span>Cover Picture</span>
-                  <div className="imgContainer">
-                     <CloudUploadIcon className="icon" />
-                  </div>
-               </label>
-               <input type="file" id="cover" style={{ display: "none" }} />
                <label htmlFor="profile">
-                  <span>Profile Picture</span>
                   <div className="imgContainer">
+                     {file ? (
+                        <img
+                           className="file"
+                           alt=""
+                           src={URL.createObjectURL(file)}
+                        />
+                     ) : (
+                        <img className="file" alt="" src={coverPic} />
+                     )}
                      <CloudUploadIcon className="icon" />
                   </div>
                </label>
-               <input type="file" id="profile" style={{ display: "none" }} />
-            </div>
-            <div className="name-container">
-               <div className="fname">
-                  <label>First Name</label>
-                  <input type="text" value="" name="name" onChange="" />
-               </div>
-               <div className="lname">
-                  <label>Last Name</label>
-                  <input type="text" value="" name="name" onChange="" />
-               </div>
-            </div>
-            <div className="email-container">
-               <div className="email">
-                  <label>Email</label>
-                  <input type="text" value="" name="name" onChange="" />
-               </div>
+               <input
+                  type="file"
+                  id="profile"
+                  style={{ display: "none" }}
+                  onChange={(e) => setFile(e.target.files[0])}
+               />
             </div>
 
-            <button className="updateDetails" onClick="">Update</button>
+            <button className="updateDetails" onClick={handleUpdateCP}>
+               Update
+            </button>
 
-            <button className="closeUpdate" onClick={() => setOpenUpdate(false)}>
+            <button
+               className="closeUpdate"
+               onClick={() => setOpenUpdateCP(false)}
+            >
                <img
                   className="closeImg"
                   width="96"
@@ -55,4 +91,4 @@ const Update = ({ setOpenUpdate }) => {
    );
 };
 
-export default Update;
+export default UpdateCP;

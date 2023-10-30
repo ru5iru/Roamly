@@ -43,7 +43,6 @@ const UpdatePP = ({ profilePic, setOpenUpdatePP, setTriggerRefetch }) => {
       setFile(null);
    };
 
-   console.log(profilePic);
    return (
       <div className="update">
          <div className="update-wrapper">
@@ -58,11 +57,7 @@ const UpdatePP = ({ profilePic, setOpenUpdatePP, setTriggerRefetch }) => {
                            src={URL.createObjectURL(file)}
                         />
                      ) : (
-                        <img
-                           className="file"
-                           alt=""
-                           src={profilePic}
-                        />
+                        <img className="file" alt="" src={profilePic} />
                      )}
                      <CloudUploadIcon className="icon" />
                   </div>
