@@ -25,7 +25,9 @@ const Profile = () => {
    const [openAddPost, setOpenAddPost] = useState(false);
 
    const [profileData, setProfileData] = useState([]);
+   const [imagesData, setImagesData] = useState([]);
    const [profileNotFound, setProfileNotFound] = useState("Loading");
+   const [error, setError] = useState(null);
 
    const userID = parseInt(useLocation().pathname.split("/")[2]);
 
@@ -39,6 +41,19 @@ const Profile = () => {
             })
             .catch((error) => {
                setProfileNotFound("Not Found");
+            });
+      }
+   }, [userID]);
+
+   useEffect(() => {
+      if (userID) {
+         axios
+            .get(`/posts/photos?userId=${userID}`)
+            .then((response) => {
+               setImagesData(response.data);
+            })
+            .catch((error) => {
+               setError("Error fetching badges");
             });
       }
    }, [userID]);
@@ -119,6 +134,36 @@ const Profile = () => {
    const handleServiceClick = () => {
       navigate("/ratings/" + userID);
    };
+
+   const stack = [];
+
+   imagesData.length > 0 ? (
+      imagesData.forEach((image) => {
+         let element = "";
+
+         if (image.image !== null && image.image.length > 50) {
+            element = (
+               <div className="upload" key={image.image}>
+                  <img src={image.image} alt="" />
+               </div>
+            );
+         } else if (image.image !== null) {
+            element = (
+               <div className="upload" key={image.image}>
+                  <img
+                     src={require("../../../public/upload/" + image.image)}
+                     alt=""
+                  />
+               </div>
+            );
+         }
+         stack.push(element);
+      })
+   ) : (
+      <div className="empty" key={1}>
+         User hasn't posted yet. :{`(`}
+      </div>
+   );
 
    if (profileNotFound === "Not Found") {
       return (
@@ -282,60 +327,7 @@ const Profile = () => {
                            <div className="seeMore">See More Photos</div>
                         </div>
                         <div className="uploadContainer">
-                           <div className="upload">
-                              <img
-                                 src="https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                                 alt=""
-                              />
-                           </div>
-                           <div className="upload">
-                              <img
-                                 src="https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                                 alt=""
-                              />
-                           </div>
-                           <div className="upload">
-                              <img
-                                 src="https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                                 alt=""
-                              />
-                           </div>
-                           <div className="upload">
-                              <img
-                                 src="https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                                 alt=""
-                              />
-                           </div>
-                           <div className="upload">
-                              <img
-                                 src="https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                                 alt=""
-                              />
-                           </div>
-                           <div className="upload">
-                              <img
-                                 src="https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                                 alt=""
-                              />
-                           </div>
-                           <div className="upload">
-                              <img
-                                 src="https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                                 alt=""
-                              />
-                           </div>
-                           <div className="upload">
-                              <img
-                                 src="https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                                 alt=""
-                              />
-                           </div>
-                           <div className="upload">
-                              <img
-                                 src="https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                                 alt=""
-                              />
-                           </div>
+                        {stack}
                         </div>
                      </div>
                   </div>
