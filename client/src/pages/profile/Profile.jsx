@@ -377,7 +377,7 @@ const Profile = () => {
                </div>
             </div>
             {openUpdate && <Update setOpenUpdate={setOpenUpdate} />}
-            {openUpdatePP && <UpdatePP profilePic={profilePic} setOpenUpdatePP={setOpenUpdatePP} />}
+            {openUpdatePP && <UpdatePP profilePic={profilePic} setOpenUpdatePP={setOpenUpdatePP} setTriggerRefetch={setTriggerRefetch} />}
             {openBadges && (
                <Allbadges
                   userID={profileData.user_id}

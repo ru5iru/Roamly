@@ -1,16 +1,49 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./update.scss";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { AuthContext } from "../../context/authContext";
+import { useMutation } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
 
-const UpdatePP = ({ profilePic, setOpenUpdatePP }) => {
+const UpdatePP = ({ profilePic, setOpenUpdatePP, setTriggerRefetch }) => {
+   const [file, setFile] = useState(null);
 
-   const [newProfilePic, setNewProfilePic] = useState(profilePic);
+   const { currentUser } = useContext(AuthContext);
 
-   const handleUpdatePP = () => {
-      
+   const user_id = currentUser.user_id;
+
+   const upload = async () => {
+      try {
+         const formData = new FormData();
+         formData.append("file", file);
+         const res = await makeRequest.post("/upload", formData);
+         return res.data;
+      } catch (err) {
+         console.log(err);
+      }
    };
 
-   console.log(profilePic)
+   const mutation = useMutation(
+      (newPP) => {
+         return makeRequest.post("/user/propic", newPP);
+      },
+      {
+         onSuccess: () => {
+            setTriggerRefetch(true);
+         },
+      }
+   );
+
+   const handleUpdatePP = async (e) => {
+      e.preventDefault();
+      let imgUrl = "";
+      if (file) imgUrl = await upload();
+      mutation.mutate({ user_id, img: imgUrl });
+      setOpenUpdatePP(false);
+      setFile(null);
+   };
+
+   console.log(profilePic);
    return (
       <div className="update">
          <div className="update-wrapper">
@@ -18,16 +51,38 @@ const UpdatePP = ({ profilePic, setOpenUpdatePP }) => {
             <div className="files">
                <label htmlFor="profile">
                   <div className="imgContainer">
-                     <img src={newProfilePic} alt="" />
+                     {file ? (
+                        <img
+                           className="file"
+                           alt=""
+                           src={URL.createObjectURL(file)}
+                        />
+                     ) : (
+                        <img
+                           className="file"
+                           alt=""
+                           src={profilePic}
+                        />
+                     )}
                      <CloudUploadIcon className="icon" />
                   </div>
                </label>
-               <input type="file" id="profile" style={{ display: "none" }} />
+               <input
+                  type="file"
+                  id="profile"
+                  style={{ display: "none" }}
+                  onChange={(e) => setFile(e.target.files[0])}
+               />
             </div>
 
-            <button className="updateDetails" onClick={handleUpdatePP}>Update</button>
+            <button className="updateDetails" onClick={handleUpdatePP}>
+               Update
+            </button>
 
-            <button className="closeUpdate" onClick={() => setOpenUpdatePP(false)}>
+            <button
+               className="closeUpdate"
+               onClick={() => setOpenUpdatePP(false)}
+            >
                <img
                   className="closeImg"
                   width="96"
