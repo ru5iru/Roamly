@@ -8,11 +8,23 @@ export const AuthContextProvider = ({children}) => {
         JSON.parse(localStorage.getItem("user")) || null
     );
 
+    const setImageUrl = (currUrl) => {
+        if (currUrl !== null && currUrl.length > 50) {
+           return currUrl;
+        } else if (currUrl !== null) {
+           try {
+              return require("../../public/upload/" + currUrl);
+           } catch {
+              
+           }
+        }
+    }
+
     const login = async (inputs) => {
         const res = await axios.post("http://localhost:8000/server/users/login", inputs, {
           withCredentials: true,
         });
-    
+        res.data.profile_pic = setImageUrl(res.data.profile_pic);
         setCurrentUser(res.data)
       };
 

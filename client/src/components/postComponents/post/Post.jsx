@@ -18,6 +18,20 @@ const Post = ({ userID, post, deleteMutation }) => {
 
    const [commentOpen, setCommentOpen] = useState(false);
    const [menuOpen, setMenuOpen] = useState(false);
+   const [postProfileData, setPostProfileData] = useState([]);
+
+   const setImageUrl = (currUrl) => {
+      if (currUrl !== null && currUrl.length > 50) {
+         return currUrl;
+      } else if (currUrl !== null) {
+         try {
+            return require("../../../../public/upload/" + currUrl);
+         } catch {
+            
+         }
+      }
+   }
+
    const {
       isLoading: likeIsLoading,
       error: likeError,
@@ -28,7 +42,6 @@ const Post = ({ userID, post, deleteMutation }) => {
       })
    );
 
-   const [postProfileData, setPostProfileData] = useState([]);
    useEffect(() => {
       if (userID) {
          axios.get("/users/profile/" + userID).then((response) => {
@@ -84,7 +97,7 @@ const Post = ({ userID, post, deleteMutation }) => {
          <div className="container">
             <div className="user">
                <div className="userInfo">
-                  <img src={postProfileData.profile_pic} alt="" />
+                  <img src={postProfileData.profile_pic ? setImageUrl(postProfileData.profile_pic) : ""} alt="" />
                   <div className="details">
                      <Link
                         to={`/profile/${post.user_id}`}
@@ -161,7 +174,7 @@ const Post = ({ userID, post, deleteMutation }) => {
             </div>
             <div className="content">
                <p>{post.content}</p>
-               {post.image !== null && <img src={imgSource} alt="" />}
+               {post.image !== null && <img src={setImageUrl(post.image)} alt="" />}
             </div>
             <hr />
             <div className="info">
