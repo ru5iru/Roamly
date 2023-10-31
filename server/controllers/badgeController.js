@@ -6,7 +6,7 @@ import {
    lastFiveBadges,
 } from "../models/badgeModel.js";
 
-import {getUserInterests} from "../models/interestModel.js"
+import { getUserInterests } from "../models/interestModel.js";
 
 // desc
 // route
@@ -54,9 +54,12 @@ const badgesByUser = asyncHandler(async (req, res) => {
    const interests = await getUserInterests(69690);
    const interestArr = interests.map((interest) => interest.interest_name);
    const filteredBadges = badges.filter((badge) => {
-      return interestArr.includes(badge.badge_type) || badge.badge_type === "achievement" || badge.user_id !== null;
-    });
-   console.log(filteredBadges)
+      return (
+         interestArr.includes(badge.badge_type) ||
+         badge.badge_type === "achievement" ||
+         badge.user_id !== null
+      );
+   });
 
    if (filteredBadges.length > 0) {
       res.status(200).json(filteredBadges);
