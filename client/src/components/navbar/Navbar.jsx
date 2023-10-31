@@ -57,6 +57,10 @@ const Navbar = ({socket}) => {
         navigate("/feed");
     };
 
+    const navigateChat = () => {
+        navigate("/chat");
+    };
+
     const handleSearch = () => {
         // Your search logic here using the searchText
         console.log('Searching for:', searchText);
@@ -130,7 +134,7 @@ const Navbar = ({socket}) => {
                         />
                     </form>
                 </div>
-                <img src={Chat} alt="" />    
+                <img src={Chat} alt="" onClick={navigateChat}/>    
                 {/* <img src={Notification} alt="" onClick={handleNotify} className='notifyicon'/> */}
 
                 <div className='count' onClick={() => setOpen(!open)}>

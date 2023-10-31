@@ -62,21 +62,7 @@ const addNewUser = (userEmail, socketId)=>{
     console.log(userEmail)
 };
 
-// const userMap = new Map(); // Use a Map to store users
 
-// const addNewUser = (userEmail, socketId) => {
-//     if (!userMap.has(userEmail)) {
-//         userMap.set(userEmail, socketId);
-//         onlineUsers.push({ userEmail, socketId });
-//         console.log(`New user added: ${userEmail}`);
-//     } else {
-//         const existingSocketId = userMap.get(userEmail);
-//         if (existingSocketId !== socketId) {
-//             // Handle the situation where the same user has different socket IDs
-//             console.log(`User ${userEmail} already exists with a different socket ID.`);
-//         }
-//     }
-// };
 
 
 const removeUser =(socketId) =>{
