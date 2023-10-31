@@ -6,10 +6,26 @@ import { makeRequest } from "../../axios";
 
 function Ads() {
 
-    const { data: adsData } = useQuery(
-        ["adsData"],
+    const { data: adsAS, isLoadingAS, isErrorAS } = useQuery(
+        ["adSData"],
         async () => {
-            const response = await makeRequest.get(`/ads/advertisementsD`);
+            const response = await makeRequest.get(`/admin/adsS`);
+            return response.data;
+        }
+    );
+
+    const { data: adsAP, isLoadingAP, isErrorAP } = useQuery(
+        ["adPData"],
+        async () => {
+            const response = await makeRequest.get(`/admin/adsP`);
+            return response.data;
+        }
+    );
+
+    const { data: adsAR, isLoadingAR, isErrorAR } = useQuery(
+        ["adRData"],
+        async () => {
+            const response = await makeRequest.get(`/admin/adsR`);
             return response.data;
         }
     );
@@ -19,15 +35,27 @@ function Ads() {
             <div className="stat">
                 <div className="stat-item">
                     <div className="stat-item-title">Advertisements Submitted</div>
-                    <div className="stat-item-value">45</div>
+                    <div className="stat-item-value">
+                        {adsAS && (
+                            <span>{adsAS[0]?.count}</span>
+                        )}
+                    </div>
                 </div>
                 <div className="stat-item">
                     <div className="stat-item-title">Advertisements Published</div>
-                    <div className="stat-item-value">35</div>
+                    <div className="stat-item-value">
+                        {adsAP && (
+                            <span>{adsAP[0]?.count}</span>
+                        )}
+                    </div>
                 </div>
                 <div className="stat-item">
                     <div className="stat-item-title">Advertisements Returned</div>
-                    <div className="stat-item-value">10</div>
+                    <div className="stat-item-value">
+                        {adsAR && (
+                            <span>{adsAR[0]?.count}</span>
+                        )}
+                    </div>
                 </div>
             </div>
             <div className="ads">
@@ -43,7 +71,7 @@ function Ads() {
                                 <th>Location</th>
                                 <th>Action</th>
                             </tr>
-                            {adsData && adsData.map((row) => (
+                            {/*{adsData && adsData.map((row) => (
                                 <tr key={row.id}>
                                     <td>{row.creator}</td>
                                     <td>{row.type}</td>
@@ -58,7 +86,7 @@ function Ads() {
                                         </Link>
                                     </td>
                                 </tr>
-                            ))}
+                            ))}*/}
                         </table>
                     </div>
                 </div>

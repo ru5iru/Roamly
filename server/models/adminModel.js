@@ -26,4 +26,22 @@ const getUadminD = asyncHandler(async () => {
     return result.rows;
 });
 
-export { getAdsRequested, getReportRequested, getPostRequested, getUadminD};
+const getAdsSubmitted = asyncHandler(async () => {
+    const sql = "SELECT COUNT(ad_id) FROM advertisement WHERE status = 'submitted';";
+    const result = await query(sql);
+    return result.rows;
+});
+
+const getAdsPublished = asyncHandler(async () => {
+    const sql = "SELECT COUNT(ad_id) FROM advertisement WHERE status = 'published';";
+    const result = await query(sql);
+    return result.rows;
+});
+
+const getAdsReturned = asyncHandler(async () => {
+    const sql = "SELECT COUNT(ad_id) FROM advertisement WHERE status = 'returned';";
+    const result = await query(sql);
+    return result.rows;
+});
+
+export { getAdsRequested, getReportRequested, getPostRequested, getUadminD, getAdsSubmitted, getAdsPublished, getAdsReturned};

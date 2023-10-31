@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import { getAdsRequested, getReportRequested, getPostRequested } from "../models/adminModel.js";
-import { getUadminD } from "../models/userModel.js";
+import { getUadminD } from "../models/adminModel.js";
+import { getAdsSubmitted, getAdsPublished, getAdsReturned } from "../models/adminModel.js";
 
 const getadRequested = asyncHandler(async (req, res) => {
     const adreq = await getAdsRequested();
@@ -9,7 +10,7 @@ const getadRequested = asyncHandler(async (req, res) => {
         res.status(200).json(adreq);
     } else {
         res.status(404);
-        throw new Error("Posts not found");
+        throw new Error("Ad requests not found");
     }
 });
 
@@ -20,7 +21,7 @@ const getreportsRequested = asyncHandler(async (req, res) => {
         res.status(200).json(rereq);
     } else {
         res.status(404);
-        throw new Error("Posts not found");
+        throw new Error("Reports not found");
     }
 });
 
@@ -47,4 +48,37 @@ const getUserAdminD = asyncHandler(async (req, res) => {
     }
 });
 
-export {getadRequested, getreportsRequested, getpostsRequested, getUserAdminD};
+const getAdS = asyncHandler(async (req, res) => {
+    const adreq = await getAdsSubmitted();
+
+    if (adreq) {
+        res.status(200).json(adreq);
+    } else {
+        res.status(404);
+        throw new Error("Submitted ads not found");
+    }
+});
+
+const getAdP = asyncHandler(async (req, res) => {
+    const adreq = await getAdsPublished();
+
+    if (adreq) {
+        res.status(200).json(adreq);
+    } else {
+        res.status(404);
+        throw new Error("Published ads not found");
+    }
+});
+
+const getAdR = asyncHandler(async (req, res) => {
+    const adreq = await getAdsReturned();
+
+    if (adreq) {
+        res.status(200).json(adreq);
+    } else {
+        res.status(404);
+        throw new Error("Returned ads not found");
+    }
+});
+
+export {getadRequested, getreportsRequested, getpostsRequested, getUserAdminD, getAdS, getAdP, getAdR};
