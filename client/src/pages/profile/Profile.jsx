@@ -19,7 +19,7 @@ import { makeRequest } from "../../axios";
 import { AuthContext } from "../../context/authContext";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import PuffLoader from "react-spinners/PuffLoader";
-import BucketList from "../../components/postComponents/bucketList/BucketList";
+import BucketList from "../../components/badgeComponents/bucketList/BucketList";
 
 const Profile = () => {
    const { currentUser } = useContext(AuthContext);
@@ -406,7 +406,7 @@ const Profile = () => {
                </div>
             </div>
             {openUpdate && <Update setOpenUpdate={setOpenUpdate} />}
-            {openBucketList && <BucketList setOpenBucketList={setOpenBucketList} />}
+            {openBucketList && <BucketList userID={userID} setOpenBucketList={setOpenBucketList} />}
             {openUpdatePP && (
                <UpdatePP
                   profilePic={profilePic}

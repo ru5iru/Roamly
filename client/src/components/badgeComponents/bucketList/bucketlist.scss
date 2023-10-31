@@ -1,0 +1,199 @@
+@import "../../../style.scss";
+
+$checkbox-size: 20px;
+$checkbox-border: #cecece;
+$checkbox-selected: #02bb72;
+
+.bucketlist {
+   @include themify($themes) {
+      position: fixed;
+      top: 4rem;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: opacity 1500ms;
+      text-transform: none;
+      z-index: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .badges-wrapper {
+         background-color: themed("bg");
+         padding: 2rem;
+         z-index: 999;
+         display: flex;
+         flex-direction: column;
+         -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+         -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+         box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+         position: relative;
+         border-radius: 20px;
+         height: 85%;
+         width: 40rem;
+         gap: 1rem;
+
+         .containerHead {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #2d3846;
+         }
+
+         .badges-wrapper-2 {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow-y: auto;
+            gap: 1.2rem;
+
+            .badgeTypeContainer {
+               flex-direction: column;
+               gap: 0.5rem;
+
+               .badgeContainer {
+                  display: flex;
+                  flex-direction: row;
+                  gap: 1rem;
+                  align-items: center;
+
+                  .form-chk {
+                     position: relative;
+                     display: block;
+                     margin: 0 0 30px;
+
+                     .b-check {
+                        position: absolute;
+                        opacity: 0;
+
+                        // Text
+                        & + label {
+                           display: inline-block;
+                           position: relative;
+                           cursor: pointer;
+                           line-height: $checkbox-size;
+                           padding-left: 15px;
+                           font-size: $checkbox-size - 2;
+                           font-family: sans-serif;
+                           color: #666; // Label colour
+
+                           // Checkbox
+                           &:before {
+                              position: absolute;
+                              display: block;
+                              left: 0;
+                              top: 0;
+                              content: "";
+                              background: transparent;
+                              width: $checkbox-size;
+                              height: $checkbox-size;
+
+                              box-shadow: inset 0 0 0 1px $checkbox-border;
+                              border-radius: 4px;
+                              transition: 200ms ease-in-out all;
+                           }
+
+                           // Tick
+                           &:after {
+                              position: absolute;
+                              display: block;
+                              top: 5px;
+                              left: 8px;
+                              content: "";
+                              width: 3px;
+                              height: 7px;
+                              border-right: 1px solid transparent;
+                              border-bottom: 1px solid transparent;
+                              transform: rotate(45deg);
+
+                              transition: 200ms ease-in-out all;
+                           }
+                        }
+
+                        // Hover
+                        & + label:hover {
+                           color: #333;
+                        }
+
+                        // Focus
+                        & + label:focus {
+                           outline: none;
+                        }
+
+                        // Checked
+                        &:checked {
+                           & + label {
+                              &:before {
+                                 background: $checkbox-selected;
+                                 box-shadow: none;
+                              }
+                              &:after {
+                                 border-color: white;
+                              }
+                           }
+                        }
+
+                        // Disabled
+                        &:disabled {
+                           & + label {
+                              &:before {
+                                 background: #f2f2f2; // Disabled colour
+                                 box-shadow: none;
+                              }
+                              &:after {
+                                 border-color: transparent;
+                              }
+                           }
+                        }
+
+                        // Disabled Checked
+                        &:checked:disabled {
+                           & + label {
+                              &:before {
+                                 background: #f2f2f2;
+                                 box-shadow: none;
+                              }
+                              &:after {
+                                 border-color: #cecece;
+                              }
+                           }
+                        }
+                     }
+                  }
+
+                  .badgeInfo {
+                     display: flex;
+                     flex-direction: column;
+
+                     .badge-name {
+                        flex-wrap: wrap;
+                        color: #2d3846;
+                        font-weight: 600;
+                     }
+                     .badge-discription {
+                        flex-wrap: wrap;
+                        color: #777777;
+                        font-size: 0.8rem;
+                     }
+                  }
+               }
+            }
+         }
+
+         .closeBadges {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            display: flex;
+            justify-content: center;
+
+            .closeImg {
+               width: 1.5rem;
+               height: 1.5rem;
+            }
+         }
+      }
+   }
+}
