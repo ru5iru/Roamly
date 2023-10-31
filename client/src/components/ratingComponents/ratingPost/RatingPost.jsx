@@ -18,6 +18,18 @@ const RatingPost = ({ serviceID, post, deleteMutation }) => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const [postProfileData, setPostProfileData] = useState([]);
+
+    const setImageUrl = (currUrl = '') => {
+        if (currUrl !== null && currUrl.length > 50) {
+           return currUrl;
+        } else if (currUrl !== null) {
+           try {
+              return require("../../../../public/upload/" + currUrl);
+           } catch {
+              
+           }
+        }
+     }
     
     useEffect(() => {
         if (serviceID) {
@@ -38,7 +50,7 @@ const RatingPost = ({ serviceID, post, deleteMutation }) => {
             <div className="container">
                 <div className="user">
                     <div className="userInfo">
-                        <img src={postProfileData.profile_pic} alt="" />
+                        <img src={setImageUrl(postProfileData.profile_pic)} alt="" />
                         <div className="details">
                             <Link
                                 to={`/profile/${post.user_id}`}

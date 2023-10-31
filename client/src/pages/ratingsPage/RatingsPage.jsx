@@ -19,6 +19,18 @@ const RatingsPage = () => {
 
    const { currentUser } = useContext(AuthContext);
 
+   const setImageUrl = (currUrl = '') => {
+      if (currUrl !== null && currUrl.length > 50) {
+         return currUrl;
+      } else if (currUrl !== null) {
+         try {
+            return require("../../../public/upload/" + currUrl);
+         } catch {
+            
+         }
+      }
+   }
+
    useEffect(() => {
       axios.get("/users/profile/" + service_id).then((response) => {
          setPostProfileData(response.data);
@@ -69,6 +81,8 @@ const RatingsPage = () => {
       }
    );
 
+   console.log(postProfileData.profile_pic)
+   
    return (
       <div className="ratingspage">
          <div className="left"></div>
@@ -78,7 +92,7 @@ const RatingsPage = () => {
                   <div className="profileImg">
                      <img
                         className="profilePic"
-                        src={postProfileData.profile_pic}
+                        src={setImageUrl(postProfileData.profile_pic)}
                         alt=""
                      />
                   </div>
