@@ -19,6 +19,7 @@ import { makeRequest } from "../../axios";
 import { AuthContext } from "../../context/authContext";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import PuffLoader from "react-spinners/PuffLoader";
+import BucketList from "../../components/postComponents/bucketList/BucketList";
 
 const Profile = () => {
    const { currentUser } = useContext(AuthContext);
@@ -29,6 +30,7 @@ const Profile = () => {
    const [openUpdateCP, setOpenUpdateCP] = useState(false);
    const [openBadges, setOpenBadges] = useState(false);
    const [openAddPost, setOpenAddPost] = useState(false);
+   const [openBucketList, setOpenBucketList] = useState(false);
 
    const [profileData, setProfileData] = useState([]);
    const [imagesData, setImagesData] = useState([]);
@@ -329,7 +331,18 @@ const Profile = () => {
                               </span>
                               <span>Edit Profile</span>
                            </button>
+                           <button onClick={() => setOpenBucketList(!openBucketList)}>
+                              <span>
+                                 <img
+                                    src="https://img.icons8.com/sf-black-filled/64/edit.png"
+                                    alt="edit"
+                                 />
+                              </span>
+                              <span>Bucket List</span>
+                           </button>
                         </div>
+                        
+                        
                      ) : (
                         <div className="followMsg">
                            <div className="follow">
@@ -393,6 +406,7 @@ const Profile = () => {
                </div>
             </div>
             {openUpdate && <Update setOpenUpdate={setOpenUpdate} />}
+            {openBucketList && <BucketList setOpenBucketList={setOpenBucketList} />}
             {openUpdatePP && (
                <UpdatePP
                   profilePic={profilePic}

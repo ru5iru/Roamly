@@ -369,6 +369,21 @@
                gap: 10px;
 
                .updateBtn {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 0.8rem;
+
+                  @media (max-width: 600px) {
+                     flex-direction: row;
+                  }
+
+                  @media (min-width: 601px) {
+                     flex-direction: row;
+                  }
+
+                  @media (min-width: 1200px) {
+                     flex-direction: column;
+                  }
                   button {
                      display: flex;
                      flex-direction: row;
