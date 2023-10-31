@@ -38,7 +38,6 @@ const interestsByUser = asyncHandler(async (req, res) => {
 const addInterets = asyncHandler(async (req, res) => {
    const { user_id, checkboxes } = req.body; 
    const result = await markInterests(user_id, checkboxes)
-   // console.log(checkboxes)
 });
 
  export { allInterets, interestsByUser, addInterets }

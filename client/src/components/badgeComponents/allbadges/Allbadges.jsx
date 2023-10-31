@@ -47,12 +47,13 @@ const Allbadges = ({ userID, setOpenBadges }) => {
             </div>
          );
 
-         if (badge.badge_type === "category") {
-            if (badge.user_id != null) {
-               type_1.push(element);
-            }
-         } else {
+         if (badge.badge_type === "achievement") {
             type_2.push(element);
+         } else {
+            // if (badge.user_id != null) {
+            //    type_1.push(element);
+            // }
+            type_1.push(element);
          }
       });
 
@@ -64,7 +65,7 @@ const Allbadges = ({ userID, setOpenBadges }) => {
                   className={`step-btn ${activeStep === 1 ? "active" : ""}`}
                   onClick={() => handleButtonClick(1)}
                >
-                  Who am I
+                  Bucket List
                </button>
                <button
                   className={`step-btn ${activeStep === 2 ? "active" : ""}`}

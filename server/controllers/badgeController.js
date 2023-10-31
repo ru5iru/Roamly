@@ -6,6 +6,8 @@ import {
    lastFiveBadges,
 } from "../models/badgeModel.js";
 
+import {getUserInterests} from "../models/interestModel.js"
+
 // desc
 // route
 // access
@@ -49,9 +51,15 @@ const allBadges = asyncHandler(async (req, res) => {
 
 const badgesByUser = asyncHandler(async (req, res) => {
    const badges = await userBadges(req.query.userId);
+   const interests = await getUserInterests(69690);
+   const interestArr = interests.map((interest) => interest.interest_name);
+   const filteredBadges = badges.filter((badge) => {
+      return interestArr.includes(badge.badge_type) || badge.badge_type === "achievement" || badge.user_id !== null;
+    });
+   console.log(filteredBadges)
 
-   if (badges.length > 0) {
-      res.status(200).json(badges);
+   if (filteredBadges.length > 0) {
+      res.status(200).json(filteredBadges);
    } else {
       res.status(404);
       throw new Error("Badges not found");

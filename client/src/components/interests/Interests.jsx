@@ -28,8 +28,6 @@ const Interests = ({ userID }) => {
       navigate("/markinterests");
    };
 
-   console.log(userID, currentUser.user_id)
-
    return (
       <div className="interests">
          <div className="interestsHeadContainer">
