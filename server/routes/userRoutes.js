@@ -10,8 +10,6 @@ import {
 } from "../controllers/userController.js";
 import protect from "../middleware/authMiddleware.js";
 import { sendVerificationEmail, verifyEmail } from "../controllers/verificationController.js";
-import { getUserAdminD } from "../controllers/userController.js";
-
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);
@@ -21,7 +19,5 @@ router.get("/profile", protect, getCurrentUserProfile);
 router.put("/profile", protect, updateUserProfile);
 router.post("/sendVerificationEmail", sendVerificationEmail);
 router.get("/verify/:token", verifyEmail);
-
-router.get("/useradminD", getUserAdminD);
 
 export default router;

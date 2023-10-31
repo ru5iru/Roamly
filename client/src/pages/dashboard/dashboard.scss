@@ -14,8 +14,8 @@
     .stat{
         display: flex;
         .stat-item{
-            width: 260px;
-            height: 100px;
+            width: 350px;
+            height: 150px;
             background-color: #ffffff;
             border-radius: 5px;
             display: flex;
@@ -25,11 +25,11 @@
             margin: 0 5px 10px 5px;
             color: #2B3674;
             .stat-item-title{
-                font-size: 20px;
+                font-size: 25px;
                 font-family: 'klavika-medium';
             }
             .stat-item-value{
-                font-size: 25px;
+                font-size: 30px;
                 font-family: 'klavika-light';
             }
             &:hover{
@@ -40,12 +40,12 @@
     }
     .chart{
         width: 100%;
-        height: 350px;
+        height: 470px;
         background-color: #ECFBFE;
         border-radius: 5px;
         display: flex;
         .daily-chart{
-            width: 40%;
+            width: 60%;
             height: 100%;
             background-color: #ffffff;
             border-radius: 5px;
@@ -54,6 +54,13 @@
             align-items: center;
             display: flex;
             flex-direction: column;
+            h3{
+                font-size: 35px;
+                font-family: 'klavika-middium';
+                color: #0D1669;
+                text-align: center;
+                padding: 15px;
+            }
             .traffic{
                 display: flex;
                 flex-direction: column;
@@ -68,13 +75,15 @@
                     margin: 10px 10px 0 10px;
                     font-family: 'DM Sans';
                     h4{
-                        font-size: 15px;
+                        font-size: 25px;
                         //font-family: 'DM Sans';
                         color: #A3AED0;
                     }
                     .count{
                         display: flex;
                         color: #05CD99;
+                        font-size: 20px;
+                        margin: 10px;
                         //font-family: 'DM Sans';
                     }
                 }
@@ -88,7 +97,8 @@
                     .visit-count{
                         display: flex;
                         color: #2B3674;
-                        font-size: 35px;
+                        font-size: 30px;
+                        margin-right: 10px;
                     }
                     .visit-text{
                         font-size: 15px;
@@ -99,21 +109,13 @@
                     }
                 }
             }
-            &:hover{
-                transform: scale(1.02);
-                cursor: pointer;
-            }
             .Chart{
-                width: 80%;
-                height: 80%;
+                width: 100%;
+                height: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                img{
-                    width: 100%;
-                    height: 100%;
-                }
             }
         }
         .top-content-creators{

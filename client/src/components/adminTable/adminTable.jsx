@@ -7,9 +7,9 @@ import { makeRequest } from "../../axios";
 function AdminTable() {
 
     const { data: adminsData } = useQuery(
-        ["adminsData"],
+        ["admData"],
         async () => {
-            const response = await makeRequest.get(`/users/useradminD`);
+            const response = await makeRequest.get(`/admin/useradminD`);
             return response.data;
         }
     );
@@ -25,7 +25,7 @@ function AdminTable() {
                     </tr>
                     {adminsData && adminsData.map((row) => (
                         <tr key={row.id}>
-                            <td>{row.admin_name}</td>
+                            <td>{row.firstname}</td>
                             <td>{row.contact_no}</td>
                             <td className='icon'>
                                 <Link to='/userprofile?id=admin_id' className='link'>
