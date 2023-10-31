@@ -1,7 +1,6 @@
 import { query } from '../config/db.js';
 import asyncHandler from 'express-async-handler';
 import bcrypt from 'bcryptjs';
-import asyncHandler from "express-async-handler";
 
 // find user is exists by email
 const isUserExists = asyncHandler(async (email) => {

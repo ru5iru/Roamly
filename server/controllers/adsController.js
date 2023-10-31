@@ -1,5 +1,5 @@
 // import pool from "../connect.js";
-import { getAllAds, saveAd, deleteAd, getAllAdsFeed, getAllAds } from "../models/adsModel.js"
+import { getAllAds, saveAd, deleteAd, getAllAdsFeed } from "../models/adsModel.js"
 import asyncHandler from "express-async-handler";
 
 const getAds = asyncHandler(async (req, res) => {
@@ -52,7 +52,7 @@ const getAdsFeed = asyncHandler(async (req, res) => {
     }
 });
 
-const getAdvertisementsD = AsyncHandler(async (req, res) => {
+const getAdvertisementsD = asyncHandler(async (req, res) => {
     const adsd = await getAllAds();
 
     if (adsd) {
