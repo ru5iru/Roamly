@@ -78,8 +78,8 @@ function App() {
     //   console.log(socket)
     
     useEffect(() => {
-        socket?.emit("newUser", currentUser.email);
-      }, [socket, currentUser.email]);
+        socket?.emit("newUser", currentUser?.email);
+      }, [socket, currentUser?.email]);
 
     //   console.log(currentUser.email)
 

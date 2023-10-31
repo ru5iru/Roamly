@@ -51,7 +51,7 @@ const handleSelect = async(u,chatId) => {
           <div className="userchatInfo">
             <span className='userbar'>{chat[1].userInfo?.firstname} {chat[1].userInfo?.lastname}</span>
             {chat[1].unreadmessages === true && <span><img className='unreadmsg' src={chatemoji} alt="" /></span>}
-            {chat[1].unreadmessages === true && <p style={{ color: 'blue' }}><strong>{chat[1].lastMessage?.text}</strong></p> || <p>{chat[1].lastMessage?.text}</p>}
+            {chat[1].unreadmessages === true && <p style={{ color:'#8da4f1' ,width: '300px'}}><strong>{chat[1].lastMessage?.text}</strong></p> || <p>{chat[1].lastMessage?.text}</p>}
    
           </div>
         </div>

@@ -19,9 +19,10 @@ const Navbar = ({socket}) => {
 
     const { currentUser } = useContext(AuthContext);
 
-    const [showNotification, setShowNotification] = useState(false)
+    // const [showNotification, setShowNotification] = useState(false)
     const [notifications, setNotifications] = useState([]);
     const [open, setOpen] = useState(false);
+    const [notificationShown, setNotificationShown] = useState(false);
 
     console.log(socket)
 
@@ -32,7 +33,7 @@ const Navbar = ({socket}) => {
         });
       }, [socket]);
     
-    console.log(notifications)
+    // console.log(notifications)
 
 
     const navigate = useNavigate(); // Initialize useNavigate
@@ -70,6 +71,9 @@ const Navbar = ({socket}) => {
     // };
 
     const displayNotification = ({senderName, type})=> {
+
+
+
         let action;
         
         if(type === 1){
@@ -79,11 +83,17 @@ const Navbar = ({socket}) => {
         }else{
             action = "shared"
         }
+        
+        // if(notifications.length%2 === 1){
+        //     return (
+        //         <span className='notification'>{`${senderName} ${action} your post`}</span>    
+        //     )
+        // }
 
         return (
-            <><span className='notification'>{`${senderName} ${action} your post`}</span>
-            </>
+            <span className='notification'>{`${senderName} ${action} your post`}</span>    
         )
+        
     }
 
     const handleRead = () => {

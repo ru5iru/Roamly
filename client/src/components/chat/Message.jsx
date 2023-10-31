@@ -28,19 +28,21 @@ const Message = ({message}) => {
   
 }
 
-  return (
-    <div ref={ref} className={`message ${message.senderId === currentUser.email ? "owner" : "other"} `} >
-      
-      <div className="messageContent">
-        <p>{message.text}</p>
-        {message.img && <img src={message.img} alt="" />}
-        <div className="messageInfo">
-        <span className="messageTime">{formattedDateTime}</span>
-      </div>
-      </div>
-      
+
+return (
+  <div ref={ref} className={`message ${message.senderId === currentUser.email ? "owner" : "other"} `} >
+    
+    <div className="messageContent">
+      <p>{message.text}</p>
+      {message.img && <img src={message.img} alt="" />}
+      <div className="messageInfo">
+      <span className="messageTime">{formattedDateTime}</span>
     </div>
-  )
+    </div>
+    
+  </div>
+)
+  
 }
 
 export default Message

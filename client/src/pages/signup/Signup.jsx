@@ -65,19 +65,6 @@ export const Signup = () => {
       setValidationErrors({});
 
 
-      // try {
-      //   // Send signup data
-      //   await axios.post("http://localhost:8000/server/users/register", inputs);
-  
-      //   // Send verification email
-      //   await axios.post(
-      //     "http://localhost:8000/server/users/sendVerificationEmail",
-      //     { email: inputs.email } // Wrap the email in an object
-      //   );
-      // } catch (err) {
-      //   setErr(err.response.data);
-      // }
-
       try {
          // Send signup data
          await axios.post("http://localhost:8000/server/users/register", inputs);

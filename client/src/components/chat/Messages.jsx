@@ -5,6 +5,7 @@ import { ChatContext } from '../../context/ChatContext'
 import { doc, getDoc, onSnapshot, updateDoc } from 'firebase/firestore'
 import { db } from '../../../src/firebase'
 import { AuthContext } from '../../context/authContext'
+import Input from './Input'
 
 const Messages = () => {
     const [ messages, setMessages] = useState([])
@@ -58,6 +59,7 @@ const Messages = () => {
   console.log(messages)
   
   return (
+    // <div>
     <div className='messages'>
       {messages.map(m=>(
 
@@ -65,6 +67,7 @@ const Messages = () => {
       ))}
       
     </div>
+    ///* </div> */
   )
 }
 

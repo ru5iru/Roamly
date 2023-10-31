@@ -53,26 +53,31 @@ const io = new Server({
     }
 });
 
-// io.on("connection", (socket)=>{
-//     console.log("someone has connected")
-
-//     socket.on("disconnect", ()=>{
-//         console.log("someone left")
-//     })
-// })
-
 let onlineUsers=[];
 
 const addNewUser = (userEmail, socketId)=>{
-    // !onlineUsers.some((user)=>user.userEmail === userEmail) && 
-    onlineUsers.push({userEmail, socketId});
+    !onlineUsers.some((user)=>user.userEmail === userEmail) && 
+    onlineUsers.push({userEmail, socketId});   
 
-    
-    // console.log("user :"+user.userEmail)
-    
+    console.log(userEmail)
 };
 
-console.log("array:"+onlineUsers)
+// const userMap = new Map(); // Use a Map to store users
+
+// const addNewUser = (userEmail, socketId) => {
+//     if (!userMap.has(userEmail)) {
+//         userMap.set(userEmail, socketId);
+//         onlineUsers.push({ userEmail, socketId });
+//         console.log(`New user added: ${userEmail}`);
+//     } else {
+//         const existingSocketId = userMap.get(userEmail);
+//         if (existingSocketId !== socketId) {
+//             // Handle the situation where the same user has different socket IDs
+//             console.log(`User ${userEmail} already exists with a different socket ID.`);
+//         }
+//     }
+// };
+
 
 const removeUser =(socketId) =>{
     onlineUsers = onlineUsers.filter((user)=>user.socketId !== socketId); 
@@ -84,42 +89,19 @@ const getUser =(userEmail) => {
 };
 
 io.on("connection",(socket)=>{
-
-    // io.emit("firstEvent", "hello")
-    // console.log(socket)
-    // console.log("someone has connected")
     socket.on("newUser", (userEmail)=>{
-        console.log(userEmail)
         addNewUser(userEmail, socket.id);
 
         
     });
 
     socket.on("sendNotification", ({senderName,receiverEmail,type})=>{
-        console.log("sender :"+senderName)
-        console.log("receiver :"+receiverEmail)
         const receiver = getUser(receiverEmail)
-        // const receiver= "Thisura Wijesinghe"
-        
-        
         io.to(receiver?.socketId).emit("getNotification", {
             senderName,
             type,
         });
-
-        // socket?.emit("getNotification", {
-        //     senderName,
-        //     type,
-        // });
     });
-
-    // socket.on("sendText", ({ senderName, receiverId, text }) => {
-    //     const receiver = getUser(receiverId);
-    //     io.to(receiver.socketId).emit("getText", {
-    //       senderName,
-    //       text,
-    //     });
-    //   });
 
 
     socket.on("disconnect",()=>{
