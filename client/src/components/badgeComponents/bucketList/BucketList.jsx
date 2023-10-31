@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import Badge from "../badge/Badge";
 import axios from "axios";
 import "./bucketlist.scss";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { makeRequest } from "../../../axios";
 
-const BucketList = ({ userID, setOpenBucketList }) => {
+const BucketList = ({ userID, setOpenBucketList, setTriggerRefetch }) => {
    const userId = userID;
 
    const [badgeData, setBadgeData] = useState([]);
@@ -22,7 +24,23 @@ const BucketList = ({ userID, setOpenBucketList }) => {
       }
    }, [userID]);
 
-   
+   const queryClient = useQueryClient();
+
+   const mutation = useMutation(
+      (badge) => {
+         return makeRequest.post("/badges", badge);
+      },
+      {
+         onSuccess: () => {
+            setTriggerRefetch(true);
+            setOpenBucketList(false);
+         },
+      }
+   );
+
+   const handleChange = (user_id, badge_id) => {
+      mutation.mutate({user_id, badge_id});
+   };
 
    const type_1 = [];
 
@@ -39,6 +57,7 @@ const BucketList = ({ userID, setOpenBucketList }) => {
                      type="checkbox"
                      className="b-check"
                      defaultChecked={badge.user_id !== null ? true : false}
+                     onClick={() => handleChange(userID, badge.badge_id)}
                   />
                   <label htmlFor={badge.badge_id} tabIndex="1"></label>
                </div>

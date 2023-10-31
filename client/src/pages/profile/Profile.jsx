@@ -406,7 +406,7 @@ const Profile = () => {
                </div>
             </div>
             {openUpdate && <Update setOpenUpdate={setOpenUpdate} />}
-            {openBucketList && <BucketList userID={userID} setOpenBucketList={setOpenBucketList} />}
+            {openBucketList && <BucketList userID={userID} setOpenBucketList={setOpenBucketList} setTriggerRefetch={setTriggerRefetch} />}
             {openUpdatePP && (
                <UpdatePP
                   profilePic={profilePic}
