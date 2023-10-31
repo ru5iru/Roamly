@@ -5,10 +5,10 @@ import { makeRequest } from "../../axios";
 
 function GuideTable() {
 
-    const { data: guiData } = useQuery(
-        ["guiData"],
+    const { data: hotData } = useQuery(
+        ["hotData"],
         async () => {
-            const response = await makeRequest.get(`/admin/guideD`);
+            const response = await makeRequest.get(`/admin/hotelsD`);
             return response.data;
         }
     );
@@ -23,7 +23,7 @@ function GuideTable() {
                     <th>Email</th>
                     <th className='icon'>Profile</th>
                 </tr>
-                {guiData && guiData.map((row) => (
+                {hotData && hotData.map((row) => (
                     <tr key={row.id}>
                         <td>{row.firstname}</td>
                         <td>{row.contact_no}</td>

@@ -6,7 +6,7 @@ import { makeRequest } from "../../axios";
 
 function Ads() {
 
-    const { data: adsAS, isLoadingAS, isErrorAS } = useQuery(
+    const { data: adsAS } = useQuery(
         ["adSData"],
         async () => {
             const response = await makeRequest.get(`/admin/adsS`);
@@ -14,7 +14,7 @@ function Ads() {
         }
     );
 
-    const { data: adsAP, isLoadingAP, isErrorAP } = useQuery(
+    const { data: adsAP } = useQuery(
         ["adPData"],
         async () => {
             const response = await makeRequest.get(`/admin/adsP`);
@@ -22,10 +22,18 @@ function Ads() {
         }
     );
 
-    const { data: adsAR, isLoadingAR, isErrorAR } = useQuery(
+    const { data: adsAR } = useQuery(
         ["adRData"],
         async () => {
             const response = await makeRequest.get(`/admin/adsR`);
+            return response.data;
+        }
+    );
+
+    const { data: adsDisplay } = useQuery(
+        ["adData"],
+        async () => {
+            const response = await makeRequest.get(`/admin/adDisplay`);
             return response.data;
         }
     );
@@ -64,20 +72,18 @@ function Ads() {
                     <div className="ads-item">
                         <table>
                             <tr>
-                                <th>Creator</th>
+                                <th>Title</th>
                                 <th>Type</th>
-                                <th>Status</th>
                                 <th>Date</th>
-                                <th>Location</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
-                            {/*{adsData && adsData.map((row) => (
-                                <tr key={row.id}>
-                                    <td>{row.creator}</td>
-                                    <td>{row.type}</td>
+                            {adsDisplay && adsDisplay.map((row) => (
+                                <tr key={row.user_id}>
+                                    <td>{row.title}</td>
+                                    <td>{row.service_type}</td>
+                                    <td>{row.created_at}</td>
                                     <td>{row.status}</td>
-                                    <td>{row.date}</td>
-                                    <td>{row.location}</td>
                                     <td>
                                         <Link to='/adviewpage' className='link'>
                                             <span class="material-icons">
@@ -86,7 +92,7 @@ function Ads() {
                                         </Link>
                                     </td>
                                 </tr>
-                            ))}*/}
+                            ))}
                         </table>
                     </div>
                 </div>

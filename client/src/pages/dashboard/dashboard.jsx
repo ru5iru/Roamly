@@ -2,12 +2,11 @@ import './dashboard.scss';
 import ContentCreators from '../../components/contentCreators/contentCreators';
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
-import { useState, useEffect } from "react";
 import { BarChart } from './user_charts';
 
 function Dashboard() {
 
-    const { data: adsAS, isLoadingAS, isErrorAS } = useQuery(
+    const { data: adsAS } = useQuery(
         ["adTData"],
         async () => {
             const response = await makeRequest.get(`/admin/submitAds`);
@@ -15,7 +14,7 @@ function Dashboard() {
         }
     );
 
-    const { data: reportsTR, isLoadingUR, isErrorUR } = useQuery(
+    const { data: reportsTR } = useQuery(
         ["reportsTData"],
         async () => {
             const response = await makeRequest.get(`/admin/reportsToday`);
@@ -23,7 +22,7 @@ function Dashboard() {
         }
     );
 
-    const { data: postsTP, isLoadingTP, isErrorTP } = useQuery(
+    const { data: postsTP } = useQuery(
         ["postsTData"],
         async () => {
             const response = await makeRequest.get(`/admin/postsToday`);

@@ -2,6 +2,8 @@ import './userDetails.scss';
 import AdminTable from '../../components/adminTable/adminTable';
 import TravelerTable from '../../components/travelerTable/travelerTable';
 import GuideTable from '../../components/guideTable/guideTable';
+import TaxiTable from '../../components/taxiTable/taxiTable';
+import HotelTable from '../../components/hotelTable/hotelTable';
 import ServiceTable from '../../components/serviceTable/serviceTable';
 import { Link } from 'react-router-dom';
 
@@ -107,7 +109,7 @@ function UserDetails() {
                     </div>
                 </div>
                 <div className="user_traveler_table">
-                    <GuideTable />
+                    <TaxiTable />
                 </div>
             </div>
         </div>
@@ -132,7 +134,7 @@ function UserDetails() {
                     </div>
                 </div>
                 <div className="user_traveler_table">
-                    <GuideTable />
+                    <HotelTable />
                 </div>
             </div>
             <div className="user_two">

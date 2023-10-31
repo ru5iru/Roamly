@@ -2,6 +2,13 @@ import asyncHandler from "express-async-handler";
 import { getAdsRequested, getReportRequested, getPostRequested } from "../models/adminModel.js";
 import { getUadminD } from "../models/adminModel.js";
 import { getAdsSubmitted, getAdsPublished, getAdsReturned } from "../models/adminModel.js";
+import { getAdvD } from "../models/adminModel.js";
+import { getAdvFD } from "../models/adminModel.js";
+import { getTD } from "../models/adminModel.js";
+import { getGD } from "../models/adminModel.js";
+import { getTaxD } from "../models/adminModel.js";
+import { getHD } from "../models/adminModel.js";
+import { getOtherSD } from "../models/adminModel.js";
 
 const getadRequested = asyncHandler(async (req, res) => {
     const adreq = await getAdsRequested();
@@ -48,6 +55,66 @@ const getUserAdminD = asyncHandler(async (req, res) => {
     }
 });
 
+//Travellers
+const getTraD = asyncHandler(async (req, res) => {
+    const adata = await getTD();
+
+    if (adata) {
+        res.status(200).json(adata);
+    } else {
+        res.status(404);
+        throw new Error("Users not found");
+    }
+});
+
+//Guides
+const getGuiD = asyncHandler(async (req, res) => {
+    const adata = await getGD();
+
+    if (adata) {
+        res.status(200).json(adata);
+    } else {
+        res.status(404);
+        throw new Error("Users not found");
+    }
+});
+
+//Taxis
+const getTaxiD = asyncHandler(async (req, res) => {
+    const adata = await getTaxD();
+
+    if (adata) {
+        res.status(200).json(adata);
+    } else {
+        res.status(404);
+        throw new Error("Users not found");
+    }
+});
+
+//Hotels
+const getHotelD = asyncHandler(async (req, res) => {
+    const adata = await getHD();
+
+    if (adata) {
+        res.status(200).json(adata);
+    } else {
+        res.status(404);
+        throw new Error("Users not found");
+    }
+});
+
+//Other Services
+const getOsD = asyncHandler(async (req, res) => {
+    const adata = await getOtherSD();
+
+    if (adata) {
+        res.status(200).json(adata);
+    } else {
+        res.status(404);
+        throw new Error("Users not found");
+    }
+});
+
 const getAdS = asyncHandler(async (req, res) => {
     const adreq = await getAdsSubmitted();
 
@@ -81,4 +148,26 @@ const getAdR = asyncHandler(async (req, res) => {
     }
 });
 
-export {getadRequested, getreportsRequested, getpostsRequested, getUserAdminD, getAdS, getAdP, getAdR};
+const getAdvDisplay = asyncHandler(async (req, res) => {
+    const adreq = await getAdvD();
+
+    if (adreq) {
+        res.status(200).json(adreq);
+    } else {
+        res.status(404);
+        throw new Error("Ads not found");
+    }
+});
+
+const getAdvFDisplay = asyncHandler(async (req, res) => {
+    const adreq = await getAdvFD();
+
+    if (adreq) {
+        res.status(200).json(adreq);
+    } else {
+        res.status(404);
+        throw new Error("Ads not found");
+    }
+});
+
+export {getadRequested, getreportsRequested, getpostsRequested, getUserAdminD, getAdS, getAdP, getAdR, getAdvDisplay, getAdvFDisplay, getTraD, getGuiD, getTaxiD, getHotelD, getOsD};

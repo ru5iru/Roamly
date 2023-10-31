@@ -1,34 +1,42 @@
+import { Link } from 'react-router-dom';
+import React from 'react';
+import { useQuery } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";  
+
 function TravelerTable() {
+
+    const { data: traData } = useQuery(
+        ["traData"],
+        async () => {
+            const response = await makeRequest.get(`/admin/travD`);
+            return response.data;
+        }
+    );
+
   return(
     <div className="table">
         <div className="user_table">
             <table>
                 <tr>
                     <th>Name</th>
-                    <th>UserName</th>
+                    <th>Contact Number</th>
                     <th>Email</th>
                     <th className='icon'>Profile</th>
                 </tr>
-                <tr>
-                    <td>John Doe</td>
-                    <td>JohnT</td>
-                    <td>JhonT@gmail.com</td>
-                    <td className='icon'>
-                        <span class="material-icons">
-                            visibility
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Jonny Doemt</td>
-                    <td>JonnyDT</td>
-                    <td>JhnnyT@gmail.com</td>
-                    <td className='icon'>
-                        <span class="material-icons">
-                            visibility
-                        </span>
-                    </td>
-                </tr>
+                {traData && traData.map((row) => (
+                    <tr key={row.id}>
+                        <td>{row.firstname}</td>
+                        <td>{row.contact_no}</td>
+                        <td>{row.email}</td>
+                        <td className='icon'>
+                            <Link to='/userprofile?id=user_id' className='link'>
+                                <span class="material-icons">
+                                    visibility
+                                </span>
+                            </Link>
+                        </td>
+                    </tr>
+                ))}
             </table>
         </div>
     </div>
