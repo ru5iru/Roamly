@@ -4,6 +4,9 @@ import {
    getAllbadges,
    userBadges,
    lastFiveBadges,
+   findUserBadgebyId,
+   saveBadge,
+   deleteBadge
 } from "../models/badgeModel.js";
 
 import { getUserInterests } from "../models/interestModel.js";
@@ -84,4 +87,22 @@ const lastFive = asyncHandler(async (req, res) => {
    }
 });
 
-export { getBadge, allBadges, badgesByUser, lastFive };
+// desc
+// route
+// access
+
+const changeBadge = asyncHandler(async (req, res) => {
+   const { user_id, badge_id } = req.body;
+
+   const isExists = await findUserBadgebyId(user_id, badge_id);
+
+   if (isExists) {
+      const badge = await deleteBadge(user_id, badge_id);
+      res.status(200).json(badge);
+   } else {
+      const badge = await saveBadge(user_id, badge_id);
+      res.status(200).json(badge);
+   }
+});
+
+export { getBadge, allBadges, badgesByUser, lastFive, changeBadge };
