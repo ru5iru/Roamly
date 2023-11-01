@@ -21,7 +21,7 @@ const getPostRequested = asyncHandler(async () => {
 
 // View Admins
 const getUadminD = asyncHandler(async () => {
-    const sql = "SELECT * FROM users WHERE user_type = 'Admin'";
+    const sql = "SELECT * FROM admin";
     const result = await query(sql);
     return result.rows;
 });
@@ -91,4 +91,23 @@ const getAdvFD = asyncHandler(async () => {
     return result.rows;
 });
 
-export { getAdsRequested, getReportRequested, getPostRequested, getUadminD, getAdsSubmitted, getAdsPublished, getAdsReturned, getAdvD, getAdvFD, getTD, getGD, getTaxD, getHD};
+const saveAdmin = asyncHandler(async (firstname, lastname, email, contact_no, gender, username, password) => {
+    const admin_id = Math.floor(Math.random() * 1000000000);
+
+    const sql =
+        "INSERT INTO admin (admin_id, firstname, lastname, email, contact_no, gender, username, password) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *";
+    const result = await query(sql, [
+        admin_id,
+        firstname,
+        lastname,
+        email,
+        contact_no,
+        gender,
+        username,
+        password,
+    ]);
+
+    return result;
+});
+
+export { getAdsRequested, getReportRequested, getPostRequested, getUadminD, getAdsSubmitted, getAdsPublished, getAdsReturned, getAdvD, getAdvFD, getTD, getGD, getTaxD, getHD, getOtherSD, saveAdmin};

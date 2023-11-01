@@ -170,4 +170,18 @@ const getAdvFDisplay = asyncHandler(async (req, res) => {
     }
 });
 
-export {getadRequested, getreportsRequested, getpostsRequested, getUserAdminD, getAdS, getAdP, getAdR, getAdvDisplay, getAdvFDisplay, getTraD, getGuiD, getTaxiD, getHotelD, getOsD};
+//Add Admin
+const addAdmin = asyncHandler(async (req, res) => {
+    const { firstname, lastname, email, contact_no, username, password } = req.body;
+
+    const ad = await saveAdmin(firstname, lastname, email, contact_no, username, password);
+
+    if (ad.rows.length > 0) {
+        res.status(201).json(rows[0]);
+    } else {
+        res.status(400);
+        throw new Error("Invalid user data");
+    }
+});
+
+export {getadRequested, getreportsRequested, getpostsRequested, getUserAdminD, getAdS, getAdP, getAdR, getAdvDisplay, getAdvFDisplay, getTraD, getGuiD, getTaxiD, getHotelD, getOsD, addAdmin};
