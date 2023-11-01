@@ -300,6 +300,10 @@ function App() {
       element: <Ads />,
     },
     {
+      path: "advertisements/payments",
+      element: <Payments />,
+    },
+    {
       path: "/trip",
       element: <Trip />,
     },
