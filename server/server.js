@@ -6,6 +6,8 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import cors from "cors";
 import multer from "multer";
 
+import { Server } from 'socket.io';
+
 import { connectDB } from "./config/db.js";
 const port = process.env.PORT || 5000;
 
@@ -35,6 +37,7 @@ connectDB();
 
 // create express app
 const app = express();
+
 
 // middlewares to parse raw JSON from request body (req.body) and
 // urlencoded data (req.query) from URL query string (?key=value&key2=value2)
@@ -70,6 +73,58 @@ app.post("/server/upload", upload.single("file"), (req, res) => {
    const file = req.file;
    res.status(200).json(file.filename);
 });
+
+//socket server
+
+const io = new Server({
+    cors:{
+        origin:"http://localhost:3000"
+    }
+});
+
+let onlineUsers=[];
+
+const addNewUser = (userEmail, socketId)=>{
+    !onlineUsers.some((user)=>user.userEmail === userEmail) && 
+    onlineUsers.push({userEmail, socketId});   
+
+    console.log(userEmail)
+};
+
+
+
+
+const removeUser =(socketId) =>{
+    onlineUsers = onlineUsers.filter((user)=>user.socketId !== socketId); 
+};
+
+const getUser =(userEmail) => {
+    return onlineUsers.find((user)=>user.userEmail === userEmail);
+
+};
+
+io.on("connection",(socket)=>{
+    socket.on("newUser", (userEmail)=>{
+        addNewUser(userEmail, socket.id);
+
+        
+    });
+
+    socket.on("sendNotification", ({senderName,receiverEmail,type})=>{
+        const receiver = getUser(receiverEmail)
+        io.to(receiver?.socketId).emit("getNotification", {
+            senderName,
+            type,
+        });
+    });
+
+
+    socket.on("disconnect",()=>{
+        removeUser(socket.id);
+    });
+
+});
+
 
 // user routes
 app.use("/server/users", userRoutes);
@@ -113,3 +168,5 @@ app.use(errorHandler);
 app.listen(port, () => {
    console.log(`Server is running on port: ${port}`);
 });
+
+io.listen(5000);

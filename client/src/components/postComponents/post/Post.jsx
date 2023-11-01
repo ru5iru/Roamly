@@ -15,6 +15,8 @@ import axios from "axios";
 
 const Post = ({ userID, post, deleteMutation }) => {
    const { currentUser } = useContext(AuthContext);
+   const [liked,setLiked] = useState(false)
+    
 
    const [commentOpen, setCommentOpen] = useState(false);
    const [menuOpen, setMenuOpen] = useState(false);
@@ -91,6 +93,17 @@ const Post = ({ userID, post, deleteMutation }) => {
          
       }
    }
+
+   const handleNotification = (type) =>{
+    type === 1 && setLiked(true);
+    socket?.emit("sendNotification", {
+        senderName:currentUser.firstname+" "+currentUser.lastname,
+        receiverEmail:postProfileData.email,
+        type,
+
+    })
+    
+}
 
    return (
       <div className="post">
@@ -187,7 +200,10 @@ const Post = ({ userID, post, deleteMutation }) => {
                         onClick={handleLike}
                      />
                   ) : (
-                     <FavoriteBorderOutlinedIcon onClick={handleLike} />
+                    <FavoriteBorderOutlinedIcon onClick={() => {
+                        handleLike();
+                        handleNotification(1);
+                      }} />
                   )}
                   {!likeIsLoading ? likeData.count.count : "loading"} Likes
                </div>

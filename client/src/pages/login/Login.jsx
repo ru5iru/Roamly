@@ -1,14 +1,15 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import "./login.scss";
 import img1 from "../../assets/images/img1.jpg";
 
 const Login = () => {
+
    const [inputs, setInputs] = useState({
       email: "",
       password: "",
-   });
+   }); 
 
    const [err, setErr] = useState(null);
 
@@ -70,6 +71,7 @@ const Login = () => {
                                  type="submit"
                                  className="lbtn"
                                  onClick={handleLogin}
+
                               >
                                  LOGIN
                               </button>

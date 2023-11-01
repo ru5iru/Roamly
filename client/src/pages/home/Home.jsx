@@ -8,7 +8,7 @@ import PostForm from "../../components/postComponents/addpost/PostForm";
 import { useState } from "react";
 
 
-function Home() {
+function Home({socket}) {
 
     const [openAddPost, setOpenAddPost] = useState(false);
 
@@ -22,7 +22,7 @@ function Home() {
                 <div className="addPostContainer-home">
                     <Addpost setOpenAddPost={setOpenAddPost} />
                 </div>
-                <Feedcontent />
+                <Feedcontent socket={socket}/>
             </div>
             <div className="rightbar-container-home">
                 <RightBar />

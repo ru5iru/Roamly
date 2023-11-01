@@ -212,6 +212,16 @@ const updateCoverPic = asyncHandler(async (req, res) => {
    }
 });
 
+const getUserProfilePic = asyncHandler(async (req, res) => {
+   const { email } = req.params; // Assuming the email is provided in the request parameters
+   const user = await getUserProfilePicByEmail(email);
+
+   if (user) {
+       res.status(200).json({ profile_pic: user.profile_pic });
+   } else {
+       res.status(404).json({ message: 'User not found' });
+   }
+}); 
 export {
    registerUser,
    loginUser,

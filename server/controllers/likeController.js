@@ -6,6 +6,8 @@ import {
    deleteLike,
 } from "../models/likeModel.js";
 
+// import { insertNotification } from "../models/notificationModel.js";
+
 // desc
 // route
 // access
@@ -31,6 +33,7 @@ const addLike = asyncHandler(async (req, res) => {
    const { user_id, post_id } = req.body;
 
    const like = await saveLike(user_id, post_id);
+   // const notification = await insertNotification(user_id, post_id);
 
    if (like.rowCount > 0) {
       res.status(201).json({
@@ -41,6 +44,17 @@ const addLike = asyncHandler(async (req, res) => {
       res.status(400);
       throw new Error("Invalid user data");
    }
+
+
+   // if (notification.rowCount > 0) {
+   //    res.status(201).json({
+   //       user_id: notification.rows[0].user_id,
+   //       post_id: notification.rows[0].post_id,
+   //    });
+   // } else {
+   //    res.status(400);
+   //    throw new Error("Invalid user data");
+   // }
 });
 
 // desc

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./navbar.scss";
@@ -10,13 +10,21 @@ import logo from "../../assets/Roamly.png";
 
 import { AuthContext } from "../../context/authContext";
 
-const Navbar = () => {
+const Navbar = ({socket}) => {
    const { currentUser, logout } = useContext(AuthContext);
+   const [open,setOpen]= useState(false);
+   const [notifications,setNotifications]=useState([]);
 
-   const navigate = useNavigate(); // Initialize useNavigate
+   useEffect(()=>{
+      socket?.on("getNotification",(data)=>{
+         setNotifications((prev)=>[...prev,data]);
+      })
+   },[socket]);
+
+
+   const navigate = useNavigate();
 
    const handleProfileClick = () => {
-      // Navigate to the home page when the Home menu item is clicked
       navigate("/profile/" + currentUser.user_id);
    };
 
@@ -42,6 +50,25 @@ const Navbar = () => {
    const handleLogout = async () => {
       logout();
       navigate("/");
+   }
+
+   const displayNotification = ({senderName,type})=>{
+      let action;
+
+      if(type===1){
+         action="liked"
+      }else {
+         action="commented"
+      }
+
+      return(
+         <span className="notification">{`${senderName} ${action} your post`}</span>
+      )
+   }
+
+   const handleRead=()=>{
+      setNotifications([]);
+      setOpen(false);
    }
 
    return (
@@ -84,7 +111,23 @@ const Navbar = () => {
                </form>
             </div>
             <img className="navimg" src={Chat} alt="" />
-            <img className="navimg" src={Notification} alt="" />
+            <div className="count" onClick={()=>setOpen(!open)}>
+               <img className="navimg" src={Notification} alt="" />
+               {
+                  notifications.length>0 &&
+                  <div className="counter">{notifications.length}</div>
+               }
+            </div>
+
+            {open && (
+               <div className="notifications">
+                  {notifications.map((n)=>displayNotification(n))}
+                  <button className="nButton" onClick={handleRead}>
+                     Mark as read
+
+                  </button>
+               </div>
+            )}
             <img
                src={currentUser.profile_pic}
                alt=""

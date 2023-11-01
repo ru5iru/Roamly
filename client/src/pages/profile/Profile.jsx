@@ -20,8 +20,10 @@ import { AuthContext } from "../../context/authContext";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import PuffLoader from "react-spinners/PuffLoader";
 import BucketList from "../../components/badgeComponents/bucketList/BucketList";
+import { useLocation } from "react-router-dom";
+import { Socket } from "socket.io-client";
 
-const Profile = () => {
+const Profile = ({socket}) => {
    const { currentUser } = useContext(AuthContext);
    const [profilePic, setProfilePic] = useState("");
    const [coverPic, setCoverPic] = useState("");
@@ -401,6 +403,7 @@ const Profile = () => {
                      <Posts
                         userID={profileData.user_id}
                         deleteMutation={deleteMutation}
+                        socket={socket}
                      />
                   </div>
                </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./signup.scss";
 import img10 from "../../assets/images/img10.jpg";
 import axios from "axios";
@@ -99,6 +99,7 @@ export const Signup = () => {
       try {
          // Send signup data
          await axios.post("http://localhost:8000/server/users/register", inputs);
+
    
          // Send verification email
          await axios.post(
@@ -115,6 +116,18 @@ export const Signup = () => {
          // If both requests are successful, update success state
          setSuccess(true);
          setErr(null); // Clear any previous errors
+
+         // const uid = useRef.push().key;
+         await setDoc(doc(db,"users",inputs.email),{
+            // id:uuid(),
+            firstname: inputs.firstname,
+            lastname: inputs.lastname,
+            email: inputs.email,
+         })
+
+         await setDoc(doc(db,"userChats",inputs.email), {});
+
+         
        } catch (err) {
          // Handle the error
          console.error("Error:", err);
@@ -143,7 +156,7 @@ export const Signup = () => {
                   <div className="scard">
                      <div className="scard-body">
                         <h2 className="stitle">Sign Up</h2>
-                        <form>
+                        <form id="form">
                            <div className="srow ">
                               <div className="scol">
                                  <div className="sform-outline-11">
