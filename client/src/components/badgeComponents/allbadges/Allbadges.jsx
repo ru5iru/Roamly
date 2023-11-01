@@ -50,10 +50,10 @@ const Allbadges = ({ userID, setOpenBadges }) => {
          if (badge.badge_type === "achievement") {
             type_2.push(element);
          } else {
-            // if (badge.user_id != null) {
-            //    type_1.push(element);
-            // }
-            type_1.push(element);
+            if (badge.user_id != null) {
+               type_1.push(element);
+            }
+            // type_1.push(element);
          }
       });
 

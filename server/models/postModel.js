@@ -1,5 +1,6 @@
 import { query } from '../config/db.js'
 import asyncHandler from 'express-async-handler';
+import { saveBadge, findUserBadgebyId } from './badgeModel.js';
 
 // find post by id
 const getPost = asyncHandler(async (id) => {
@@ -54,6 +55,15 @@ const searchPosts = asyncHandler(async (phrase) => {
     return result.rows;
 });
 
+// count posts
+const countPosts = asyncHandler(async (user_id) => {
+    const sql = 'SELECT COUNT(post_id) FROM post WHERE user_id = $1';
+    
+    const result = await query(sql, [user_id]);
+
+    return result.rows[0].count;
+});
+
 
 // add post
 const savePost = asyncHandler(async (user_id, content, img) => {
@@ -77,6 +87,14 @@ const savePost = asyncHandler(async (user_id, content, img) => {
 
     const sql = 'INSERT INTO post (post_id, user_id, image, content) VALUES ($1, $2, $3, $4) RETURNING post_id, user_id';
     const result = await query(sql, [randomPostID, user_id, image, content]);
+
+    if(!await findUserBadgebyId(user_id, 39)){
+        await saveBadge(user_id, 39);
+    } else if (!await findUserBadgebyId(user_id, 38) && await countPosts(user_id) >= 10){
+        await saveBadge(user_id, 38);
+    } else if (!await findUserBadgebyId(user_id, 37) && await countPosts(user_id) >= 25){
+        await saveBadge(user_id, 37);
+    }
 
     return result;
 });
