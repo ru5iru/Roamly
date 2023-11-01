@@ -20,7 +20,6 @@ import { AuthContext } from "../../context/authContext";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import PuffLoader from "react-spinners/PuffLoader";
 import BucketList from "../../components/badgeComponents/bucketList/BucketList";
-import { useLocation } from "react-router-dom";
 import { Socket } from "socket.io-client";
 
 const Profile = ({socket}) => {

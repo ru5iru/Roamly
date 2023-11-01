@@ -13,7 +13,7 @@ import { makeRequest } from "../../../axios";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
-const Post = ({ userID, post, deleteMutation }) => {
+const Post = ({ userID, post, deleteMutation,socket }) => {
    const { currentUser } = useContext(AuthContext);
    const [liked,setLiked] = useState(false)
     

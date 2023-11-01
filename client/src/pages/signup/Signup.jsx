@@ -5,6 +5,8 @@ import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import validator from "validator";
 import { toast,ToastContainer  } from 'react-toastify';
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 export const Signup = () => {
    const [inputs, setInputs] = useState({
