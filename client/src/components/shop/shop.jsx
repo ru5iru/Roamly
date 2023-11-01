@@ -9,22 +9,38 @@ import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const Shop = () => {
   const [shopDetails, setShopDetails] = useState([]);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const locationValue = queryParams.get("location")
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/server/services/shops?location=Sri")
+      .get(`http://localhost:8000/server/services/shops?location=${locationValue}`)
       .then((response) => {
         setShopDetails(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [locationValue]);
 
   console.log(shopDetails);
+
+  const setImageUrl = (currUrl = '') => {
+    if (currUrl !== null && currUrl.length > 50) {
+       return currUrl;
+    } else if (currUrl !== null) {
+       try {
+          return require("../../../public/upload/" + currUrl);
+       } catch {
+          
+       }
+    }
+ }
 
   return (
     <div>
@@ -32,7 +48,7 @@ const Shop = () => {
         <div className="hotel">
           <div className="cardd">
             <div className="left">
-              <img src={dimuthuStore} alt="Tree" />
+              <img src={setImageUrl(shop.profile_pic)} alt="Tree" />
             </div>
             <div className="right">
               <ul>

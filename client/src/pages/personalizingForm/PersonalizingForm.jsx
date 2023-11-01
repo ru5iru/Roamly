@@ -11,6 +11,7 @@ class PersonalizingForm extends React.Component {
     super(props);
     this.state = {
       selectedType: "", // Initialize with a default type
+      selectedLocation: "",
       selectedTypes: [],
       isOpen: false,
       // name: "",
@@ -18,22 +19,6 @@ class PersonalizingForm extends React.Component {
     this.autocomplete = null;
     this.placesDiv = null; // Added reference to the places div
   }
-
-  // handleLocationChange = (event) => {
-  //   const inputValue = event.target.value;
-  //   this.setState({ name: inputValue }); // Update state with the input value
-  //   // You may want to debounce this function to reduce the number of requests if needed
-
-  //   // Send input value to the back-end for adding/updating
-  //   axios
-  //     .post("http://localhost:8000/server/history", { name: inputValue })
-  //     .then((response) => {
-  //       console.log("History added successfully:", response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error adding history:", error);
-  //     });
-  // };
 
   componentDidMount() {
     this.loadGoogleMapsAPI();
@@ -101,6 +86,11 @@ class PersonalizingForm extends React.Component {
       return;
     }
 
+    const selectedLocation = place.name;
+    this.setState({ selectedLocation });
+
+    console.log(selectedLocation);
+
     const map = new window.google.maps.Map(document.getElementById("map"), {
       center: place.geometry.location,
       zoom: 15,
@@ -131,35 +121,7 @@ class PersonalizingForm extends React.Component {
     );
   };
 
-  // createMarker = (place) => {
-  //   console.log("Creating marker for place:", place);
-
-  //   if (!this.placesDiv) return; // Ensure the div reference exists
-  //   const div = document.createElement("div");
-  //   div.className = "place-item"; // Apply a class for styling
-
-  //   const name = document.createElement("div");
-  //   name.innerHTML = place.name || "Unnamed Place";
-  //   div.appendChild(name);
-
-  //   if (place.photos && place.photos.length > 0) {
-  //     const photoUrl = place.photos[0].getUrl();
-  //     const photo = document.createElement("img");
-  //     photo.src = photoUrl;
-  //     photo.width = 300;
-  //     photo.height = 300;
-  //     div.appendChild(photo);
-  //   } else {
-  //     const photoUrl = "https://via.placeholder.com/150";
-  //     const photo = document.createElement("img");
-  //     photo.src = photoUrl;
-  //     photo.width = 300;
-  //     photo.height = 300;
-  //     div.appendChild(photo);
-  //   }
-
-  //   this.placesDiv.appendChild(div);
-  // };
+  
 
   handlePhotoClick = (placeId) => {
     // Redirect to the "placedetails" page with the placeId as a route parameter
@@ -204,11 +166,6 @@ class PersonalizingForm extends React.Component {
     this.placesDiv.appendChild(link);
   };
 
-  // toggleDropdown = () => {
-  //   this.setState((prevState) => ({
-  //     isDropdownOpen: !prevState.isDropdownOpen,
-  //   }));
-  // };
   toggleDropdown = () => {
     this.setState((prevState) => ({
       isOpen: !prevState.isOpen,
@@ -234,8 +191,7 @@ class PersonalizingForm extends React.Component {
               id="autocomplete"
               placeholder="Enter Location"
               className="form-input"
-              // value={this.state.name}
-              // onChange={this.handleLocationChange}
+              onChange={this.handleTypeChange}
             />
           </div>
         </div>
@@ -490,54 +446,21 @@ class PersonalizingForm extends React.Component {
             </button>
             {this.state.isOpen && (
               <div className="dropdown-content">
-                <a href="#">Hotel</a>
-                <a href="#">Shop</a>
-                <a href="#">Taxi Driver</a>
-                <a href="#">Travel Guide</a>
+                {/* <a href="#">Hotel</a> */}
+                <Link to={`/trip/place/placedetails/hotels?location=${this.state.selectedLocation}`}>Hotel</Link>
+                {/* <a href="#">Shop</a> */}
+                <Link to={`/trip/place/placedetails/shops?location=${this.state.selectedLocation}`}>Shop</Link>
+                {/* <a href="#">Taxi Driver</a> */}
+                <Link to={`/trip/place/placedetails/taxis?location=${this.state.selectedLocation}`}>Taxi Driver</Link>
+                {/* <a href="/trip/place/placedetails/guides?location=${place.place_id}">Travel Guide</a> */}
+                <Link to={`/trip/place/placedetails/guides?location=${this.state.selectedLocation}`}>Travel Guide</Link>
+
               </div>
             )}
           </div>
-
-          {/* <div className="service-div">
-        <button className={`service-bar-container ${isDropdownOpen ? 'hidden' : ''}`} onClick={this.toggleDropdown}>
-          <div className="service-text">Service</div>
-          <div className="bars">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </button>
-        {isDropdownOpen && (
-          <div className="dropdown-content">
-            <button type="hotel" className="buttonl">
-              Hotel
-            </button>
-            <button type="shop" className="buttonl">
-              Shop
-            </button>
-            <button type="travel_guide" className="buttonl">
-              Travel Guide
-            </button>
-            <button type="taxi_driver" className="buttonl">
-              Taxi Driver
-            </button>
-            <div className="close" onClick={this.toggleDropdown}>
-              &#10006;
-            </div>
-          </div>
-        )}
-      </div> */}
         </div>
         <br />
         <br />
-        {/* <div className="row">
-          <div className="row-title">
-            <button className="serviceBtn">Hotels</button>
-            <button className="serviceBtn">Shops</button>
-            <button className="serviceBtn">Travel Guides</button>
-            <button className="serviceBtn">Taxi Drivers</button>
-          </div>
-          </div> */}
         <br />
         {/* <Link to="/trip/place/placedetails"> */}
         <div id="places" ref={(ref) => (this.placesDiv = ref)}></div>

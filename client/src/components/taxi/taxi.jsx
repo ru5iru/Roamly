@@ -5,6 +5,7 @@ import { BiSolidPhoneCall } from "react-icons/bi";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 function TaxiCard(props) {
   const {
@@ -19,10 +20,22 @@ function TaxiCard(props) {
     description,
   } = props;
 
+  const setImageUrl = (currUrl = '') => {
+    if (currUrl !== null && currUrl.length > 50) {
+       return currUrl;
+    } else if (currUrl !== null) {
+       try {
+          return require("../../../public/upload/" + currUrl);
+       } catch {
+          
+       }
+    }
+ }
+
   return (
     <div className="taxi-card">
       <div className="left-section">
-        <img src={photo} alt={name} className="taxi-photo" />
+        <img src={setImageUrl(photo)} alt={name} className="taxi-photo" />
       </div>
       <div className="right-section">
         <div className="details">
@@ -60,10 +73,13 @@ function TaxiCard(props) {
 
 function Taxis() {
   const [taxiDetails, setTaxiDetails] = useState([]);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const locationValue = queryParams.get("location")
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/server/services/taxis?location=Sri")
+      .get(`http://localhost:8000/server/services/taxis?location=${locationValue}`)
       .then((response) => {
         setTaxiDetails(response.data);
       })
@@ -78,7 +94,7 @@ function Taxis() {
         {taxiDetails.map((taxi, index) => (
           <TaxiCard
             key={index}
-            photo={taxi.photo}
+            photo={taxi.profile_pic}
             name={taxi.service_name}
             location={taxi.location}
             ownerf={taxi.firstname}

@@ -4,6 +4,7 @@ import img10 from "../../assets/images/img10.jpg";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import validator from "validator";
+import { toast,ToastContainer  } from 'react-toastify';
 
 export const Signup = () => {
    const [inputs, setInputs] = useState({
@@ -63,17 +64,37 @@ export const Signup = () => {
 
 
       // try {
-      //   // Send signup data
-      //   await axios.post("http://localhost:8000/server/users/register", inputs);
-  
-      //   // Send verification email
-      //   await axios.post(
-      //     "http://localhost:8000/server/users/sendVerificationEmail",
-      //     { email: inputs.email } // Wrap the email in an object
-      //   );
-      // } catch (err) {
-      //   setErr(err.response.data);
-      // }
+      //    // Send signup data
+      //    await axios.post("http://localhost:8000/server/users/register", inputs);
+   
+      //    // Send verification email
+      //    await axios.post(
+      //      "http://localhost:8000/server/users/sendVerificationEmail",
+      //      { email: inputs.email }
+
+      //    )
+      //    .then(response => {
+      //    // Display an alert when the email is successfully sent
+      //    if (response.data.success) {
+      //       alert("Email has been sent!");  //have to put toast
+      //    } else {
+      //       alert("Email has been sent!");
+      //    }
+      //    })
+      //    .catch(error => {
+      //    console.error("Error sending email:", error);
+      //    });
+   
+      //    // If both requests are successful, update success state
+      //    setSuccess(true);
+      //    setErr(null); // Clear any previous errors
+      //  } catch (err) {
+      //    // Handle the error
+      //    console.error("Error:", err);
+   
+      //    // Update error state with a user-friendly message
+      //    setErr("An error occurred during registration.");
+      //  }
 
       try {
          // Send signup data
@@ -83,18 +104,12 @@ export const Signup = () => {
          await axios.post(
            "http://localhost:8000/server/users/sendVerificationEmail",
            { email: inputs.email }
-
-         )
-         .then(response => {
-         // Display an alert when the email is successfully sent
-         if (response.data.success) {
-            alert("Email has been sent!");  //have to put toast
-         } else {
-            alert("Email has been sent!");
-         }
-         })
-         .catch(error => {
-         console.error("Error sending email:", error);
+         );
+   
+         // Display a success toast
+         toast.success('Check your emails!', {
+           position: 'top-right',
+           autoClose: 5000, // You can adjust the duration
          });
    
          // If both requests are successful, update success state
@@ -104,9 +119,17 @@ export const Signup = () => {
          // Handle the error
          console.error("Error:", err);
    
+         // Display an error toast
+         toast.error('An error occurred during registration', {
+           position: 'top-right',
+           autoClose: 5000, // You can adjust the duration
+         });
+   
          // Update error state with a user-friendly message
          setErr("An error occurred during registration.");
        }
+
+
    };
    };
 
@@ -302,6 +325,7 @@ export const Signup = () => {
                </div>
             </div>
          </div>
+         <ToastContainer position="top-center" autoClose={6000} />
       </section>
    );
 };

@@ -7,6 +7,7 @@ import {
   FaLanguage,
   FaBookmark,
 } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 function TravelGuide(props) {
   const {
@@ -20,6 +21,18 @@ function TravelGuide(props) {
     description,
   } = props;
 
+  const setImageUrl = (currUrl = '') => {
+    if (currUrl !== null && currUrl.length > 50) {
+       return currUrl;
+    } else if (currUrl !== null) {
+       try {
+          return require("../../../public/upload/" + currUrl);
+       } catch {
+          
+       }
+    }
+ }
+
   return (
     <div className={`travel-guide-card ${isTopGuide ? "top-guide" : ""}`}>
       {isTopGuide && (
@@ -28,7 +41,7 @@ function TravelGuide(props) {
         </div>
       )}
       <div className="left-section">
-        <img src={photo} alt={fname} className="travel-guide-photo" />
+        <img src={setImageUrl(photo)} alt={fname} className="travel-guide-photo" />
       </div>
       <div className="right-section">
         <div className="details">
@@ -60,9 +73,13 @@ function TravelGuide(props) {
 function Guides() {
   const [guideDetails, setGuideDetails] = useState([]);
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const locationValue = queryParams.get("location")
+
   useEffect(() => {
     axios
-      .get("http://localhost:8000/server/services/guides?location=Sri")
+    .get(`http://localhost:8000/server/services/guides?location=${locationValue}`)
       .then((response) => {
         setGuideDetails(response.data);
       })

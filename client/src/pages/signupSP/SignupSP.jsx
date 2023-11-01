@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./signupSP.scss";
 import img2 from "../../assets/images/img10.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import validator from "validator";
+import { toast, ToastContainer } from "react-toastify";
 
 export const SignupSP = () => {
   const [inputs, setInputs] = useState({
@@ -16,6 +17,7 @@ export const SignupSP = () => {
     servicename: "",
     servicetype: "",
     location: "",
+    contact_no: "",
   });
 
   const [success, setSuccess] = useState(false);
@@ -157,22 +159,18 @@ export const SignupSP = () => {
         );
 
         // Send verification email
-        await axios
-          .post("http://localhost:8000/server/users/sendVerificationEmail", {
+        await axios.post(
+          "http://localhost:8000/server/users/sendVerificationEmail",
+          {
             email: inputs.email,
-          })
+          }
+        );
 
-          .then((response) => {
-            // Display an alert when the email is successfully sent
-            if (response.data.success) {
-              alert("Email has been sent!"); //have to put toast
-            } else {
-              alert("Email has been sent!");
-            }
-          })
-          .catch((error) => {
-            console.error("Error sending email:", error);
-          });
+        // Display a success toast
+        toast.success("Check your emails!", {
+          position: "top-right",
+          autoClose: 5000, // You can adjust the duration
+        });
 
         // If both requests are successful, update success state
         setSuccess(true);
@@ -181,11 +179,52 @@ export const SignupSP = () => {
         // Handle the error
         console.error("Error:", err);
 
+        // Display an error toast
+        toast.error("An error occurred during registration", {
+          position: "top-right",
+          autoClose: 5000, // You can adjust the duration
+        });
+
         // Update error state with a user-friendly message
         setErr("An error occurred during registration.");
       }
     }
   };
+
+  let autocomplete; // Declare the autocomplete variable
+  let selectedPlace = null;
+  let formatted_address;
+
+  // Initialize the autocomplete object
+  useEffect(() => {
+    autocomplete = new window.google.maps.places.Autocomplete(
+      document.getElementById("autocomplete"),
+      {
+        types: ["geocode"],
+      }
+    );
+    // Add a listener for the place_changed event
+    autocomplete.addListener("place_changed", handlePlaceChanged);
+  }, []);
+
+  // Define a function to handle the place_changed event
+  const handlePlaceChanged = () => {
+    if (autocomplete != null) {
+      // Get the selected place from the Autocomplete object
+      selectedPlace = autocomplete.getPlace();
+      
+      // Check if selectedPlace is defined and has a formatted_address property
+      if (selectedPlace && selectedPlace.formatted_address) {
+        console.log(selectedPlace); // This will log the complete selected location data
+        setInputs((prev) => ({
+          ...prev,
+          ["location"]: selectedPlace.formatted_address,
+        }));
+      }
+    }
+  };
+  
+
 
   return (
     <section className="sptext-center">
@@ -197,9 +236,6 @@ export const SignupSP = () => {
                 <h2 className="sptitle">Sign Up as a Service</h2>
                 <form>
                   <div className="sprow ">
-
-
-
                     <div className="spcol">
                       <div className="spform-outline-11">
                         <input
@@ -228,7 +264,6 @@ export const SignupSP = () => {
                         )}
                       </div>
                     </div>
-
 
                     <div className="spcol">
                       <div className="spform-outline-12">
@@ -259,8 +294,6 @@ export const SignupSP = () => {
                       </div>
                     </div>
 
-
-
                     <div className="spform-outline-2">
                       <input
                         type="text"
@@ -276,54 +309,63 @@ export const SignupSP = () => {
                       />
                     </div>
 
-
                     <div className="spcol">
-                    <div className="spform-outline-11">
-                      <select
-                        id="form3Example1"
-                        className="spform-control1"
-                        name="servicetype"
-                        value={serviceType}
-                        onChange={dropdownservice}
-                        // style={{
-                        //   fontFamily: "'Familjen Grotesk', sans-serif",
-                        //   fontSize: "0.9rem",
-                        // }}
-                      >
-                        <option value="">Select Service</option>
-                        <option value="Accommodation">Accommodation</option>
-                        <option value="Travel guide">Travel guide</option>
-                        <option value="Taxi service">Taxi service</option>
-                        <option value="Shop">Shop</option>
-                      </select>
-                    </div>
-                    </div>
-
-
-                    <div className="spcol">
-                    {/* <div className="spform-outline-12"> */}
-                      {renderTypeField()}
-                    {/* </div> */}
-                    </div>
-
-
-                    <div className="spform-outline-2">
-                        <input
-                          type="text"
-                          id="form3Example2"
-                          name="location"
-                          className="spform-control"
-                          placeholder="Location"
-                          onChange={handleChange}
+                      <div className="spform-outline-11">
+                        <select
+                          id="form3Example1"
+                          className="spform-control1"
+                          name="servicetype"
+                          value={serviceType}
+                          onChange={dropdownservice}
                           // style={{
                           //   fontFamily: "'Familjen Grotesk', sans-serif",
                           //   fontSize: "0.9rem",
                           // }}
-                        />
+                        >
+                          <option value="">Select Service</option>
+                          <option value="Accommodation">Accommodation</option>
+                          <option value="Travel guide">Travel guide</option>
+                          <option value="Taxi service">Taxi service</option>
+                          <option value="Shop">Shop</option>
+                        </select>
+                      </div>
                     </div>
-                    {/* </div> */}
 
+                    <div className="spcol">
+                      {/* <div className="spform-outline-12"> */}
+                      {renderTypeField()}
+                      {/* </div> */}
+                    </div>
 
+                    <div className="spform-outline-2">
+                      <input
+                        type="text"
+                        id="autocomplete"
+                        name="location"
+                        className="spform-control"
+                        placeholder="Location"
+                        onChange={handlePlaceChanged}
+                        // style={{
+                        //   fontFamily: "'Familjen Grotesk', sans-serif",
+                        //   fontSize: "0.9rem",
+                        // }}
+                      />
+                    </div>
+
+                    <div className="spform-outline-2">
+                      <input
+                        type="text"
+                        id="form3Example3"
+                        name="contact_no"
+                        className="spform-control"
+                        placeholder="Contact Number"
+                        onChange={handleChange}
+                        // style={{
+                        //   fontFamily: "'Familjen Grotesk', sans-serif",
+                        //   fontSize: "0.9rem",
+                        // }}
+                      />
+                    </div>
 
                     <div className="spform-outline-2">
                       <input
@@ -351,8 +393,6 @@ export const SignupSP = () => {
                         </div>
                       )}
                     </div>
-
-
 
                     <div className="spcol">
                       <div className="spform-outline-11">
@@ -388,8 +428,6 @@ export const SignupSP = () => {
                       </div>
                     </div>
 
-
-
                     <div className="spcol">
                       <div className="spform-outline-12">
                         <input
@@ -412,7 +450,7 @@ export const SignupSP = () => {
                               fontSize: "0.7rem",
                               fontFamily: "'Fira Sans', sans-serif",
                             }}
-                          ><br/>
+                          >
                             {validationErrors.confirmPassword}
                           </div>
                         )}
@@ -420,8 +458,6 @@ export const SignupSP = () => {
                       </div>
                     </div>
                     {/* </div> */}
-
-
 
                     <div className="spform-outline-3">
                       <button
@@ -433,8 +469,6 @@ export const SignupSP = () => {
                       </button>
                     </div>
 
-
-
                     <div className="sptext-left">
                       <p
                         className="spsub"
@@ -444,10 +478,7 @@ export const SignupSP = () => {
                         }}
                       >
                         Already registered?{" "}
-                        <a
-                          href="/login"
-                          className="fw-bold"
-                        >
+                        <a href="/login" className="fw-bold">
                           Login
                         </a>
                       </p>
@@ -460,9 +491,6 @@ export const SignupSP = () => {
                         </a>
                       </p> */}
                     </div>
-
-
-
                   </div>
                 </form>
               </div>
@@ -472,7 +500,9 @@ export const SignupSP = () => {
             <img src={img2} className="spimg" alt="" />
           </div>
         </div>
+        {/* <ToastContainer position="top-center" autoClose={6000} /> */}
       </div>
+      <ToastContainer position="top-center" autoClose={6000} />
     </section>
   );
 };

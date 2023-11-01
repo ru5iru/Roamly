@@ -86,6 +86,7 @@ const registerServices = asyncHandler(
       firstname,
       lastname,
       email,
+      contact_no,
       password,
       usertype,
       servicename,
@@ -107,7 +108,7 @@ const registerServices = asyncHandler(
       }
   
       const userQuery =
-        "INSERT INTO users (firstname, lastname, user_id, email, password_hash, user_type) VALUES ($1, $2, $3, $4, $5, $6) RETURNING firstname, lastname, user_id, email, user_type";
+        "INSERT INTO users (firstname, lastname, user_id, email, contact_no, password_hash, user_type) VALUES ($1, $2, $3, $4, $5, $6) RETURNING firstname, lastname, user_id, email, user_type";
       const serviceProviderQuery =
         "INSERT INTO service_provider (user_id, service_name, service, type, location) VALUES ($1, $2, $3, $4, $5) RETURNING user_id, service_name, service, type, location";
   
@@ -116,6 +117,7 @@ const registerServices = asyncHandler(
         lastname,
         randomUserID,
         email,
+        contact_no,
         hashedPassword,
         usertype
       ]);

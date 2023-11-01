@@ -89,7 +89,7 @@ const registerUser = asyncHandler(async (req, res) => {
 //register new service
 
 const registerService = asyncHandler(async (req, res) => {
-   const { firstname, lastname, email, password, servicename, servicetype, type, location } = req.body;
+   const { firstname, lastname, email, contact_no, password, servicename, servicetype, type, location } = req.body;
 
    const usertype = "Service";
 
@@ -104,7 +104,7 @@ const registerService = asyncHandler(async (req, res) => {
 
       // Register the user and service provider
     const { user, serviceProvider } = await registerServices(
-      firstname, lastname, email, password, usertype, servicename, servicetype, type, location
+      firstname, lastname, email, contact_no, password, usertype, servicename, servicetype, type, location
     );
       
 
@@ -115,6 +115,7 @@ const registerService = asyncHandler(async (req, res) => {
          firstname: user.firstname,
          lastname: user.lastname,
          email: user.email,
+         contact_no: user.contact_no,
          servicename: serviceProvider.service_name,
          servicetype: serviceProvider.service,
          type: serviceProvider.type,

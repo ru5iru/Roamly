@@ -5,14 +5,29 @@ import agoda from "../../assets/images/agoda.png";
 import kayak from "../../assets/images/kayak.png";
 import { FaPhone, FaMapMarkerAlt, FaHotel, FaBookmark } from "react-icons/fa";
 import axios from "axios";
+import { useLocation, useParams } from "react-router-dom";
 
 function HotelCard(props) {
   const { photo, name, phone, location, type } = props;
 
+  console.log(photo)
+
+  const setImageUrl = (currUrl = '') => {
+    if (currUrl !== null && currUrl.length > 50) {
+       return currUrl;
+    } else if (currUrl !== null) {
+       try {
+          return require("../../../public/upload/" + currUrl);
+       } catch {
+          
+       }
+    }
+ }
+
   return (
     <div className="hotel-card">
       <div className="left-section">
-        <img src={photo} alt={name} className="hotel-photo" />
+        <img src={setImageUrl(photo)} alt={name} className="hotel-photo" />
       </div>
       <div className="right-section">
         <div className="details">
@@ -49,10 +64,16 @@ function HotelCard(props) {
 
 function Hotel() {
   const [hotelDetails, setHotelDetails] = useState([]);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const locationValue = queryParams.get("location")
+
+
+
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/server/services/hotels?location=Sri")
+      .get(`http://localhost:8000/server/services/hotels?location=${locationValue}`)
       .then((response) => {
         setHotelDetails(response.data);
       })
@@ -68,7 +89,7 @@ function Hotel() {
       {hotelDetails.map((hotel, index) => (
         <HotelCard
           key={index}
-          photo={hotel.photo}
+          photo={hotel.profile_pic}
           name={hotel.service_name}
           type={hotel.type}
           location={hotel.location}
