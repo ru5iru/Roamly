@@ -11,7 +11,6 @@ class PersonalizingForm extends React.Component {
     super(props);
     this.state = {
       selectedType: "", // Initialize with a default type
-      selectedLocation: "",
       selectedTypes: [],
       isOpen: false,
       // name: "",
@@ -19,6 +18,36 @@ class PersonalizingForm extends React.Component {
     this.autocomplete = null;
     this.placesDiv = null; // Added reference to the places div
   }
+
+  // handleLocationChange = (event) => {
+  //   const inputValue = event.target.value;
+  //   this.setState({ name: inputValue }); // Update state with the input value
+  //   // You may want to debounce this function to reduce the number of requests if needed
+
+  //   // Send input value to the back-end for adding/updating
+  //   axios
+  //     .post("http://localhost:8000/server/history", { name: inputValue })
+  //     .then((response) => {
+  //       console.log("History added successfully:", response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error adding history:", error);
+  //     });
+  // };
+
+  handleSubmit = async () => {
+    const { name } = this.autocomplete;
+    try {
+      const response = await axios.post("/history", { name });
+      // Handle the response here as needed
+      console.log("Successfully submitted:", response.data);
+    } catch (error) {
+      // Handle the error
+      console.error("Error submitting:", error);
+    }
+  };
+
+  
 
   componentDidMount() {
     this.loadGoogleMapsAPI();
@@ -77,19 +106,21 @@ class PersonalizingForm extends React.Component {
 
   n;
   searchNearbyPlaces = () => {
-    if (!this.placesDiv) return; // Ensure the div reference exists
-    this.placesDiv.innerHTML = ""; // Clear the content of the div
     const place = this.autocomplete.getPlace();
+    if (
+      !this.placesDiv || !place.photos || place.photos.length === 0 || !this.state.selectedType
+      // || // Ensure photos are available
+      // !this.state.selectedType || // Ensure an activity is selected
+      // !this.state.autocomplete // Ensure a location is typed
+    ) {
+      return;
+    }    this.placesDiv.innerHTML = ""; // Clear the content of the div
 
     if (!place || !place.geometry) {
+      // this.placesDiv.innerHTML = "Place information is not available.";
       console.error("Place information is not available.");
       return;
     }
-
-    const selectedLocation = place.name;
-    this.setState({ selectedLocation });
-
-    console.log(selectedLocation);
 
     const map = new window.google.maps.Map(document.getElementById("map"), {
       center: place.geometry.location,
@@ -121,8 +152,6 @@ class PersonalizingForm extends React.Component {
     );
   };
 
-  
-
   handlePhotoClick = (placeId) => {
     // Redirect to the "placedetails" page with the placeId as a route parameter
     window.location.href = `/trip/place/placedetails/${placeId}`;
@@ -131,7 +160,21 @@ class PersonalizingForm extends React.Component {
   createMarker = (place) => {
     console.log("Creating marker for place:", place);
 
-    if (!this.placesDiv) return; // Ensure the div reference exists
+    // if (!this.placesDiv || !place.photos || place.photos.length === 0) {
+    //   // Ensure the div reference exists and photos are available
+    //   return;
+    // }  
+
+    if (
+      !this.placesDiv || // Ensure the div reference exists
+      !place.photos || place.photos.length === 0 
+      // || // Ensure photos are available
+      // !this.state.selectedType || // Ensure an activity is selected
+      // !this.state.autocomplete // Ensure a location is typed
+    ) {
+      return;
+    }
+
     const div = document.createElement("div");
     div.className = "place-item"; // Apply a class for styling
 
@@ -164,8 +207,15 @@ class PersonalizingForm extends React.Component {
     link.appendChild(div);
 
     this.placesDiv.appendChild(link);
+
+    
   };
 
+  // toggleDropdown = () => {
+  //   this.setState((prevState) => ({
+  //     isDropdownOpen: !prevState.isDropdownOpen,
+  //   }));
+  // };
   toggleDropdown = () => {
     this.setState((prevState) => ({
       isOpen: !prevState.isOpen,
@@ -180,18 +230,20 @@ class PersonalizingForm extends React.Component {
         <br />
         <br />
         <br />
-        <div className="title">Tell us your travel preferences...</div>
+        <div className="title">Tell us your travel preferences...</div><br />
         <div id="map"></div>
         <div className="row">
           <div className="row-title">
             What is destination of choice?
             <br />
+            {/* <br /> */}
             <input
               type="text"
               id="autocomplete"
               placeholder="Enter Location"
               className="form-input"
-              onChange={this.handleTypeChange}
+              // value={this.state.name}
+              // onChange={this.handleLocationChange}
             />
           </div>
         </div>
@@ -434,7 +486,7 @@ class PersonalizingForm extends React.Component {
             </div>
           </div>
           <br />
-          <div className="row-title">What services you want to explore?</div>
+          <div className="row-title">Explore our Services </div>
           <div className="dropdown">
             <button onClick={this.toggleDropdown}>
               Services &nbsp;
@@ -446,21 +498,24 @@ class PersonalizingForm extends React.Component {
             </button>
             {this.state.isOpen && (
               <div className="dropdown-content">
-                {/* <a href="#">Hotel</a> */}
-                <Link to={`/trip/place/placedetails/hotels?location=${this.state.selectedLocation}`}>Hotel</Link>
-                {/* <a href="#">Shop</a> */}
-                <Link to={`/trip/place/placedetails/shops?location=${this.state.selectedLocation}`}>Shop</Link>
-                {/* <a href="#">Taxi Driver</a> */}
-                <Link to={`/trip/place/placedetails/taxis?location=${this.state.selectedLocation}`}>Taxi Driver</Link>
-                {/* <a href="/trip/place/placedetails/guides?location=${place.place_id}">Travel Guide</a> */}
-                <Link to={`/trip/place/placedetails/guides?location=${this.state.selectedLocation}`}>Travel Guide</Link>
-
+                <a href="#">Hotel</a>
+                <a href="#">Shop</a>
+                <a href="#">Taxi Driver</a>
+                <a href="#">Travel Guide</a>
               </div>
             )}
           </div>
         </div>
         <br />
         <br />
+        {/* <div className="row">
+          <div className="row-title">
+            <button className="serviceBtn">Hotels</button>
+            <button className="serviceBtn">Shops</button>
+            <button className="serviceBtn">Travel Guides</button>
+            <button className="serviceBtn">Taxi Drivers</button>
+          </div>
+          </div> */}
         <br />
         {/* <Link to="/trip/place/placedetails"> */}
         <div id="places" ref={(ref) => (this.placesDiv = ref)}></div>

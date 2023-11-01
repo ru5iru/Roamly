@@ -1,10 +1,9 @@
 .modify-advertisement {
-
     h2 {
         color: black;
     }
 
-    .adv-form {
+    // .adv-form {
 
         .adv-field {
             display: flex;
@@ -21,6 +20,32 @@
                 border: 1px solid #ccc;
                 padding: 5px;
             }
+            .imgContainer {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+                width: 50vh;
+                height: 20vh;
+                border: 1px #cccccc;
+                img {
+                   width: 20vh;
+                   height: 20vh;
+                   object-fit: cover;
+                }
+                .icon {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    font-size: 35px;
+                    color: rgb(13, 8, 47);
+                    cursor: pointer;
+                 }
+             }
 
         }
 
@@ -34,5 +59,5 @@
             background-color: #065573;
             width: 100%;
         }
-    }
+    // }
 }
