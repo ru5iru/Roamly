@@ -9,6 +9,8 @@ import multer from "multer";
 import { connectDB } from "./config/db.js";
 const port = process.env.PORT || 5000;
 
+import { Server } from 'socket.io';
+
 // routes
 import userRoutes from "./routes/userRoutes.js";
 import badgeRoutes from "./routes/badgeRoutes.js";
@@ -63,6 +65,51 @@ app.post("/server/upload", upload.single("file"), (req, res) => {
    res.status(200).json(file.filename);
 });
 
+const io = new Server({
+    cors:{
+        origin:"http://localhost:3000"
+    }
+});
+
+let onlineUsers=[];
+
+const addNewUser = (userEmail, socketId)=>{
+    !onlineUsers.some((user)=>user.userEmail === userEmail) && 
+    onlineUsers.push({userEmail, socketId});   
+};
+
+const removeUser =(socketId) =>{
+    onlineUsers = onlineUsers.filter((user)=>user.socketId !== socketId); 
+};
+
+const getUser =(userEmail) => {
+    return onlineUsers.find((user)=>user.userEmail === userEmail);
+
+};
+
+io.on("connection",(socket)=>{
+    socket.on("newUser", (userEmail)=>{
+        addNewUser(userEmail, socket.id);
+
+        
+    });
+
+    socket.on("sendNotification", ({senderName,receiverEmail,type})=>{
+        const receiver = getUser(receiverEmail)
+        io.to(receiver?.socketId).emit("getNotification", {
+            senderName,
+            type,
+        });
+    });
+
+
+    socket.on("disconnect",()=>{
+        removeUser(socket.id);
+    });
+
+});
+
+
 // user routes
 app.use("/server/users", userRoutes);
 
@@ -102,3 +149,5 @@ app.use(errorHandler);
 app.listen(port, () => {
    console.log(`Server is running on port: ${port}`);
 });
+
+io.listen(5000);
