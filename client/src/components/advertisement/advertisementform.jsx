@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 
 import "./advertisementform.scss";
-import ImageUpload from "./ImageUpload";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 import { AuthContext } from "../../context/authContext";
