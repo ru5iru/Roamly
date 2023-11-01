@@ -40,6 +40,8 @@ import ResetPW from "./pages/resetPW/ResetPW";
 import HeaderTravel from "./components/header/HeaderTravel";
 import Verification from "./pages/signup/Verification";
 import SignupSP from "./pages/signupSP/SignupSP";
+import Payment from "./pages/payment/payment";
+import HeaderService from "./components/header/headerService";
 // import Interests from "./pages/Interests/Interests";
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
@@ -134,13 +136,30 @@ function App() {
 
   const Ads = () => {
     return (
+      <QueryClientProvider client={queryClient}>
+        <div style={{ top: "4rem" }}>
+          <HeaderService />
+          <div style={{ display: "flex", position: "relative", top: "4rem" }}>
+            {/* <LeftBarSp /> */}
+            <div style={{ display: "flex", position: "relative" }}>
+              {/* <LeftBarhs /> */}
+              <AdvertisementPage />
+            </div>
+          </div>
+        </div>
+      </QueryClientProvider>
+    );
+  };
+
+  const Payments = () => {
+    return (
       <div>
         <NavBar />
         <div style={{ display: "flex", position: "relative", top: "4rem" }}>
           <LeftBarSp />
           <div style={{ display: "flex", position: "relative", left: "298px" }}>
             <LeftBarhs />
-            <AdvertisementPage />
+            <Payment />
           </div>
         </div>
       </div>
@@ -251,8 +270,8 @@ function App() {
           element: <Verification />,
         },
         {
-            path: "/signupsp",
-            element: <SignupSP />,
+          path: "/signupsp",
+          element: <SignupSP />,
         },
         // {
         //     path: "/interets",

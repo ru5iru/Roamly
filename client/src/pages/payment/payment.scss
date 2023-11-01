@@ -1,0 +1,23 @@
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* This ensures the container takes at least the full viewport height */
+    // background-color: #f0f0f0; /* Replace with your desired background color */
+    margin-left: 400px;
+  
+  .payment-container {
+    text-align: center;
+    padding: 20px;
+  
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    stripe-buy-button {
+      /* Your button styling here */
+    }
+  }
+}
+  

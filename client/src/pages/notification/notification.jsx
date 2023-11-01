@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./notification.scss";
-import Payment from "../payment/Payment";
+import Payment from "../payment/payment";
 import { useNavigate } from "react-router-dom";
 
 const notificationsData = [
