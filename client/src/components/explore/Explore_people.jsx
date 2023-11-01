@@ -10,6 +10,18 @@ const UserProfile = ({ user }) => {
         return date.toLocaleDateString('en-US', options);
     };
 
+    const setImageUrl = (currUrl = '') => {
+        if (currUrl !== null && currUrl.length > 50) {
+           return currUrl;
+        } else if (currUrl !== null) {
+           try {
+              return require("../../../public/upload/" + currUrl);
+           } catch {
+              
+           }
+        }
+     }
+
     const navigate = useNavigate();
 
     const handleNameClick = () => {
@@ -20,7 +32,7 @@ const UserProfile = ({ user }) => {
     return (
         <div className="user-profile">
             <div className="user-profile-img">
-                <img src={user.profile_pic} alt={user.username} />
+                <img src={setImageUrl(user.profile_pic)} alt={user.username} />
             </div>
             <div className="user-profile-details">
                 <div className="user-profile-name">

@@ -58,7 +58,11 @@ const searchPosts = asyncHandler(async (phrase) => {
 // add post
 const savePost = asyncHandler(async (user_id, content, img) => {
 
-    const image = img;
+    let image = img;
+
+    if(image === ""){
+        image = null;
+    }
 
     function generateRandomPostID( user_id ){
         let randomID = Math.floor(Math.random() * 90000) + 10000;

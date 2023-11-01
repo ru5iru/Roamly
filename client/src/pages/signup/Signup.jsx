@@ -64,40 +64,6 @@ export const Signup = () => {
     } else {
       setValidationErrors({});
 
-
-      // try {
-      //    // Send signup data
-      //    await axios.post("http://localhost:8000/server/users/register", inputs);
-   
-      //    // Send verification email
-      //    await axios.post(
-      //      "http://localhost:8000/server/users/sendVerificationEmail",
-      //      { email: inputs.email }
-
-      //    )
-      //    .then(response => {
-      //    // Display an alert when the email is successfully sent
-      //    if (response.data.success) {
-      //       alert("Email has been sent!");  //have to put toast
-      //    } else {
-      //       alert("Email has been sent!");
-      //    }
-      //    })
-      //    .catch(error => {
-      //    console.error("Error sending email:", error);
-      //    });
-   
-      //    // If both requests are successful, update success state
-      //    setSuccess(true);
-      //    setErr(null); // Clear any previous errors
-      //  } catch (err) {
-      //    // Handle the error
-      //    console.error("Error:", err);
-   
-      //    // Update error state with a user-friendly message
-      //    setErr("An error occurred during registration.");
-      //  }
-
       try {
          // Send signup data
          await axios.post("http://localhost:8000/server/users/register", inputs);
