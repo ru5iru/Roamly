@@ -18,7 +18,7 @@
 
 .sidebar{
     flex:3;
-    // border-right: 1px solid #3e3c61;
+    border-right: 1px solid lightblue;
     background-color: aliceblue; 
     // width: 100px;  
     overflow-y: scroll;
@@ -87,7 +87,7 @@
                 
                 &::placeholder{
                     color:gray;
-                    font-size: 150%;
+                    font-size: 120%;
                     // margin-left: 10px;  
                 }
 
@@ -307,7 +307,7 @@
             img{
                 height: 24px;
                 cursor: pointer;
-                margin-left: 20px;
+                // margin-left: 20px;
             }
 
             button{
