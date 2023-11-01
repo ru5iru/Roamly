@@ -20,7 +20,7 @@
 
     .sidebarth {
       margin-top: 10vh;
-      width: 15vw;
+      width: 16vw;
       height: 90vh;
       background-color: #242424;
       color: white;
@@ -138,6 +138,9 @@
 
     .loginth {
       // Loginh styles here
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
       a {
         text-decoration: none;

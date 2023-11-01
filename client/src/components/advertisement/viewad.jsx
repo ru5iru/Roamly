@@ -6,7 +6,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import EditAdvertisement from "./editadvertisement";
 import DeleteAdvertisement from "./dltadv";
-
+// import ad from "../../upload/"
 export const ViewAdd = ({ advertisement }) => {
   const [isDltModalOpen, setIsDltModalOpen] = useState(false);
   const [iseditModalOpen, setIsEditModalOpen] = useState(false);
@@ -29,15 +29,28 @@ export const ViewAdd = ({ advertisement }) => {
     setIsDltModalOpen(false);
   };
 
+  const setImageUrl = (currUrl = '') => {
+    if (currUrl !== null && currUrl.length > 50) {
+       return currUrl;
+    } else if (currUrl !== null) {
+       try {
+          return require("../../../public/upload/" + currUrl);
+       } catch {
+          
+       }
+    }
+ }
+
   return (
     <div className="view-ad">
       <div className="ad-whole-up">
-        <h2 className="ad-title">{advertisement.title}</h2>
-        
+        <h2 className="ad-title">{advertisement.title}</h2>       
       </div>
       <div className="ad-whole-bottom">
         <div className="ad-up">
-          <img src={advertisement.ad_media} alt="Advertisement" />
+        <img src={advertisement.ad_media ? setImageUrl(advertisement.ad_media) : ""} alt="" />
+        {/* <img src={`../../upload/${advertisement.ad_media}`} alt={advertisement.ad_media} />
+        <img src="../../upload/1698812482611.png" alt={advertisement.ad_media} /> */}
           <p className="ad-details">{advertisement.details}</p>
         </div>
         <div className="ad-bottom">

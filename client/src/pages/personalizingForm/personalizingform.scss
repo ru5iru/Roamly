@@ -36,6 +36,7 @@ $primary-color: #141f86;
             color: #4f4f4f;
 
             .form-input {
+                margin-top: 8px;
                 font-family: "Fira Sans", sans-serif;
                 font-size: 0.9rem;
                 border-radius: 0.5rem;
@@ -164,7 +165,7 @@ $primary-color: #141f86;
         .container-rbuttons {
             .radio-tile-group {
                 display: grid;
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(8, 1fr);
                 grid-auto-rows: minmax(7rem, 1fr);
                 gap: 1rem;
                 // grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); /* Responsive grid layout */

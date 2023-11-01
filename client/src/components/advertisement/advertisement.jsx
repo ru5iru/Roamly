@@ -1,18 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import ViewAdd from "./viewad"; // Import the correct path for ViewAdd
 import hotelAd3 from "../../assets/images/hotel-ad-2.jpg";
 import "./advertisement.scss";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
+import { AuthContext } from "../../context/authContext";
 
-const Advertisement = ({image}) => {
+const Advertisement = ({ image }) => {
   const [advertisementData, setAdvertisements] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAdvertisement, setSelectedAdvertisement] = useState(null);
+  const { currentUser } = useContext(AuthContext);
+
+//   useEffect(() => {
+//     if (currentUser.user_id) {
+//         axios.get("/ads/useradvertisements" + currentUser.user_id).then((response) => {
+//             setAdvertisements(response.data);
+//         });
+//     }
+// }, [currentUser.user_id]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/server/ads/advertisements")
+      .get(
+        `http://localhost:8000/server/ads/advertisements`
+        // `http://localhost:8000/server/ads/useradvertisements?userId=${currentUser.user_id}`
+      )
       .then((response) => {
         setAdvertisements(response.data);
       })
@@ -20,6 +33,16 @@ const Advertisement = ({image}) => {
         console.error(error);
       });
   }, []);
+
+  const setImageUrl = (currUrl = "") => {
+    if (currUrl !== null && currUrl.length > 50) {
+      return currUrl;
+    } else if (currUrl !== null) {
+      try {
+        return require("../../../public/upload/" + currUrl);
+      } catch {}
+    }
+  };
 
   const handleAdvertisementClick = (ad) => {
     setSelectedAdvertisement(ad);
@@ -31,7 +54,7 @@ const Advertisement = ({image}) => {
     setSelectedAdvertisement(null);
     setIsModalOpen(false);
   };
- 
+
   return (
     <div className="advertisement-container">
       {isModalOpen && (
@@ -51,11 +74,16 @@ const Advertisement = ({image}) => {
           onClick={() => handleAdvertisementClick(ad)}
         >
           <div className="up">
-            <img src={ad.ad_media} alt="advertisement" />
+            <img src={ad.ad_media ? setImageUrl(ad.ad_media) : ""} alt="" />
+
+            {/* <img src={ad.ad_media} alt="advertisement" /> */}
           </div>
           <div className="bottom">
             <h4 className="ad-title">{ad.title}</h4>
-            <h5 className="ad-number"><PhoneInTalkIcon />012-3456789</h5>
+            <h5 className="ad-number">
+              <PhoneInTalkIcon />
+              012-3456789
+            </h5>
           </div>
         </div>
       ))}

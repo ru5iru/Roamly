@@ -1,5 +1,5 @@
 // import pool from "../connect.js";
-import { getAllAds, saveAd, deleteAd, getAllAdsFeed, getAd, updateAd } from "../models/adsModel.js"
+import { getAllAds, saveAd, deleteAd, getAllAdsFeed, getAd, updateAd, getUserAd } from "../models/adsModel.js"
 import asyncHandler from "express-async-handler";
 import multer from 'multer';
 import path from 'path';
@@ -27,6 +27,18 @@ const getAdById = asyncHandler(async (req, res) => {
     }
   });
   
+  const userAds = asyncHandler(async (req, res) => {
+    const ads = await getUserAd(req.query.id);
+ console.log(id)
+    if (ads.length > 0) {
+       res.status(200).json(ads);
+    } else {
+       res.status(404);
+       throw new Error("Posts not found");
+    }
+ });
+
+
 // Multer storage configuration for image uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -40,32 +52,46 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// const addAd = asyncHandler(async (req, res) => {
+//   const { title, description, details } = req.body;
+
+//   // Handle the file upload using multer middleware
+//   upload.single('file')(req, res, async (err) => {
+//       if (err) {
+//           return res.status(400).json({ message: 'Error uploading the file' });
+//       }
+
+//       // Check if an image was uploaded
+//       if (!req.file) {
+//           res.status(400).json({ message: 'No image uploaded' });
+//           return;
+//       }
+
+//       // Save the image file information and advertisement data to the database
+//       const ad = await saveAd(title, description, details, req.file);
+
+//       if (ad.rows.length > 0) {
+//           res.status(201).json(ad.rows[0]);
+//       } else {
+//           res.status(400).json({ message: 'Invalid user data' });
+//       }
+//   });
+// });
+
 const addAd = asyncHandler(async (req, res) => {
-  const { title, description, details } = req.body;
+    const { user_id, title, description, details, img } = req.body;
 
-  // Handle the file upload using multer middleware
-  upload.single('file')(req, res, async (err) => {
-      if (err) {
-          return res.status(400).json({ message: 'Error uploading the file' });
-      }
+    const ad = await saveAd(user_id, title, description, details, img);
 
-      // Check if an image was uploaded
-      if (!req.file) {
-          res.status(400).json({ message: 'No image uploaded' });
-          return;
-      }
-
-      // Save the image file information and advertisement data to the database
-      const ad = await saveAd(title, description, details, req.file);
-
-      if (ad.rows.length > 0) {
-          res.status(201).json(ad.rows[0]);
-      } else {
-          res.status(400).json({ message: 'Invalid user data' });
-      }
-  });
+    if (ad.rowCount > 0) {
+       // You may generate a token here if needed for authentication
+       res.status(201).json({
+          user_id: ad.rows[0].user_id,
+       });
+    } else {
+       res.status(400).json({ error: "Error" });
+    }
 });
-
 
 // const addAd = asyncHandler(async (req, res) => {
 //     const { title, description, details, ad_image } = req.body;
@@ -133,4 +159,4 @@ const getAdsFeed = asyncHandler(async (req, res) => {
     }
 });
 
-export { getAds, addAd, removeAds, getAdsFeed, getAdById, updateAdvertisement };
+export { getAds, addAd, removeAds, getAdsFeed, getAdById, updateAdvertisement,userAds };

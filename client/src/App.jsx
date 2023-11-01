@@ -42,6 +42,10 @@ import SignupSP from "./pages/signupSP/SignupSP";
 import Payment from "./pages/payment/Payment";
 import Notification from "./pages/notification/notification";
 import PersonalizingForm from "./pages/personalizingForm/PersonalizingForm";
+import HeaderService from "./components/header/HeaderService";
+import DashBoardPage from "./pages/dashboard/dashboardPage";
+import ReportsPage from "./pages/reports/reportsPage";
+import HotelProfile from "./pages/profile/hotelProfile";
 // import Interests from "./pages/Interests/Interests";
 
 axios.defaults.baseURL = "http://localhost:8000/server/";
@@ -92,6 +96,26 @@ function App() {
     );
   };
 
+  const HotelProfilePage = () => {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <div className={`theme-${darkMode ? "dark" : "light"}`}>
+          <NavBar />
+          <div
+            style={{
+              display: "flex",
+              position: "relative",
+              top: "4rem",
+              justifyContent: "center",
+            }}
+          >
+            <HotelProfile />
+          </div>
+        </div>
+      </QueryClientProvider>
+    );
+  };
+
   const Feed = () => {
     return (
       <QueryClientProvider client={queryClient}>
@@ -136,13 +160,45 @@ function App() {
 
   const Ads = () => {
     return (
-      <div>
-        <NavBar />
+      <QueryClientProvider client={queryClient}>
+      <div style={{ top: "4rem" }}>
+        <HeaderService />
         <div style={{ display: "flex", position: "relative", top: "4rem" }}>
-          <LeftBarSp />
-          <div style={{ display: "flex", position: "relative", left: "298px" }}>
-            <LeftBarhs />
+          {/* <LeftBarSp /> */}
+          <div style={{ display: "flex", position: "relative" }}>
+            {/* <LeftBarhs /> */}
             <AdvertisementPage />
+          </div>
+        </div>
+      </div>
+      </QueryClientProvider>
+    );
+  };
+
+  const Dash = () => {
+    return (
+      <div style={{ top: "4rem" }}>
+        <HeaderService />
+        <div style={{ display: "flex", position: "relative", top: "4rem" }}>
+          {/* <LeftBarSp /> */}
+          <div style={{ display: "flex", position: "relative" }}>
+            {/* <LeftBarhs /> */}
+            <DashBoardPage />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const Reports = () => {
+    return (
+      <div style={{ top: "4rem" }}>
+        <HeaderService />
+        <div style={{ display: "flex", position: "relative", top: "4rem" }}>
+          {/* <LeftBarSp /> */}
+          <div style={{ display: "flex", position: "relative" }}>
+            {/* <LeftBarhs /> */}
+            <ReportsPage />
           </div>
         </div>
       </div>
@@ -301,6 +357,14 @@ function App() {
       ),
     },
     {
+      path: "/hotelprofile/:id",
+      element: (
+        <ProtectedRoute>
+          <HotelProfilePage />
+        </ProtectedRoute>
+      ),
+    },
+    {
       path: "/feed",
       element: <Feed />,
     },
@@ -315,6 +379,14 @@ function App() {
     {
       path: "advertisements/payments",
       element: <Payments />,
+    },
+    {
+      path: "/dashboard",
+      element: <Dash />,
+    },
+    {
+      path: "/reports",
+      element: <Reports />,
     },
     {
       path: "/notification",

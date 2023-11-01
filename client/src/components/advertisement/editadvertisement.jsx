@@ -24,18 +24,6 @@ const EditAdvertisement = ({ adId }) => {
   }, [adId]);
   
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const updatedAdvertisement = { title, description, details };
-  //   axios.put(`http://localhost:8000/server/ads/advertisements/${adId}`, updatedAdvertisement)
-  //     .then((response) => {
-  //       console.log('Advertisement updated successfully:', response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error updating advertisement:', error);
-  //     });
-  // };
-
   const handleSubmit = (event) => {
     event.preventDefault();
   

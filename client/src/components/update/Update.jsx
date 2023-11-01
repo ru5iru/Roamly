@@ -6,22 +6,6 @@ const Update = ({ setOpenUpdate }) => {
       <div className="update">
          <div className="update-wrapper">
             <div className="update-head">Update Profile</div>
-            <div className="files">
-               <label htmlFor="cover">
-                  <span>Cover Picture</span>
-                  <div className="imgContainer">
-                     <CloudUploadIcon className="icon" />
-                  </div>
-               </label>
-               <input type="file" id="cover" style={{ display: "none" }} />
-               <label htmlFor="profile">
-                  <span>Profile Picture</span>
-                  <div className="imgContainer">
-                     <CloudUploadIcon className="icon" />
-                  </div>
-               </label>
-               <input type="file" id="profile" style={{ display: "none" }} />
-            </div>
             <div className="name-container">
                <div className="fname">
                   <label>First Name</label>

@@ -14,6 +14,7 @@
          display: flex;
          flex-direction: row;
          align-items: center;
+         position: relative;
          -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
          -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
          box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
@@ -38,6 +39,55 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+         }
+
+         .badge {
+            position: absolute;
+            top: 1rem;
+            right: 2.7vh;
+
+            .upp-container {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               width: auto;
+               height: auto;
+               border-radius: 5px;
+               background-color: #f3fbfe !important;
+               margin: 0 !important;
+               font-size: 1rem;
+               color: #777777;
+
+               .upp-circle {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  vertical-align: middle;
+                  width: auto;
+                  height: auto;
+                  // border-radius: 50%;
+
+                  .upp-content {
+                     font-size: 1.7rem;
+                     display: flex;
+                     justify-content: center;
+                     align-items: center;
+                     font-size: 1rem;
+                     font-weight: 500;
+                     gap: 5px;
+                     margin: 5px;
+
+                     .upp-img {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                     }
+                  }
+               }
+            }
+
+            .upp-container:hover{
+               background-color: #eee !important;
+            }
          }
       }
       .profileContainer {
@@ -65,7 +115,7 @@
             -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
             -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
             box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-            border-radius: 20px;
+            border-radius: 10px;
             background-color: themed("bg");
             color: themed("textColor");
             padding: 6vh;
@@ -107,6 +157,10 @@
                gap: 15px;
                margin-left: 1rem;
 
+               @media (max-width: 768px) {
+                  margin-left: 0rem;
+               }
+
                .profileImg {
                   display: flex;
                   align-items: center;
@@ -122,7 +176,43 @@
                   .badge {
                      position: absolute;
                      bottom: 0;
-                     right: 1.5vh;
+                     right: 2.7vh;
+
+                     .upp-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background-color: #f3fbfe !important;
+                        margin: 0 !important;
+
+                        .upp-circle {
+                           display: flex;
+                           justify-content: center;
+                           align-items: center;
+                           vertical-align: middle;
+                           width: 40px;
+                           height: 40px;
+                           border-radius: 50%;
+
+                           .upp-content {
+                              font-size: 1.7rem;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+
+                              .upp-img {
+                                 width: 1.5rem;
+                                 height: 1.5rem;
+                              }
+                           }
+                        }
+                     }
+                     .upp-container:hover{
+                        background-color: #eee !important;
+                     }
                   }
                }
 
@@ -262,9 +352,8 @@
                            font-size: 0.75rem;
                            padding: 0.5rem 0rem;
                            cursor: pointer;
-                           
                         }
-                        button:hover{
+                        button:hover {
                            background-color: #ecf7ff;
                         }
                      }
@@ -311,7 +400,7 @@
                      }
                   }
 
-                  button:hover{
+                  button:hover {
                      background-color: #bbbbbb;
                   }
                }
@@ -365,7 +454,7 @@
                      }
                   }
 
-                  button:hover{
+                  button:hover {
                      background-color: #3c88eb;
                   }
                }
@@ -404,53 +493,13 @@
                   flex-direction: column;
                }
 
-               .interests {
-                  height: auto;
-                  padding: 1.5rem;
-                  display: flex;
-                  flex-direction: column;
-                  gap: 0.75rem;
-                  border-radius: 20px;
-                  background-color: white;
-                  -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-                  -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-                  box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-
-                  @media (min-width: 700px) {
-                     flex: 1;
-                     height: fit-content;
-                  }
-
-                  @media (min-width: 992px) {
-                     height: auto;
-                     flex: initial;
-                  }
-
-                  .interestHead {
-                     color: #2d3846;
-                     font-weight: 600;
-                     font-size: 1.25rem;
-                  }
-                  .interestContainer {
-                     display: flex;
-                     flex-wrap: wrap;
-
-                     .interest {
-                        border: 2px solid #16b4f1;
-                        padding: 0.1rem 1rem;
-                        margin: 3px;
-                        border-radius: 20px;
-                     }
-                  }
-               }
-
                .uploads {
-                  height: auto;
+                  height: fit-content;
                   padding: 1.5rem;
                   display: flex;
                   flex-direction: column;
                   gap: 0.75rem;
-                  border-radius: 20px;
+                  border-radius: 10px;
                   background-color: white;
                   -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
                   -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);

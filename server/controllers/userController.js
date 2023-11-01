@@ -33,6 +33,7 @@ const loginUser = asyncHandler(async (req, res) => {
          firstname: user.firstname,
          lastname: user.lastname,
          user_id: user.user_id,
+         user_type: user.user_type,
          email: user.email,
          profile_pic: user.profile_pic,
          cover_pic: user.cover_pic,

@@ -1,0 +1,15 @@
+.ratingposts{
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   width: 100%;
+
+   .empty{
+       display: flex;
+       justify-content: center;
+       margin-top: 1rem;
+       font-size: 1.2rem;
+       font-weight: 500;
+       color: #2d3846;
+   }
+}
