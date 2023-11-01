@@ -92,8 +92,16 @@ const getAdvFD = asyncHandler(async () => {
 });
 
 const saveAdmin = asyncHandler(async (firstname, lastname, email, contact_no, gender, username, password) => {
-    const admin_id = Math.floor(Math.random() * 1000000000);
 
+    // Retrieve the current maximum admin_id from the database
+    const getMaxAdminIdSql = "SELECT MAX(admin_id) FROM admin";
+    const maxAdminIdResult = await query(getMaxAdminIdSql);
+    
+    // Calculate the new admin_id by adding 1 to the current maximum
+    const currentMaxAdminId = maxAdminIdResult.rows[0].max || 0; // Default to 0 if there are no existing admins
+    const admin_id = currentMaxAdminId + 1;
+
+    // Insert the new admin with the calculated admin_id
     const sql =
         "INSERT INTO admin (admin_id, firstname, lastname, email, contact_no, gender, username, password) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *";
     const result = await query(sql, [

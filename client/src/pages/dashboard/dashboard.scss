@@ -13,9 +13,13 @@
     margin: 10px;
     .stat{
         display: flex;
+        flex-direction: column;
+        h1{
+            color: #2B3674;
+        }
         .stat-item{
             width: 350px;
-            height: 150px;
+            height: 100px;
             background-color: #ffffff;
             border-radius: 5px;
             display: flex;
@@ -25,11 +29,11 @@
             margin: 0 5px 10px 5px;
             color: #2B3674;
             .stat-item-title{
-                font-size: 25px;
+                font-size: 22px;
                 font-family: 'klavika-medium';
             }
             .stat-item-value{
-                font-size: 30px;
+                font-size: 25px;
                 font-family: 'klavika-light';
             }
             &:hover{
@@ -40,7 +44,7 @@
     }
     .chart{
         width: 100%;
-        height: 470px;
+        height: 520px;
         background-color: #ECFBFE;
         border-radius: 5px;
         display: flex;
@@ -55,67 +59,11 @@
             display: flex;
             flex-direction: column;
             h3{
-                font-size: 35px;
+                font-size: 28px;
                 font-family: 'klavika-middium';
                 color: #0D1669;
                 text-align: center;
                 padding: 15px;
-            }
-            .traffic{
-                display: flex;
-                flex-direction: column;
-                width: 80%;
-                height: 100%;
-                align-items: center;
-                .daily{
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    margin: 10px 10px 0 10px;
-                    font-family: 'DM Sans';
-                    h4{
-                        font-size: 25px;
-                        //font-family: 'DM Sans';
-                        color: #A3AED0;
-                    }
-                    .count{
-                        display: flex;
-                        color: #05CD99;
-                        font-size: 20px;
-                        margin: 10px;
-                        //font-family: 'DM Sans';
-                    }
-                }
-                .visitors{
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: left;
-                    margin: 0 10px;
-                    font-family: 'DM Sans';
-                    .visit-count{
-                        display: flex;
-                        color: #2B3674;
-                        font-size: 30px;
-                        margin-right: 10px;
-                    }
-                    .visit-text{
-                        font-size: 15px;
-                        //font-family: 'DM Sans';
-                        color: #A3AED0;
-                        display: flex;
-                        align-items: baseline;
-                    }
-                }
-            }
-            .Chart{
-                width: 100%;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
             }
         }
         .top-content-creators{

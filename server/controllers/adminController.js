@@ -172,9 +172,9 @@ const getAdvFDisplay = asyncHandler(async (req, res) => {
 
 //Add Admin
 const addAdmin = asyncHandler(async (req, res) => {
-    const { firstname, lastname, email, contact_no, username, password } = req.body;
+    const { firstname, lastname, email, contact_no, gender, username, password } = req.body;
 
-    const ad = await saveAdmin(firstname, lastname, email, contact_no, username, password);
+    const ad = await saveAdmin(firstname, lastname, email, contact_no, gender, username, password);
 
     if (ad.rows.length > 0) {
         res.status(201).json(rows[0]);
