@@ -19,7 +19,6 @@ function generateResetToken(email) {
 
 function getTokenFromUrl(url) {
     const parts = url.split('?');
-    console.log(parts)
 
     if (parts.length > 1) {
         const queryParams = parts[1].split('&');

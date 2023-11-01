@@ -13,7 +13,6 @@ const createPaymentIntent = async () => {
       amount: 1999,
       automatic_payment_methods: { enabled: true },
     });
-    console.log(paymentIntent);
 
     return paymentIntent.client_secret;
   } catch (e) {

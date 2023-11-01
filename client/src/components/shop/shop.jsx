@@ -28,8 +28,6 @@ const Shop = () => {
       });
   }, [locationValue]);
 
-  console.log(shopDetails);
-
   const setImageUrl = (currUrl = '') => {
     if (currUrl !== null && currUrl.length > 50) {
        return currUrl;

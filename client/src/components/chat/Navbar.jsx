@@ -6,7 +6,6 @@ import {auth} from '../../../src/firebase'
 export default function Navbar() {
 
   const { currentUser } = useContext(AuthContext);
-  // console.log(currentUser)
 
 
   return (

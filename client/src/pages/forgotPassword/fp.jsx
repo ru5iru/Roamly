@@ -28,12 +28,10 @@ const ForgotPW = () => {
             
         } catch (err) {
             setErr(err.response.data)
-            console.log(err);
 
             // Display an error message with toast
             toast.error("Failed to send reset link. Please try again later.");
         } 
-        // console.log(err)
     }
 
     return(

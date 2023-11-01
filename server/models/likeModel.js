@@ -20,10 +20,7 @@ const getLikesCount = asyncHandler(async (id) => {
 // add a like
 const saveLike = asyncHandler(async (user_id, post_id) => { 
     const sql = 'INSERT INTO likes (user_id, post_id) VALUES ($1, $2) RETURNING post_id, user_id';
-    // console.log("hello savelike");
     const result = await query(sql, [user_id, post_id]);
-
-    // await insertNotification(post_id,user_id);
 
     return result;
 });

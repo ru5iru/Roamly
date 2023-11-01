@@ -114,7 +114,6 @@ export const Signup = () => {
    };
    };
 
-   console.log(err);
 
    return (
       <section className="stext-center">

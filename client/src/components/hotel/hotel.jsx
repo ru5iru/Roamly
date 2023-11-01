@@ -10,8 +10,6 @@ import { useLocation, useParams } from "react-router-dom";
 function HotelCard(props) {
   const { photo, name, phone, location, type } = props;
 
-  console.log(photo)
-
   const setImageUrl = (currUrl = '') => {
     if (currUrl !== null && currUrl.length > 50) {
        return currUrl;
@@ -81,8 +79,6 @@ function Hotel() {
         console.error(error);
       });
   }, []);
-
-  console.log(hotelDetails);
 
   return (
     <div>

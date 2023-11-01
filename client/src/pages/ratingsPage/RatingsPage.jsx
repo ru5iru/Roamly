@@ -80,8 +80,6 @@ const RatingsPage = () => {
          },
       }
    );
-
-   console.log(postProfileData.profile_pic)
    
    return (
       <div className="ratingspage">

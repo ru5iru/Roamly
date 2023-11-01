@@ -11,7 +11,6 @@ const ResetPW = () => {
   });
 
   const link = useLocation().search;
-  console.log(link);
 
   const [resetResult, setResetResult] = useState(null);
   const navigate = useNavigate();

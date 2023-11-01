@@ -89,7 +89,6 @@ class PersonalizingForm extends React.Component {
     const selectedLocation = place.name;
     this.setState({ selectedLocation });
 
-    console.log(selectedLocation);
 
     const map = new window.google.maps.Map(document.getElementById("map"), {
       center: place.geometry.location,

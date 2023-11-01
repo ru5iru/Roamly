@@ -4,7 +4,6 @@ const getClientSecret = async (req, res) => {
   try {
     const clientSecret = await createPaymentIntent();
     res.json({ clientSecret });
-    console.log(clientSecret);
   } catch (e) {
     res.status(400).json({
       error: {
