@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { query } from "../config/db.js";
-import sendEmail from "../utils/sendEmail.js";
+import {sendEmail} from "../utils/sendEmail.js";
 
 export const sendVerificationEmail = async (req, res) => {
   const { email } = req.body;
@@ -45,5 +45,4 @@ export const verifyEmail = async (req, res) => {
       return res.status(200).json({ message: "Email verified successfully." });
     }
   }
-
 };

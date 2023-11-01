@@ -7,41 +7,71 @@ import { FaCartShopping } from "react-icons/fa6";
 
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const Shop = () => {
+  const [shopDetails, setShopDetails] = useState([]);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const locationValue = queryParams.get("location")
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/server/services/shops?location=${locationValue}`)
+      .then((response) => {
+        setShopDetails(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [locationValue]);
+
+  console.log(shopDetails);
+
+  const setImageUrl = (currUrl = '') => {
+    if (currUrl !== null && currUrl.length > 50) {
+       return currUrl;
+    } else if (currUrl !== null) {
+       try {
+          return require("../../../public/upload/" + currUrl);
+       } catch {
+          
+       }
+    }
+ }
+
   return (
-    <div className="hotel">
-      {/* <h1>Hotels near Belihuloya</h1> */}
-      <div className="cardd">
-        <div className="left">
-          <img src={dimuthuStore} alt="Tree" />
+    <div>
+      {shopDetails.map((shop, index) => (
+        <div className="hotel">
+          <div className="cardd">
+            <div className="left">
+              <img src={setImageUrl(shop.profile_pic)} alt="Tree" />
+            </div>
+            <div className="right">
+              <ul>
+                <li>
+                  <h3>{shop.service_name}</h3>
+                </li>
+                <li>
+                  <LocationOnIcon />
+                  <span className="location">{shop.location}</span>
+                </li>
+                <li>
+                  <PhoneInTalkIcon />
+                  <span className="phone">0{shop.contact_no}</span>
+                </li>
+                <li>
+                  <FaCartShopping />
+                  <span className="shop">{shop.type}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className="right">
-          <ul>
-            <li>
-                <h3>Dimuthu Grocery</h3>
-            </li>
-            <li>
-              <p>
-                PQ9C+RQW, Colombo - Ratnapura - Wellawaya - Batticaloa Rd,
-                Belihuloya
-              </p>
-            </li>
-            <li>
-              <LocationOnIcon />
-              <span>Location</span>
-            </li>
-            <li>
-              <PhoneInTalkIcon />
-              <span>0717073529</span>
-            </li>
-            <li>
-              <FaCartShopping />
-              <span>Shop</span>
-            </li>
-          </ul>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };

@@ -7,7 +7,8 @@ import {
    findUserByID,
    isUserVerified,
    saveProPic,
-   saveCoverPic
+   saveCoverPic,
+   registerServices,
 } from "../models/userModel.js";
 
 // desc    Login user
@@ -59,14 +60,16 @@ const logoutUser = asyncHandler(async (req, res) => {
 const registerUser = asyncHandler(async (req, res) => {
    const { firstname, lastname, email, password } = req.body;
 
+   const usertype = "Traveller";
    const isExist = await isUserExists(email);
+
 
    if (isExist) {
       res.status(400);
       throw new Error("Email already used.");
    }
 
-   const user = await registerUsers(firstname, lastname, email, password);
+   const user = await registerUsers(firstname, lastname, email, password, usertype);
 
    if (user.rowCount > 0) {
       res.status(201).json({
@@ -79,6 +82,48 @@ const registerUser = asyncHandler(async (req, res) => {
       res.status(400);
       throw new Error("Invalid user data");
    }
+});
+
+
+//register new service
+
+const registerService = asyncHandler(async (req, res) => {
+   const { firstname, lastname, email, contact_no, password, servicename, servicetype, type, location } = req.body;
+
+   const usertype = "Service";
+
+   // try {
+   // Check if the email already exists in the users table
+   const isExist = await isUserExists(email);
+
+   if (isExist) {
+      res.status(400);
+      throw new Error("Email already used.");
+   }
+
+      // Register the user and service provider
+    const { user, serviceProvider } = await registerServices(
+      firstname, lastname, email, contact_no, password, usertype, servicename, servicetype, type, location
+    );
+      
+
+    if (user.rowCount > 0) {
+      // Send a response with the user and service provider data
+      res.status(201).json({
+         user_id: user.user_id,
+         firstname: user.firstname,
+         lastname: user.lastname,
+         email: user.email,
+         contact_no: user.contact_no,
+         servicename: serviceProvider.service_name,
+         servicetype: serviceProvider.service,
+         type: serviceProvider.type,
+         location: serviceProvider.location,
+      });
+   } else {
+      res.status(400);
+      throw new Error("Invalid user data");
+   } 
 });
 
 // desc    Get user profile
@@ -174,5 +219,6 @@ export {
    getCurrentUserProfile,
    getUserProfile,
    updateProfilePic,
-   updateCoverPic
+   updateCoverPic,
+   registerService,
 };

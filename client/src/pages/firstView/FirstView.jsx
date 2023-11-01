@@ -25,6 +25,9 @@ export const FirstView = () => {
                   width: "120px",
                   fontSize: "0.9rem",
                }}
+               onClick={() =>{
+                  window.location.href ='http://localhost:3000/signup';
+               }}
             >
                JOIN NOW
             </button>
@@ -32,7 +35,7 @@ export const FirstView = () => {
          <div className="text-left">
             <p className="mb-0">
                <a
-                  href="/register"
+                  href="/signupsp"
                   className="fw-bold"
                   style={{
                      fontFamily: "'Fira Sans', sans-serif",

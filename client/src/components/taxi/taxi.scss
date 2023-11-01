@@ -1,17 +1,26 @@
 // taxi.scss
-$primary-color: #228BE6;
-$accent-color: #F05F40;
+$primary-color: #228be6;
+$accent-color: #f05f40;
 $text-color: #333;
 
 .taxi-card {
-  border: 2px solid $primary-color;
-  border-radius: 10px;
-  padding: 20px;
+  // border: 2px solid $primary-color;
+  // border-radius: 8px;
+  // padding: 20px;
+  // display: flex;
+  // background-color: #f1f1f1;
+  // margin-bottom: 20px;
+  // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  // width: 90%;
+  // height: 180px;
+
   display: flex;
-  background-color: #fff;
-  margin-bottom: 20px;
+  background-color: #f1f1f1;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 16px;
+  padding: 30px;
 
   .crown-container {
     display: flex;
@@ -26,14 +35,14 @@ $text-color: #333;
   }
 
   .left-section {
-    flex: 0 0 40%;
-    padding-right: 20px;
+    flex: 0 0 30%;
+    // padding-right: 20px;
     overflow: hidden;
     border-radius: 8px;
 
     .taxi-photo {
-      width: 100%;
-      height: 100%;
+      width: 85%;
+      height: 85%;
       object-fit: cover;
     }
   }
@@ -42,24 +51,41 @@ $text-color: #333;
     flex: 1;
 
     .details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       h2 {
         color: $text-color;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         margin-bottom: 10px;
       }
 
-      .icon {
-        width: 20px;
-        height: auto;
-        margin-right: 8px;
+      p {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1rem;
+
+        .location {
+          color: #4caf50;
+        }
+
+        .mobile {
+          color: #f44336;
+        }
+
+        .type {
+          color: #2196f3;
+        }
       }
 
-      .type,
-      .mobile,
-      .passengers {
-        color: $primary-color;
-        font-size: 1rem;
-      }
+      // .type,
+      // .mobile,
+      // .passengers {
+      //   color: $primary-color;
+      //   font-size: 1rem;
+      //   margin-left: 8px;
+      // }
     }
   }
 }

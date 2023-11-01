@@ -1,17 +1,33 @@
-import React from 'react';
-import './hotel.scss';
+import React, { useEffect, useState } from "react";
+import "./hotel.scss";
 import booking from "../../assets/images/booking.png";
 import agoda from "../../assets/images/agoda.png";
 import kayak from "../../assets/images/kayak.png";
-import { FaPhone, FaMapMarkerAlt, FaHotel, FaBookmark } from 'react-icons/fa';
+import { FaPhone, FaMapMarkerAlt, FaHotel, FaBookmark } from "react-icons/fa";
+import axios from "axios";
+import { useLocation, useParams } from "react-router-dom";
 
 function HotelCard(props) {
-  const { photo, name, location, phone } = props;
+  const { photo, name, phone, location, type } = props;
+
+  console.log(photo)
+
+  const setImageUrl = (currUrl = '') => {
+    if (currUrl !== null && currUrl.length > 50) {
+       return currUrl;
+    } else if (currUrl !== null) {
+       try {
+          return require("../../../public/upload/" + currUrl);
+       } catch {
+          
+       }
+    }
+ }
 
   return (
     <div className="hotel-card">
       <div className="left-section">
-        <img src={photo} alt={name} className="hotel-photo" />
+        <img src={setImageUrl(photo)} alt={name} className="hotel-photo" />
       </div>
       <div className="right-section">
         <div className="details">
@@ -22,11 +38,11 @@ function HotelCard(props) {
           </p>
           <p>
             <FaPhone />
-            <span className="phone">{phone}</span>
+            <span className="phone">0{phone}</span>
           </p>
           <p>
             <FaHotel />
-            <span className="hotel">Hotel</span>
+            <span className="hotel">{type}</span>
           </p>
           <span className="booking-sites">
             <FaBookmark />
@@ -44,46 +60,40 @@ function HotelCard(props) {
       </div>
     </div>
   );
-
 }
 
 function Hotel() {
-  const hotels = [
-    {
-      photo: 'https://cdn-img.readytotrip.com/t/1024x768/content/e2/70/e270dcc185320fb1493fac7aaa4d45c51c4b8f12.jpeg',
-      name: 'TreeHouse Chalets',
-      location: 'Pragathi Pre School Road, Halpe, Belihuloya',
-      phone: '0717073529',
-    },
-    {
-      photo: 'https://th.bing.com/th/id/Ab6FmtZnH3wzACA480x360?&rs=1&pid=ImgDet',
-      name: 'Belihuloya River Garden Hotel',
-      location: 'Riverside Road, Belihuloya',
-      phone: '0771234567',
-    },
-    {
-      photo: 'https://images.trvl-media.com/lodging/91000000/90980000/90976900/90976891/1500bb74.jpg?impolicy=resizecrop&rw=1200&ra=fit',
-      name: 'Mountain Top Glamping Tree House with a Star Bed',
-      location: 'Haputale - Belihuloya Rd, Belihuloya',
-      phone: '0789876543',
-    },
-    {
-      photo: 'https://images.trvl-media.com/lodging/36000000/35180000/35174300/35174226/9e43f8a2.jpg?impolicy=resizecrop&rw=1200&ra=fit',
-      name: 'Green Valley Hotel',
-      location: 'Ratnapura - Wellawaya - Batticaloa Rd, Belihuloya',
-      phone: '0758765432',
-    },
-  ];
+  const [hotelDetails, setHotelDetails] = useState([]);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const locationValue = queryParams.get("location")
+
+
+
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/server/services/hotels?location=${locationValue}`)
+      .then((response) => {
+        setHotelDetails(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  console.log(hotelDetails);
 
   return (
     <div>
-      {hotels.map((hotel, index) => (
+      {hotelDetails.map((hotel, index) => (
         <HotelCard
           key={index}
-          photo={hotel.photo}
-          name={hotel.name}
+          photo={hotel.profile_pic}
+          name={hotel.service_name}
+          type={hotel.type}
           location={hotel.location}
-          phone={hotel.phone}
+          phone={hotel.contact_no}
         />
       ))}
     </div>

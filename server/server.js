@@ -20,6 +20,14 @@ import adsRoutes from "./routes/adsRoutes.js";
 import feedRoutes from "./routes/feedRoutes.js";
 import relationshipRoutes from "./routes/relationshipRoutes.js";
 import ratingsRoutes from "./routes/ratingRoutes.js";
+import badgeRoutes from "./routes/badgeRoutes.js"
+import postRoutes from "./routes/postRoutes.js"
+import interstRoutes from "./routes/interestRoutes.js"
+import likeRoutes from "./routes/likeRoutes.js"
+import exploreRoutes from "./routes/exploreRoutes.js"
+import adsRoutes from "./routes/adsRoutes.js"
+import feedRoutes from "./routes/feedRoutes.js"
+import serviceRoutes from "./routes/serviceRoutes.js"
 
 
 // start DB connection
@@ -65,6 +73,9 @@ app.post("/server/upload", upload.single("file"), (req, res) => {
 
 // user routes
 app.use("/server/users", userRoutes);
+
+// service routes
+app.use('/server/services', serviceRoutes);
 
 // badge routes
 app.use("/server/badges", badgeRoutes);
