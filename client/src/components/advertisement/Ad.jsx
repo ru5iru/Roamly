@@ -30,7 +30,7 @@ const Ad = () => {
             const response = await axios.get("http://localhost:8000/server/ads/feed");
             const jsonData = response.data;
             setAds(jsonData);
-            console.log(jsonData);
+            // console.log(jsonData);
         } catch (error) {
             console.error(error.message);
         }

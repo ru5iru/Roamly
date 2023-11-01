@@ -13,27 +13,24 @@ import { AuthContext } from '../../context/authContext'
 import { doc, updateDoc } from 'firebase/firestore'
 
 const Chat = () => {
-  // let user=null;
-  // <img src="" alt="" />
-  // const {user} = useState("null")
   const {data} = useContext(ChatContext);
   const { currentUser } = useContext(AuthContext);
-  console.log("chat data :"+data.user)
-
-// user=data.user;
-  // if (!data.user) {
-  //   return null;
-  // }
 
   return (
     <div className="chat">
       <div className="chatInfo">
         {/* <img src="https://e1.pxfuel.com/desktop-wallpaper/272/610/desktop-wallpaper-anime-girl-profile-thumbnail.jpg" alt="none" /> */}
         <div className="userchatInfo">
-          <span>{data.user?.firstname} {data.user?.lastname}</span>
-          <div className="chatIcons">
-            {/* Your chat icons */}
-          </div>
+          {data.user ? (
+            <React.Fragment>
+              <span>{data.user?.firstname} {data.user?.lastname}</span>
+              <div className="chatIcons">
+                {/* Your chat icons */}
+              </div>
+            </React.Fragment>
+          ) : (
+            <span>Add your notes</span>
+          )}
         </div>
       </div>
   
@@ -47,6 +44,7 @@ const Chat = () => {
       )}
     </div>
   );
+  
   
       }
   

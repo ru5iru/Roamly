@@ -49,7 +49,7 @@ function App() {
     // const [username, setUsername]=useState("");
     const [user, setUser] = useState("");
     const { currentUser } = useContext(AuthContext);
-    console.log(currentUser)
+    // console.log(currentUser)
 
     const { darkMode } = useContext(DarkModeContext);
 

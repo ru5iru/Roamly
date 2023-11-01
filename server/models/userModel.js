@@ -80,6 +80,17 @@ const registerUsers = asyncHandler(async (firstname, lastname, email, password) 
     return result;
 });
 
+const getUserProfilePicByEmail = asyncHandler(async (email) => {
+    const sql = 'SELECT profile_pic FROM users WHERE email = $1';
+    const result = await query(sql, [email]);
+
+    if (result.rowCount > 0) {
+        return result.rows[0].profile_pic;
+    } else {
+        
+    }
+});
+
 export {
     isUserExists,
     registerUsers,
@@ -87,4 +98,5 @@ export {
     findUserByEmail,
     findUserByID,
     isUserVerified,
+    getUserProfilePicByEmail,
 };

@@ -79,7 +79,7 @@ export const Signup = () => {
          .then(response => {
          // Display an alert when the email is successfully sent
          if (response.data.success) {
-            alert("Email has been sent!");  //have to put toast
+            alert("Email has been sent!");
          } else {
             alert("Email has been sent!");
          }
@@ -96,7 +96,7 @@ export const Signup = () => {
 
          // const uid = useRef.push().key;
          await setDoc(doc(db,"users",inputs.email),{
-            id:uuid(),
+            // id:uuid(),
             firstname: inputs.firstname,
             lastname: inputs.lastname,
             email: inputs.email,

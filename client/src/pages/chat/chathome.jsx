@@ -10,7 +10,7 @@ export default function Chathome() {
       <div className="container">
         <Sidebar />
         <Chat />
-      </div>
+      </div>    
     </div>
   )
 }
