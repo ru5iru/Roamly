@@ -18,15 +18,16 @@
 
 .sidebar{
     flex:3;
-    border-right: 1px solid #3e3c61;
+    // border-right: 1px solid #3e3c61;
     background-color: aliceblue; 
     // width: 100px;  
     overflow-y: scroll;
+
     overflow-x: hidden;
 
-    // @include mobile{
-    //     display:none;
-    // }
+    @include mobile{
+        display:none;
+    }
 
     .navbarchat{
         display: flex;
@@ -80,13 +81,14 @@
                 align-items: center;
                 width: 100%;
                 height: 40px;
-                font-size: 60%;
+                font-size: 90%;
+                padding-left: 7px;
                 // text-align: center;
                 
                 &::placeholder{
                     color:gray;
                     font-size: 150%;
-                    
+                    // margin-left: 10px;  
                 }
 
             }
@@ -108,7 +110,7 @@
            
 
             &:hover{
-                background-color: aliceblue;
+                background-color: white;
                 // background-color: 
             }
             
@@ -131,7 +133,7 @@
                 height: 55px;
                 padding: 10px;
                 .userbar{
-                    font-size: 22px;
+                    font-size: 18px;
                     font-weight: 500;
                     margin-left: 5px;
                     
@@ -152,13 +154,14 @@
         }
     }
 
+    
+
 
     
 }
 
 .chat{
     flex: 4;
-
 
 
     .chatInfo{
@@ -204,10 +207,7 @@
                     // border-radius: 50%;
                     object-fit: cover;
                     
-
                 }
-
-            
 
             .messageContent{
                 max-width: 80%;
@@ -282,15 +282,17 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding-left: 7px ;
 
         input{
             width: 100%;
-            border: none;
+            border: 1px solid lightblue;
             outline: none;
             color: #2f2d52;
             font-size: 18px;
             border-radius: 10px;
             height: 80%;
+            padding-left: 7px;
 
             &::placeholder{
                 color: lightgray;
@@ -305,6 +307,7 @@
             img{
                 height: 24px;
                 cursor: pointer;
+                margin-left: 20px;
             }
 
             button{
@@ -312,26 +315,11 @@
                 padding: 10px 15px;
                 color: white;
                 background-color: aliceblue;
+                margin-left: 0px;
             }
         }
-
     }
-
-    // &.home{
-    //     visibility: hidden;
-
-    //     .chatInfo{
-    //         visibility: hidden;
-
-    //         .userchatInfo{
-    //             visibility: hidden;
-    //         }
-    //     }
-    // }
-
-    
-
-    }
+ }
 
 
 
