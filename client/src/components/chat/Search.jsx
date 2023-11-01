@@ -17,19 +17,26 @@ const Search = () => {
   const [firstName, lastName] = username.split(' ');
   
   const handleSearch = async () => {
-    const q = query(
-      collection(db, "users"),
-      where("firstname", "==", firstName),
-      where("lastname", "==", lastName)
-    );
+    if (firstName && lastName) {
+      const q = query(
+        collection(db, "users"),
+        where("firstname", "==", firstName),
+        where("lastname", "==", lastName)
+      );
 
-    try {
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        setUser(doc.data());
-      });
-    } catch (err) {
-      setErr(true);
+      try {
+        const querySnapshot = await getDocs(q);
+        if (querySnapshot.empty) {
+          setErr(true); // Set err to true if the query does not return any results
+        } else {
+          querySnapshot.forEach((doc) => {
+            setUser(doc.data());
+          });
+          setErr(false); // Reset err to false if the user is found
+        }
+      } catch (err) {
+        setErr(true);
+      }
     }
   };
 
@@ -120,4 +127,3 @@ const Search = () => {
 };
 
 export default Search;
-
