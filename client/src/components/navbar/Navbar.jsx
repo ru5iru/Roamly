@@ -43,6 +43,10 @@ const Navbar = ({socket}) => {
       navigate("/feed");
    };
 
+   const navigateChat = () => {
+      navigate("/chat");
+   };
+
    const handleSearch = () => {
       navigate(`/explore?query=${searchText}`);
    };
@@ -110,9 +114,9 @@ const Navbar = ({socket}) => {
                   />
                </form>
             </div>
-            <img className="navimg" src={Chat} alt="" />
+            <img className="navimg" src={Chat} alt="" onClick={navigateChat}/>
             <div className="count" onClick={()=>setOpen(!open)}>
-               <img className="navimg" src={Notification} alt="" />
+               <img className="navimg" src={Notification} alt=""  />
                {
                   notifications.length>0 &&
                   <div className="counter">{notifications.length}</div>
