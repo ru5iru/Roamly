@@ -22,13 +22,6 @@ import adsRoutes from "./routes/adsRoutes.js";
 import feedRoutes from "./routes/feedRoutes.js";
 import relationshipRoutes from "./routes/relationshipRoutes.js";
 import ratingsRoutes from "./routes/ratingRoutes.js";
-import badgeRoutes from "./routes/badgeRoutes.js"
-import postRoutes from "./routes/postRoutes.js"
-import interstRoutes from "./routes/interestRoutes.js"
-import likeRoutes from "./routes/likeRoutes.js"
-import exploreRoutes from "./routes/exploreRoutes.js"
-import adsRoutes from "./routes/adsRoutes.js"
-import feedRoutes from "./routes/feedRoutes.js"
 import serviceRoutes from "./routes/serviceRoutes.js"
 
 
