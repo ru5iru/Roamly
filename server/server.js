@@ -80,8 +80,6 @@ let onlineUsers=[];
 const addNewUser = (userEmail, socketId)=>{
     !onlineUsers.some((user)=>user.userEmail === userEmail) && 
     onlineUsers.push({userEmail, socketId});   
-
-    console.log(userEmail)
 };
 
 

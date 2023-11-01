@@ -196,7 +196,8 @@ export const SignupSP = () => {
 
   // Initialize the autocomplete object
   useEffect(() => {
-    autocomplete = new window.google.maps.places.Autocomplete(
+    try{
+      autocomplete = new window.google.maps.places.Autocomplete(
       document.getElementById("autocomplete"),
       {
         types: ["geocode"],
@@ -204,6 +205,10 @@ export const SignupSP = () => {
     );
     // Add a listener for the place_changed event
     autocomplete.addListener("place_changed", handlePlaceChanged);
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+    
   }, []);
 
   // Define a function to handle the place_changed event

@@ -212,14 +212,14 @@ const Post = ({ userID, post, deleteMutation,socket }) => {
                   onClick={() => setCommentOpen(!commentOpen)}
                >
                   <ChatBubbleOutlinedIcon />
-                  12 Comments
+                  {formatCreatedAt(post.created_at) === "few seconds ago" ? "0 Comments" : "2 Comments"}
                </div>
                <div className="item">
                   <ShareOutlinedIcon />
                   Share
                </div>
             </div>
-            {commentOpen && <Comments />}
+            {commentOpen && <Comments time={formatCreatedAt(post.created_at)}/>}
          </div>
       </div>
    );
