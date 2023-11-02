@@ -32,7 +32,7 @@ const Profile = ({socket}) => {
    const [openBadges, setOpenBadges] = useState(false);
    const [openAddPost, setOpenAddPost] = useState(false);
    const [openBucketList, setOpenBucketList] = useState(false);
-
+   const [ratingsData, setRatingsData] = useState([]);
    const [profileData, setProfileData] = useState([]);
    const [imagesData, setImagesData] = useState([]);
    const [profileNotFound, setProfileNotFound] = useState("Loading");
@@ -50,6 +50,16 @@ const Profile = ({socket}) => {
       }
    };
 
+   const getRatings = async (userID) => {
+      try {
+         const response = await axios.get(`/ratings/avg?service_id=${userID}`);
+         const jsonData = response.data;
+         setRatingsData(jsonData);
+      } catch (error) {
+         console.error(error.message);
+      }
+   };
+
    useEffect(() => {
       if (userID) {
          axios
@@ -64,7 +74,10 @@ const Profile = ({socket}) => {
                setProfileNotFound("Not Found");
             });
       }
+      getRatings(userID);
    }, [userID]);
+
+   console.log(ratingsData)
 
    useEffect(() => {
       if (userID) {
@@ -288,7 +301,7 @@ const Profile = ({socket}) => {
                               <div className="head">Rating</div>
                               <div className="container">
                                  <div className="badges">
-                                    <Rating rating={3.5} />
+                                    <Rating rating={ratingsData.avg} count={ratingsData.count} />
                                  </div>
                                  <div className="button">
                                     <button onClick={handleServiceClick}>

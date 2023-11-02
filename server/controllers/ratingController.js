@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler";
-import {getServiceRatings, saveReview, deleteReview} from "../models/ratingModel.js";
+import {getServiceRatings, saveReview, deleteReview, getRatingAvg} from "../models/ratingModel.js";
 
 // desc
 // route
@@ -9,6 +9,22 @@ const serviceRatings = asyncHandler(async (req, res) => {
    const ratings = await getServiceRatings(req.query.service_id);
 
    if (ratings.length > 0) {
+      res.status(200).json(ratings);
+   } else {
+      res.status(404);
+      throw new Error("Posts not found");
+   }
+});
+
+// desc
+// route
+// access
+
+const getAvgRating = asyncHandler(async (req, res) => {
+   const ratings = await getRatingAvg(req.query.service_id);
+
+   if (ratings) {
+      console.log(ratings)
       res.status(200).json(ratings);
    } else {
       res.status(404);
@@ -55,4 +71,4 @@ const removePost = asyncHandler(async (req, res) => {
    }
 });
 
-export {serviceRatings, addReview, removePost}
+export {serviceRatings, addReview, removePost, getAvgRating}

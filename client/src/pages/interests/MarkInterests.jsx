@@ -24,10 +24,7 @@ const MarkInterests = () => {
       }
    };
 
-   useEffect(() => {
-      getInterests();
-      getUserInterests();
-   }, []);
+   
 
    const [checkboxes, setCheckboxes] = useState({
       1: false,
@@ -60,6 +57,11 @@ const MarkInterests = () => {
          console.error(error.message);
       }
    };
+   
+   useEffect(() => {
+      getInterests();
+      getUserInterests();
+   }, []);
 
    const mutation = useMutation((newInterests) => {
       return makeRequest.post("/interests", newInterests);
